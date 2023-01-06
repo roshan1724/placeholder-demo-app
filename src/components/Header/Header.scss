@@ -1,0 +1,39 @@
+$secondaryBlack: #555555;
+
+
+header {
+    font-family: "Roboto";
+    .header-wrapper {
+        .brand-logo {
+            width: 165px;
+            height: 35px;
+        }
+        .page-header-right {
+            gap: 5px;
+
+            .profile-image {
+                width: 45px;
+                height: auto;
+            }
+
+            .profile-wrapper {
+                font-size: 14px;
+                font-weight: 400;
+                color: $secondaryBlack;
+            }
+        }
+    }
+    .dropdown {
+        .dropdown-toggle {
+            gap: 5px;
+            &::after {
+                height: 5px;
+                width: 10px;
+                border: none;
+                content: "";
+                background: url("../../../public/images/down_arrow.png") no-repeat;
+                background-size: contain;
+            }
+        }
+    }
+}

@@ -1,0 +1,78 @@
+@import "../../../variables.scss";
+
+.section-summary {
+    .title-container {
+        border-bottom: 1px solid $primary_black;
+        padding-bottom: 20px;
+
+        p.description {
+            font-size: 15px;
+            color: $primary_black;
+        }
+    }
+
+    .achievement-container {
+        padding: 16px 0;
+
+        .achievement-wrapper {
+            display: flex;
+            column-gap: 8px;
+            align-items: center;
+
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+
+            img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .achievement-user-wrapper {
+                display: flex;
+                gap: 5px;
+                align-items: center;
+                flex-grow: 1;
+                padding: 5px;
+                border-radius: 40px;
+                background-color: $secondary_bg_gray;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+
+                .user-details {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+
+                    .user-name {
+                        font-size: 13px;
+                        color: $secondary_text_gray;
+                    }
+
+                    .achievement-name {
+                        font-size: 15px;
+                        color: $primary_text_black;
+                    }
+                }
+
+                &.active {
+                    background-color: $primary_bg_gray;
+
+                    .user-details {
+                        .user-name {
+                            color: $secondary_text_white;
+                        }
+
+                        .achievement-name {
+                            color: $primary_text_white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

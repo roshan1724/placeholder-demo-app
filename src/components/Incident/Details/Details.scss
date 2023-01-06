@@ -1,0 +1,104 @@
+@import "../../../variables.scss";
+
+.section-details {
+    .chatbox-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: calc(100% - 40px);
+        overflow-y: scroll;
+        background-color: #fff;
+
+        &::-webkit-scrollbar {
+            width: 5px;
+            border-radius: 5px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: #fff
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: #555555;
+
+            &:hover {
+                background: #555555;
+            }
+        }
+
+        .msg-wrapper {
+            display: flex;
+            column-gap: 5px;
+            width: 85%;
+            margin-bottom: 15px;
+
+            .icon-wrapper {
+                display: block;
+                height: fit-content;
+                border-radius: 50%;
+                background-color: $secondary_bg_gray;
+
+                img.bot-icon {
+                    width: 20px;
+                    height: 20px;
+                    object-fit: contain;
+                    padding: 2px;               
+                }
+            }
+
+            .msg-container {
+                padding: 10px;
+                border-radius: 20px;
+
+                p.msg {
+                    font-size: 15px;
+                    line-height: 18px;
+                }
+            }
+
+            &.bot {
+                flex-direction: row;
+                margin-right: auto;
+
+                .msg-container {
+                    background-color: $secondary_bg_gray;
+                    text-align: left;
+
+                    p.msg {
+                        color: $primary_text_grat;
+                    }
+                }
+            }
+
+            &.user {
+                flex-direction: row-reverse;
+                margin-left: auto;
+
+                .icon-wrapper {
+                    &.achievement {
+                        align-self: center;
+                    }
+                    img.user-icon {
+                        border-radius: 50%;
+                    }
+                }
+
+                .msg-container {
+                    background-color: $secondary_bg_gray;
+                    text-align: right;
+
+                    p.user-name {
+                        font-size: 13px;
+                        color: $secondary_gray;
+                    }
+
+                    p.msg {
+                        color: $primary_text_black;
+                    }
+                }
+            }
+        }
+    }
+}

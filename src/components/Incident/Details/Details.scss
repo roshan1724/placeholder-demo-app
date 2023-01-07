@@ -4,28 +4,16 @@
     .chatbox-container {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        height: calc(100% - 40px);
-        overflow-y: scroll;
         background-color: #fff;
 
-        &::-webkit-scrollbar {
-            width: 5px;
-            border-radius: 5px;
-        }
+        height: 100%;
+        max-height: calc(100% - 40px);
+        overflow-y: scroll;
 
-        /* Track */
-        &::-webkit-scrollbar-track {
-            background: #fff
-        }
-
-        /* Handle */
-        &::-webkit-scrollbar-thumb {
-            background: #555555;
-
-            &:hover {
-                background: #555555;
-            }
+        &::before {
+            content: "";
+            display: block;
+            margin-top: auto;
         }
 
         .msg-wrapper {

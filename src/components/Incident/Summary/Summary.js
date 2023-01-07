@@ -1,6 +1,8 @@
 import "./Summary.scss";
 
-function Summary() {
+function Summary({
+    userData
+}) {
   return <section className="section-summary">
     <div className="title-container">
         <h1 className="title">Incident Summary</h1>

@@ -5,7 +5,7 @@ function Details() {
     <div className="title-container">
         <h1 className="title">Incident Details</h1>
     </div>
-    <div className="chatbox-container">
+    <div className="chatbox-container overflow-scrollbar">
         <div className="msg-wrapper bot">
             <span className="icon-wrapper">
                 <img src="/images/question_logo.png" alt="bot icon" className="bot-icon" />

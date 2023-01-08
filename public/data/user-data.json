@@ -1,16 +1,18 @@
 {
-    "data": [
-        {
-            "user_id": "1",
-            "user_name": "Graham Smith",
-            "user_title": "user",
-            "achievements": []
-        },
-        {
-            "user_id": "2",
-            "user_name": "GAngela Taylor",
-            "user_title": "IT Dept.",
-            "achievements": []
-        }
-    ]
+  "data": [
+    {
+      "user_id": "1",
+      "user_name": "Graham Smith",
+      "profile_img": "/images/people-male.png",
+      "user_dept": "user",
+      "achievements": []
+    },
+    {
+      "user_id": "2",
+      "user_name": "GAngela Taylor",
+      "profile_img": "/images/people-female.png",
+      "user_dept": "IT Dept.",
+      "achievements": []
+    }
+  ]
 }

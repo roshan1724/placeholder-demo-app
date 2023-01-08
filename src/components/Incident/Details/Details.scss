@@ -10,10 +10,10 @@
     max-height: calc(100% - 40px);
     overflow-y: scroll;
 
-    &::before {
+    &::after {
       content: "";
       display: block;
-      margin-top: auto;
+      margin-bottom: auto;
     }
 
     .msg-wrapper {

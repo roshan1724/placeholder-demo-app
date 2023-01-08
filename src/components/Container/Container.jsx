@@ -39,10 +39,12 @@ function Container() {
   const handleSubmit = (event) => {
     const currentData = messageList.map((message) => {
       if (message.incident_id === incidentData[incidentCount].incident_id) {
-        userContext.updateUserAchievements({
-          user_id: userContext.userData.user_id,
-          linked_achievements: incidentData[incidentCount].linked_achievements,
-        });
+        if (incidentData[incidentCount].correct_option_id === event) {
+          userContext.updateUserAchievements({
+            user_id: userContext.userData.user_id,
+            linked_achievements: incidentData[incidentCount].linked_achievements,
+          });
+        }
         return {
           ...message,
           option_text: optionContext.optionsData.data?.find(

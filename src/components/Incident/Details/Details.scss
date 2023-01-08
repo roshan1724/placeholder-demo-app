@@ -63,6 +63,7 @@
       &.user {
         flex-direction: row-reverse;
         margin-left: auto;
+        padding-right: 10px;
 
         .icon-wrapper {
           &.achievement {
@@ -70,6 +71,8 @@
           }
 
           img.user-icon {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
           }
         }

@@ -22,8 +22,8 @@ function Header() {
               alt="bell-icon"
               className="bell-icon"
             />
-            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              5
+            <span className="position-absolute badge rounded-pill bg-danger">
+              8
             </span>
           </span>
           <img

@@ -21,15 +21,16 @@ function Options(props) {
     const updatedList = [...new Set([...selectedOptionList, selectedOption])];
     setSelectedOptionList(updatedList);
     props.handleSubmit(selectedOption);
+    setSelectedOption(null);
   };
 
   return optionsData ? (
     <section className="section-options">
       <div className="title-container">
-        <h1 className="title">What would you do ?</h1>
+        <h1 className="title">What would you do?</h1>
         <p className="description">
           Lorem ipsum dolor sit amet, consectetur ut facilisis nulla, non
-          aliquam libero. Turpis id velit vehicula imperdiet eget ?
+          aliquam libero. Turpis id velit vehicula imperdiet eget?
         </p>
         <img
           src="/images/people-male.png"
@@ -79,9 +80,9 @@ function Options(props) {
             type="submit"
             className="btn submit-btn"
             onClick={handleSubmitClick}
+            disabled={!selectedOption}
           >
-            {" "}
-            Submit{" "}
+            Submit
           </button>
         </div>
       </div>

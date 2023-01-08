@@ -21,29 +21,31 @@ function Summary(props) {
         {activeUser.achievements && activeUser.achievements.length > 0 && (
           <h4 className="title">Accomplishments</h4>
         )}
-        {activeUser.achievements.map((data) => (
-          <div className="achievement-wrapper" key={data?.achievement_id}>
-            <img
-              src="/images/victory_cup.png"
-              alt="victory cup"
-              className="badge-icon"
-            />
-            <div className="achievement-user-wrapper active">
+        <div className="achievement-holder overflow-scrollbar">
+          {activeUser.achievements.map((data, index) => (
+            <div className="achievement-wrapper" key={data?.achievement_id}>
               <img
-                src={activeUser.profile_img}
+                src="/images/victory_cup.png"
                 alt="victory cup"
-                className="profile-icon"
+                className="badge-icon"
               />
-              <div className="user-details">
-                <p className="user-name">
-                  {activeUser.user_name}
-                  <span className="user-type"> ({activeUser.user_dept}) </span>
-                </p>
-                <p className="achievement-name">{data?.achievement_name}</p>
+              <div className={`achievement-user-wrapper ${index === 0 && 'active'}`}>
+                <img
+                  src={activeUser.profile_img}
+                  alt="victory cup"
+                  className="profile-icon"
+                />
+                <div className="user-details">
+                  <p className="user-name">
+                    {activeUser.user_name}
+                    <span className="user-type"> ({activeUser.user_dept}) </span>
+                  </p>
+                  <p className="achievement-name">{data?.achievement_name}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

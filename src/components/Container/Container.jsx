@@ -72,9 +72,11 @@ function Container() {
         <div className="row">
           <div className="col-12 col-md-4 section-container">
             <Summary className="h-100" />
+            <img src="/images/resizer_icon.png" alt="resizer icon" className="seperator-icon" />
           </div>
           <div className="col-12 col-md-4 section-container">
             <Details className="h-100" messageList={messageList} />
+            <img src="/images/resizer_icon.png" alt="resizer icon" className="seperator-icon" />
           </div>
           <div className="col-12 col-md-4 section-container">
             <Options className="h-100" handleSubmit={handleSubmit} />

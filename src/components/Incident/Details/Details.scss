@@ -50,6 +50,14 @@
         flex-direction: row;
         margin-right: auto;
 
+        .icon-wrapper {
+          display: inline-flex;
+          justify-content: center;
+          width: 75px;
+          font-weight: 700;
+          font-size: 18px;
+        }
+
         .msg-container {
           background-color: $secondary_bg_gray;
           text-align: left;
@@ -68,6 +76,11 @@
         .icon-wrapper {
           &.achievement {
             align-self: center;
+
+            img.badge-icon {
+              width: 20px;
+              height: 20px;
+            }
           }
 
           img.user-icon {

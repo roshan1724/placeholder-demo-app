@@ -17,13 +17,7 @@ function Details(props) {
         {messageList.map((message) => (
           <>
             <div className="msg-wrapper bot">
-              <span className="icon-wrapper">
-                <img
-                  src="/images/question_logo.png"
-                  alt="bot icon"
-                  className="bot-icon"
-                />
-              </span>
+              <span className="icon-wrapper">?</span>
               <div className="msg-container">
                 <p className="msg">{message?.message_text}</p>
               </div>

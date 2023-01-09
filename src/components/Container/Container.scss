@@ -1,0 +1,17 @@
+@import "../../variables.scss";
+
+.container-wrapper {
+  .section-container {
+    position: relative;
+
+    .seperator-icon {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate3d(0px, -50%, 0);
+      width: 4px;
+      height: auto;
+      cursor: pointer;
+    }
+  }
+}

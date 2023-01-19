@@ -1,3 +1,10 @@
+/**
+ * Component Name: Details
+ * Created Date: 6th January 2023
+ * Owner: Roshan Kumar [roshankumar1724@gmail.com]
+ * Description: Design layout of Incident details section
+ */
+
 import "./Details.scss";
 
 import React, { useContext, useEffect, useRef } from "react";

@@ -1,3 +1,10 @@
+/**
+ * Component Name: Summary
+ * Created Date: 6th January 2023
+ * Owner: Roshan Kumar [roshankumar1724@gmail.com]
+ * Description: Design layout of incident summary section
+ */
+
 import "./Summary.scss";
 
 import React, { useContext } from "react";

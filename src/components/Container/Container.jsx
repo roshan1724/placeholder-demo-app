@@ -9,8 +9,7 @@ import "./Container.scss";
 
 import React, { useContext, useEffect, useState } from "react";
 
-import Summary from "../Incident/Summary/Summary";
-import Details from "../Incident/Details/Details";
+import Incident from "../Incident/Incident";
 import Options from "../Incident/Options/Options";
 
 import OptionContext from "../../context/options/option-context";
@@ -82,15 +81,11 @@ function Container() {
     userContext.userData && (
       <section className="container-wrapper p-3 mb-3">
         <div className="row">
-          <div className="col-12 col-md-4 section-container">
-            <Summary className="h-100" />
+          <div className="col-12 col-md-6 section-container">
+            <Incident className="h-100" messageList={messageList}/>
             <img src="/images/resizer_icon.png" alt="resizer icon" className="seperator-icon" />
           </div>
-          <div className="col-12 col-md-4 section-container">
-            <Details className="h-100" messageList={messageList} />
-            <img src="/images/resizer_icon.png" alt="resizer icon" className="seperator-icon" />
-          </div>
-          <div className="col-12 col-md-4 section-container">
+          <div className="col-12 col-md-6 section-container">
             <Options className="h-100" handleSubmit={handleSubmit} />
           </div>
         </div>

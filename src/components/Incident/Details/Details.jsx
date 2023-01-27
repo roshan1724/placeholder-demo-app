@@ -24,14 +24,17 @@ function Details(props) {
 
   return (
     <section className="section-details">
-      <div className="title-container">
-        <h1 className="title">Incident Details</h1>
-      </div>
       <div className="chatbox-container overflow-scrollbar" ref={chatbox}>
         {messageList.map((message, index) => (
           <>
             <div className="msg-wrapper bot" key={index * 2}>
-              <span className="icon-wrapper">?</span>
+              <span className="icon-wrapper">
+                <img
+                  src="/images/question_bot_icon.png"
+                  alt="bot icon"
+                  className="bot-icon"
+                />
+              </span>
               <div className="msg-container">
                 <p className="msg">{message?.message_text}</p>
               </div>

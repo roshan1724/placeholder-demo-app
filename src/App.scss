@@ -1,21 +1,26 @@
 @import "./variables.scss";
 
 .App {
+  background-color: $color_grey1_bg;
   .flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .section-summary,
-  .section-details,
+  .section-incident,
   .section-options {
     height: 100%;
-    max-height: calc(100vh - 141px);
-    background: #FFFFFF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-height: calc(100vh - $height_header);
+    @include effect_block_shadow();
+    background: $color_grey2_bg;
     border-radius: 20px;
     padding: 20px;
+  }
+
+  .section-summary,
+  .section-details {
+    height: 100%;
   }
 
   .title {
@@ -46,16 +51,16 @@
 
     /* Track */
     &::-webkit-scrollbar-track {
-      background: #fff
+      background: transparent;
     }
 
     /* Handle */
     &::-webkit-scrollbar-thumb {
-      background: #555555;
+      background: $color_grey2_logo;
       border-radius: 10px;
 
       &:hover {
-        background: #555555;
+        background: $color_grey2_logo;
       }
     }
   }

@@ -1,3 +1,17 @@
+// ///////////////////////////////////////////////
+// WIDTH and HEIGHT Variables
+// //////////////////////////////////////////////
+$height_header: 141px;
+$width_brand: 210px;
+$height_brand: 35px;
+$height_notifiction_icon: 25px;
+$height_profile_dropdown_icon: 5px;
+
+$height_incident_tab: 60px;
+
+// ///////////////////////////////////////////////
+// COLOR Variables
+// //////////////////////////////////////////////
 $secondary_gray: #999999;
 $primary_black: #555555;
 
@@ -13,3 +27,30 @@ $primary_text_white: #FFFFFF;
 
 $primary_bg_orange: #FFD18B;
 $badge_border: #EEF0F4;
+
+// ///////////////////////////////////////////////
+// COLOR Variables - updated
+// //////////////////////////////////////////////
+$color_black: #000;
+$color_grey1_bg: #1D1D1D;
+$color_grey2_bg: #292929;
+$color_grey2_logo: #808080;
+$color_grey3_font: #ACACAC;
+$color_line: rgba(128, 128, 128, 0.3);
+$color_white: #FFFFFF;
+$color_theme: #F6AB36;
+$color_purple1: #3E214D;
+$color_purple2: #9451B5;
+$colr_blue: #3598DB;
+$color_green: #27AE61;
+$color_red_dark_bg: #371C1C;
+$color_red: #FF0000;
+$color_orange: #FF6612;
+$color_yellow: #F7CA17;
+
+// ///////////////////////////////////////////////
+// Effect Variables
+// //////////////////////////////////////////////
+@mixin effect_block_shadow() {
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+}

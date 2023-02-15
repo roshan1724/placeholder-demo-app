@@ -1,3 +1,10 @@
+/**
+ * Component Name: Options
+ * Created Date: 6th January 2023
+ * Owner: Roshan Kumar [roshankumar1724@gmail.com]
+ * Description: Design layout of Incident options
+ */
+
 import "./Options.scss";
 
 import React, { useContext, useState } from "react";
@@ -13,10 +20,17 @@ function Options(props) {
     ? [...optionContext.optionsData.data]
     : null;
 
+  /**
+   * Function to Handle Option Selection
+   * @param {HTML_Event} event 
+   */
   const handleOptionSelection = (event) => {
     setSelectedOption(Number(event.target.value));
   };
 
+  /**
+   * Function to Handle Submit Button Click
+   */
   const handleSubmitClick = () => {
     const updatedList = [...new Set([...selectedOptionList, selectedOption])];
     setSelectedOptionList(updatedList);

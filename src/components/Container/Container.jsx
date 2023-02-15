@@ -1,3 +1,10 @@
+/**
+ * Component Name: Container
+ * Created Date: 6th January 2023
+ * Owner: Roshan Kumar [roshankumar1724@gmail.com]
+ * Description: Contains the design layout of the page body
+ */
+
 import "./Container.scss";
 
 import React, { useContext, useEffect, useState } from "react";
@@ -18,6 +25,7 @@ function Container() {
   const userContext = useContext(UserContext);
 
   useEffect(() => {
+    // API Call to get Incident Data
     fetch("/data/incident-data.json")
       .then((response) => response.json())
       .then((response) => {
@@ -36,6 +44,10 @@ function Container() {
       });
   }, []);
 
+  /**
+   * Function to handle Submit selected options
+   * @param {HTML_Event} event 
+   */
   const handleSubmit = (event) => {
     const currentData = messageList.map((message) => {
       if (message.incident_id === incidentData[incidentCount].incident_id) {

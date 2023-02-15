@@ -1,10 +1,24 @@
+/**
+ * Component Name: Details
+ * Created Date: 6th January 2023
+ * Owner: Roshan Kumar [roshankumar1724@gmail.com]
+ * Description: Design layout of Incident details section
+ */
+
 import "./Details.scss";
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import UserContext from "../../../context/user/user-context";
 
 function Details(props) {
   const { messageList } = props;
+  const chatbox = useRef(null);
+
+  useEffect(() => {
+    if (chatbox && chatbox.current) {
+      chatbox.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [])
 
   const userContext = useContext(UserContext);
 
@@ -13,10 +27,10 @@ function Details(props) {
       <div className="title-container">
         <h1 className="title">Incident Details</h1>
       </div>
-      <div className="chatbox-container overflow-scrollbar">
-        {messageList.map((message) => (
+      <div className="chatbox-container overflow-scrollbar" ref={chatbox}>
+        {messageList.map((message, index) => (
           <>
-            <div className="msg-wrapper bot">
+            <div className="msg-wrapper bot" key={index * 2}>
               <span className="icon-wrapper">?</span>
               <div className="msg-container">
                 <p className="msg">{message?.message_text}</p>
@@ -27,6 +41,7 @@ function Details(props) {
               className={`msg-wrapper user ${
                 !message.option_text && "awaiting"
               }`}
+              key={(index * 2) + 1}
             >
               <span className="icon-wrapper">
                 <img

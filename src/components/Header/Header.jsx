@@ -1,3 +1,10 @@
+/**
+ * Component Name: Header
+ * Created Date: 6th January 2023
+ * Owner: Roshan Kumar [roshankumar1724@gmail.com]
+ * Description: Contains the design layout of the Header across the page
+ */
+
 import "./Header.scss";
 
 function Header() {

@@ -1,0 +1,105 @@
+@import './../../../variables.scss';
+
+
+.phase-report-container {
+  padding: 20px;
+  background: $color_grey1_bg;
+  border-radius: 10px;
+  
+  .section-subtitle {
+    font-size: 16px;
+    font-weight: normal;
+    color: $color_grey3_font;
+    span {
+      font-weight: 700;
+      color: $color_white;
+    }
+  }
+
+  .section-description {
+    font-size: 14px;
+    font-weight: normal;
+    color: $color_grey3_font;
+  }
+
+  .summary-time-data {
+    .custom-progressbar {
+      background: $color_grey2_bg;
+    }
+  }
+
+  .path-data-container,
+  .company-data-container {
+    min-height: 50px;
+    align-items: center;
+    border: none;
+
+    &[data-status*="success"i] {
+      background: $color_grey2_bg;
+    }
+
+    &[data-status*="fail"i] {
+      background: $color_red_dark_bg;
+
+      .profile-wrapper {
+        .profile-icon {
+          border: 2px solid $color_red;
+        }
+      }
+    }
+
+    &:first-child {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $color_line;
+    }
+
+    p.content-time {
+      text-align: right;
+      color: $color_white;
+    }
+  }
+
+  .status-wrapper {
+    .status-icon {
+      width: $width_icon;
+      height: $height_icon;
+    }
+  }
+
+  .profile-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+
+    .profile-icon {
+      width: $height_profile_image_icon;
+      height: $height_profile_image_icon;
+      border-radius: 50%;
+    }
+
+    .profile-details {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .profile-name {
+        color: $color_white;
+      }
+    }
+  }
+
+  .time-wrapper {
+    text-align: right;
+  }
+}

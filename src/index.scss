@@ -7,6 +7,15 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  .modal-backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2.5px);
+
+    &.show {
+      opacity: 0.75;
+    }
+  }
 }
 
 code {

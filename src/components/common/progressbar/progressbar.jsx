@@ -11,13 +11,13 @@ function Progressbar({timeData}) {
 
   return (
     <div className={'row progress-container '+ classNameList.join(' ')} data-align={configurations.titleAlignment}>
-      <div className={configurations.titleAlignment === 'row'? 'col-4': 'col-12'}>
+      <div className={configurations.titleAlignment === 'row'? 'col-5': 'col-12'}>
         <div className='title-wrapper'>
           {configurations.showLegends && <div className='legend-box'></div>}
           <div className="progress-title c-font-14">{title}</div>
         </div>
       </div>
-      <div className={configurations.titleAlignment === 'row'? 'col-8': 'col-12'}>
+      <div className={configurations.titleAlignment === 'row'? 'col-7': 'col-12'}>
         <div className='progress-wrapper'>
           <div className="progress custom-progressbar " role="progressbar" aria-label={title} aria-valuenow={value} aria-valuemin="0" aria-valuemax="100">
             <div className='progress-bar' style={styleData}></div>

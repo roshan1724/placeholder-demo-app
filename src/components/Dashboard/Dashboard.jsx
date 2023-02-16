@@ -4,6 +4,7 @@ import Progressbar from '../common/progressbar/progressbar';
 import PhaseReport from '../Report/Phase-Report/PhaseReport';
 import { Fragment, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Area from '../common/Chart/Area';
 
 
 function Dashboard() {
@@ -58,7 +59,9 @@ function Dashboard() {
               <h3 className="section-title">Total Time <span>(Cumalative)</span></h3>
               <div className="row">
                 <div className="col-6">
-                  <div className="chart-wrapper"></div>
+                  <div className="chart-wrapper">
+                    <Area />
+                  </div>
                 </div>
                 <div className="col-6">
                   <div className="summary-wrapper">

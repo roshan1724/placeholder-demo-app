@@ -11,6 +11,7 @@
       min-height: 300px;
       border-radius: 15px;
       background-color: $color_black;
+      padding: 20px;
     }
 
     .summary-wrapper {
@@ -22,8 +23,8 @@
         flex-grow: 1;
         display: flex;
         flex-direction: column;
-        row-gap: 15px;
-        padding: 0 60px;
+        row-gap: 30px;
+        padding: 0 30px;
       }
       
     }
@@ -146,6 +147,7 @@
         border: 2px solid $color_grey1_bg;
         border-radius: 0 10px 10px 0;
         cursor: pointer;
+        margin: -8px -20px -8px 10px;
 
         .action-content {
           height: 100%;

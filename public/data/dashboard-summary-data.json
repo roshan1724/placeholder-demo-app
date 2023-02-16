@@ -100,11 +100,11 @@
         {
           "id": "summary-01",
           "title": "Fastest Possible Time",
-          "value": 40,
+          "value": 30,
           "time": {
             "week": 0,
             "day": 2,
-            "hour": 3,
+            "hour": 1,
             "minute": 25
           },
           "configurations": {
@@ -119,12 +119,12 @@
         {
           "id": "summary-02",
           "title": "Average Peer Time",
-          "value": 60,
+          "value": 65,
           "time": {
             "week": 0,
             "day": 2,
-            "hour": 3,
-            "minute": 25
+            "hour": 9,
+            "minute": 58
           },
           "configurations": {
             "classNameList": [
@@ -141,9 +141,9 @@
           "value": 100,
           "time": {
             "week": 0,
-            "day": 2,
-            "hour": 3,
-            "minute": 25
+            "day": 1,
+            "hour": 5,
+            "minute": 55
           },
           "configurations": {
             "classNameList": [
@@ -263,7 +263,7 @@
           "time": {
             "week": 0,
             "day": 2,
-            "hour": 3,
+            "hour": 1,
             "minute": 25
           },
           "configurations": {
@@ -282,8 +282,8 @@
           "time": {
             "week": 0,
             "day": 2,
-            "hour": 3,
-            "minute": 25
+            "hour": 2,
+            "minute": 58
           },
           "configurations": {
             "classNameList": [
@@ -300,9 +300,9 @@
           "value": 100,
           "time": {
             "week": 0,
-            "day": 2,
+            "day": 1,
             "hour": 3,
-            "minute": 25
+            "minute": 5
           },
           "configurations": {
             "classNameList": [
@@ -332,7 +332,7 @@
           {
             "id": "path-002",
             "value": "Review incident policy",
-            "status": "success",
+            "status": "fail",
             "time_taken": "15 min"
           },
           {
@@ -403,7 +403,7 @@
             "id": "company-path-006",
             "user_id": "3",
             "value": "Call cybersecurity insurance company.",
-            "status": "success",
+            "status": "fail",
             "time_taken": "1 hour"
           }
         ]
@@ -423,7 +423,7 @@
             "week": 0,
             "day": 2,
             "hour": 3,
-            "minute": 25
+            "minute": 30
           },
           "configurations": {
             "classNameList": [
@@ -456,12 +456,12 @@
         {
           "id": "summary-03",
           "title": "Smith Company Inc.'s Time",
-          "value": 80,
+          "value": 100,
           "time": {
             "week": 0,
             "day": 2,
-            "hour": 3,
-            "minute": 25
+            "hour": 9,
+            "minute": 58
           },
           "configurations": {
             "classNameList": [
@@ -491,7 +491,7 @@
           {
             "id": "path-002",
             "value": "Review incident policy",
-            "status": "success",
+            "status": "fail",
             "time_taken": "15 min"
           },
           {
@@ -503,7 +503,7 @@
           {
             "id": "path-004",
             "value": "Take steps to preserve evidence",
-            "status": "fail",
+            "status": "success",
             "time_taken": "5 min"
           },
           {
@@ -548,7 +548,7 @@
             "id": "company-path-004",
             "user_id": "1",
             "value": "Since Graham told the client to delete the email, I.T. had to spend extra time gathering evidence.",
-            "status": "fail",
+            "status": "success",
             "time_taken": "1 hour"
           },
           {
@@ -562,7 +562,7 @@
             "id": "company-path-006",
             "user_id": "3",
             "value": "Call cybersecurity insurance company.",
-            "status": "success",
+            "status": "fail",
             "time_taken": "1 hour"
           }
         ]

@@ -151,7 +151,9 @@ function Dashboard() {
       <div className="modal fade" id="phaseModal" tabIndex="-1" aria-labelledby="phaseModalLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-xl">
           <div className="modal-content phase-modal">
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={handleModalClose}></button>
+            <span type="button" className="close-btn" data-bs-dismiss="modal" aria-label="Close" onClick={handleModalClose}>
+              <img src="/images/circle_cross_grey.png" alt="Close Icon" width={30} height={30}/>
+            </span>
             <div className="modal-body">
             {
               selectedPhaseData && 

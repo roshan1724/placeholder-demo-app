@@ -4,10 +4,8 @@
   .chatbox-container {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
 
     height: 100%;
-    max-height: calc(100% - 40px);
     overflow-y: scroll;
 
     &::after {
@@ -29,16 +27,15 @@
         background-color: $secondary_bg_gray;
 
         img.bot-icon {
-          width: 20px;
-          height: 20px;
+          width: 40px;
+          height: 40px;
           object-fit: contain;
-          padding: 2px;
         }
       }
 
       .msg-container {
         padding: 10px;
-        border-radius: 20px;
+        border-radius: 10px;
 
         p.msg {
           font-size: 15px;
@@ -53,9 +50,6 @@
         .icon-wrapper {
           display: inline-flex;
           justify-content: center;
-          width: 75px;
-          font-weight: 700;
-          font-size: 18px;
         }
 
         .msg-container {

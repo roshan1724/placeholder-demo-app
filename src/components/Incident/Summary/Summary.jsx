@@ -18,24 +18,25 @@ function Summary(props) {
   return (
     <section className="section-summary">
       <div className="title-container">
-        <h1 className="title">Incident Summary</h1>
+        <h1 className="title">Game name goes here</h1>
         <p className="description">
+          <span className="text-highlight">Incident Summary</span>:
           Graham Smith (User) hasn't received any emails from outside the
           company for at least 8 hours
         </p>
       </div>
       <div className="achievement-container">
         {activeUser.achievements && activeUser.achievements.length > 0 && (
-          <h4 className="title">Accomplishments</h4>
+          <h4 className="title">Major Decisions</h4>
         )}
         <div className="achievement-holder overflow-scrollbar">
           {activeUser.achievements.map((data, index) => (
             <div className="achievement-wrapper" key={data?.achievement_id}>
-              <img
+              {/* <img
                 src="/images/victory_cup.png"
                 alt="victory cup"
                 className="badge-icon"
-              />
+              /> */}
               <div className={`achievement-user-wrapper ${index === 0 && 'active'}`}>
                 <img
                   src={activeUser.profile_img}

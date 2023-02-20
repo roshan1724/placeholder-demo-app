@@ -1,5 +1,4 @@
 @import "../../variables.scss";
-$secondaryBlack: #555555;
 
 
 header {
@@ -36,7 +35,7 @@ header {
       .profile-wrapper {
         font-size: 14px;
         font-weight: 400;
-        color: $secondaryBlack;
+        color: $color_grey3_font;
       }
     }
   }

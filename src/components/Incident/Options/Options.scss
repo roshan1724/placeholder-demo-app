@@ -4,27 +4,40 @@
   .title-container {
     position: relative;
     border-bottom: 1px solid $primary_black;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     margin-bottom: 25px;
 
     p.description {
       font-size: 15px;
-      color: $primary_black;
     }
 
-    .profile-icon {
-      width: 48px;
-      height: 48px;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      border-radius: 50%;
-      transform: translate3d(-50%, 20px, 0);
+    .search-wrapper {
+      position: relative;
+      padding-top: 10px;
+
+      input[type="search"] {
+        width: 100%;
+        height: 40px;
+        padding: 0 25px 0 20px;
+        background-color: $color_grey1_bg;
+        border: none;
+        border-radius: 10px;
+        color: $color_grey2_logo;
+      }
+
+      img {
+        width: $width_icon;
+        height: $height_icon;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translate3d(0, -25%, 0);
+      }
     }
   }
 
   .option-container {
-    height: calc(100% - 137px);
+    height: calc(100% - 146px);
 
     .option-wrapper {
       display: flex;
@@ -37,6 +50,7 @@
         position: relative;
         flex-grow: 1;
         display: flex;
+        width: 100%;
         padding: 5px;
 
         .option-input {
@@ -44,40 +58,8 @@
 
           &:checked {
             &+label.option-text {
-              background-color: $secondary_text_gray;
-              color: $primary_text_white;
-
               .checkmark-holder {
-                border-color: $primary_text_white;
-              }
-
-              .option-checked {
-                opacity: 1;
-                transform-origin: center;
-                transition: all 0.3s ease-in;
-              }
-            }
-          }
-
-          &:disabled {
-            &+label.option-text {
-              border: 1px solid $secondary_text_black;
-              background-color: $primary_text_white;
-              color: $secondary_gray;
-
-              .checkmark-holder {
-                background-color: #b9b9b9;
-              }
-            }
-
-            &.disable-selected {
-              &+label.option-text {
-                .checkmark-holder {
-                  border: none;
-                  background-color: #b9b9b9;
-                }
-
-                .option-checked {
+                .checked {
                   opacity: 1;
                 }
               }
@@ -86,27 +68,35 @@
         }
 
         label.option-text {
-          position: relative;
           display: flex;
           gap: 10px;
           flex-grow: 1;
+          align-items: center;
           padding: 10px;
-          border-radius: 100px;
+          border-radius: 10px;
           font-size: 15px;
           line-height: 18px;
-          background-color: $secondary_bg_gray;
-          color: $primary_text_black;
-
+          
           .checkmark-holder {
-            display: block;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 30px;
             height: 30px;
             padding: 15px;
             align-self: center;
-            border: 1px solid $secondary_gray;
             border-radius: 50%;
             z-index: 1;
             cursor: pointer;
+
+            .checked {
+              width: 20px;
+              height: 20px;
+              padding: 10px;
+              border-radius: 50%;
+              opacity: 0;
+            }
           }
 
         }
@@ -127,14 +117,26 @@
 
   .action-wrapper {
     button.submit-btn {
-      background: #000;
-      color: #fff;
       font-size: 18px;
+      font-weight: 700;
       border-radius: 100px;
       width: 155px;
       padding: 10px;
       margin-top: 10px;
       align-self: center;
     }
+  }
+}
+
+.warn-modal {
+  position: relative;
+  background: $color_grey1_bg;
+  color: $color_grey3_font;
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 1;
   }
 }

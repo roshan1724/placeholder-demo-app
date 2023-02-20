@@ -97,6 +97,35 @@
     }
   }
 
+  .user-wrapper {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-grow: 1;
+    padding: 5px;
+    border-radius: 10px;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    
+    .user-name {
+      font-size: 13px;
+    }
+    
+    .achievement-name {
+      font-size: 15px;
+    }
+
+    .user-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  }
+
   .c-font-10 {
     font-size: 10px;
   }
@@ -158,6 +187,39 @@
     }
   }
 
+  input[type="search" i]::-webkit-search-cancel-button{
+    display: none;  
+  }
+
+  .warn-modal,
+  .phase-modal {
+    position: relative;
+
+    .modal-title {
+      font-size: 20px;
+      padding-bottom: 15px;
+    }
+
+    .modal-subtitle {
+      font-size: 16px;
+      padding-bottom: 15px;
+    }
+
+    .modal-action-wrapper {
+      margin-top: 15px;
+      display: flex;
+      justify-content: flex-end;
+      column-gap: 10px;
+    }
+  
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      z-index: 1;
+    }
+  }
+
   &.theme-dark {
     background: $color_black;
 
@@ -170,9 +232,104 @@
       color: $color_grey3_font;
     }
 
+    .title-container {
+      p.description {
+        color: $color_grey3_font;
+      }
+    }
+
     .section-dashboard {
       background: $color_black;
       color: $color_white;
+    }
+
+    .warn-modal,
+    .phase-modal {
+      background: $color_grey1_bg;
+      color: $color_grey3_font;
+
+      .modal-title {
+        color: $color_white;
+      }
+
+      .modal-subtitle {
+        color: $color_grey3_font;
+      }
+    }
+
+    .chatbox-container {
+      .msg-wrapper.bot {
+        color: $color_grey3_font;
+
+        .msg-container {
+          background-color: $color_grey1_bg;
+        }
+      }
+
+      .msg-wrapper.user {
+        color: $color_grey3_font;
+
+        .msg-container {
+          background-color: $color_purple1;
+
+          .msg {
+            color: $color_white;
+          }
+        }
+      }
+    }
+
+    .achievement-container {
+      .achievement-holder {
+        .achievement-wrapper {
+          .achievement-user-wrapper {
+            background: $color_grey1_bg;
+
+            .user-details {
+              .user-name {
+                color: $color_grey3_font;
+              }
+  
+              .achievement-name {
+                color: $color_white;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .option-container {
+      .option-content {
+        .option-input {
+          &:checked {
+            &+label.option-text {
+              color: $color_theme;
+
+              .checkmark-holder {
+                border: 1px solid $color_theme;
+
+                .checked {
+                  background: $color_theme;
+                }
+              }
+            }
+          }
+        }
+
+        .option-text {
+          background-color: $color_grey1_bg;
+          color: $color_white;
+
+          .checkmark-holder {
+            border: 1px solid $color_grey2_bg;
+
+            .checked {
+              background-color: $color_grey2_bg;
+            }
+          }
+        }
+      }
     }
 
     h1.title,
@@ -183,6 +340,10 @@
 
     .theme-text {
       color: $color_grey3_font;
+    }
+
+    .text-highlight {
+      color: $color_white;
     }
 
     .info-text {

@@ -13,11 +13,11 @@
 
   .achievement-container {
     padding: 16px 0;
-    height: 100%;
+    height: calc(100% - 105px);
 
     .achievement-holder {
       padding-right: 10px;
-      max-height: calc(100% - 135px);
+      max-height: calc(100% - 26px);
       overflow-y: scroll;
 
       .achievement-wrapper {
@@ -40,8 +40,7 @@
           align-items: center;
           flex-grow: 1;
           padding: 5px;
-          border-radius: 40px;
-          background-color: $secondary_bg_gray;
+          border-radius: 10px;
   
           img {
             width: 40px;
@@ -56,26 +55,10 @@
   
             .user-name {
               font-size: 13px;
-              color: $secondary_text_gray;
             }
   
             .achievement-name {
               font-size: 15px;
-              color: $primary_text_black;
-            }
-          }
-  
-          &.active {
-            background-color: $primary_bg_gray;
-  
-            .user-details {
-              .user-name {
-                color: $secondary_text_white;
-              }
-  
-              .achievement-name {
-                color: $primary_text_white;
-              }
             }
           }
         }

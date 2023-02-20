@@ -67,15 +67,6 @@ function Details(props) {
                     : "Awaiting response..."}
                 </p>
               </div>
-              {message?.is_correct && (
-                <span className="icon-wrapper achievement">
-                  <img
-                    src="/images/victory_cup.png"
-                    alt="victory cup"
-                    className="badge-icon"
-                  />
-                </span>
-              )}
             </div>
           </>
         ))}

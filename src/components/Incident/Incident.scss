@@ -3,11 +3,8 @@
 .section-incident {
   #incident-tab {
     height: $height_incident_tab;
+    border-bottom: none;
 
-    .nav-tabs {
-      --bs-nav-tabs-link-active-bg: $color_grey2_bg;
-
-    }
     .nav-item {
       .nav-link {
         height: 100%;
@@ -22,6 +19,7 @@
 
         &.active {
           color: $color_white;
+          background: $color_grey2_bg;
           border: none;
           border-right: 1px solid rgba(255, 255, 255, 0.15);
         }

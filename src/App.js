@@ -14,15 +14,20 @@ function App() {
   const router  = createBrowserRouter([
     {
       path: '/',
+      index: true,
+      element: <Container />
+    },
+    {
+      path: '/game',
+      element: <Container />
+    },
+    {
+      path: '/dashboard',
       element: <Dashboard />
     },
     {
       path: '/report',
       element: <Report />
-    },
-    {
-      path: '/game',
-      element: <Container />
     }
   ]);
   

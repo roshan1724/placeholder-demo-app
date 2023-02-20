@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import './Report.scss';
 
 import Progressbar from '../common/progressbar/progressbar';
 import PhaseReport from './Phase-Report/PhaseReport';
 
 function Report() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [summaryData, setSummaryData] = useState([]);
   const [findingsData, setFindingsData] = useState([]);
@@ -61,9 +61,9 @@ function Report() {
     setPhaseData(updatedPhaseDataList);
   }
 
-  const handleBackClick = () => {
-    navigate('/');
-  }
+  // const handleBackClick = () => {
+  //   navigate('/');
+  // }
 
   const handleDownloadReportClick = () => {
     alert('Section Under maintainance');
@@ -84,10 +84,10 @@ function Report() {
           </p>
         </div>
         <div className="page-action-wrapper">
-          <button className="btn btn-primary back-button me-1" onClick={handleBackClick}>
+          {/* <button className="btn btn-primary back-button me-1" onClick={handleBackClick}>
             <img src="/images/back-arrow.png" alt="Back Icon" />
             <span>Back</span>
-          </button>
+          </button> */}
           <button className="btn btn-primary btn-filled download-button" onClick={handleDownloadReportClick}>
             <img src="/images/download_black.png" alt="Download Icon" />
             <span>Download Report</span>

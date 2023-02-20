@@ -57,7 +57,6 @@ function Options(props) {
   const handleKeyEventsOnSearch = (event) => {
     if (event.key === 'Enter' || event.keyCode === 13) {
       if (event.target.value?.toLowerCase() === "i'm done") {
-        window.confirm('Are you sure, you want to quit !');
         openWarningModal();
       }
 
@@ -76,7 +75,6 @@ function Options(props) {
   };
 
   const openWarningModal = () => {
-    console.log('opening warnModal ==> ', warnModal);
     if (warnModal) {
       warnModal.show();
     }
@@ -84,7 +82,6 @@ function Options(props) {
   }
 
   const handleModalClose = (event) => {
-    console.log('closing warnModal ==> ', warnModal);
     if (warnModal) {
       warnModal.hide();
     }
@@ -171,7 +168,7 @@ function Options(props) {
 
       {/* MODAL CONTENT */}
       <div className="modal fade" id="warnModal" tabIndex="-1" aria-labelledby="warnModalLabel" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered modal-xl">
+        <div className="modal-dialog modal-dialog-centered modal">
           <div className="modal-content warn-modal">
             <span type="button" className="close-btn" data-bs-dismiss="modal" aria-label="Close" onClick={handleModalClose}>
               <img src="/images/circle_cross_grey.png" alt="Close Icon" width={30} height={30}/>

@@ -15,7 +15,7 @@ header {
 
       .notification-wrapper {
         img {
-          width: 25px;
+          width: $height_notifiction_icon;
           height: $height_notifiction_icon;
         }
 
@@ -28,8 +28,8 @@ header {
       }
 
       .profile-image {
-        width: 45px;
-        height: auto;
+        width: $height_profile_image_icon;
+        height: $height_profile_image_icon;
       }
 
       .profile-wrapper {

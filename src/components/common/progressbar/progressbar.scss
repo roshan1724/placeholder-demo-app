@@ -1,0 +1,78 @@
+@import './../../../variables.scss';
+
+.progress-container {
+  display: flex;
+
+  &[data-align*="row" i] {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &[data-align*="column" i] {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .legend-box {
+    width: $width_legend_box;
+    height: $height_legend_box;
+    border-radius: 5px;
+  }
+
+  .title-wrapper {
+    display: flex;
+    column-gap: 5px;
+
+    .legend-box {
+      flex: 0 0 auto;
+    }
+  }
+
+  .progress-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    .custom-progressbar {
+      flex-grow: 1;
+      background: $color_grey2_bg;
+    }
+  }
+
+  &.progress-green {
+    .legend-box {
+      background: $color_green;
+    }
+    
+    .custom-progressbar {
+      .progress-bar {
+        background: $color_green;
+      }
+    }
+  }
+
+  &.progress-blue {
+    .legend-box {
+      background: $colr_blue;
+    }
+    
+    .custom-progressbar {
+      .progress-bar {
+        background: $colr_blue;
+      }
+    }
+  }
+
+  &.progress-purple {
+    .legend-box {
+      background: $color_purple2;
+    }
+    
+    .custom-progressbar {
+      .progress-bar {
+        background: $color_purple2;
+      }
+    }
+  }
+}

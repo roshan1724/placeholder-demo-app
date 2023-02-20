@@ -9,9 +9,16 @@
     },
     {
       "user_id": "2",
-      "user_name": "GAngela Taylor",
+      "user_name": "Angela Taylor",
       "profile_img": "/images/people-female.png",
       "user_dept": "IT Dept.",
+      "achievements": []
+    },
+    {
+      "user_id": "3",
+      "user_name": "Ian Lee",
+      "profile_img": "/images/people-male-2.png",
+      "user_dept": "CISO",
       "achievements": []
     }
   ]

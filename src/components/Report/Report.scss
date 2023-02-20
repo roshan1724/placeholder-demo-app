@@ -1,0 +1,18 @@
+@import './../Dashboard/Dasboard.scss';
+
+.section-report {
+  .summary-time-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: space-between;
+  }
+
+  .progress-container {
+    width: 100%;
+
+    .custom-progressbar {
+      background: $color_grey1_bg;
+    }
+  }
+}

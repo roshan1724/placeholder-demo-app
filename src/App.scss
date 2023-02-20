@@ -1,7 +1,9 @@
 @import "./variables.scss";
 
 .App {
-  background-color: $color_grey1_bg;
+  background: $color_white;
+  min-height: 100vh;
+
   .flex-center {
     display: flex;
     justify-content: center;
@@ -28,6 +30,32 @@
     color: $secondary_gray;
   }
 
+  .section-dashboard,
+  .phase-report-container {
+    .summary-time-data {
+      .regular-bar {
+        .custom-progressbar {
+          background: $color_grey1_bg;
+        }
+      }
+    }
+    .regular-bar {
+      .custom-progressbar {
+        height: 12px;
+      }
+    }
+    
+    .thin-bar {
+      .custom-progressbar {
+        height: 8px;
+      }
+    }
+  }
+
+  hr.seperator {
+    color: $color_line;
+  }
+
   h1.title {
     font-size: 20px;
     margin-bottom: 15px;
@@ -40,6 +68,10 @@
 
   p {
     margin-bottom: 0;
+  }
+
+  .theme-text {
+    color: $secondary_gray;
   }
 
   .overflow-scrollbar {
@@ -61,6 +93,124 @@
 
       &:hover {
         background: $color_grey2_logo;
+      }
+    }
+  }
+
+  .c-font-10 {
+    font-size: 10px;
+  }
+
+  .c-font-12 {
+    font-size: 12px;
+  }
+
+  .c-font-14 {
+    font-size: 14px;
+  }
+
+  .c-font-16 {
+    font-size: 16px;
+  }
+
+  .c-font-18 {
+    font-size: 18px;
+  }
+
+  h1.page-title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .theme-text {
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  .info-text {
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 400;
+
+    .info-icon {
+      width: $height_info_icon;
+      height: $height_info_icon;
+    }
+  }
+
+  .btn {
+    img {
+      width: $width_button_icon;
+      height: auto;
+      margin-right: 5px;
+    }
+  }
+
+  .time-wrapper {
+    font-size: auto;
+
+    span[data-state="active"i] {
+      color: $color_white;
+    }
+
+    span[data-state="mute"i] {
+      color: $color_grey2_logo;
+    }
+  }
+
+  &.theme-dark {
+    background: $color_black;
+
+    .section-summary,
+    .section-details,
+    .section-options,
+    .summary-chart-wrapper,
+    .summary-details-wrapper {
+      background: $color_grey2_bg;
+      color: $color_grey3_font;
+    }
+
+    .section-dashboard {
+      background: $color_black;
+      color: $color_white;
+    }
+
+    h1.title,
+    .page-title,
+    .section-title {
+      color: $color_white;
+    }
+
+    .theme-text {
+      color: $color_grey3_font;
+    }
+
+    .info-text {
+      color: $color_grey2_logo;
+    }
+
+    .btn-primary {
+      color: $color_theme;
+      border-color: $color_theme;
+      background: $color_grey2_bg;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        color: $color_white;
+        border-color: $color_white;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &.btn-filled {
+        color: $color_grey1_bg;
+        border-color: $color_grey1_bg;
+        background: $color_theme;
+        
+        &:hover {
+          background: $color_white;
+          border-color: $color_white;
+          transition: all 0.3s ease-in-out;
+        }
       }
     }
   }

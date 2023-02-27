@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import './Report.scss';
+import PdfDownloader from '../common/PdfDownloader/PdfDownloader';
 
 import Progressbar from '../common/progressbar/progressbar';
 import PhaseReport from './Phase-Report/PhaseReport';
 
 function Report() {
-  // const navigate = useNavigate();
-
   const [summaryData, setSummaryData] = useState([]);
   const [findingsData, setFindingsData] = useState([]);
   const [phaseData, setPhaseData] = useState([]);
@@ -61,14 +59,6 @@ function Report() {
     setPhaseData(updatedPhaseDataList);
   }
 
-  // const handleBackClick = () => {
-  //   navigate('/');
-  // }
-
-  const handleDownloadReportClick = () => {
-    alert('Section Under maintainance');
-  }
-
   return (
     <section className='section-report px-3'>
       <h1 className="page-title">Incident Summary</h1>
@@ -84,14 +74,7 @@ function Report() {
           </p>
         </div>
         <div className="page-action-wrapper">
-          {/* <button className="btn btn-primary back-button me-1" onClick={handleBackClick}>
-            <img src="/images/back-arrow.png" alt="Back Icon" />
-            <span>Back</span>
-          </button> */}
-          <button className="btn btn-primary btn-filled download-button" onClick={handleDownloadReportClick}>
-            <img src="/images/download_black.png" alt="Download Icon" />
-            <span>Download Report</span>
-          </button>
+          <PdfDownloader></PdfDownloader>
         </div>
       </div>
       <div className="row">

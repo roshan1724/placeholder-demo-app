@@ -11,6 +11,7 @@
     font-weight: normal;
     color: $color_grey3_font;
     span {
+      display: contents;
       font-weight: 700;
       color: $color_white;
     }

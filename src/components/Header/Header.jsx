@@ -23,7 +23,7 @@ function Header() {
         </a>
 
         <div className="page-header-right d-flex align-items-center">
-          <span className="notification-wrapper position-relative me-3">
+          <span className="notification-wrapper position-relative me-3 no-print">
             <img
               src="/images/notification_bell.png"
               alt="bell-icon"

@@ -28,3 +28,20 @@ code {
 body {
   background-color: #F5F5F5;
 }
+
+// Print Styles
+@media print {
+  body {
+    background-color: #F5F5F5;
+
+    .no-print {
+      display: none;
+    }
+  }
+
+  header {
+    .notification-wrapper {
+      display: none;
+    }
+  }
+}

@@ -6,11 +6,11 @@ function PhaseReport({phaseData}) {
   return (
     <div className="phase-report-container">
       <div className="row">
-        <div className="col-6">
+        <div className="col-12 col-md-6">
           <h3 className="section-subtitle">Phase {phaseData['phase_index']} : <span>{phaseData['phase_name']}</span></h3>
           <p className="section-description">{phaseData['phase_description']}</p>
         </div>
-        <div className="col-6">
+        <div className="col-12 col-md-6">
           <div className="summary-wrapper">
             {
               phaseData['phase_summary_data'] && 
@@ -25,7 +25,7 @@ function PhaseReport({phaseData}) {
       </div>
       <hr className='seperator'/>
       <div className="row">
-        <div className="col-6">
+        <div className="col-12 col-md-6">
           <h3 className="section-subtitle"><span>{phaseData['path_data']['title']}</span></h3>
           <div className="path-data-wrapper px-2">
           {
@@ -39,7 +39,7 @@ function PhaseReport({phaseData}) {
                       : data.status === 'fail'
                         ? '/images/circle_cross_red.png'
                         : ''
-                  } alt="status icon" className="status-icon" />
+                  } alt="status icon" className="status-icon d-block" />
                 </div>
                 <p className="col-9 content-text c-font-14">{data.value}</p>
                 <p className="col-2 content-time c-font-14">{data.time_taken}</p>
@@ -58,7 +58,7 @@ function PhaseReport({phaseData}) {
             </div>
           }
         </div>
-        <div className="col-6">
+        <div className="col-12 col-md-6">
           <h3 className="section-subtitle"><span>{phaseData['comany_data']['title']}</span></h3>
           <div className="company-data-wrapper px-2">
           {

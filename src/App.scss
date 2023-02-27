@@ -178,12 +178,16 @@
   .time-wrapper {
     font-size: auto;
 
-    span[data-state="active"i] {
-      color: $color_white;
-    }
+    span {
+      display: contents;
 
-    span[data-state="mute"i] {
-      color: $color_grey2_logo;
+      &[data-state="active"i] {
+        color: $color_white;
+      }
+
+      &[data-state="mute"i] {
+        color: $color_grey2_logo;
+      }
     }
   }
 
@@ -375,4 +379,10 @@
       }
     }
   }
+}
+
+@media print {
+  // .App.theme-dark {
+  //   // filter: invert(100%) hue-rotate(180deg) brightness(120%) contrast(150%);
+  // }
 }

@@ -54,7 +54,7 @@
         padding: 5px;
 
         .option-input {
-          opacity: 0;
+          display: none;
 
           &:checked {
             &+label.option-text {

@@ -5,10 +5,32 @@
  * Description: Contains the design layout of the Header across the page
  */
 
+import { useEffect, useState } from "react";
+// import { useLocation } from "react-router-dom";
+// import useLocalStorage, { getDefaultStorageValue } from "../../hooks/useLocalStorage";
 import "./Header.scss";
 
-function Header() {
+function Header({ currentLocation }) {
+
+  const [userData, setUserData] = useState({
+    isLoggedIn: false
+  });
+
+  useEffect(() => {
+    console.log(currentLocation);
+    if(!["/"].includes(currentLocation)) {
+      setUserData({
+        isLoggedIn: true
+      });
+    } else {
+      setUserData({
+        isLoggedIn: false
+      });
+    }
+  }, [currentLocation]);
+
   return (
+    userData.isLoggedIn &&
     <header className="p-3 mb-3">
       <div className="d-flex flex-wrap align-items-center justify-content-between header-wrapper">
         <a

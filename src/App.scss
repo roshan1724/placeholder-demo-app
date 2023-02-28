@@ -146,6 +146,10 @@
     font-size: 18px;
   }
 
+  .c-font-20 {
+    font-size: 20px;
+  }
+
   h1.page-title {
     font-size: 20px;
     font-weight: 700;
@@ -332,6 +336,48 @@
               background-color: $color_grey2_bg;
             }
           }
+        }
+      }
+    }
+    
+    .custom-form-block {
+      .input-group-text {
+        background: $color_black;
+        border-color: $color_grey2_bg;
+        color: $color_grey2_logo;
+
+        &.eye-icon-wrapper {
+          background: $color_grey1_bg;
+          font-size: 14px;
+          cursor: pointer;
+        }
+      }
+
+      .form-control {
+        background: $color_grey1_bg;
+        border-color: $color_grey2_bg;
+        color: $color_grey2_logo;
+
+        &.is-invalid {
+          border-color: $color_red;
+        }
+      }
+
+      .has-validation {
+        .invalid-feedback {
+          display: block;
+        }
+      }
+
+      input {
+        &:focus {
+          box-shadow: none;
+          outline: 1px solid
+        }
+
+        &::placeholder {
+          color: $color_grey2_logo;
+          font-size: 14px;
         }
       }
     }

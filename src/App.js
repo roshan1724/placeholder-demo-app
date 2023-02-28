@@ -1,21 +1,22 @@
 import "./App.scss";
 import Header from "./components/Header/Header";
-import Container from "./components/Container/Container";
 
-import { useState } from "react";
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Login from "./components/User/Login/Login";
+import Container from "./components/Container/Container";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Report from "./components/Report/Report";
 
 import UserState from "./context/user/user-state";
 import OptionState from "./context/options/option-state";
-import Dashboard from "./components/Dashboard/Dashboard";
-import Report from "./components/Report/Report";
+
+import { useState } from "react";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 function App() {
   const router  = createBrowserRouter([
     {
       path: '/',
-      index: true,
-      element: <Container />
+      element: <Login />
     },
     {
       path: '/game',
@@ -30,8 +31,14 @@ function App() {
       element: <Report />
     }
   ]);
+
+  router.subscribe((state) => {
+    console.log('Updated State ...', state);
+    setCurrentLocation(state.location.pathname);
+  });
   
   const [theme, setTheme] = useState('dark');
+  const [currentLocation, setCurrentLocation] = useState('/');
 
   const updateColorTheme = (themeName) => {
     switch(themeName) {
@@ -42,10 +49,10 @@ function App() {
   }
 
   return (
-    <div className={theme === 'dark' ? "App container-fluid theme-dark" : "App container-fluid"}>
+    <div className={theme === 'dark' ? "App container-fluid theme-dark" : "App container-fluid theme-light"}>
       <UserState>
         <OptionState>
-          <Header updateTheme={updateColorTheme}/>
+          <Header updateTheme={updateColorTheme} currentLocation={currentLocation}/>
           <RouterProvider router={router} />
           {/* <Container /> */}
         </OptionState>

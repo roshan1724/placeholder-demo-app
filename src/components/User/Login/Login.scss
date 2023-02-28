@@ -1,0 +1,88 @@
+@import "../../../variables.scss";
+
+.section-login {
+  height: 100vh;
+  width: 100%;
+  background: $color_grey1_bg;
+
+  .login-container {
+    height: 500px;
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+
+    .login-brand-wrapper {
+      height: 100%;
+      max-width: 550px;
+      border-right: 1px solid $color_line;
+      background: url('/assets/images/cyber-security-login.png') no-repeat center;
+      background-size: cover;
+    }
+
+    .login-form-wrapper {
+      height: 100%;
+      flex-grow: 1;
+      background: $color_grey2_bg;
+    }
+  }
+
+  .brand-container,
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .title {
+    font-weight: 500;
+    color: $color_white;
+  }
+
+  .subtitle {
+    color: $color_grey3_font;
+  }
+
+  .brand-container {
+    text-align: center;
+
+    .brand-logo {
+      width: 210px;
+      height: 30px;
+    }
+
+    .icon-wrapper {
+      font-size: 85px;
+      color: $color_grey2_logo;
+    }
+
+    .title,
+    .subtitle {
+      padding: 8px 40px;
+    }
+  }
+
+  .form-container {
+    align-items: flex-start;
+    padding: 0 50px;
+    color: $color_grey3_font;
+
+    .title {
+      padding: 16px 0;
+    }
+
+    .action-wrapper {
+      justify-content: space-between;
+
+      .password-link {
+        color: $color_theme;
+        cursor: pointer;
+      }
+
+      button[type="submit"i] {
+        width: 120px;          
+      }
+    }    
+  }
+}

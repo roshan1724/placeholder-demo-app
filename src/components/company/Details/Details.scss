@@ -1,0 +1,52 @@
+@import "./../../../variables.scss";
+
+.section-company-details {
+
+  .subtitle {
+    color: $color_grey3_font;
+  }
+
+  .company-detail-form {
+    padding-top: 20px;
+  }
+
+  .company-form-container {
+    display: flex;
+    flex-wrap: wrap;
+    background: $color_grey2_bg;
+    border-radius: 10px;
+    padding: 20px;
+
+    .left-container,
+    .right-container {
+      flex: 0 0 auto;
+      width: 50%;
+    }
+
+    .left-container {
+      border-right: 1px solid $color_line;
+      padding-right: 20px;
+    }
+
+    .right-container {
+      padding-left: 20px;
+
+      .c-radio-groups {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .form-check {
+          min-width: 100px;
+        }
+      }
+    }
+  }
+
+  .action-wrapper {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

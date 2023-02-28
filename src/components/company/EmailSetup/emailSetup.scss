@@ -1,0 +1,43 @@
+@import "./../../../variables.scss";
+
+.company-email-setup {
+  padding-bottom: 30px;
+
+  .subtitle {
+    color: $color_grey3_font;
+  }
+
+  .setup-container {
+
+    .setup-wrapper {
+      padding: 35px;
+      margin-top: 16px;
+      background: $color_grey2_bg;
+      border-radius: 10px
+    }
+
+    .setup-content {
+      background-color: $color_grey1_bg;
+      border-radius: 10px;
+
+      .email-content {
+        padding: 30px 15px;
+        color: $color_grey3_font;
+
+        .title, strong {
+          color: $color_white;
+        }
+      }
+
+      .action-wrapper {
+        padding-top: 30px;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+    .page-action-wrapper {
+      justify-content: space-between;
+    }
+  }
+}

@@ -15,7 +15,7 @@ function Login () {
   const submitCallback = (submitState) => {
     console.log('Calback value Received ==> ', submitState);
     if (submitState === true) {
-      navigate('/dashboard');
+      navigate('/company/details');
     } else {
       alert('Incorrect Credentials ... \nTry with this: \n\nemail: graham@test.com \npassword: password');
     }

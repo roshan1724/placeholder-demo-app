@@ -1,0 +1,226 @@
+@import "./../variables.scss";
+
+.section-summary,
+.section-details,
+.section-options,
+.summary-chart-wrapper,
+.summary-details-wrapper {
+  background: $color_grey2_bg;
+  color: $color_grey3_font;
+}
+
+.title-container {
+  p.description {
+    color: $color_grey3_font;
+  }
+}
+
+.section-dashboard {
+  background: $color_black;
+  color: $color_white;
+}
+
+.warn-modal,
+.phase-modal {
+  background: $color_grey1_bg;
+  color: $color_grey3_font;
+
+  .modal-title {
+    color: $color_white;
+  }
+
+  .modal-subtitle {
+    color: $color_grey3_font;
+  }
+}
+
+.chatbox-container {
+  .msg-wrapper.bot {
+    color: $color_grey3_font;
+
+    .msg-container {
+      background-color: $color_grey1_bg;
+    }
+  }
+
+  .msg-wrapper.user {
+    color: $color_grey3_font;
+
+    .msg-container {
+      background-color: $color_purple1;
+
+      .msg {
+        color: $color_white;
+      }
+    }
+  }
+}
+
+.achievement-container {
+  .achievement-holder {
+    .achievement-wrapper {
+      .achievement-user-wrapper {
+        background: $color_grey1_bg;
+
+        .user-details {
+          .user-name {
+            color: $color_grey3_font;
+          }
+
+          .achievement-name {
+            color: $color_white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.option-container {
+  .option-content {
+    .option-input {
+      &:checked {
+        &+label.option-text {
+          color: $color_theme;
+
+          .checkmark-holder {
+            border: 1px solid $color_theme;
+
+            .checked {
+              background: $color_theme;
+            }
+          }
+        }
+      }
+    }
+
+    .option-text {
+      background-color: $color_grey1_bg;
+      color: $color_white;
+
+      .checkmark-holder {
+        border: 1px solid $color_grey2_bg;
+
+        .checked {
+          background-color: $color_grey2_bg;
+        }
+      }
+    }
+  }
+}
+
+.custom-form-block {
+  color: $color_grey3_font;
+
+  .input-group-text {
+    background: $color_black;
+    border-color: $color_grey2_bg;
+    color: $color_grey2_logo;
+
+    &.eye-icon-wrapper {
+      background: $color_grey1_bg;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+
+  .form-check {
+    .form-check-input {
+      --bs-form-check-bg: $color_grey1_bg;
+      background-color: $color_grey1_bg;
+      border-color: $color_grey2_logo;
+      
+      &:checked {
+        &[type="checkbox"] {
+          --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+        }
+        &[type="radio"] {
+          --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23000'/%3e%3c/svg%3e")
+        }
+        background-color: $color_theme;
+        border-color: $color_theme;
+      }
+    }
+  }
+
+  .form-control {
+    background: $color_grey1_bg;
+    border-color: $color_grey2_bg;
+    color: $color_grey2_logo;
+
+    &.is-invalid {
+      border-color: $color_red;
+    }
+  }
+
+  .option-group-label {
+    color: $color_white;
+    margin-bottom: 8px;
+  }
+
+  .has-validation {
+    .invalid-feedback {
+      display: block;
+    }
+  }
+
+  input {
+    &[type="text"],
+    &[type="email"],
+    &[type="password"] {
+      color: $color_white;
+    }
+    &:focus {
+      box-shadow: none;
+      outline: 1px solid
+    }
+
+    &::placeholder {
+      color: $color_grey2_logo;
+      font-size: 14px;
+    }
+  }
+}
+
+h1.title,
+.page-title,
+.section-title {
+  color: $color_white;
+}
+
+.theme-text {
+  color: $color_grey3_font;
+}
+
+.text-highlight {
+  color: $color_white;
+}
+
+.info-text {
+  color: $color_grey2_logo;
+}
+
+.btn-primary {
+  color: $color_theme;
+  border-color: $color_theme;
+  background: $color_grey2_bg;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: $color_white;
+    border-color: $color_white;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &.btn-filled {
+    color: $color_grey1_bg;
+    border-color: $color_grey1_bg;
+    background: $color_theme;
+
+    &:hover {
+      background: $color_white;
+      border-color: $color_white;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}

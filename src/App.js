@@ -1,36 +1,16 @@
 import "./App.scss";
 import Header from "./components/Header/Header";
 
-import Login from "./components/User/Login/Login";
-import Container from "./components/Container/Container";
-import Dashboard from "./components/Dashboard/Dashboard";
-import Report from "./components/Report/Report";
-
 import UserState from "./context/user/user-state";
 import OptionState from "./context/options/option-state";
 
+import AppRoutes from "./App.routes";
+
 import { useState } from "react";
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 
 function App() {
-  const router  = createBrowserRouter([
-    {
-      path: '/',
-      element: <Login />
-    },
-    {
-      path: '/game',
-      element: <Container />
-    },
-    {
-      path: '/dashboard',
-      element: <Dashboard />
-    },
-    {
-      path: '/report',
-      element: <Report />
-    }
-  ]);
+  const router = AppRoutes();
 
   router.subscribe((state) => {
     console.log('Updated State ...', state);

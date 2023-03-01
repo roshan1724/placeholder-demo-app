@@ -12,8 +12,8 @@ import React, { useContext, useEffect, useState } from "react";
 import Incident from "../Incident/Incident";
 import Options from "../Incident/Options/Options";
 
-import OptionContext from "../../context/options/option-context";
-import UserContext from "../../context/user/user-context";
+import OptionContext from "../../../../context/options/option-context";
+import UserContext from "../../../../context/user/user-context";
 
 function Container() {
   const [incidentData, setIncidentData] = useState([]);

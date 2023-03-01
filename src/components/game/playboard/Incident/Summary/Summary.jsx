@@ -8,7 +8,7 @@
 import "./Summary.scss";
 
 import React, { useContext } from "react";
-import UserContext from "../../../context/user/user-context";
+import UserContext from "../../../../../context/user/user-context";
 
 function Summary(props) {
   const userContext = useContext(UserContext);

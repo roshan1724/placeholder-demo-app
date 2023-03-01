@@ -7,11 +7,11 @@
 
 import "./Options.scss";
 
-import bootstrap from "../../../../node_modules/bootstrap/dist/js/bootstrap.js";
+import bootstrap from "../../../../../../node_modules/bootstrap/dist/js/bootstrap.js";
 import React, { useContext, useState } from "react";
 
-import OptionContext from "../../../context/options/option-context";
-import UserContext from "../../../context/user/user-context";
+import OptionContext from "../../../../../context/options/option-context";
+import UserContext from "../../../../../context/user/user-context";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 

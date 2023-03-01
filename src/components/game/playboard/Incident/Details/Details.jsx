@@ -8,7 +8,7 @@
 import "./Details.scss";
 
 import React, { useContext, useEffect, useRef } from "react";
-import UserContext from "../../../context/user/user-context";
+import UserContext from "../../../../../context/user/user-context";
 
 function Details(props) {
   const { messageList } = props;

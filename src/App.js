@@ -18,7 +18,7 @@ function App() {
   });
   
   const [theme, setTheme] = useState('dark');
-  const [currentLocation, setCurrentLocation] = useState('/');
+  const [currentLocation, setCurrentLocation] = useState(window.location.pathname);
 
   const updateColorTheme = (themeName) => {
     switch(themeName) {

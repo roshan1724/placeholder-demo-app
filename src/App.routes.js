@@ -1,12 +1,13 @@
 import { createBrowserRouter } from "react-router-dom"
 
 import Login from "./components/User/Login/Login";
-import Container from "./components/Container/Container";
+import Container from "./components/game/playboard/Container/Container";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Report from "./components/Report/Report";
 import CompanyHome from "./components/company/Home/Home";
 import CompanyDetails from "./components/company/Details/Details";
 import CompanyEmailSetup from "./components/company/EmailSetup/emailSetup";
+import GameHome from "./components/game/Home/Home";
 
 const AppRoutes = () => {
   const routes = createBrowserRouter([
@@ -33,6 +34,10 @@ const AppRoutes = () => {
     },
     {
       path: '/game',
+      element: <GameHome />
+    },
+    {
+      path: '/game/playboard',
       element: <Container />
     },
     {

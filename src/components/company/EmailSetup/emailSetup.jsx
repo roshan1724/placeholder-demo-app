@@ -7,7 +7,7 @@ function CompanyEmailSetup () {
   const navigate = useNavigate();
 
   const handleSetupDoneClick = () => {
-    navigate("/game");
+    navigate("/game/playboard");
   }
 
   const handleCopyClick = () => {

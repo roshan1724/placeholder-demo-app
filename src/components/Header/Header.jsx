@@ -16,8 +16,7 @@ function Header({ currentLocation }) {
     isLoggedIn: false
   });
 
-  useEffect(() => {
-    console.log(currentLocation);
+  const updateUserData = (currentLocation) => {
     if(!["/"].includes(currentLocation)) {
       setUserData({
         isLoggedIn: true
@@ -27,6 +26,11 @@ function Header({ currentLocation }) {
         isLoggedIn: false
       });
     }
+  }
+
+  useEffect(() => {
+    console.log(currentLocation);
+    updateUserData(currentLocation);
   }, [currentLocation]);
 
   return (

@@ -10,6 +10,7 @@ function Login () {
   const navigate = useNavigate();
 
   const [passwordToggle, setPasswordToggle] = useState(false);
+  const [isInvalidCreds, setIsInvalidCreds] = useState(false);
   // const [userData, setUserData] = useLocalStorage('user', getDefaultStorageValue('user'));
   
   const submitCallback = (submitState) => {
@@ -17,7 +18,8 @@ function Login () {
     if (submitState === true) {
       navigate('/company/details');
     } else {
-      alert('Incorrect Credentials ... \nTry with this: \n\nemail: graham@test.com \npassword: password');
+      setIsInvalidCreds(true);
+      // alert('Incorrect Credentials ... \nTry with this: \n\nemail: graham@test.com \npassword: password');
     }
   }
 
@@ -69,11 +71,13 @@ function Login () {
                     onBlur={loginForm.handleBlur}
                     value={loginForm.values.email}
                   />
-                  {
-                    loginForm.touched.email && loginForm.errors.email 
-                    ? <div className='invalid-feedback'>{loginForm.errors.email}</div>
-                    : null
-                  }
+                  <div className='invalid-feedback'>
+                    {
+                      loginForm.touched.email && loginForm.errors.email 
+                      ? loginForm.errors.email
+                      : ""
+                    }
+                  </div>
                 </div>
               </div>
 
@@ -102,14 +106,24 @@ function Login () {
                       passwordToggle ? <i className="fa-solid fa-eye"></i> : <i className="fa-solid fa-eye-slash"></i>
                     } 
                   </span>
+                  <div className='invalid-feedback'>
                   {
                     loginForm.touched.password && loginForm.errors.password 
-                    ? <div className='invalid-feedback'>{loginForm.errors.password}</div>
-                    : null
+                    ? loginForm.errors.password
+                    : ""
                   }
+                  </div>
                 </div>
               </div>
-
+              {
+                isInvalidCreds
+                ? (
+                  <p className="invalid-creds text-danger py-2">
+                    Please enter valid credentials.
+                  </p>
+                )
+                : null
+              }
               <div className="action-wrapper flex-center">
                 <div className="password-link c-font-14">Forgot Password ?</div>
                 <button

@@ -9,7 +9,7 @@ const LoginForm = (submitCallback) => {
 
   const onSubmit = (values) => {
     console.log("Submitted Values => ", values);
-    if (values.email === 'graham@test.com' && values.password === 'password') {
+    if (values.email === 'graham@test.com' && values.password === 'test@123') {
       submitCallback(true);
     } else {
       submitCallback(false);
@@ -21,16 +21,14 @@ const LoginForm = (submitCallback) => {
 
     // Validating Email field
     if (!values.email) {
-      errors.email = 'Required';
+      errors.email = 'Please enter a valid email address';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
       errors.email = 'Please enter a valid email address';
     }
 
     // Validating Password field
     if (!values.password) {
-      errors.password = 'Required';
-    } else if (values.password.length < 8) {
-      errors.password = 'Password must be of at least 8 characters';
+      errors.password = 'Please enter a password';
     }
 
     return errors;

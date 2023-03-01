@@ -44,10 +44,10 @@ function CompanyDetails () {
     <div className="section-company-details">
       <h1 className="title">Company Details</h1>
       <p className="subtitle">You need to configure your Company Details before you can launch a game.</p>
-      <form className="company-detail-form ">
+      <form className="company-detail-form">
         <div className="company-form-container c-font-14">
           <section className="left-container">
-            <div className="custom-form-block mb-3">
+            <div className="custom-form-block">
               <label htmlFor="company-name" className="form-label">
                 Company Name *
               </label>
@@ -64,15 +64,17 @@ function CompanyDetails () {
                   onBlur={companyForm.handleBlur}
                   value={companyForm.values.company_name}
                 />
-                {
-                  companyForm.touched.company_name && companyForm.errors.company_name
-                  ? <div className="invalid-feedback">{companyForm.errors.company_name}</div>
-                  : null
-                }
+                <div className="invalid-feedback">
+                  {
+                    companyForm.touched.company_name && companyForm.errors.company_name
+                    ? companyForm.errors.company_name
+                    : ""
+                  }
+                </div>
               </div>
             </div>
 
-            <div className="custom-form-block mb-3">
+            <div className="custom-form-block">
               <label htmlFor="company-admin_name" className="form-label">
                 Administrator Name *
               </label>
@@ -89,15 +91,17 @@ function CompanyDetails () {
                   onBlur={companyForm.handleBlur}
                   value={companyForm.values.admin_name}
                 />
-                {
-                  companyForm.touched.admin_name && companyForm.errors.admin_name
-                  ? <div className="invalid-feedback">{companyForm.errors.admin_name}</div>
-                  : null
-                }
+                <div className="invalid-feedback">
+                  {
+                    companyForm.touched.admin_name && companyForm.errors.admin_name
+                    ? companyForm.errors.admin_name
+                    : ""
+                  }
+                </div>
               </div>
             </div>
 
-            <div className="custom-form-block mb-3">
+            <div className="custom-form-block">
               <label htmlFor="company-admin_email" className="form-label">
                 Administrator Email *
               </label>
@@ -109,20 +113,22 @@ function CompanyDetails () {
                   className={(companyForm.touched.admin_email && companyForm.errors.admin_email)
                     ? 'form-control is-invalid'
                     : 'form-control'}
-                  placeholder="Administrator Name"
+                  placeholder="Administrator Email"
                   onChange={companyForm.handleChange}
                   onBlur={companyForm.handleBlur}
                   value={companyForm.values.admin_email}
                 />
-                {
-                  companyForm.touched.admin_email && companyForm.errors.admin_email
-                  ? <div className="invalid-feedback">{companyForm.errors.admin_email}</div>
-                  : null
-                }
+                <div className="invalid-feedback">
+                  {
+                    companyForm.touched.admin_email && companyForm.errors.admin_email
+                    ? companyForm.errors.admin_email
+                    : ""
+                  }
+                </div>
               </div>
             </div>
 
-            <div className="custom-form-block mb-3">
+            <div className="custom-form-block">
               <div id="company-BoD_group" className="option-group-label">
                 Does your company have a Board of Directors? *
               </div>
@@ -143,16 +149,18 @@ function CompanyDetails () {
                   ))
                 }
               </div>
-              {
-                companyForm.touched.isBoD && companyForm.errors.isBoD
-                ? <div className="invalid-feedback">{companyForm.errors.isBoD}</div>
-                : null
-              }
+              <div className="invalid-feedback">
+                {
+                  companyForm.touched.isBoD && companyForm.errors.isBoD
+                  ? companyForm.errors.isBoD
+                  : ""
+                }
+              </div>
             </div>
           </section>
 
           <section className="right-container">
-            <div className="custom-form-block mb-3">
+            <div className="custom-form-block">
               <div id="company-IM_group" className="option-group-label">
                 What do you use for instant messaging? *
               </div>
@@ -181,8 +189,8 @@ function CompanyDetails () {
                     name="other_im_name"
                     id="company-im_name"
                     className={(companyForm.touched.other_im_name && companyForm.errors.im_name)
-                      ? 'form-control is-invalid'
-                      : 'form-control'}
+                      ? 'form-control mt-3 is-invalid'
+                      : 'form-control mt-3'}
                     placeholder="Please Specify"
                     onChange={companyForm.handleChange}
                     onBlur={companyForm.handleBlur}
@@ -191,16 +199,18 @@ function CompanyDetails () {
                 )
                 : null
               }
-              {
-                companyForm.touched.im_name && companyForm.errors.im_name
-                ? <div className="invalid-feedback">{companyForm.errors.im_name}</div>
-                : null
-              }
+              <div className="invalid-feedback">
+                {
+                  companyForm.touched.im_name && companyForm.errors.im_name
+                  ? companyForm.errors.im_name
+                  : ""
+                }
+              </div>
             </div>
 
-            <div className="custom-form-block mb-3">
+            <div className="custom-form-block">
               <div id="company-SM_group" className="option-group-label">
-                What do you use for instant messaging? *
+                What is the name of the senior-most committee that runs your business? *
               </div>
               <div className="c-radio-groups" role="group" aria-labelledby="company-SM_group">
                 {
@@ -227,8 +237,8 @@ function CompanyDetails () {
                     name="other_sm_name"
                     id="company-sm_name"
                     className={(companyForm.touched.other_sm_name && companyForm.errors.sm_name)
-                      ? 'form-control is-invalid'
-                      : 'form-control'}
+                      ? 'form-control mt-3 is-invalid'
+                      : 'form-control mt-3'}
                     placeholder="Please Specify"
                     onChange={companyForm.handleChange}
                     onBlur={companyForm.handleBlur}
@@ -237,14 +247,16 @@ function CompanyDetails () {
                 )
                 : null
               }
-              {
-                companyForm.touched.sm_name && companyForm.errors.sm_name
-                ? <div className="invalid-feedback">{companyForm.errors.sm_name}</div>
-                : null
-              }
+              <div className="invalid-feedback">
+                {
+                  companyForm.touched.sm_name && companyForm.errors.sm_name
+                  ? companyForm.errors.sm_name
+                  : ""
+                }
+              </div>
             </div>
 
-            <div className="custom-form-block mb-3">
+            <div className="custom-form-block">
               <div id="company-Info_group" className="option-group-label">
                 What kind of sensitive information does your company store? *
               </div>
@@ -265,11 +277,13 @@ function CompanyDetails () {
                   ))
                 }
               </div>
-              {
-                companyForm.touched.info_types && companyForm.errors.info_types
-                ? <div className="invalid-feedback">{companyForm.errors.info_types}</div>
-                : null
-              }
+              <div className="invalid-feedback">
+                {
+                  companyForm.touched.info_types && companyForm.errors.info_types
+                  ? companyForm.errors.info_types
+                  : ""
+                }
+              </div>
             </div>
           </section>
         </div>

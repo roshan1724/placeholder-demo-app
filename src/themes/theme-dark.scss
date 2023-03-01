@@ -126,6 +126,9 @@
 
   .form-check {
     .form-check-input {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
       --bs-form-check-bg: $color_grey1_bg;
       background-color: $color_grey1_bg;
       border-color: $color_grey2_logo;
@@ -140,6 +143,11 @@
         background-color: $color_theme;
         border-color: $color_theme;
       }
+
+      &+.form-check-label {
+        vertical-align: middle;
+        padding-top: 3px;
+      }
     }
   }
 
@@ -153,15 +161,14 @@
     }
   }
 
+  .invalid-feedback {
+    display: block;
+    min-height: 20px;
+  }
+
   .option-group-label {
     color: $color_white;
     margin-bottom: 8px;
-  }
-
-  .has-validation {
-    .invalid-feedback {
-      display: block;
-    }
   }
 
   input {

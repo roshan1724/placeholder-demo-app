@@ -6,14 +6,14 @@
   background: $color_grey1_bg;
 
   .login-container {
-    height: 500px;
+    height: 550px;
     width: 1000px;
     display: flex;
     flex-direction: row;
 
     .login-brand-wrapper {
       height: 100%;
-      max-width: 550px;
+      max-width: 500px;
       border-right: 1px solid $color_line;
       background: url('/assets/images/cyber-security-login.png') no-repeat center;
       background-size: cover;
@@ -23,6 +23,10 @@
       height: 100%;
       flex-grow: 1;
       background: $color_grey2_bg;
+
+      .login-form {
+        width: 100%;
+      }
     }
   }
 

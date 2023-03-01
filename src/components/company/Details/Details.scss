@@ -1,6 +1,7 @@
 @import "./../../../variables.scss";
 
 .section-company-details {
+  padding-bottom: 30px;
 
   .subtitle {
     color: $color_grey3_font;
@@ -8,6 +9,10 @@
 
   .company-detail-form {
     padding-top: 20px;
+
+    .custom-form-block {
+      margin-bottom: 10px;
+    }
   }
 
   .company-form-container {
@@ -35,10 +40,13 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        gap: 10px;
+      }
 
-        .form-check {
-          min-width: 100px;
-        }
+      .c-checkbox-groups {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
       }
     }
   }

@@ -1,0 +1,48 @@
+@import "../../../variables.scss";
+
+.stepper-container {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+
+  &.label-only {
+    justify-content: space-between;
+  }
+
+  .stepper-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &.step-full {
+      flex-grow: 1;
+    }
+
+    .stepper-line {
+      flex-grow: 1;
+      display: inline-block;
+      height: 3px;
+      margin-bottom: $height_stepper_label;
+    }
+
+    .stepper-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+
+      .stepper-counter {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+      }
+    }
+
+    .stepper-label {
+      font-size: 16px;
+    }
+  }
+}

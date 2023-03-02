@@ -14,6 +14,7 @@ import OptionContext from "../../../../../context/options/option-context";
 import UserContext from "../../../../../context/user/user-context";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
+import { ROUTE_PATHS } from "../../../../../utilities/constants";
 
 function Options(props) {
   const navigate = useNavigate();
@@ -88,7 +89,7 @@ function Options(props) {
 
   const handleEndTurn = (event) => {
     handleModalClose(event);
-    navigate('/dashboard');
+    navigate(ROUTE_PATHS.DASHBOARD);
   }
 
   return optionsData ? (

@@ -1,0 +1,67 @@
+@import "../../../../../variables.scss";
+
+.section-game-scenario {
+  padding-bottom: 30px;
+
+  .scenario-list-container {
+    padding-top: 30px;
+
+    .row {
+      row-gap: 30px;
+    }
+
+    .scenario-card {
+      position: relative;
+      cursor: pointer;     
+      border-radius: 15px;
+      text-align: center;
+
+      .scenario-check {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &.selected {
+        .scenario-check {
+          opacity: 1;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+
+      .icon-wrapper.main {
+        padding: 20px;
+        font-size: 60px;
+      }
+
+      .scenario-name {
+        padding: 5px;
+        font-size: 18px;
+      }
+
+      .list-group {
+        padding: 20px 30px;
+      }
+
+      li.list-group-item {
+        font-size: 14px;
+        text-align: left;
+      }
+    }
+  }
+
+  .action-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

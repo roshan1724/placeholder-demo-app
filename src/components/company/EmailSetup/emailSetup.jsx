@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { ROUTE_PATHS } from "../../../utilities/constants";
 import "./emailSetup.scss";
 
 
@@ -7,7 +8,7 @@ function CompanyEmailSetup () {
   const navigate = useNavigate();
 
   const handleSetupDoneClick = () => {
-    navigate("/game/playboard");
+    navigate(ROUTE_PATHS.GAME_ROOT);
   }
 
   const handleCopyClick = () => {
@@ -80,7 +81,7 @@ function CompanyEmailSetup () {
               <div className="action-wrapper">
                 <button className="btn btn-primary" onClick={handleCopyClick}>
                   <span className="icon-wrapper me-2">
-                    <i className="fa-solid fa-copy"></i>
+                    <i className="fa-regular fa-clone"></i>
                   </span>
                   Copy
                 </button>

@@ -179,7 +179,7 @@
     }
     &:focus {
       box-shadow: none;
-      outline: 1px solid
+      outline: 1px solid $color_grey2_logo;
     }
 
     &::placeholder {
@@ -195,6 +195,10 @@ h1.title,
   color: $color_white;
 }
 
+.icon-wrapper {
+  color: $color_grey2_logo;
+}
+
 .theme-text {
   color: $color_grey3_font;
 }
@@ -207,11 +211,93 @@ h1.title,
   color: $color_grey2_logo;
 }
 
+.stepper-container {
+  color: $color_grey3_font;
+
+  .stepper-line {
+    background-color: $color_grey2_logo;
+  }
+
+  .stepper-block {
+    .stepper-counter {
+      background: $color_grey2_bg;
+      color: $color_grey3_font;
+      border: 3px solid $color_grey2_logo;
+    }
+    
+    .stepper-label {
+      color: $color_grey3_font;
+    }
+
+    &.active {
+      .stepper-counter {
+        color: $color_theme;
+        border: 3px solid $color_theme;
+      }
+      
+      .stepper-label {
+        color: $color_theme;
+      }
+    }
+
+    &.visited {
+      .stepper-counter {
+        color: $color_white;
+        border: 3px solid $color_white;
+      }
+      
+      .stepper-label {
+        color: $color_white;
+      }
+    }
+  }
+}
+
+.scenario-list-container {
+  .scenario-card {
+    background: $color_grey2_bg;
+    @include effect_block_shadow();
+    color: $color_grey3_font;
+    border: 2px solid $color_grey2_bg;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transition: all 0.3s ease-in-out;
+      border-color: $color_grey2_logo;
+    }
+
+    &.selected {
+      border-color: $color_theme;
+    }
+
+    .scenario-check {
+      background: $color_theme;
+      color: $color_black;
+    }
+
+    .scenario-name {
+      background: rgba(0, 0, 0, 0.15);
+      color: $color_white;
+    }
+  }
+}
+
+.list-group {
+  --bs-list-group-color: $color_grey3_font;
+  --bs-list-group-bg: transparent;
+  --bs-list-group-border-color: $color_grey2_logo;
+}
+
+
 .btn-primary {
   color: $color_theme;
   border-color: $color_theme;
   background: $color_grey2_bg;
   transition: all 0.3s ease-in-out;
+
+  .icon-wrapper {
+    color: inherit;
+  }
 
   &:hover {
     color: $color_white;

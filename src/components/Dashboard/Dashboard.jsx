@@ -5,6 +5,7 @@ import PhaseReport from '../Report/Phase-Report/PhaseReport';
 import { Fragment, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Area from '../common/Chart/Area';
+import { ROUTE_PATHS } from '../../utilities/constants';
 
 
 function Dashboard() {
@@ -34,7 +35,7 @@ function Dashboard() {
   }
 
   const handleReportViewClick = () => {
-    navigate("/report");
+    navigate(ROUTE_PATHS.REPORT);
   }
 
   const handleModalClose = () => {

@@ -5,6 +5,7 @@ import Stepper from '../../common/Stepper/Stepper';
 import { useState } from 'react';
 import GameScenario from './Step/Scenario/scenario';
 import GameDetails from './Step/Details/details';
+import GameEmailSetup from './Step/EmailSetup/email-setup';
 
 
 const stepperData = [
@@ -20,12 +21,13 @@ const stepperData = [
   },
   {
     stepperCounter: "3",
-    stepperLabel: "Introduction Email"
+    stepperLabel: "Introduction Email",
+    stepperContent: <GameEmailSetup />
   },
 ];
 
 function AddNewGame () {
-  const [activeStepIndex, setActiveStepIndex] = useState(0);
+  const [activeStepIndex, setActiveStepIndex] = useState(1);
 
   const getStepContent = () => {
     return stepperData[activeStepIndex].stepperContent;

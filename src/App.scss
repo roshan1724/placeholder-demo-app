@@ -171,6 +171,24 @@
     }
   }
 
+  .custom-form-block {
+    .input-group {
+      &.date-field {
+        position: relative;
+  
+        .input-field-icon {
+          position: absolute;
+          right: 10px;
+          top: 6px;
+          z-index: 5;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+
   .btn {
     img {
       width: $width_button_icon;

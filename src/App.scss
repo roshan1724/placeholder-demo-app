@@ -52,6 +52,12 @@
     }
   }
 
+  .section-game-scenario {
+    .detail-form-wrapper {
+      padding: 15px;
+    }
+  }
+
   hr.seperator {
     color: $color_line;
   }
@@ -176,6 +182,13 @@
       &.date-field {
         position: relative;
   
+        .hide-input {
+          width: 0;
+          padding: 0;
+          margin: 0;
+          border: none;
+        }
+
         .input-field-icon {
           position: absolute;
           right: 10px;
@@ -184,6 +197,13 @@
           display: inline-block;
           width: 20px;
           height: 20px;
+        }
+      }
+
+      .form-select {
+        &.is-invalid {
+          padding-right: 2.25rem;
+          background-image: none;
         }
       }
     }

@@ -1,8 +1,8 @@
 import './details.scss';
 import { useContext } from 'react';
 import NewGameContext from '../../../../../context/game/new-game-context';
-import GameDetailForm, { getSpectatorFields } from '../../../../../forms/game-detail-form';
-import { Fragment } from 'react';
+import GameDetailForm from '../../../../../forms/game-detail-form';
+// import { Fragment } from 'react';
 
 function GameDetails () {
 
@@ -37,60 +37,60 @@ function GameDetails () {
     element.showPicker();
   }
 
-  const addSpectatorField = () => {
-    gameDetailForm.setFieldValue('spectators', [
-      ...gameDetailForm.values.spectators,
-      getSpectatorFields()
-    ]);
-  }
+  // const addSpectatorField = () => {
+  //   gameDetailForm.setFieldValue('spectators', [
+  //     ...gameDetailForm.values.spectators,
+  //     getSpectatorFields()
+  //   ]);
+  // }
 
-  const deleteSpectatorField = (index) => {
-    const newSpectatorFiels = gameDetailForm.values.spectators;
-    newSpectatorFiels.splice(index, 1);
-    gameDetailForm.setFieldValue('spectators', newSpectatorFiels);
-  }
+  // const deleteSpectatorField = (index) => {
+  //   const newSpectatorFiels = gameDetailForm.values.spectators;
+  //   newSpectatorFiels.splice(index, 1);
+  //   gameDetailForm.setFieldValue('spectators', newSpectatorFiels);
+  // }
 
-  const getSpectatorUI = () => {
-    return (
-      gameDetailForm.values.spectators.map((spectator, spectatorIndex) => (
-        <Fragment>
-          <div className="col-4">
-            <div className="d-flex">
-              <div className="spectator-index">{spectatorIndex + 1}.</div>
-              <div className={`form-block-wrapper`}>
-                <div className="custom-form-block w-100">
-                  <label htmlFor={`game-detail-spectator-${spectatorIndex}-name`} className="form-label">Name*</label>
-                  <div className="input-group has-validation">
-                    <input
-                      type="text" 
-                      name={`spectators[${spectatorIndex}].spectator_name`}
-                      id={`game-detail-spectator-${spectatorIndex}-name`}
-                      className={`form-control ${gameDetailForm.touched.spectators[spectatorIndex]?.spectator_name && gameDetailForm.errors.spectators[spectatorIndex]?.spectator_name} ? 'is-invalid' : ''`}
-                      placeholder={`Spectator's Name`}
-                      onChange={gameDetailForm.handleChange}
-                      onBlur={gameDetailForm.handleBlur}
-                      value={gameDetailForm.values.spectators[spectatorIndex].spectator_name}
-                    />
-                    <div className="invalid-feedback">
-                      {
-                        gameDetailForm.errors.spectators[spectatorIndex]?.spectator_name && gameDetailForm.touched.spectators[spectatorIndex]?.spectator_name
-                        ? gameDetailForm.errors.spectators[spectatorIndex].spectator_name
-                        : ''
-                      }
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  // const getSpectatorUI = () => {
+  //   return (
+  //     gameDetailForm.values.spectators.map((spectator, spectatorIndex) => (
+  //       <Fragment>
+  //         <div className="col-4">
+  //           <div className="d-flex">
+  //             <div className="spectator-index">{spectatorIndex + 1}.</div>
+  //             <div className={`form-block-wrapper`}>
+  //               <div className="custom-form-block w-100">
+  //                 <label htmlFor={`game-detail-spectator-${spectatorIndex}-name`} className="form-label">Name*</label>
+  //                 <div className="input-group has-validation">
+  //                   <input
+  //                     type="text" 
+  //                     name={`spectators[${spectatorIndex}].spectator_name`}
+  //                     id={`game-detail-spectator-${spectatorIndex}-name`}
+  //                     className={`form-control ${gameDetailForm.touched.spectators[spectatorIndex]?.spectator_name && gameDetailForm.errors.spectators[spectatorIndex]?.spectator_name} ? 'is-invalid' : ''`}
+  //                     placeholder={`Spectator's Name`}
+  //                     onChange={gameDetailForm.handleChange}
+  //                     onBlur={gameDetailForm.handleBlur}
+  //                     value={gameDetailForm.values.spectators[spectatorIndex].spectator_name}
+  //                   />
+  //                   <div className="invalid-feedback">
+  //                     {
+  //                       gameDetailForm.errors.spectators[spectatorIndex]?.spectator_name && gameDetailForm.touched.spectators[spectatorIndex]?.spectator_name
+  //                       ? gameDetailForm.errors.spectators[spectatorIndex].spectator_name
+  //                       : ''
+  //                     }
+  //                   </div>
+  //                 </div>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         </div>
 
-          <div className="col-4"></div>
+  //         <div className="col-4"></div>
 
-          <div className="col-4"></div>
-        </Fragment>
-      ))
-    );
-  }
+  //         <div className="col-4"></div>
+  //       </Fragment>
+  //     ))
+  //   );
+  // }
 
   const gameDetailForm = GameDetailForm(formOptionsData);
   console.log(gameDetailForm.values);

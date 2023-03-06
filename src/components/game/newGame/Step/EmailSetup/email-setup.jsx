@@ -1,14 +1,21 @@
+import './email-setup.scss';
+import { useContext } from 'react';
 import { useNavigate } from "react-router";
-import { ROUTE_PATHS } from "../../../utilities/constants";
-import "./emailSetup.scss";
+import { ROUTE_PATHS } from '../../../../../utilities/constants';
+import NewGameContext from '../../../../../context/game/new-game-context';
 
 
-function CompanyEmailSetup () {
+function GameEmailSetup () {
 
+  const { activeStepIndex, setActiveStepIndex } = useContext(NewGameContext);
   const navigate = useNavigate();
 
   const handleSetupDoneClick = () => {
-    navigate(ROUTE_PATHS.GAME_ROOT);
+    navigate(ROUTE_PATHS.GAME_PLAYBOARD);
+  }
+
+  const handleBackClick = () => {
+    setActiveStepIndex(activeStepIndex - 1);
   }
 
   const handleCopyClick = () => {
@@ -24,12 +31,7 @@ function CompanyEmailSetup () {
   }
 
   return (
-    <section className="company-email-setup">
-      <h1 className="title c-font-20">Email Setup Instructions</h1>
-      <p className="subtitle c-font-14">
-        Please copy and forward these instructions to your I.T. administrator so that the emails 
-        don't get caught in the Spam filters.
-      </p>
+    <section className="section-game-email-setup">
       <div className="setup-container">
         <div className="setup-wrapper">
           <div className="row setup-content">
@@ -90,12 +92,17 @@ function CompanyEmailSetup () {
           </div>
         </div>
         <div className="page-action-wrapper flex-center mt-3">
-          <span>&nbsp;</span>
+          <button className="btn btn-primary" onClick={handleBackClick}>
+            <span className="icon-wrapper me-2">
+              <i className="fa-solid fa-arrow-left"></i>
+            </span>
+            Back
+          </button>
           <button className="btn btn-primary btn-filled" onClick={handleSetupDoneClick}>Done</button>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default CompanyEmailSetup;
+export default GameEmailSetup;

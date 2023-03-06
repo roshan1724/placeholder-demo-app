@@ -52,6 +52,12 @@
     }
   }
 
+  .section-game-scenario {
+    .detail-form-wrapper {
+      padding: 15px;
+    }
+  }
+
   hr.seperator {
     color: $color_line;
   }
@@ -168,6 +174,38 @@
     .info-icon {
       width: $height_info_icon;
       height: $height_info_icon;
+    }
+  }
+
+  .custom-form-block {
+    .input-group {
+      &.date-field {
+        position: relative;
+  
+        .hide-input {
+          width: 0;
+          padding: 0;
+          margin: 0;
+          border: none;
+        }
+
+        .input-field-icon {
+          position: absolute;
+          right: 10px;
+          top: 6px;
+          z-index: 5;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .form-select {
+        &.is-invalid {
+          padding-right: 2.25rem;
+          background-image: none;
+        }
+      }
     }
   }
 

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import "./variables.scss";
 
 body {
   margin: 0;
@@ -14,6 +15,25 @@ body {
 
     &.show {
       opacity: 0.75;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $color_grey2_logo;
+    border-radius: 10px;
+
+    &:hover {
+      background: $color_grey2_logo;
     }
   }
 }

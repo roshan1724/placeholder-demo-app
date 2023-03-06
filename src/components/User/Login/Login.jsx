@@ -4,6 +4,7 @@ import './Login.scss';
 import { useNavigate } from "react-router";
 import LoginForm from '../../../forms/login-form';
 import { useState } from 'react';
+import { ROUTE_PATHS } from '../../../utilities/constants';
 
 function Login () {
 
@@ -16,7 +17,7 @@ function Login () {
   const submitCallback = (submitState) => {
     console.log('Calback value Received ==> ', submitState);
     if (submitState === true) {
-      navigate('/company/details');
+      navigate(ROUTE_PATHS.COMPANY_DETAILS);
     } else {
       setIsInvalidCreds(true);
       // alert('Incorrect Credentials ... \nTry with this: \n\nemail: graham@test.com \npassword: password');

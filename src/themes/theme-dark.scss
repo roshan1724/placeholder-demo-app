@@ -5,7 +5,7 @@
 .section-options,
 .summary-chart-wrapper,
 .summary-details-wrapper {
-  background: $color_grey2_bg;
+  background-color: $color_grey2_bg;
   color: $color_grey3_font;
 }
 
@@ -16,13 +16,13 @@
 }
 
 .section-dashboard {
-  background: $color_black;
+  background-color: $color_black;
   color: $color_white;
 }
 
 .warn-modal,
 .phase-modal {
-  background: $color_grey1_bg;
+  background-color: $color_grey1_bg;
   color: $color_grey3_font;
 
   .modal-title {
@@ -60,7 +60,7 @@
   .achievement-holder {
     .achievement-wrapper {
       .achievement-user-wrapper {
-        background: $color_grey1_bg;
+        background-color: $color_grey1_bg;
 
         .user-details {
           .user-name {
@@ -87,7 +87,7 @@
             border: 1px solid $color_theme;
 
             .checked {
-              background: $color_theme;
+              background-color: $color_theme;
             }
           }
         }
@@ -113,12 +113,12 @@
   color: $color_grey3_font;
 
   .input-group-text {
-    background: $color_black;
+    background-color: $color_black;
     border-color: $color_grey2_bg;
     color: $color_grey2_logo;
 
     &.eye-icon-wrapper {
-      background: $color_grey1_bg;
+      background-color: $color_grey1_bg;
       font-size: 14px;
       cursor: pointer;
     }
@@ -128,7 +128,6 @@
     .form-check-input {
       width: 20px;
       height: 20px;
-      margin-right: 10px;
       --bs-form-check-bg: $color_grey1_bg;
       background-color: $color_grey1_bg;
       border-color: $color_grey2_logo;
@@ -147,17 +146,34 @@
       &+.form-check-label {
         vertical-align: middle;
         padding-top: 3px;
+        padding-left: 10px;
       }
     }
   }
 
   .form-control {
-    background: $color_grey1_bg;
+    background-color: $color_grey1_bg;
     border-color: $color_grey2_bg;
     color: $color_grey2_logo;
 
     &.is-invalid {
       border-color: $color_red;
+      background-image: none;
+    }
+  }
+
+  .form-select {
+    background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23808080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
+    background-color: $color_grey1_bg;
+    border-color: $color_grey2_bg;
+    color: $color_grey2_logo;
+
+    &.is-invalid {
+      background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23808080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
+      background-position: right .75rem center;
+      background-size: 16px 12px;
+      border-color: $color_red;
+
     }
   }
 
@@ -172,14 +188,23 @@
   }
 
   input {
-    &[type="text"],
-    &[type="email"],
-    &[type="password"] {
+    &[type="text" i],
+    &[type="email" i],
+    &[type="password" i] {
       color: $color_white;
+    }
+    &[type="date" i] {
+      color: $color_white;
+      padding-right: 12px;
+      
+      &::-webkit-calendar-picker-indicator {
+        // opacity: 0;
+        z-index: 6;
+      }
     }
     &:focus {
       box-shadow: none;
-      outline: 1px solid
+      outline: 1px solid $color_grey2_logo;
     }
 
     &::placeholder {
@@ -195,6 +220,10 @@ h1.title,
   color: $color_white;
 }
 
+.icon-wrapper {
+  color: $color_grey2_logo;
+}
+
 .theme-text {
   color: $color_grey3_font;
 }
@@ -207,11 +236,99 @@ h1.title,
   color: $color_grey2_logo;
 }
 
+.stepper-container {
+  color: $color_grey3_font;
+
+  .stepper-line {
+    background-color: $color_grey2_logo;
+  }
+
+  .stepper-block {
+    .stepper-counter {
+      background-color: $color_grey2_bg;
+      color: $color_grey3_font;
+      border: 3px solid $color_grey2_logo;
+    }
+    
+    .stepper-label {
+      color: $color_grey3_font;
+    }
+
+    &.active {
+      .stepper-counter {
+        color: $color_theme;
+        border: 3px solid $color_theme;
+      }
+      
+      .stepper-label {
+        color: $color_theme;
+      }
+    }
+
+    &.visited {
+      .stepper-counter {
+        color: $color_white;
+        border: 3px solid $color_white;
+      }
+      
+      .stepper-label {
+        color: $color_white;
+      }
+    }
+  }
+}
+
+.scenario-list-container {
+  .scenario-card {
+    background-color: $color_grey2_bg;
+    @include effect_block_shadow();
+    color: $color_grey3_font;
+    border: 2px solid $color_grey2_bg;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transition: all 0.3s ease-in-out;
+      border-color: $color_grey2_logo;
+    }
+
+    &.selected {
+      border-color: $color_theme;
+    }
+
+    .scenario-check {
+      background-color: $color_theme;
+      color: $color_black;
+    }
+
+    .scenario-name {
+      background-color: rgba(0, 0, 0, 0.15);
+      color: $color_white;
+    }
+  }
+}
+
+.section-game-scenario {
+  .detail-form-wrapper {
+    background-color: $color_grey2_bg;
+  }
+}
+
+.list-group {
+  --bs-list-group-color: $color_grey3_font;
+  --bs-list-group-bg: transparent;
+  --bs-list-group-border-color: $color_grey2_logo;
+}
+
+
 .btn-primary {
   color: $color_theme;
   border-color: $color_theme;
-  background: $color_grey2_bg;
+  background-color: $color_grey2_bg;
   transition: all 0.3s ease-in-out;
+
+  .icon-wrapper {
+    color: inherit;
+  }
 
   &:hover {
     color: $color_white;
@@ -222,10 +339,10 @@ h1.title,
   &.btn-filled {
     color: $color_grey1_bg;
     border-color: $color_grey1_bg;
-    background: $color_theme;
+    background-color: $color_theme;
 
     &:hover {
-      background: $color_white;
+      background-color: $color_white;
       border-color: $color_white;
       transition: all 0.3s ease-in-out;
     }

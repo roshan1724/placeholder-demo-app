@@ -8,44 +8,54 @@ import CompanyHome from "./components/company/Home/Home";
 import CompanyDetails from "./components/company/Details/Details";
 import CompanyEmailSetup from "./components/company/EmailSetup/emailSetup";
 import GameHome from "./components/game/Home/Home";
+import AddNewGame from "./components/game/newGame/newGame";
+import { ROUTE_PATHS } from "./utilities/constants";
 
 const AppRoutes = () => {
   const routes = createBrowserRouter([
     {
-      path: '/',
+      path: ROUTE_PATHS.ROOT,
       index: true,
       element: <Login />
     },
     {
-      path: '/company',
+      path: ROUTE_PATHS.LOGIN,
+      element: <Login />
+    },
+    {
+      path: ROUTE_PATHS.COMPANY_ROOT,
       element: <CompanyHome />
     },
     {
-      path: '/company/home',
+      path: ROUTE_PATHS.COMPANY_HOME,
       element: <CompanyHome />
     },
     {
-      path: '/company/details',
+      path: ROUTE_PATHS.COMPANY_DETAILS,
       element: <CompanyDetails />
     },
     {
-      path: '/company/email-setup',
+      path: ROUTE_PATHS.COMPANY_EMAIL_SETUP,
       element: <CompanyEmailSetup />
     },
     {
-      path: '/game',
+      path: ROUTE_PATHS.GAME_ROOT,
       element: <GameHome />
     },
     {
-      path: '/game/playboard',
+      path: ROUTE_PATHS.GAME_ADD_NEW,
+      element: <AddNewGame />
+    },
+    {
+      path: ROUTE_PATHS.GAME_PLAYBOARD,
       element: <Container />
     },
     {
-      path: '/dashboard',
+      path: ROUTE_PATHS.DASHBOARD,
       element: <Dashboard />
     },
     {
-      path: '/report',
+      path: ROUTE_PATHS.REPORT,
       element: <Report />
     }
   ]);

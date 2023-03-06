@@ -1,5 +1,6 @@
 
 import { useFormik } from 'formik';
+import * as Yup from "yup";
 
 const LoginForm = (submitCallback) => {
   const initialValues = {
@@ -16,28 +17,35 @@ const LoginForm = (submitCallback) => {
     }
   }
 
-  const validate = (values) => {
-    let errors = {};
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("Please enter a valid email address")
+      .required("Please enter a valid email address"),
+    password: Yup.string().required("Please enter a password"),
+  });
 
-    // Validating Email field
-    if (!values.email) {
-      errors.email = 'Please enter a valid email address';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Please enter a valid email address';
-    }
+  // const validate = (values) => {
+  //   let errors = {};
 
-    // Validating Password field
-    if (!values.password) {
-      errors.password = 'Please enter a password';
-    }
+  //   // Validating Email field
+  //   if (!values.email) {
+  //     errors.email = 'Please enter a valid email address';
+  //   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+  //     errors.email = 'Please enter a valid email address';
+  //   }
 
-    return errors;
-  }
+  //   // Validating Password field
+  //   if (!values.password) {
+  //     errors.password = 'Please enter a password';
+  //   }
+
+  //   return errors;
+  // }
 
   return useFormik({
     initialValues,
-    onSubmit,
-    validate
+    validationSchema,
+    onSubmit
   })
 } 
 

@@ -1,6 +1,5 @@
 import { useFormik } from "formik";
 
-
 const CompanyDetailsForm = (submitCallback) => {
   const initialValues = {
     company_name: "",
@@ -80,7 +79,7 @@ const CompanyDetailsForm = (submitCallback) => {
     initialValues,
     validate,
     onSubmit
-  })
+  });
 }
 
 export default CompanyDetailsForm;

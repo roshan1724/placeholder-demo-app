@@ -1,6 +1,7 @@
 import "./Details.scss";
 import CompanyDetailsForm from "../../../forms/company-detail-form";
 import { useNavigate } from "react-router";
+import { ROUTE_PATHS } from "../../../utilities/constants";
 
 function CompanyDetails () {
 
@@ -34,7 +35,7 @@ function CompanyDetails () {
 
   const submitCallback = (submitState) => {
     if (submitState) {
-      navigate("/company/email-setup");
+      navigate(ROUTE_PATHS.COMPANY_EMAIL_SETUP);
     }
   }
 

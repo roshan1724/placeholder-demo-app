@@ -1,3 +1,36 @@
-.section-game-home {
-  
+@import "../../../variables.scss";
+
+.game-home {
+  height: calc(100vh - $height_header);
+  overflow: auto;
+  font-size: 14px;
+  color: $color_grey3_font;
+
+  .page-title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .page-subtitle {
+    padding: 10px;
+  }
+
+  .action-wrapper {
+    margin: 20px 0;
+  }
+
+  .section-emptygame {
+    height: 100%;
+    width: 100%;
+
+    .game-wrapper {
+      text-align: center;
+
+      .icon-wrapper {
+        font-size: 80px;
+      }
+    }
+  }
+
+  .section-gameList {}
 }

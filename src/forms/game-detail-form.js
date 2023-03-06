@@ -2,6 +2,13 @@
 import { useFormik } from "formik";
 // import * as Yup from "yup";
 
+export const getSpectatorFields = () => {
+  return {
+    spectator_name: '',
+    spectator_email: ''
+  }
+}
+
 const GameDetailForm = (formOptionsData) => {
   console.log('Received formOptionsData ==> ', formOptionsData);
 
@@ -21,6 +28,11 @@ const GameDetailForm = (formOptionsData) => {
     cisco_email: '',
     cisco_title: '',
 
+    it_admin_name: '',
+    it_admin_email: '',
+    it_admin_title: '',
+
+    spectators: [getSpectatorFields(), getSpectatorFields()]
 
   }
 
@@ -67,8 +79,39 @@ const GameDetailForm = (formOptionsData) => {
     }
 
     // Validating cisco_title
-    if (!values.cisco_title || !values.cisco_title.trim()) {
-      errors.cisco_title = 'Enter valid title';
+    if (!values.cisco_title || !formOptionsData.cisco_jobTitle.includes(values.cisco_title)) {
+      errors.cisco_title = 'Select valid title';
+    }
+
+    // Validating it_admin_name
+    if (!values.it_admin_name || !values.it_admin_name.trim()) {
+      errors.it_admin_name = 'Enter valid name';
+    }
+
+     // Validating it_admin_email
+     if (!values.it_admin_email || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.it_admin_email.trim())) {
+      errors.it_admin_email = 'Enter valid email';
+    }
+
+    // Validating it_admin_title
+    if (!values.it_admin_title || !formOptionsData.it_admin_jobTitle.includes(values.it_admin_title)) {
+      errors.it_admin_title = 'Select valid title';
+    }
+
+    // Validating spectators details
+    if (values.spectators.length === 0) {
+      errors.spectators = 'Add atleast 1 spectator';
+    } else if (values.spectators.length > 0) {
+      errors.spectators = [];
+      values.spectators.forEach((spectator, index) => {
+        if (!spectator.spectator_name || !spectator.spectator_name.trim()) {
+          errors.spectators[index].spectator_name = 'Enter valid name';
+        }
+
+        if (!spectator.spectator_email || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(spectator.spectator_email.trim())) {
+          errors.spectators[index].spectator_email = 'Enter valid email';
+        }
+      });
     }
 
     return errors;

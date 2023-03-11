@@ -16,7 +16,43 @@ function GameDetails () {
     },
     time_zome: ['UTC', 'IST', 'CST'],
     cisco_jobTitle: ['Job Title 1', 'Job Title 2'],
-    it_admin_jobTitle: ['Job Title 1', 'Job Title 2']
+    it_admin_jobTitle: ['Job Title 1', 'Job Title 2'],
+    hasPortalOptions: [
+      { optionValue: "true", displayText: 'Yes' },
+      { optionValue: "false", displayText: 'No' }
+    ],
+    emailGatewayOptions: [
+      { optionValue: "proofpoint", displayText: 'Proofpoint' },
+      { optionValue: "barracuda", displayText: 'Barracuda' },
+      { optionValue: "mimecast", displayText: 'Mimecast' },
+      { optionValue: "microsoft defender for email", displayText: 'Microsoft Defender for Email' },
+      { optionValue: "other", displayText: 'Other' },
+    ],
+    antivirusOptions: [
+      { optionValue: "norton", displayText: 'Norton' },
+      { optionValue: "bitdefender", displayText: 'Bitdefender' },
+      { optionValue: "mcafee", displayText: 'McAfee' },
+      { optionValue: "kaspersky", displayText: 'Kaspersky' },
+      { optionValue: "avast", displayText: 'Avast' },
+      { optionValue: "avira", displayText: 'Avira' },
+      { optionValue: "panda", displayText: 'Panda' },
+      { optionValue: "trend micro", displayText: 'Trend Micro' },
+      { optionValue: "malwarebytes", displayText: 'Malwarebytes' },
+      { optionValue: "sophos", displayText: 'Sophos' },
+      { optionValue: "none", displayText: 'None' },
+    ],
+    edrOptions: [
+      { optionValue: "crowdstrike", displayText: 'CrowdStrike' },
+      { optionValue: "sentinelone", displayText: 'SentinelOne' },
+      { optionValue: "microsoft defender for endpoint", displayText: 'Microsoft Defender for Endpoint' },
+      { optionValue: "cybereason", displayText: 'Cybereason' },
+      { optionValue: "palo alto", displayText: 'Palo Alto' },
+      { optionValue: "cisco", displayText: 'Cisco' },
+      { optionValue: "carbon black", displayText: 'Carbon Black' },
+      { optionValue: "sophos", displayText: 'Sophos' },
+      { optionValue: "none", displayText: 'None' },
+      { optionValue: "other", displayText: 'Other' },
+    ]
   }
 
   const handleDateChange = (e) => {
@@ -46,7 +82,9 @@ function GameDetails () {
 
   const deleteSpectatorField = (index) => {
     const newSpectatorFiels = gameDetailForm.values.spectators;
+    console.log('newSpectator Fields before deleting == >', newSpectatorFiels);
     newSpectatorFiels.splice(index, 1);
+    console.log('newSpectator Fields after deleting == >', newSpectatorFiels);
     gameDetailForm.setFieldValue('spectators', newSpectatorFiels);
   }
 
@@ -55,9 +93,9 @@ function GameDetails () {
       gameDetailForm.values.spectators.map((spectator, spectatorIndex) => (
         <Fragment>
           <div className="col-4">
-            <div className="d-flex">
-              <div className="spectator-index">{spectatorIndex + 1}.</div>
-              <div className={`form-block-wrapper`}>
+            <div className="w-100 inner-form-wrapper">
+              <div className="spectator-index pt-2">{spectatorIndex + 1}.</div>
+              <div className={`form-block-wrapper w-100`}>
                 <div className="custom-form-block w-100">
                   <label htmlFor={`game-detail-spectator-${spectatorIndex}-name`} className="form-label">Name*</label>
                   <div className="input-group has-validation">
@@ -65,7 +103,7 @@ function GameDetails () {
                       type="text" 
                       name={`spectators[${spectatorIndex}].spectator_name`}
                       id={`game-detail-spectator-${spectatorIndex}-name`}
-                      className={`form-control ${gameDetailForm.touched.spectators[spectatorIndex]?.spectator_name && gameDetailForm.errors.spectators[spectatorIndex]?.spectator_name} ? 'is-invalid' : ''`}
+                      className={`form-control `}
                       placeholder={`Spectator's Name`}
                       onChange={gameDetailForm.handleChange}
                       onBlur={gameDetailForm.handleBlur}
@@ -73,8 +111,8 @@ function GameDetails () {
                     />
                     <div className="invalid-feedback">
                       {
-                        gameDetailForm.errors.spectators[spectatorIndex]?.spectator_name && gameDetailForm.touched.spectators[spectatorIndex]?.spectator_name
-                        ? gameDetailForm.errors.spectators[spectatorIndex].spectator_name
+                        gameDetailForm.errors?.spectators?.at(spectatorIndex)?.spectator_name && gameDetailForm.touched?.spectators?.at(spectatorIndex)?.spectator_name
+                        ? gameDetailForm.errors?.spectators[spectatorIndex]?.spectator_name
                         : ''
                       }
                     </div>
@@ -84,18 +122,59 @@ function GameDetails () {
             </div>
           </div>
 
-          <div className="col-4"></div>
+          <div className="col-4">
+            <div className="form-block-wrapper w-100">
+              <div className="custom-form-block w-100">
+                <label htmlFor={`game-detail-spectator-${spectatorIndex}-email`} className="form-label">Email *</label>
+                <div className="input-group has-validation">
+                  <input
+                    type="text"
+                    name={`spectators[${spectatorIndex}].spectator_email`}
+                    id={`game-detail-spectator-${spectatorIndex}-email`}
+                    className={`form-control`}
+                    placeholder={`Spectator's Email`}
+                    onChange={gameDetailForm.handleChange}
+                    onBlur={gameDetailForm.handleBlur}
+                    value={gameDetailForm.values.spectators[spectatorIndex].spectator_email}
+                  />
+                  <div className="invalid-feedback">
+                    {
+                      gameDetailForm.errors?.spectators?.at(spectatorIndex)?.spectator_email && gameDetailForm.touched?.spectators?.at(spectatorIndex)?.spectator_email
+                      ? gameDetailForm.errors?.spectators[spectatorIndex]?.spectator_email
+                      : ''
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <div className="col-4"></div>
+          <div className="col-4">
+            <div className="spectator-action-wrapper pt-2 h-100">
+              {
+                (gameDetailForm.values.spectators.length === (spectatorIndex + 1))
+                ? <button className="btn btn-primary" onClick={addSpectatorField}>
+                    <span className="icon-wrapper me-2">
+                      <i className="fa-solid fa-plus"></i>
+                    </span>
+                    Add
+                  </button>
+                : <span className="icon-wrapper" onClick={() => deleteSpectatorField(spectatorIndex)}>
+                    <i className="fa-solid fa-trash-can"></i>
+                  </span>
+              }
+            </div>
+          </div>
         </Fragment>
       ))
     );
   }
 
   const gameDetailForm = GameDetailForm(formOptionsData);
-  console.log(gameDetailForm.values);
+  console.log('FORM VALUES ===> ',gameDetailForm.values);
+  console.log('FORM ERRORS ==> ', gameDetailForm.errors);
 
-  return (
+  return ( gameDetailForm.values && Object.keys(gameDetailForm.values).length > 0 &&
     <section className="section-game-scenario">
       <div className="detail-form-wrapper">
         <form className="game-detail-form">
@@ -142,7 +221,7 @@ function GameDetails () {
                     <select
                       name="start_time.hours"
                       id="game-detail-time-hours"
-                      className={`form-select ${gameDetailForm.errors.start_time && gameDetailForm.touched.start_time ? 'is-invalid' : ''}`}
+                      className={`form-select ${gameDetailForm.errors?.start_time?.hours && gameDetailForm.touched?.start_time?.hours ? 'is-invalid' : ''}`}
                       onChange={gameDetailForm.handleChange}
                       onBlur={gameDetailForm.handleBlur}
                       value={gameDetailForm.values.start_time.hours}>
@@ -157,7 +236,7 @@ function GameDetails () {
                     <select
                       name="start_time.minutes"
                       id="game-detail-time-minutes"
-                      className={`form-select ${gameDetailForm.errors.start_time && gameDetailForm.touched.start_time ? 'is-invalid' : ''}`}
+                      className={`form-select ${gameDetailForm.errors?.start_time?.minutes && gameDetailForm.touched?.start_time?.minutes ? 'is-invalid' : ''}`}
                       onChange={gameDetailForm.handleChange}
                       onBlur={gameDetailForm.handleBlur}
                       value={gameDetailForm.values.start_time.minutes}>
@@ -172,7 +251,7 @@ function GameDetails () {
                     <select
                       name="start_time.meredian"
                       id="game-detail-time-meredian"
-                      className={`form-select ${gameDetailForm.errors.start_time && gameDetailForm.touched.start_time ? 'is-invalid' : ''}`}
+                      className={`form-select ${gameDetailForm.errors?.start_time?.meredian && gameDetailForm.touched?.start_time?.meredian ? 'is-invalid' : ''}`}
                       onChange={gameDetailForm.handleChange}
                       onBlur={gameDetailForm.handleBlur}
                       value={gameDetailForm.values.start_time.meredian}>
@@ -185,8 +264,9 @@ function GameDetails () {
                   </div>
                   <div className="invalid-feedback">
                     {
-                      (gameDetailForm.errors.start_time && (gameDetailForm.touched.start_time))
-                      ? gameDetailForm.errors.start_time
+                      ((gameDetailForm.errors?.start_time?.hours && (gameDetailForm.touched?.start_time?.hours))
+                        || (gameDetailForm.errors?.start_time?.minutes && (gameDetailForm.touched?.start_time?.minutes)))
+                      ? gameDetailForm.errors?.start_time?.hours || gameDetailForm.errors?.start_time?.minutes
                       : null
                     }
                   </div>
@@ -459,14 +539,114 @@ function GameDetails () {
             </div>
           </div>
 
-          {/* <div className="row field-group-wrapper">
+          <div className="row field-group-wrapper" name={`spectators`}>
             <div className="col-12">
               <p className="field-label">Spectator(s) Details</p>
             </div>
             {
               getSpectatorUI()
             }
-          </div> */}
+          </div>
+
+          <div className="row field-group-wrapper">
+            <div className="col-12">
+              <p id='game-has-portal' className="field-label">
+                Do you provide a web-based portal where employees can enter tickets for the I.T. team? *
+              </p>
+            </div>
+            <div className="col-4">
+              <div className="custom-form-block mt-2">
+                <div className="c-radio-groups portal-check" role="group" aria-labelledby="game-has-portal">
+                {
+                  formOptionsData.hasPortalOptions.map((optionData, optionIndex) => (
+                    <div className="form-check form-check-inline" key={`portal-option_key-${optionIndex}`}>
+                      <input
+                        type="radio"
+                        name='hasPortal'
+                        id={`game-portal_option-${optionIndex}`}
+                        className={`form-check-input`}
+                        onChange={gameDetailForm.handleChange}
+                        onBlur={gameDetailForm.handleBlur}
+                        value={optionData.optionValue} />
+                      <label htmlFor={`game-portal_option-${optionIndex}`} className="form-check-label">
+                        { optionData.displayText }
+                      </label>
+                    </div>
+                  ))
+                }
+                </div>
+                {
+                  gameDetailForm.values.hasPortal === 'true'
+                  ? (
+                    <div className="input-group has-validation mt-2">
+                      <input
+                        type="text"
+                        name="portalValue"
+                        className={`form-control ${gameDetailForm.errors?.portalValue && gameDetailForm.touched?.portalValue ? 'is-invalid' : ''}`}
+                        placeholder={`Name or URL of that portal`}
+                        onChange={gameDetailForm.handleChange}
+                        onBlur={gameDetailForm.handleBlur}
+                        value={gameDetailForm.values.portalValue}  
+                      />
+                      <div className="invalid-feedback">
+                        {
+                          gameDetailForm.errors?.portalValue && gameDetailForm.touched?.portalValue
+                          ? gameDetailForm.errors.portalValue
+                          : ''
+                        }
+                      </div>
+                    </div>
+                  )
+                  : null
+                }
+              </div>
+            </div>
+          </div>
+
+          <div className="row field-group-wrapper">
+            <div className="col-12">
+              <p className="field-label">
+                Name of Slack or Teams channel for this simulation
+              </p>
+            </div>
+            <div className="col-4">
+              <div className="custom-form-block mt-2 w-100">
+                <div className="input-group has-validation">
+                  <input
+                    type="text"
+                    name='im_name'
+                    className={`form-control ${gameDetailForm.errors.im_name && gameDetailForm.touched.im_name ? 'is-invalid' : ''}`}
+                    placeholder={`Name of Slack or Teams channel`}
+                    onChange={gameDetailForm.handleChange}
+                    onBlur={gameDetailForm.handleBlur}
+                    value={gameDetailForm.values.im_name} />
+                  <div className="invalid-feedback">
+                    {
+                      gameDetailForm.errors.im_name && gameDetailForm.touched.im_name
+                      ? gameDetailForm.errors.im_name
+                      : ''
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-4">
+              <p className="recommend-text">
+                <span className="icon-wrapper">
+                  <i class="fa-solid fa-circle-info"></i>
+                </span>
+                <span>
+                  We recommend setting up a Slack/Teams channel for this simulation 
+                  where your team can discuss options and plan your next move.
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="row field-group-wrapper">
+
+          </div>
 
         </form>
       </div>

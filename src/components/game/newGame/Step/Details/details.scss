@@ -38,6 +38,33 @@
           width: 125px;
         }
       }
+
+      .c-radio-groups {        
+        .portal-check {
+          column-gap: 20px;
+        }
+      }
+    }
+
+    .inner-form-wrapper {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+    }
+
+    .spectator-index {
+      color: $color_grey3_font;
+      font-size: 14px;
+    }
+
+    .spectator-action-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      .icon-wrapper {
+        cursor: pointer;
+      }
     }
   }
 

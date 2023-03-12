@@ -207,6 +207,24 @@
         }
       }
     }
+
+    .c-radio-groups {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .c-checkbox-groups {
+      gap: 10px;
+    }
+  }
+
+  .recommend-text {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    padding-top: 10px;
+    font-size: 12px;
   }
 
   .btn {

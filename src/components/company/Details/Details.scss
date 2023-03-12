@@ -37,16 +37,12 @@
       padding-left: 20px;
 
       .c-radio-groups {
-        display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
-        gap: 10px;
       }
 
       .c-checkbox-groups {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 10px;
       }
     }
   }

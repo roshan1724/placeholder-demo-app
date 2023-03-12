@@ -9,7 +9,7 @@ export const getSpectatorFields = () => {
   }
 }
 
-const GameDetailForm = (formOptionsData) => {
+const GameDetailForm = (formOptionsData, submitCallback) => {
   console.log('Received formOptionsData ==> ', formOptionsData);
 
   const initialValues = {
@@ -37,7 +37,10 @@ const GameDetailForm = (formOptionsData) => {
     hasPortal: '',
     portalValue: '',
 
-    im_name: ''
+    im_name: '',
+    email_gateway: [],
+    antivirus: '',
+    edr: ''
   }
 
   // const validateDate = (given_date) => {
@@ -138,11 +141,11 @@ const GameDetailForm = (formOptionsData) => {
     
     cisco_name: Yup.string().required('Enter valid name'),
     cisco_email: Yup.string().email('Enter valid email').required('Enter valid email'),
-    cisco_title: Yup.string().oneOf(formOptionsData.cisco_jobTitle, 'Select valid title'),
+    cisco_title: Yup.string().oneOf(formOptionsData.cisco_jobTitle, 'Select valid title').required('Select valid title'),
     
     it_admin_name: Yup.string().required('Enter valid name'),
     it_admin_email: Yup.string().email('Enter valid email').required('Enter valid email'),
-    it_admin_title: Yup.string().oneOf(formOptionsData.it_admin_jobTitle, 'Select valid title'),
+    it_admin_title: Yup.string().oneOf(formOptionsData.it_admin_jobTitle, 'Select valid title').required('Select valid title'),
     
     spectators: Yup.array(
       Yup.object().shape({
@@ -151,19 +154,35 @@ const GameDetailForm = (formOptionsData) => {
       })
     ),
 
-    hasPortal: Yup.string().required('Select one of the above options'),
+    hasPortal: Yup.string().oneOf(formOptionsData.hasPortalOptions.map(optionData => optionData.optionValue)).required('Select one of the above options'),
     portalValue: Yup.string().when("hasPortal", {
       is: "true",
       then: Yup.string().required('Enter valid portal address'),
     }),
 
-    im_name: Yup.string().required('Enter valid name')
+    im_name: Yup.string().required('Enter valid name'),
+    email_gateway: Yup.array().test({
+      name: 'GAME_DETAILS_EMAIL_GATEWAY_TEST',
+      exclusive: true,
+      message: 'Select atleast one of the above options',
+      test: (value) => value.length > 0
+    }),
+    antivirus: Yup.string().oneOf(formOptionsData.antivirusOptions.map(optionData => optionData.optionValue),
+      'Select atleast one of the above options').required('Select atleast one of the above options'),
+    edr: Yup.string().oneOf(formOptionsData.edrOptions.map(optionData => optionData.optionValue),
+    'Select atleast one of the above options').required('Select atleast one of the above options'),
 
   });
 
+  const onSubmit = (values) => {
+    console.log(`Submitting Vlaues ==> `, values);
+    submitCallback(true);
+  }
+
   return useFormik({
     initialValues,
-    validationSchema
+    validationSchema,
+    onSubmit
   });
 }
 

@@ -24,6 +24,10 @@
         } 
       }
 
+      .time-block-wrapper {
+        flex-grow: 1;
+      }
+
       .time-fields {
         display: flex;
         column-gap: 10px;
@@ -39,7 +43,12 @@
         }
       }
 
-      .c-radio-groups {        
+      .c-radio-groups,
+      .c-checkbox-groups {
+        .row {
+          row-gap: 15px;
+        }        
+        
         .portal-check {
           column-gap: 20px;
         }

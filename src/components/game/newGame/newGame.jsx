@@ -27,7 +27,7 @@ const stepperData = [
 ];
 
 function AddNewGame () {
-  const [activeStepIndex, setActiveStepIndex] = useState(1);
+  const [activeStepIndex, setActiveStepIndex] = useState(0);
 
   const getStepContent = () => {
     return stepperData[activeStepIndex].stepperContent;

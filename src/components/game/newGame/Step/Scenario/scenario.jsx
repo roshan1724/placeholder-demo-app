@@ -124,9 +124,9 @@ function GameScenario () {
                     <li className='list-group-item'>
                       <div className="row">
                         <div className="col-2">
-                          <sapn className="icon-wrapper">
+                          <span className="icon-wrapper">
                             <i className="fa-solid fa-bullseye"></i>
-                          </sapn>
+                          </span>
                         </div>
                         <div className="col-10">
                           <p className="item-text">

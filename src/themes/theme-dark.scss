@@ -214,6 +214,13 @@
   }
 }
 
+.search-wrapper {
+  input[type="search"] {
+    background-color: $color_grey1_bg;
+    color: $color_grey2_logo;
+  }
+}
+
 h1.title,
 .page-title,
 .section-title {
@@ -349,6 +356,93 @@ h1.title,
       background-color: $color_white;
       border-color: $color_white;
       transition: all 0.3s ease-in-out;
+    }
+  }
+}
+
+.button-filter {
+  border-color: $color_grey1_bg;
+  background-color: $color_grey1_bg;
+  color: $color_grey3_font;
+
+  .btn-text {
+    color: $color_grey2_logo;
+  }
+}
+
+.dropdown {
+  .dropdown-menu {
+    font-size: 14px;
+    color: $color_grey3_font;
+    background-color: $color_black;
+    border: 1px solid $color_line;
+    @include effect_block_shadow();
+
+    li:last-child {
+      .dropdown-item {
+        border-bottom: none;
+      }
+    }
+
+    .dropdown-item {
+      color: $color_grey3_font;
+      border-bottom: 1px solid $color_line;
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+        color: $color_grey3_font;
+        background-color: $color_black;
+      }
+
+      &.active {
+        color: $color_white;
+        background-color: $color_black;
+      }
+
+      &.logout {
+        color: $color_red;
+        span {
+          color: inherit;
+        }
+      }
+    }
+  }
+}
+
+.table-content-wrapper {
+  .game-list-table {
+    thead {
+      color: $color_white;
+    }
+    tbody {
+      color: $color_grey3_font;
+
+      .table-row {
+        .table-cell {
+          background-color: $color_grey2_bg;
+
+          .scenario-wrapper {
+            color: $color_white;
+          }
+
+          .avatar-wrapper {
+            img.profile-image,
+            .no-profile,
+            .additional-profiles {
+              border: 2px solid $color_grey2_logo;
+              background-color: $color_grey1_bg;
+            }
+          }
+        }
+      }
+
+      .row-spacer {
+        .table-cell {
+          background-color: transparent;
+        }
+      }
+
     }
   }
 }

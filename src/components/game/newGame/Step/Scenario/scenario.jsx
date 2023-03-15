@@ -110,7 +110,7 @@ function GameScenario () {
                 <div className={`scenario-card h-100 ${selectedScenarioId && selectedScenarioId === data.scenario_id ? 'selected' : ''}`}
                 onClick={() => handleCardSelection(data.scenario_id)}>
                   <span className="scenario-check icon-wrapper">
-                    <i class="fa-solid fa-check"></i>
+                    <i className="fa-solid fa-check"></i>
                   </span>
                   <div className="icon-wrapper main">
                     {
@@ -138,9 +138,9 @@ function GameScenario () {
                     <li className='list-group-item'>
                       <div className="row">
                         <div className="col-2">
-                          <sapn className="icon-wrapper">
+                          <span className="icon-wrapper">
                             <i className="fa-solid fa-users"></i>
-                          </sapn>
+                          </span>
                         </div>
                         <div className="col-10">
                           <p className="item-text">
@@ -152,9 +152,9 @@ function GameScenario () {
                     <li className='list-group-item'>
                       <div className="row">
                         <div className="col-2">
-                          <sapn className="icon-wrapper">
+                          <span className="icon-wrapper">
                             <i className="fa-solid fa-building"></i>
-                          </sapn>
+                          </span>
                         </div>
                         <div className="col-10">
                           <p className="item-text">

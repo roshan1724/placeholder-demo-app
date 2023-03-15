@@ -147,7 +147,7 @@ const GameDetailForm = (formOptionsData, submitCallback) => {
     it_admin_email: Yup.string().email('Enter valid email').required('Enter valid email'),
     it_admin_title: Yup.string().oneOf(formOptionsData.it_admin_jobTitle, 'Select valid title').required('Select valid title'),
     
-    spectators: Yup.array(
+    spectators: Yup.array().of(
       Yup.object().shape({
         spectator_name: Yup.string().required('Enter valid name'),
         spectator_email: Yup.string().email('Enter valid email').required('Enter valid email')

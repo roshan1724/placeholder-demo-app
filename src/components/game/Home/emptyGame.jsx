@@ -16,7 +16,7 @@ function EmptyGame() {
     <section className="section-emptygame flex-center">
       <div className="game-wrapper">
         <div className='icon-wrapper'>
-          <i class="fa-solid fa-chess-rook"></i>
+          <i className="fa-solid fa-chess-rook"></i>
         </div>
         <div className="page-title">No Games Here!</div>
         <div className="page-subtitle">
@@ -25,7 +25,7 @@ function EmptyGame() {
         <div className="action-wrapper">
           <button className="btn btn-primary btn-filled" onClick={handleNewGameClick}>
             <span className="me-2">
-              <i class="fa-solid fa-plus"></i>
+              <i className="fa-solid fa-plus"></i>
             </span>
             Add New Game
           </button>

@@ -24,7 +24,7 @@ function GameHome () {
     <div className="game-home">
       {
         gameList && gameList.length > 0
-        ? <GameList />
+        ? <GameList gameListData={gameList} />
         : <EmptyGame />
       }
     </div>

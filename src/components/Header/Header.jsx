@@ -78,17 +78,18 @@ function Header({ currentLocation }) {
             <ul className="dropdown-menu text-small">
               <li>
                 <a className="dropdown-item" href="/">
-                  Settings
+                  <span className="icon-wrapper me-2">
+                    <i className="fa-solid fa-building"></i>
+                  </span>
+                  Company Details
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="/">
-                  Profile
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="/">
-                  Sign out
+                <a className="dropdown-item logout" href="/">
+                  <span className="icon-wrapper me-2">
+                    <i className="fa-solid fa-right-from-bracket"></i>
+                  </span>
+                  Log out
                 </a>
               </li>
             </ul>

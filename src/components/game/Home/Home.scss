@@ -32,5 +32,172 @@
     }
   }
 
-  .section-gameList {}
+  .section-gamelist {
+    .page-header-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .icon-wrapper {
+      color: inherit;
+    }
+
+    .page-content-wrapper {
+      width: 100%;
+
+      .table-header-actions {
+        background-color: $color_grey2_bg;
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+
+        .search-wrapper {
+          input[type="search"] {
+            width: 300px;
+            height: 30px;
+            padding: 0 25px 0 15px;
+          }
+
+          img {
+            width: $width_table_icon;
+            height: $height_table_icon;
+            transform: translate3d(0, -50%, 0);
+          }
+        }
+
+        .filter-box-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+        }
+      }
+
+      .table-content-wrapper {
+        .game-list-table {
+          &.table > :not(caption) > * > * {
+            border-bottom-width: 0;
+          }
+
+          thead > tr > th:first-child,
+          tbody > tr > td:first-child {
+            padding-left: 15px;
+          }
+
+          thead {
+            font-size: 16px;
+          }
+
+          tbody {
+            font-size: 14px;
+
+            .table-row {
+              min-height: 75px;
+              @include effect_block_shadow();
+
+              .table-cell {
+                &:first-child {
+                  border-top-left-radius: 15px;
+                  border-bottom-left-radius: 15px;
+                }
+                &:last-child {
+                  border-top-right-radius: 15px;
+                  border-bottom-right-radius: 15px;
+                }
+              }              
+            }
+
+            .row-spacer {
+              min-height: 20px;
+            }
+          }
+
+          .scenario-wrapper {
+            .icon-wrapper {
+              font-size: 16px;
+            }
+          }
+
+          .table-cell-user-avatars {
+            position: relative;
+
+            .avatar-wrapper {
+              display: inline-block;
+              position: relative;
+
+              img.profile-image,
+              .no-profile,
+              .additional-profiles {
+                width: $height_profile_image_icon;
+                height: $height_profile_image_icon;
+                border-radius: 50%;
+                font-size: 12px;
+                font-weight: 600;
+              }
+              
+              img.profile-image {
+                filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
+              }
+
+              .no-profile {
+                text-transform: capitalize;
+              }
+
+              .no-profile,
+              .additional-profiles {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+
+          .game-status-wrapper {
+            &[data-game-status*="ongoing"i] {
+              color: inherit;
+            }
+
+            &[data-game-status*="scheduled"i] {
+              color: inherit;
+            }
+
+            &[data-game-status*="finished"i] {
+              color: $color_green;
+            }
+          }
+
+          .game-schedule-action,
+          .game-user-action {
+            &[data-game-status*="ongoing"i],
+            &[data-game-status*="scheduled"i],
+            &[data-game-status*="finished"i] {
+              color: $color_theme;
+            }
+          }
+
+          .sort-icon {
+            &[data-sort_mode="none"] {
+              color: $color_grey2_logo;
+            }
+            
+            &[data-sort_mode="asc"] {
+              color: $color_grey2_logo;
+              i.fa-arrow-up {
+                color: $color_theme;
+              }
+            }
+            
+            &[data-sort_mode="desc"] {
+              color: $color_grey2_logo;
+              i.fa-arrow-down {
+                color: $color_theme;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

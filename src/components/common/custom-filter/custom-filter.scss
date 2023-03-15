@@ -1,0 +1,33 @@
+@import "./../../../variables.scss";
+
+
+.filter-box-container {
+  min-width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+
+  .filter-trigger-wrapper {
+    flex-grow: 1;
+  }
+}
+
+button.button-filter {
+  border-radius: 10px;
+  text-align: left;
+  width: 150px;
+  padding-right: 25px;
+  transition: all 0.3s ease-in-out;
+
+  &::after {
+    border: none;
+  }
+
+  .icon-wrapper {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+  }
+}

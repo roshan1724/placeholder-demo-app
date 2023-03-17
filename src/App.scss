@@ -207,6 +207,65 @@
     }
   }
 
+  .tooltip-wrapper {
+    position: relative;
+    display: block;
+    width: fit-content;
+
+    &:hover {
+      .tooltip-content {
+        visibility: visible;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+    
+    .tooltip-content {
+      visibility: hidden;
+      position: absolute;
+      z-index: 1;
+      width: fit-content;
+      background-color: $color_black;
+      color: $color_white;
+      padding: 12px 16px;
+      border: 1px solid $color_line;
+      border-radius: 15px;
+      @include effect_block_shadow();
+
+      &::after {
+        position: absolute;
+        content: " ";
+        border-width: 5px;
+        border-style: solid;
+      }
+
+      &.content-right {
+        top: -50%;
+        left: 105%;
+        transform: translate3d(-5%, -25%, 0);
+
+        &::after {
+          top: 50%;
+          right: 100%;
+          margin-top: -5px;
+          border-color: transparent $color_black transparent transparent;
+        }
+      }
+
+      &.content-left {
+        top: -50%;
+        right: 105%;
+        transform: translate3d(0, -25%, 0);
+
+        &::after {
+          top: 50%;
+          left: 100%;
+          margin-top: -5px;
+          border-color: transparent transparent transparent $color_black;
+        }
+      }
+    }
+  }
+
   .custom-form-block {
     .input-group {
       &.date-field {

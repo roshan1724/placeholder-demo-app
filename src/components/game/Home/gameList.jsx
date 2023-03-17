@@ -88,9 +88,25 @@ function GameList ({ gameListData }) {
 
   const getTooltipContent = (userData) => {
     return (
-      userData.map((data, dataIndex) => (
-        <span key={`user-${dataIndex}`}></span>
-      ))
+      <div className="user-detail-menu">
+      {
+        userData.map((data, dataIndex) => (
+          <div className="user-detail-list" key={`user-${dataIndex}`}>
+            <div className="avatar-wrapper">
+            {
+              data.profile_img && data.profile_img !== ""
+              ? <img className='profile-image' src={data.profile_img} alt={data.user_name}/>
+              : <span className='no-profile'>{data.user_name.at(0)}</span>
+            }
+            </div>
+            <div className="user-info">
+              <span className="user-name">{data.user_name}</span>
+              <span className="user-name">{data.user_dept}</span>
+            </div>
+          </div>
+        ))        
+      }
+      </div>
     )
   }
 
@@ -147,7 +163,7 @@ function GameList ({ gameListData }) {
           </div>
         )
       }
-        <div className="tooltip-content">
+        <div className="tooltip-content content-right">
         {
           getTooltipContent(gameData[keyName])
         }
@@ -171,7 +187,7 @@ function GameList ({ gameListData }) {
     return (
       <div className="game-status-wrapper" data-game-status={`${gameStatus}`}>
         <span className="icon-wrapper me-2">
-          <i class={`fa-solid fa-${uiDataObj.iconName}`}></i>
+          <i className={`fa-solid fa-${uiDataObj.iconName}`}></i>
         </span>
         <span className="status-text">{uiDataObj.actionText}</span>
       </div>
@@ -193,7 +209,7 @@ function GameList ({ gameListData }) {
     return (
       <div className="game-schedule-action clickable" data-game-status={`${gameStatus}`}>
         <span className="icon-wrapper me-2">
-          <i class={`fa-solid fa-${uiDataObj.iconName}`}></i>
+          <i className={`fa-solid fa-${uiDataObj.iconName}`}></i>
         </span>
         <span className="status-text">{uiDataObj.actionText}</span>
       </div>
@@ -220,7 +236,7 @@ function GameList ({ gameListData }) {
         data-game-status={`${gameStatus}`}
         onClick={() => navigate(uiDataObj.navigationLink)}>
         <span className="icon-wrapper me-2">
-          <i class={`fa-solid fa-${uiDataObj.iconName}`}></i>
+          <i className={`fa-solid fa-${uiDataObj.iconName}`}></i>
         </span>
         <span className="status-text">{uiDataObj.actionText}</span>
       </div>

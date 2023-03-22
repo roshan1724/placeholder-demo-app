@@ -1,13 +1,12 @@
 import "./App.scss";
 import Header from "./components/Header/Header";
 
-import UserState from "./context/user/user-state";
-import OptionState from "./context/options/option-state";
-
 import AppRoutes from "./App.routes";
 
 import { useState } from "react";
 import { RouterProvider } from 'react-router-dom';
+import Loader from "./components/common/Loader/loader";
+import { useSelector } from "react-redux";
 
 function App() {
   const router = AppRoutes();
@@ -28,15 +27,14 @@ function App() {
     }
   }
 
+  const loading = useSelector((state) => state.ui.showLoader);
+
   return (
-    <div className={theme === 'dark' ? "App container-fluid theme-dark" : "App container-fluid theme-light"}>
-      <UserState>
-        <OptionState>
-          <Header updateTheme={updateColorTheme} currentLocation={currentLocation}/>
-          <RouterProvider router={router} />
-          {/* <Container /> */}
-        </OptionState>
-      </UserState>
+    <div className={`App container-fluid ${theme === 'dark' ? "theme-dark" : "theme-light"} ${loading ? 'page-loading' : ''}`}>
+      <Loader />
+      <Header updateTheme={updateColorTheme} currentLocation={currentLocation}/>
+      <RouterProvider router={router} />
+      {/* <Container /> */}      
     </div>
   );
 }

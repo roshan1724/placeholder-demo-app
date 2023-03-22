@@ -9,10 +9,8 @@ export const getSpectatorFields = () => {
   }
 }
 
-const GameDetailForm = (formOptionsData, submitCallback) => {
-  console.log('Received formOptionsData ==> ', formOptionsData);
-
-  const initialValues = {
+export const getGameDetailFormInitailState = () => {
+  return {
     start_date: '',
     start_time: {
       hours: '',
@@ -32,7 +30,7 @@ const GameDetailForm = (formOptionsData, submitCallback) => {
     it_admin_email: '',
     it_admin_title: '',
 
-    spectators: [getSpectatorFields(), getSpectatorFields()],
+    spectators: [getSpectatorFields()],
 
     hasPortal: '',
     portalValue: '',
@@ -41,7 +39,11 @@ const GameDetailForm = (formOptionsData, submitCallback) => {
     email_gateway: [],
     antivirus: '',
     edr: ''
-  }
+  };
+}
+
+const GameDetailForm = (formOptionsData, submitCallback) => {
+  const initialValues = getGameDetailFormInitailState();
 
   // const validateDate = (given_date) => {
   //   return /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/i.test(given_date);

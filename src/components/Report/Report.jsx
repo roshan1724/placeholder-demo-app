@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
 import './Report.scss';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PdfDownloader from '../common/PdfDownloader/PdfDownloader';
+import { UiActions } from '../../store/ui-slice';
 
 import Progressbar from '../common/progressbar/progressbar';
 import PhaseReport from './Phase-Report/PhaseReport';
@@ -9,20 +11,26 @@ function Report() {
   const [summaryData, setSummaryData] = useState([]);
   const [findingsData, setFindingsData] = useState([]);
   const [phaseData, setPhaseData] = useState([]);
+  
+  const dispatch = useDispatch();
+  const loader = useSelector((state) => state.ui.showLoader);
 
   useEffect(() => {
+    dispatch(UiActions.setShowLoader(true));
     // API Call to get Dashboard Data
     fetch("/data/dashboard-summary-data.json")
     .then((response) => response.json())
     .then((response) => {
+      dispatch(UiActions.setShowLoader(false));
       updateSummaryProgressConfig(response['summary_data']);
       updatePhaseProgressConfig(response['phase_data']);
       setFindingsData(response['finding_data']);
     })
     .catch((err) => {
+      dispatch(UiActions.setShowLoader(false));
       console.warn(err);
     });
-  }, []);
+  }, [dispatch]);
 
   const updateSummaryProgressConfig = (summaryData) => {
     const progressColorList = ['green', 'blue', 'purple'];
@@ -59,7 +67,7 @@ function Report() {
     setPhaseData(updatedPhaseDataList);
   }
 
-  return (
+  return ( !loader &&
     <section className='section-report px-3'>
       <h1 className="page-title">Incident Summary</h1>
       <div className="d-flex justify-content-between">

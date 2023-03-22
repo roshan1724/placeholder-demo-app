@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 
-const CompanyDetailsForm = (submitCallback) => {
-  const initialValues = {
+export const getCompanyDetailFormInitailState = () => {
+  return {
     company_name: "",
     admin_name: "",
     admin_email: "",
@@ -11,7 +11,11 @@ const CompanyDetailsForm = (submitCallback) => {
     sm_name: "",
     other_sm_name: "",
     info_types: ""
-  }
+  };
+}
+
+const CompanyDetailsForm = (submitCallback) => {
+  const initialValues = getCompanyDetailFormInitailState();
 
   const validate = (values) => {
     let errors = {};

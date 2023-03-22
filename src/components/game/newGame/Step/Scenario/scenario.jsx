@@ -1,5 +1,7 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import NewGameContext from '../../../../../context/game/new-game-context';
+import { GameFormActions } from '../../../../../store/form-game-slice';
 import './scenario.scss';
 
 
@@ -90,6 +92,13 @@ function GameScenario () {
   const { activeStepIndex, setActiveStepIndex } = useContext(NewGameContext);
   const [selectedScenarioId, setSelectedScenarioId] = useState(null);
 
+  const dispatch = useDispatch();
+  const scenarioFormValue = useSelector((state) => state.gameForm.scenario_form);
+
+  useEffect(() => {
+    setSelectedScenarioId(scenarioFormValue);
+  }, [scenarioFormValue]);
+
   const handleCardSelection = (scenarioId) => {
     const selectedScenario = gameScenarioList.findIndex(scenarioData => scenarioData.scenario_id === scenarioId);
     console.log('Selected Scenarion ==> ', selectedScenario);
@@ -97,6 +106,10 @@ function GameScenario () {
   }
 
   const handleNextClick = () => {
+    dispatch(GameFormActions.updateGameForm({
+      formName: 'scenario_form',
+      formData: selectedScenarioId
+    }));
     setActiveStepIndex(activeStepIndex + 1);
   }
 

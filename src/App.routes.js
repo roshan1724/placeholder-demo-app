@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
 
 import Login from "./components/User/Login/Login";
-import Container from "./components/game/playboard/Container/Container";
+import Playboard from "./components/game/playboard/playboard";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Report from "./components/Report/Report";
 import CompanyHome from "./components/company/Home/Home";
@@ -48,7 +48,7 @@ const AppRoutes = () => {
     },
     {
       path: ROUTE_PATHS.GAME_PLAYBOARD,
-      element: <Container />
+      element: <Playboard />
     },
     {
       path: ROUTE_PATHS.DASHBOARD,

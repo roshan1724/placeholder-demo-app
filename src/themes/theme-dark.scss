@@ -1,5 +1,10 @@
 @import "./../variables.scss";
 
+.loader {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2.5px);
+}
+
 .section-summary,
 .section-details,
 .section-options,

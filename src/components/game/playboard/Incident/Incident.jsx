@@ -34,7 +34,7 @@ function Incident(props) {
     <section className='section-incident p-0'>
       <ul className="nav nav-tabs nav-fill mb-2" id="incident-tab" role="tablist">
         {tabNames.map((tabData, tabIndex) => (
-          <li key={'tab-' + tabData.id} className="nav-item" role="presentation">
+          <li key={`tab-${tabData.id}-${tabIndex}`} className="nav-item" role="presentation">
             <button 
               className={tabIndex === 0 ? 'nav-link active': 'nav-link'} 
               id={tabData.tabName + '-tab'}
@@ -53,7 +53,7 @@ function Incident(props) {
       <div className="tab-content" id="incident-tab-content">
         {tabNames.map((tabData, tabIndex) => (
           <div
-            key={'content-' + tabData.id}
+            key={`content-${tabData.id}-${tabIndex}`}
             className={tabIndex === 0 ? 'tab-pane fade show active': 'tab-pane fade'}
             id={tabData.tabName + '-body'}
             role="tabpanel"

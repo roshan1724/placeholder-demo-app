@@ -8,12 +8,14 @@
 import "./Container.scss";
 
 import React, { useContext, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import Incident from "../Incident/Incident";
 import Options from "../Incident/Options/Options";
 
 import OptionContext from "../../../../context/options/option-context";
 import UserContext from "../../../../context/user/user-context";
+import { UiActions } from "../../../../store/ui-slice";
 
 function Container() {
   const [incidentData, setIncidentData] = useState([]);
@@ -23,11 +25,16 @@ function Container() {
   const optionContext = useContext(OptionContext);
   const userContext = useContext(UserContext);
 
+  const dispatch = useDispatch();
+  const loader = useSelector((state) => state.ui.showLoader);
+
   useEffect(() => {
+    dispatch(UiActions.setShowLoader(true));
     // API Call to get Incident Data
     fetch("/data/incident-data.json")
       .then((response) => response.json())
       .then((response) => {
+        dispatch(UiActions.setShowLoader(false));
         setIncidentData(response.data);
         setMessageList([
           {
@@ -39,9 +46,10 @@ function Container() {
         ]);
       })
       .catch((err) => {
+        dispatch(UiActions.setShowLoader(false));
         console.warn(err);
       });
-  }, []);
+  }, [dispatch]);
 
   /**
    * Function to handle Submit selected options
@@ -81,10 +89,12 @@ function Container() {
     userContext.userData && (
       <section className="container-wrapper p-3 mb-3">
         <div className="row">
-          <div className="col-12 col-md-6 section-container">
-            <Incident className="h-100" messageList={messageList}/>
-            <img src="/images/resizer_icon.png" alt="resizer icon" className="seperator-icon" />
-          </div>
+          { !loader &&
+            <div className="col-12 col-md-6 section-container">
+              <Incident className="h-100" messageList={messageList}/>
+              <img src="/images/resizer_icon.png" alt="resizer icon" className="seperator-icon" />
+            </div>
+          }
           <div className="col-12 col-md-6 section-container">
             <Options className="h-100" handleSubmit={handleSubmit} />
           </div>

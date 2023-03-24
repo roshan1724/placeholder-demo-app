@@ -1,57 +1,41 @@
-import jsPDF from "jspdf";
-// import html2canvas from "html2canvas";
+import { useState } from "react";
+import { ROUTE_PATHS } from "../../../utilities/constants";
 
-function PdfDownloader({rootElementId, downloadFileName}) {
+function PdfDownloader({isComponent, downloadFileName}) {
+  const [processing, setProcessing] = useState(false);
 
   const downloadPdfDocument = (isLibrary) => {
-    if (isLibrary) {
-      const pdf = new jsPDF({
-        format: 'a4',
-        unit: 'pt',
-        orientation: 'portrait'
-      });
-      const elementId = rootElementId ? rootElementId : 'root';
-      const printSrc = document.getElementById(elementId);
-  
-      const pdfWidth = pdf.internal.pageSize.width;
-      const srcWidth = printSrc.scrollWidth;
-      const margin = 18;
-      const scaleFactor = (pdfWidth - margin * 2) / srcWidth;
-  
-      pdf.html(printSrc, {
-        x: margin,
-        y: margin,
-        html2canvas: {
-          useCORS: true,
-          backgroundColor: "#000",
-          scale: scaleFactor,
-          ignoreElements: function(element) {
-            if (element.classList.contains('no-print')) {
-              return true;
-            }
-            return false;
-          },
-          svgRendering: true,
-        },
-        autoPaging: 'text',
-        callback: async function(doc) {
-          try {
-            await doc.save(downloadFileName || 'game-report-' + new Date().toDateString());
-            // window.open(doc.output('bloburl'));
-          } catch (error) {
-            console.error('error while downloading file');
-          }
-        },
-      });
+    if (isComponent) {
+      setProcessing(true);
+      const windowFeatures = "fullscreen=no,location=no,menubar=no,scrollbars=yes,status=no,titlebar=no,toolbar=no,width=1000,height=1000";
+      const url = `${window.location.origin}${ROUTE_PATHS.PRINT_REPORT}?fileName=${downloadFileName || 'game-report-' + new Date().toDateString()}`;
+      const tempWindow = window.open(url, "_blank", windowFeatures);
+      
+      setTimeout(() => {
+        tempWindow.addEventListener("afterprint", (event) => {});
+        tempWindow.onafterprint = () => {
+          console.log('After Printing');
+          tempWindow.close();
+          setProcessing(false);          
+        }
+
+        // This EVENT is not reliable for mobile devices
+        // TODO: Can update to "visibilitychange" or "pagehide" events
+        tempWindow.addEventListener("unload", () => {});
+        tempWindow.onunload = () => {
+          setProcessing(false);
+        }
+      }, 2000);
     } else {
-      window.print();
     }
   }
 
   return (
     <button className="btn btn-primary btn-filled download-button no-print" onClick={() => downloadPdfDocument(true)}>
-      <img src="/images/download_black.png" alt="Download Icon" />
-      <span>Download Report</span>
+      <span className="icon-wrapper me-2">
+        <i className={`fa-solid ${processing ? 'fa-circle-notch fa-spin' : 'fa-file-arrow-down'}`}></i>
+      </span>
+      <span>{ processing ? 'Generating PDF...' : 'Download Report' }</span>
     </button>
   );
 }

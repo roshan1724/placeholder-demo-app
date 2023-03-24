@@ -1,0 +1,217 @@
+@import "../../../../variables.scss";
+@import "../../../../mixins.scss";
+@import "../../../../App.scss";
+
+$full_width_negative_value: 50;
+
+.report-pdf-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: $color_white;
+  color: $color_black;
+
+  @include profile_avatar_image();
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .avatar-wrapper {
+    img.profile-image {
+      filter: drop-shadow(0 0 0 black);
+    }
+  }
+
+  .border-bottom {
+    border-color: $color_line;
+  }
+
+  .action-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 1px solid $color_black;
+    .print-btn {
+      background-color: $color_black;
+      color: $color_white;
+      font-weight: 700;
+      width: 150px;
+    }
+  }
+}
+
+.print-summary-details-wrapper {
+  padding: 0;
+
+  .section-header {
+    background-color: $color_grey2_bg;
+    color: $color_white;
+    margin-left: -#{$full_width_negative_value}px;
+    margin-right: -#{$full_width_negative_value}px;
+    padding-left: #{$full_width_negative_value}px;
+    padding-right: #{$full_width_negative_value}px;
+    height: 30px;
+
+    .section-title {
+      margin-bottom: 0;
+
+      .count {
+        width: 18px;
+        height: 18px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        border-radius: 50px;
+        border: 1px solid $color_grey2_logo;
+        background-color: $color_white;
+        color: $color_black;
+
+        @include media_print {
+          background-color: $color_white;
+        }
+      }
+    }
+  }
+
+  .section-body {
+    display: block;
+
+    .findings-content {
+      border: 1px solid $color_grey2_logo;
+      border-collapse: collapse;
+      border-radius: 0;
+      background-color: $color_white;
+      color: $color_black;
+
+      @include media_print {
+        background-color: $color_white;
+      }
+    }
+  }
+
+  .summary-time-wrapper {
+    flex-direction: column;
+  }
+
+  .progress-wrapper {
+    font-weight: 700;
+    .time-wrapper {
+      span[data-state="active" i] {
+        color: $color_black;
+      }
+    }
+  }
+
+  .phase-report-container {
+    padding: 0;
+    margin-bottom: 15px;
+    border-radius: 0;
+    background-color: $color_white;
+
+    @include media_print {
+      background-color: $color_white;
+    }
+
+    &.print-preview {
+      .section-description {
+        color: $color_grey1_bg;
+      }
+
+      .section-subtitle {
+        color: $color_black;
+
+        span {
+          color: $color_black;
+        }
+      }
+
+      .summary-row {
+        row-gap: 15px;
+
+        .section-subtitle {
+          padding-bottom: 0.5rem;
+          border-bottom: 1px solid $color_grey2_logo;
+          color: $color_black;
+
+          span {
+            color: $color_black;
+          }
+        }
+
+        .summary-time-data {
+          display: flex;
+          column-gap: 10px;
+        }
+      }
+
+      .details-row {
+        color: $color_black;
+
+        .path-data-container[data-status*="success" i],
+        .company-data-container[data-status*="success" i] {
+          background-color: transparent;
+
+          @include media_print {
+            background-color: transparent;
+          }
+        }
+
+        .path-data-container[data-status*="fail" i],
+        .company-data-container[data-status*="fail" i] {
+          background-color: rgb(255, 204, 204);
+
+          @include media_print {
+            background-color: rgb(255, 204, 204);
+          }
+        }
+
+        .path-data-container,
+        .company-data-container {
+          border: 1px solid $color_grey2_logo;
+          border-radius: 0;
+
+          .content-time {
+            color: $color_black;
+            font-weight: 700;
+          }
+        }
+
+        .profile-wrapper {
+          .profile-name {
+            color: $color_black;
+          }
+          .profile-dept {
+            color: $color_grey2_logo;
+          }
+        }
+
+        .time-wrapper {
+          span[data-state="active" i] {
+            color: $color_black;
+            font-weight: 700;
+          }
+        }
+      }
+
+      .progress-container {
+        .progress-wrapper {
+          flex-direction: column;
+          align-items: baseline;
+          row-gap: 5px;
+          width: 100%;
+          padding: 0 20px 0 0;
+        }
+
+        .custom-progressbar {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,19 +1,21 @@
-import './Report.scss';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import PdfDownloader from '../common/PdfDownloader/PdfDownloader';
-import { UiActions } from '../../store/ui-slice';
+import './Report-pdf.scss';
+import React, { Fragment, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { useDispatch } from 'react-redux';
+import PrintService from '../../../../utilities/print-service';
+import { PRINT_PREVIEW_CONTAINER } from '../../../../utilities/constants';
+import { UiActions } from '../../../../store/ui-slice';
+import Progressbar from '../../progressbar/progressbar';
+import PhaseReport from '../../../Report/Phase-Report/PhaseReport';
+import { useLocation } from 'react-router';
 
-import Progressbar from '../common/progressbar/progressbar';
-import PhaseReport from './Phase-Report/PhaseReport';
 
-function Report() {
+const PdfContent = ({onPrint}) => {
   const [summaryData, setSummaryData] = useState([]);
   const [findingsData, setFindingsData] = useState([]);
   const [phaseData, setPhaseData] = useState([]);
-  
+
   const dispatch = useDispatch();
-  const loader = useSelector((state) => state.ui.showLoader);
 
   useEffect(() => {
     dispatch(UiActions.setShowLoader(true));
@@ -41,7 +43,7 @@ function Report() {
           "regular-bar"
         ],
         "showLegends": false,
-        "titleAlignment": "column"
+        "titleAlignment": "row"
       }    
       return data;
     });
@@ -54,12 +56,13 @@ function Report() {
       phaseData.phase_summary_data.map((data, index) => {
         data.configurations = {
           "classNameList": [
+            "print-preview",
             `progress-${progressColorList[index]}`,
             "thin-bar"
           ],
           "showLegends": false,
-          "titleAlignment": "row"
-        }
+          "titleAlignment": "column"
+        };
         return data;
       });
       return phaseData;
@@ -67,28 +70,51 @@ function Report() {
     setPhaseData(updatedPhaseDataList);
   }
 
-  return ( !loader &&
-    <section className='section-report px-3'>
-      <h1 className="page-title">Incident Summary</h1>
-      <div className="d-flex justify-content-between">
+  return (
+    <div className="report-pdf-wrapper container-fluid">
+      <header className="d-flex flex-wrap justify-content-between p-3 mb-3 border-bottom">
+        <a href="/" className="d-flex align-items-center mb-2 text-decoration-none">
+          <img
+            className="brand-logo"
+            src="/images/logo_placeholder.png"
+            alt="brand logo"
+          />
+        </a>
+
+        <div className="page-header-right d-flex align-items-center">
+          <span className="avatar-wrapper me-2">
+            <img
+              src="/images/people-male.png"
+              alt="profile-icon"
+              className="profile-image"
+            />
+          </span>
+          <span className="profile-name">Graham Smith</span>
+        </div>
+      </header>
+
+      <section className="section-report px-3">
+        <h1 className="page-title game-name">Game Name Goes Here</h1>
         <div className="page-description">
-          <p className="theme-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut facilisis nulla, non aliquam libero. 
-            Nullam orci tortor, auctor ac felis sit amet.
+          <p>
+            <strong>Incident Summary : </strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut facilisis 
+            nulla, non aliqam libero.  Nullam orci tortor, auctor ac felis sit amet.
           </p>
-          <p className="info-text">
-            <img className="info-icon me-1" src='/images/info_icon.svg' alt='info-icon'/>
-            The times represented here are simulated times, based on the actions chosen. These represent work hours, not elapsed time.
+          <p className='d-flex'>
+            <span className="icon-wrapper me-2">
+              <i className="fa-solid fa-circle-info"></i>
+            </span>
+            <span>
+              The times represented here are simulated times, based on the actions chosen. These represent work hours, 
+              not elapsed time.
+            </span>
           </p>
         </div>
-        <div className="page-action-wrapper">
-          <PdfDownloader isComponent={true}></PdfDownloader>
-        </div>
-      </div>
-      <div className="row">
+        
+        <div className="row">
         <div className="col-12 mt-3">
-          <div className="summary-details-wrapper">
-            <div className="section-header">
+          <div className="print-summary-details-wrapper">
+            <div className="section-header d-flex justify-content-between align-items-center">
               <h3 className="section-title">Total Time Taken</h3>
             </div>
             <div className="section-body py-2">
@@ -107,9 +133,9 @@ function Report() {
         </div>
 
         <div className="col-12 mt-3">
-          <div className="summary-details-wrapper">
-            <div className="section-header">
-              <h3 className="section-title">Findings <span className="count">5</span></h3>
+          <div className="print-summary-details-wrapper">
+            <div className="section-header d-flex justify-content-between align-items-center">
+              <h3 className="section-title">Findings <span className="count ms-1">5</span></h3>
             </div>
             <div className="section-body py-2">
             {
@@ -137,14 +163,14 @@ function Report() {
         </div>
 
         <div className="col-12 mt-3">
-          <div className="summary-details-wrapper">
-            <div className="section-header">
+          <div className="print-summary-details-wrapper">
+            <div className="section-header d-flex justify-content-between align-items-center">
               <h3 className="section-title">Phase Details</h3>
             </div>
             <div className="section-body py-2">
             {
               phaseData && phaseData.map((data, index) => (
-                <PhaseReport phaseData={data} key={data.id}/>
+                <PhaseReport phaseData={data} wrapperClass={'print-preview'} key={data.id}/>
               ))
             }
             </div>
@@ -152,8 +178,40 @@ function Report() {
         </div>
 
       </div>
-    </section>
+
+      </section>
+
+      <div className="action-wrapper">
+        <button className="mx-auto btn btn-primary no-print print-btn" onClick={onPrint}>Download</button>
+      </div>
+    </div>
+  );
+} 
+
+function ReportPdf() {
+  const { search } = useLocation();
+  const searchParams = new URLSearchParams(search);
+  const downloadFileName = searchParams.get('fileName');
+  
+  const pdfElement = document.getElementById(PRINT_PREVIEW_CONTAINER);
+
+  const handlePrint = () => {
+    // window.print();
+    PrintService(PRINT_PREVIEW_CONTAINER, downloadFileName, (data) => {
+      console.log('PRINT STATUS ==> ', data);
+      window.close();
+    });
+  }
+
+  const portal  = createPortal(<PdfContent onPrint={handlePrint}/>, pdfElement);
+
+  return (
+    <Fragment>
+      {
+        portal
+      }
+    </Fragment>
   );
 }
 
-export default Report;
+export default ReportPdf;

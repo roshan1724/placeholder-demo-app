@@ -1,16 +1,16 @@
 import Progressbar from '../../common/progressbar/progressbar';
 import './PhaseReport.scss';
 
-function PhaseReport({phaseData}) {
+function PhaseReport({phaseData, wrapperClass}) {
 
   return (
-    <div className="phase-report-container">
-      <div className="row">
-        <div className="col-12 col-md-6">
+    <div className={`phase-report-container ${wrapperClass ? wrapperClass : ''}`}>
+      <div className="row summary-row">
+        <div className={`col-12 ${wrapperClass === 'print-preview' ? 'col-md-12' : 'col-md-6'}`}>
           <h3 className="section-subtitle">Phase {phaseData['phase_index']} : <span>{phaseData['phase_name']}</span></h3>
           <p className="section-description">{phaseData['phase_description']}</p>
         </div>
-        <div className="col-12 col-md-6">
+        <div className={`col-12 ${wrapperClass === 'print-preview' ? 'col-md-12' : 'col-md-6'}`}>
           <div className="summary-wrapper">
             {
               phaseData['phase_summary_data'] && 
@@ -24,8 +24,8 @@ function PhaseReport({phaseData}) {
         </div>
       </div>
       <hr className='seperator'/>
-      <div className="row">
-        <div className="col-12 col-md-6">
+      <div className="row details-row">
+        <div className={`col-12 ${wrapperClass === 'print-preview' ? 'col-md-12' : 'col-md-6'}`}>
           <h3 className="section-subtitle"><span>{phaseData['path_data']['title']}</span></h3>
           <div className="path-data-wrapper px-2">
           {
@@ -58,7 +58,7 @@ function PhaseReport({phaseData}) {
             </div>
           }
         </div>
-        <div className="col-12 col-md-6">
+        <div className={`col-12 ${wrapperClass === 'print-preview' ? 'col-md-12' : 'col-md-6'}`}>
           <h3 className="section-subtitle"><span>{phaseData['comany_data']['title']}</span></h3>
           <div className="company-data-wrapper px-2">
           {
@@ -107,17 +107,17 @@ function PhaseReport({phaseData}) {
             ))
           }
           </div>
+          {
+              phaseData['comany_data']['total_time'] && 
+              <div className="mt-2 time-wrapper c-font-14">
+                <span data-state="mute">Time - </span>
+                <span data-state={(phaseData['comany_data']['total_time'].week > 0) ? 'active' : 'mute'}>{phaseData['comany_data']['total_time'].week}W : </span>
+                <span data-state={(phaseData['comany_data']['total_time'].day > 0) ? 'active' : 'mute'}>{phaseData['comany_data']['total_time'].day}D : </span>
+                <span data-state={(phaseData['comany_data']['total_time'].hour > 0) ? 'active' : 'mute'}>{phaseData['comany_data']['total_time'].hour}h : </span>
+                <span data-state={(phaseData['comany_data']['total_time'].minute > 0) ? 'active' : 'mute'}>{phaseData['comany_data']['total_time'].minute}m</span>
+              </div>
+            }
         </div>
-        {
-            phaseData['comany_data']['total_time'] && 
-            <div className="mt-2 time-wrapper c-font-14">
-              <span data-state="mute">Time - </span>
-              <span data-state={(phaseData['comany_data']['total_time'].week > 0) ? 'active' : 'mute'}>{phaseData['comany_data']['total_time'].week}W : </span>
-              <span data-state={(phaseData['comany_data']['total_time'].day > 0) ? 'active' : 'mute'}>{phaseData['comany_data']['total_time'].day}D : </span>
-              <span data-state={(phaseData['comany_data']['total_time'].hour > 0) ? 'active' : 'mute'}>{phaseData['comany_data']['total_time'].hour}h : </span>
-              <span data-state={(phaseData['comany_data']['total_time'].minute > 0) ? 'active' : 'mute'}>{phaseData['comany_data']['total_time'].minute}m</span>
-            </div>
-          }
       </div>
     </div>
   );

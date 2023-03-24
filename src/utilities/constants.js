@@ -1,21 +1,26 @@
+export const PRINT_PREVIEW_CONTAINER = "app-print-preview";
+export const MODALVIEW_CONTAINER = "app-modal";
+
 export const ROUTE_PATHS = {
   ROOT: "/",
   LOGIN: "/login",
   DASHBOARD: "/dashboard",
   REPORT: "/report",
 
-
+  
   // Company Paths
   COMPANY_ROOT: "/company",
   COMPANY_HOME: "/company/home",
   COMPANY_DETAILS: "/company/details",
   COMPANY_EMAIL_SETUP: "/company/email-setup",
-
+  
   // Game Paths
   GAME_ROOT: "/game",
   GAME_ADD_NEW: "/game/add-game",
   GAME_PLAYBOARD: "/game/playboard",
-
+  
+  // PRINT Paths
+  PRINT_REPORT: "/print/report",
 }
 
 export const TABLE_GAME_STATUS = {

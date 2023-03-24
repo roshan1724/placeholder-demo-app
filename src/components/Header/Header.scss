@@ -4,12 +4,12 @@
 header {
   font-family: "Roboto";
 
-  .header-wrapper {
-    .brand-logo {
-      width: $width_brand;
-      height: $height_brand;
-    }
+  .brand-logo {
+    width: $width_brand;
+    height: $height_brand;
+  }
 
+  .header-wrapper {
     .page-header-right {
       gap: 5px;
 

@@ -25,82 +25,6 @@
     }
   }
 
-  .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .section-incident,
-  .section-options {
-    height: 100%;
-    max-height: calc(100vh - $height_header);
-    @include effect_block_shadow();
-    background: $color_grey2_bg;
-    border-radius: 20px;
-    padding: 20px;
-  }
-
-  .section-summary,
-  .section-details {
-    height: 100%;
-  }
-
-  .title {
-    font-weight: 700;
-    color: $secondary_gray;
-  }
-
-  .section-dashboard,
-  .phase-report-container {
-    .summary-time-data {
-      .regular-bar {
-        .custom-progressbar {
-          background: $color_grey1_bg;
-        }
-      }
-    }
-    .regular-bar {
-      .custom-progressbar {
-        height: 12px;
-      }
-    }
-    
-    .thin-bar {
-      .custom-progressbar {
-        height: 8px;
-      }
-    }
-  }
-
-  .section-game-scenario {
-    .detail-form-wrapper {
-      padding: 15px;
-    }
-  }
-
-  hr.seperator {
-    color: $color_line;
-  }
-
-  h1.title {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-
-  h4.title {
-    font-size: 16px;
-    margin-bottom: 18px;
-  }
-
-  p {
-    margin-bottom: 0;
-  }
-
-  .theme-text {
-    color: $secondary_gray;
-  }
-
   .overflow-scrollbar {
     overflow-y: scroll;
 
@@ -150,60 +74,6 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-    }
-  }
-
-  .c-font-10 {
-    font-size: 10px;
-  }
-
-  .c-font-12 {
-    font-size: 12px;
-  }
-
-  .c-font-14 {
-    font-size: 14px;
-  }
-
-  .c-font-16 {
-    font-size: 16px;
-  }
-
-  .c-font-18 {
-    font-size: 18px;
-  }
-
-  .c-font-20 {
-    font-size: 20px;
-  }
-
-  h1.page-title {
-    font-size: 20px;
-    font-weight: 700;
-  }
-
-  .theme-text {
-    font-size: 15px;
-    font-weight: 400;
-  }
-
-  .clickable {
-    cursor: pointer;
-  }
-
-  .material-icons {
-    font-weight: inherit;
-    font-size: inherit;
-  }
-
-  .info-text {
-    margin-top: 10px;
-    font-size: 12px;
-    font-weight: 400;
-
-    .info-icon {
-      width: $height_info_icon;
-      height: $height_info_icon;
     }
   }
 
@@ -329,75 +199,8 @@
     }
   }
 
-  .recommend-text {
-    display: flex;
-    flex-direction: row;
-    column-gap: 10px;
-    padding-top: 10px;
-    font-size: 12px;
-  }
-
-  .ellpsis-overflow {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .btn {
-    img {
-      width: $width_button_icon;
-      height: auto;
-      margin-right: 5px;
-    }
-  }
-
-  .time-wrapper {
-    font-size: auto;
-
-    span {
-      display: contents;
-
-      &[data-state="active"i] {
-        color: $color_white;
-      }
-
-      &[data-state="mute"i] {
-        color: $color_grey2_logo;
-      }
-    }
-  }
-
   input[type="search" i]::-webkit-search-cancel-button{
     display: none;  
-  }
-
-  .warn-modal,
-  .phase-modal {
-    position: relative;
-
-    .modal-title {
-      font-size: 20px;
-      padding-bottom: 15px;
-    }
-
-    .modal-subtitle {
-      font-size: 16px;
-      padding-bottom: 15px;
-    }
-
-    .modal-action-wrapper {
-      margin-top: 15px;
-      display: flex;
-      justify-content: flex-end;
-      column-gap: 10px;
-    }
-  
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      z-index: 1;
-    }
   }
 
   .table-content-wrapper {
@@ -412,6 +215,204 @@
   &.theme-dark {
     background: $color_black;
     @import "./themes/theme-dark.scss";
+  }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-weight: 700;
+  color: $secondary_gray;
+}
+
+hr.seperator {
+  color: $color_line;
+}
+
+h1.title {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+h4.title {
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.theme-text {
+  color: $secondary_gray;
+}
+
+.c-font-10 {
+  font-size: 10px;
+}
+
+.c-font-12 {
+  font-size: 12px;
+}
+
+.c-font-14 {
+  font-size: 14px;
+}
+
+.c-font-16 {
+  font-size: 16px;
+}
+
+.c-font-18 {
+  font-size: 18px;
+}
+
+.c-font-20 {
+  font-size: 20px;
+}
+
+h1.page-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.theme-text {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.material-icons {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.info-text {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 400;
+
+  .info-icon {
+    width: $height_info_icon;
+    height: $height_info_icon;
+  }
+}
+
+.recommend-text {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.ellpsis-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn {
+  img {
+    width: $width_button_icon;
+    height: auto;
+    margin-right: 5px;
+  }
+}
+
+.time-wrapper {
+  font-size: auto;
+
+  span {
+    display: contents;
+
+    &[data-state="active" i] {
+      color: $color_white;
+    }
+
+    &[data-state="mute" i] {
+      color: $color_grey2_logo;
+    }
+  }
+}
+
+.warn-modal,
+.phase-modal {
+  position: relative;
+
+  .modal-title {
+    font-size: 20px;
+    padding-bottom: 15px;
+  }
+
+  .modal-subtitle {
+    font-size: 16px;
+    padding-bottom: 15px;
+  }
+
+  .modal-action-wrapper {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 10px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 1;
+  }
+}
+
+.section-incident,
+.section-options {
+  height: 100%;
+  max-height: calc(100vh - $height_header);
+  @include effect_block_shadow();
+  background: $color_grey2_bg;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.section-dashboard,
+.phase-report-container {
+  .summary-time-data {
+    .regular-bar {
+      .custom-progressbar {
+        background: $color_grey1_bg;
+      }
+    }
+  }
+
+  .regular-bar {
+    .custom-progressbar {
+      height: 12px;
+    }
+  }
+
+  .thin-bar {
+    .custom-progressbar {
+      height: 8px;
+    }
+  }
+}
+
+.section-summary,
+.section-details {
+  height: 100%;
+}
+
+.section-game-scenario {
+  .detail-form-wrapper {
+    padding: 15px;
   }
 }
 

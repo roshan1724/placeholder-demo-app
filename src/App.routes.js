@@ -9,6 +9,7 @@ import CompanyDetails from "./components/company/Details/Details";
 import CompanyEmailSetup from "./components/company/EmailSetup/emailSetup";
 import GameHome from "./components/game/Home/Home";
 import AddNewGame from "./components/game/newGame/newGame";
+import ReportPdf from "./components/common/PdfComponents/ReportPDF/Report-pdf";
 import { ROUTE_PATHS } from "./utilities/constants";
 
 const AppRoutes = () => {
@@ -57,6 +58,10 @@ const AppRoutes = () => {
     {
       path: ROUTE_PATHS.REPORT,
       element: <Report />
+    },
+    {
+      path: ROUTE_PATHS.PRINT_REPORT,
+      element: <ReportPdf />
     }
   ]);
 

@@ -3,7 +3,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import PrintService from '../../../../utilities/print-service';
-import { PRINT_PREVIEW_CONTAINER } from '../../../../utilities/constants';
+import { API_PATHS, PRINT_PREVIEW_CONTAINER } from '../../../../utilities/constants';
 import { UiActions } from '../../../../store/ui-slice';
 import Progressbar from '../../progressbar/progressbar';
 import PhaseReport from '../../../Report/Phase-Report/PhaseReport';
@@ -20,7 +20,7 @@ const PdfContent = ({onPrint}) => {
   useEffect(() => {
     dispatch(UiActions.setShowLoader(true));
     // API Call to get Dashboard Data
-    fetch("/data/dashboard-summary-data.json")
+    fetch(API_PATHS.DASHBOARD_DATA)
     .then((response) => response.json())
     .then((response) => {
       dispatch(UiActions.setShowLoader(false));

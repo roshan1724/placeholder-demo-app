@@ -6,6 +6,7 @@
  */
 
 import React, { useEffect, useState } from "react";
+import { API_PATHS } from "../../utilities/constants";
 import UserContext from "./user-context";
 
 const UserState = (props) => {
@@ -14,7 +15,7 @@ const UserState = (props) => {
 
   useEffect(() => {
     // API Call to get User Data
-    fetch("/data/user-data.json")
+    fetch(API_PATHS.USER_LIST_DATA)
       .then((response) => response.json())
       .then((response) => {
         setUserDataList(response.data);

@@ -16,6 +16,7 @@ import Options from "../Incident/Options/Options";
 import OptionContext from "../../../../context/options/option-context";
 import UserContext from "../../../../context/user/user-context";
 import { UiActions } from "../../../../store/ui-slice";
+import { API_PATHS } from "../../../../utilities/constants";
 
 function Container() {
   const [incidentData, setIncidentData] = useState([]);
@@ -31,7 +32,7 @@ function Container() {
   useEffect(() => {
     dispatch(UiActions.setShowLoader(true));
     // API Call to get Incident Data
-    fetch("/data/incident-data.json")
+    fetch(API_PATHS.INCIDENT_DATA)
       .then((response) => response.json())
       .then((response) => {
         dispatch(UiActions.setShowLoader(false));

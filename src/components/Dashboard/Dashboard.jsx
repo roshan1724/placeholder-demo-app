@@ -5,7 +5,7 @@ import PhaseReport from '../Report/Phase-Report/PhaseReport';
 import { Fragment, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Area from '../common/Chart/Area';
-import { ROUTE_PATHS } from '../../utilities/constants';
+import { API_PATHS, ROUTE_PATHS } from '../../utilities/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { UiActions } from '../../store/ui-slice';
 
@@ -25,7 +25,7 @@ function Dashboard() {
     dispatch(UiActions.setShowLoader(true));
     // API Call to get Dashboard Data
     setTimeout(() => {
-      fetch("/data/dashboard-summary-data.json")
+      fetch(API_PATHS.DASHBOARD_DATA)
       .then((response) => response.json())
       .then((response) => {
         setSummaryData(response['summary_data']);

@@ -6,6 +6,7 @@
  */
 
 import React, { useEffect, useState } from "react";
+import { API_PATHS } from "../../utilities/constants";
 import OptionContext from "./option-context";
 
 const OptionState = (props) => {
@@ -13,7 +14,7 @@ const OptionState = (props) => {
 
   useEffect(() => {
     // API Call to get Option Data
-    fetch("/data/incident-option-data.json")
+    fetch(API_PATHS.INCIDENT_OPTION_DATA)
       .then((response) => response.json())
       .then((response) => {
         setOptionsData(response);

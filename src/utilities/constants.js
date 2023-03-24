@@ -23,6 +23,14 @@ export const ROUTE_PATHS = {
   PRINT_REPORT: "/print/report",
 }
 
+export const API_PATHS = {
+  DASHBOARD_DATA: '/data/dashboard-summary-data.json',
+  GAME_LIST_DATA: '/data/game-list.json',
+  INCIDENT_DATA: '/data/incident-data.json',
+  INCIDENT_OPTION_DATA: '/data/incident-option-data.json',
+  USER_LIST_DATA: '/data/user-data.json',
+}
+
 export const TABLE_GAME_STATUS = {
   ONGING: "Ongoing",
   FINISHED: "Finished",

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UiActions } from "../../../store/ui-slice";
+import { API_PATHS } from "../../../utilities/constants";
 import EmptyGame from "./emptyGame";
 import GameList from "./gameList";
 import "./Home.scss";
@@ -16,7 +17,7 @@ function GameHome () {
     dispatch(UiActions.setShowLoader(true));
     // API call to get game list
     setTimeout(() => {
-      fetch("/data/game-list.json")
+      fetch(API_PATHS.GAME_LIST_DATA)
         .then(response => response.json())
         .then(response => {
           setGameList(response.data);

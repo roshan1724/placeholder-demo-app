@@ -7,14 +7,18 @@
 
 import "./Options.scss";
 
-import bootstrap from "../../../../../../node_modules/bootstrap/dist/js/bootstrap.js";
-import React, { useContext, useState } from "react";
+// import bootstrap from "../../../../../../node_modules/bootstrap/dist/js/bootstrap.js";
+import React, { useContext, useEffect, useState } from "react";
 
 import OptionContext from "../../../../../context/options/option-context";
 import UserContext from "../../../../../context/user/user-context";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_PATHS } from "../../../../../utilities/constants";
+import { APP_MODAL_TYPES, MODALVIEW_CONTAINER, ROUTE_PATHS } from "../../../../../utilities/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { UiActions } from "../../../../../store/ui-slice";
+import AppModal from "../../../../common/Modal/modal";
+import { createPortal } from "react-dom";
 
 function Options(props) {
   const navigate = useNavigate();
@@ -28,19 +32,42 @@ function Options(props) {
     : null;
 
   const userContext = useContext(UserContext);
-
   const activeUser = userContext.userData;
+  const dispatch = useDispatch();
+  const showModalState = useSelector((state) => state.ui.showModal);
+  let appModal = null;
 
-  let warnModal = null;
+  useEffect(() => {
+    dispatch(UiActions.setShowModal(false));
+  }, [dispatch])
+  
+  const handleModalClose = (event) => {
+    dispatch(UiActions.setShowModal(false));
+  }
 
-  setTimeout(() => {
-    warnModal = new bootstrap.Modal(document.getElementById('warnModal'), {
-      backdrop: true,
-      keyboard: true,
-      focus: true
-    });
-  }, 200);
+  const handleEndTurn = (event) => {
+    handleModalClose(event);
+    navigate(ROUTE_PATHS.DASHBOARD);
+  }
 
+  const errorModalProps = {
+    modalType:APP_MODAL_TYPES.ERROR,
+    handleModalClose: handleModalClose,
+    modalBodyClass: ['modal-body-class'],
+    modalData:{
+      title: "End your Turn",
+      subTitle: "This will end your turn. You will not be able to submit a response after this. Are you sure?",
+      actionButtons: [{
+        text: 'Yes, End Turn',
+        classNames: ['btn-primary'],
+        clickHandler: handleEndTurn,
+      }, {
+        text: 'No, Go Back',
+        classNames: ['btn-primary', 'btn-filled'],
+        clickHandler: handleModalClose,
+      }],
+    } 
+  };
 
   /**
    * Function to Handle Option Selection
@@ -59,7 +86,6 @@ function Options(props) {
       if (event.target.value?.toLowerCase() === "i'm done") {
         openWarningModal();
       }
-
       event.target.value = '';
     }
   }
@@ -75,21 +101,11 @@ function Options(props) {
   };
 
   const openWarningModal = () => {
-    if (warnModal) {
-      warnModal.show();
-    }
-
-  }
-
-  const handleModalClose = (event) => {
-    if (warnModal) {
-      warnModal.hide();
-    }
-  }
-
-  const handleEndTurn = (event) => {
-    handleModalClose(event);
-    navigate(ROUTE_PATHS.DASHBOARD);
+    dispatch(UiActions.setShowModal(true));
+    const modalComponent = React.createElement(AppModal, errorModalProps);
+    appModal = createPortal(modalComponent, document.getElementById(MODALVIEW_CONTAINER));
+    console.log(`Modal Content ==> `, appModal);
+    console.log(`showModal ==> `, showModalState);
   }
 
   return optionsData ? (
@@ -131,11 +147,6 @@ function Options(props) {
                   <span className="checkmark-holder">
                     <span className="checked"> </span>
                   </span>
-                  {/* <img
-                    src="/images/checkmark.png"
-                    alt="checkmark"
-                    className="option-checked"
-                  /> */}
                   <span>{option.option_value}</span>
                 </label>
               </div>
@@ -163,11 +174,11 @@ function Options(props) {
           </div>
         </div>
 
-        <button className="d-none" data-toggle="modal" data-target="#warnModal"></button>
+        {/* <button className="d-none" data-toggle="modal" data-target="#warnModal"></button> */}
       </section>
 
       {/* MODAL CONTENT */}
-      <div className="modal fade" id="warnModal" tabIndex="-1" aria-labelledby="warnModalLabel" aria-hidden="true">
+      {/* <div className="modal fade" id="warnModal" tabIndex="-1" aria-labelledby="warnModalLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal">
           <div className="modal-content warn-modal">
             <span type="button" className="close-btn" data-bs-dismiss="modal" aria-label="Close" onClick={handleModalClose}>
@@ -184,7 +195,8 @@ function Options(props) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      { showModalState && <AppModal {...errorModalProps} /> }
     </Fragment>
   ) : (
     <div className="loading"> ... </div>

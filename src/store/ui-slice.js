@@ -4,6 +4,7 @@ const UiSlice = createSlice({
   name: "UI",
   initialState: {
     showLoader: false,
+    showModal: false,
     header: {
       showHeader: false,
       notification: {
@@ -15,8 +16,8 @@ const UiSlice = createSlice({
       gameView: {
         showGameView: false,
         isActive: false,
-      }
-    }
+      },
+    },
   },
   reducers: {
     // Loader Actions
@@ -26,6 +27,14 @@ const UiSlice = createSlice({
       state.showLoader = loadingState;
     },
 
+    // Modal Actions
+    setShowModal: (state, action) => {
+      const showModalState = action.payload;
+      console.log(`Modal State received as : `, showModalState);
+      state.showModal = showModalState;
+      console.log("State ==> ", state);
+    },
+
     // Header Actions
     setShowHeader: (state) => {
       state.header.showHeader = !state.header.showHeader;
@@ -33,7 +42,8 @@ const UiSlice = createSlice({
 
     // Notification Actions
     setShowNotification: (state) => {
-      state.header.notification.showNotification = !state.header.notification.showNotification;
+      state.header.notification.showNotification =
+        !state.header.notification.showNotification;
     },
 
     addNotifications: (state, action) => {
@@ -47,9 +57,12 @@ const UiSlice = createSlice({
       state.header.notification.changed = true;
       const id = action.payload;
       // TODO: update condition find the relevant notifation to be removed
-      const existingItem = state.header.notification.notificationList.find((item) => !id);
+      const existingItem = state.header.notification.notificationList.find(
+        (item) => !id
+      );
       if (existingItem) {
-        state.header.notification.notificationList = state.header.notification.notificationList.filter(item => item);
+        state.header.notification.notificationList =
+          state.header.notification.notificationList.filter((item) => item);
         state.header.notification.count -= 1;
       } else {
         console.error(`Notification cannot be found to be removed!`);
@@ -65,8 +78,8 @@ const UiSlice = createSlice({
 
     setGameViewActive: (state, action) => {
       state.header.gameView.isActive = !!action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const UiActions = UiSlice.actions;

@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { ROUTE_PATHS } from "../../../utilities/constants";
+import { PRINT_PAGE_NAMES, ROUTE_PATHS } from "../../../utilities/constants";
 
 function PdfDownloader({isComponent, downloadFileName}) {
   const [processing, setProcessing] = useState(false);
 
-  const downloadPdfDocument = (isLibrary) => {
+  const downloadPdfDocument = () => {
     if (isComponent) {
       setProcessing(true);
       const windowFeatures = "fullscreen=no,location=no,menubar=no,scrollbars=yes,status=no,titlebar=no,toolbar=no,width=1000,height=1000";
-      const url = `${window.location.origin}${ROUTE_PATHS.PRINT_REPORT}?fileName=${downloadFileName || 'game-report-' + new Date().toDateString()}`;
+      const url = `${window.location.origin}${ROUTE_PATHS.PRINT}/${PRINT_PAGE_NAMES.REPORT}?fileName=${downloadFileName || 'game-report-' + new Date().toDateString()}`;
       const tempWindow = window.open(url, "_blank", windowFeatures);
       
       setTimeout(() => {
@@ -31,7 +31,7 @@ function PdfDownloader({isComponent, downloadFileName}) {
   }
 
   return (
-    <button className="btn btn-primary btn-filled download-button no-print" onClick={() => downloadPdfDocument(true)}>
+    <button className="btn btn-primary btn-filled download-button no-print" onClick={() => downloadPdfDocument()}>
       <span className="icon-wrapper me-2">
         <i className={`fa-solid ${processing ? 'fa-circle-notch fa-spin' : 'fa-file-arrow-down'}`}></i>
       </span>

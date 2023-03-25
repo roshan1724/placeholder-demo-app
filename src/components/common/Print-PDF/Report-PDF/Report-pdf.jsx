@@ -1,16 +1,12 @@
 import './Report-pdf.scss';
-import React, { Fragment, useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import PrintService from '../../../../utilities/print-service';
-import { API_PATHS, PRINT_PREVIEW_CONTAINER } from '../../../../utilities/constants';
+import { API_PATHS } from '../../../../utilities/constants';
 import { UiActions } from '../../../../store/ui-slice';
 import Progressbar from '../../progressbar/progressbar';
 import PhaseReport from '../../../Report/Phase-Report/PhaseReport';
-import { useLocation } from 'react-router';
 
-
-const PdfContent = ({onPrint}) => {
+function ReportPdf ({onPrint, processingState}) {
   const [summaryData, setSummaryData] = useState([]);
   const [findingsData, setFindingsData] = useState([]);
   const [phaseData, setPhaseData] = useState([]);
@@ -182,36 +178,41 @@ const PdfContent = ({onPrint}) => {
       </section>
 
       <div className="action-wrapper">
-        <button className="mx-auto btn btn-primary no-print print-btn" onClick={onPrint}>Download</button>
+        <button className="mx-auto btn btn-primary no-print print-btn" onClick={onPrint}>
+          <span className="icon-wrapper me-2">
+            <i className={`fa-solid ${processingState ? 'fa-circle-notch fa-spin' : 'fa-file-arrow-down'}`}></i>
+          </span>
+          Download
+        </button>
       </div>
     </div>
   );
 } 
 
-function ReportPdf() {
-  const { search } = useLocation();
-  const searchParams = new URLSearchParams(search);
-  const downloadFileName = searchParams.get('fileName');
+// function ReportPdf() {
+//   const { search } = useLocation();
+//   const searchParams = new URLSearchParams(search);
+//   const downloadFileName = searchParams.get('fileName');
   
-  const pdfElement = document.getElementById(PRINT_PREVIEW_CONTAINER);
+//   const pdfElement = document.getElementById(PRINT_PREVIEW_CONTAINER);
 
-  const handlePrint = () => {
-    // window.print();
-    PrintService(PRINT_PREVIEW_CONTAINER, downloadFileName, (data) => {
-      console.log('PRINT STATUS ==> ', data);
-      window.close();
-    });
-  }
+//   const handlePrint = () => {
+//     // window.print();
+//     PrintService(PRINT_PREVIEW_CONTAINER, downloadFileName, (data) => {
+//       console.log('PRINT STATUS ==> ', data);
+//       window.close();
+//     });
+//   }
 
-  const portal  = createPortal(<PdfContent onPrint={handlePrint}/>, pdfElement);
+//   const portal  = createPortal(<PdfContent onPrint={handlePrint}/>, pdfElement);
 
-  return (
-    <Fragment>
-      {
-        portal
-      }
-    </Fragment>
-  );
-}
+//   return (
+//     <Fragment>
+//       {
+//         portal
+//       }
+//     </Fragment>
+//   );
+// }
 
 export default ReportPdf;

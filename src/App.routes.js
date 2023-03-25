@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom"
+import { createBrowserRouter } from "react-router-dom";
 
 import Login from "./components/User/Login/Login";
 import Playboard from "./components/game/playboard/playboard";
@@ -9,7 +9,7 @@ import CompanyDetails from "./components/company/Details/Details";
 import CompanyEmailSetup from "./components/company/EmailSetup/emailSetup";
 import GameHome from "./components/game/Home/Home";
 import AddNewGame from "./components/game/newGame/newGame";
-import ReportPdf from "./components/common/PdfComponents/ReportPDF/Report-pdf";
+import PrintPDF from "./components/common/Print-PDF/print-pdf";
 import { ROUTE_PATHS } from "./utilities/constants";
 
 const AppRoutes = () => {
@@ -17,55 +17,55 @@ const AppRoutes = () => {
     {
       path: ROUTE_PATHS.ROOT,
       index: true,
-      element: <Login />
+      element: <Login />,
     },
     {
       path: ROUTE_PATHS.LOGIN,
-      element: <Login />
+      element: <Login />,
     },
     {
       path: ROUTE_PATHS.COMPANY_ROOT,
-      element: <CompanyHome />
+      element: <CompanyHome />,
     },
     {
       path: ROUTE_PATHS.COMPANY_HOME,
-      element: <CompanyHome />
+      element: <CompanyHome />,
     },
     {
       path: ROUTE_PATHS.COMPANY_DETAILS,
-      element: <CompanyDetails />
+      element: <CompanyDetails />,
     },
     {
       path: ROUTE_PATHS.COMPANY_EMAIL_SETUP,
-      element: <CompanyEmailSetup />
+      element: <CompanyEmailSetup />,
     },
     {
       path: ROUTE_PATHS.GAME_ROOT,
-      element: <GameHome />
+      element: <GameHome />,
     },
     {
       path: ROUTE_PATHS.GAME_ADD_NEW,
-      element: <AddNewGame />
+      element: <AddNewGame />,
     },
     {
       path: ROUTE_PATHS.GAME_PLAYBOARD,
-      element: <Playboard />
+      element: <Playboard />,
     },
     {
       path: ROUTE_PATHS.DASHBOARD,
-      element: <Dashboard />
+      element: <Dashboard />,
     },
     {
       path: ROUTE_PATHS.REPORT,
-      element: <Report />
+      element: <Report />,
     },
     {
-      path: ROUTE_PATHS.PRINT_REPORT,
-      element: <ReportPdf />
-    }
+      path: ROUTE_PATHS.PRINT_PAGE,
+      element: <PrintPDF />,
+    },
   ]);
 
   return routes;
-}
+};
 
-export default AppRoutes
+export default AppRoutes;

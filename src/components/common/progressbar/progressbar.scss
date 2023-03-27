@@ -1,5 +1,5 @@
-@import './../../../variables.scss';
-@import "../../../mixins.scss";
+@import "./../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
 
 .progress-container {
   display: flex;
@@ -53,7 +53,7 @@
         background-color: $color_green;
       }
     }
-    
+
     .custom-progressbar {
       .progress-bar {
         background-color: $color_green;
@@ -73,7 +73,7 @@
         background-color: $colr_blue;
       }
     }
-    
+
     .custom-progressbar {
       .progress-bar {
         background-color: $colr_blue;
@@ -89,7 +89,7 @@
     .legend-box {
       background-color: $color_purple2;
     }
-    
+
     .custom-progressbar {
       .progress-bar {
         background-color: $color_purple2;

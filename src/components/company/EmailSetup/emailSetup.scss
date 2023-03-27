@@ -1,4 +1,4 @@
-@import "./../../../variables.scss";
+@import "./../../../styles/variables.scss";
 
 .company-email-setup {
   padding-bottom: 30px;
@@ -8,12 +8,11 @@
   }
 
   .setup-container {
-
     .setup-wrapper {
       padding: 35px;
       margin-top: 16px;
       background: $color_grey2_bg;
-      border-radius: 10px
+      border-radius: 10px;
     }
 
     .setup-content {
@@ -24,7 +23,8 @@
         padding: 30px 15px;
         color: $color_grey3_font;
 
-        .title, strong {
+        .title,
+        strong {
           color: $color_white;
         }
       }

@@ -1,5 +1,5 @@
-@import "../../../variables.scss";
-@import "../../../mixins.scss";
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
 
 .game-home {
   height: calc(100vh - $height_header);
@@ -116,7 +116,7 @@
                   border-top-right-radius: 15px;
                   border-bottom-right-radius: 15px;
                 }
-              }              
+              }
             }
 
             .row-spacer {
@@ -170,14 +170,14 @@
             &[data-sort_mode="none"] {
               color: $color_grey2_logo;
             }
-            
+
             &[data-sort_mode="asc"] {
               color: $color_grey2_logo;
               i.fa-arrow-up {
                 color: $color_theme;
               }
             }
-            
+
             &[data-sort_mode="desc"] {
               color: $color_grey2_logo;
               i.fa-arrow-down {

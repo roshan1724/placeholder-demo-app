@@ -1,6 +1,3 @@
-export const PRINT_PREVIEW_CONTAINER = "app-print-preview";
-export const MODALVIEW_CONTAINER = "app-modal";
-
 export const ROUTE_PATHS = {
   ROOT: "/",
   LOGIN: "/login",
@@ -31,8 +28,18 @@ export const API_PATHS = {
   USER_LIST_DATA: "/data/user-data.json",
 };
 
+export const PRINT_PREVIEW_CONTAINER = "app-print-preview";
+
 export const PRINT_PAGE_NAMES = {
   REPORT: "report",
+};
+
+export const MODALVIEW_CONTAINER = "app-modal";
+
+export const APP_MODAL_TYPES = {
+  SUCCESS: "success",
+  INFO: "info",
+  ERROR: "error",
 };
 
 export const TABLE_GAME_STATUS = {

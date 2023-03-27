@@ -1,11 +1,10 @@
-@import '../../variables.scss';
+@import "../../styles/variables.scss";
 
 .section-dashboard {
   .summary-chart-wrapper {
     @include effect_block_shadow();
     padding: 20px 30px;
     border-radius: 15px;
-
 
     .chart-wrapper {
       min-height: 300px;
@@ -26,7 +25,6 @@
         row-gap: 30px;
         padding: 0 30px;
       }
-      
     }
   }
 }
@@ -39,7 +37,6 @@
     font-weight: 400;
   }
 }
-
 
 .summary-details-wrapper {
   @include effect_block_shadow();
@@ -73,7 +70,6 @@
       font-weight: 500;
     }
   }
-
 }
 
 .section-body {

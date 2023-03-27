@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import "./variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import "./styles/global.scss";
+@import "./styles/app_modal.scss";
 
 body {
   margin: 0;
-  font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Droid Sans', sans-serif;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Droid Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -17,6 +18,10 @@ body {
     &.show {
       opacity: 0.75;
     }
+  }
+
+  .modal {
+    @include app_modal();
   }
 
   &::-webkit-scrollbar {
@@ -40,20 +45,20 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 // theme
 
 body {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 // Print Styles
 @media print {
   body {
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
 
     .no-print {
       display: none;

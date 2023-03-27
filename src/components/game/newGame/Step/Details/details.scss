@@ -1,4 +1,4 @@
-@import '../../../../../variables.scss';
+@import "../../../../../styles/variables.scss";
 
 .section-game-scenario {
   color: $color_white;
@@ -21,7 +21,7 @@
         input[type="text" i].form-control {
           max-width: 160px;
           border-radius: 0.375rem !important;
-        } 
+        }
       }
 
       .time-block-wrapper {
@@ -47,8 +47,8 @@
       .c-checkbox-groups {
         .row {
           row-gap: 15px;
-        }        
-        
+        }
+
         .portal-check {
           column-gap: 20px;
         }

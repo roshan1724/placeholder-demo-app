@@ -54,7 +54,7 @@ function Container() {
 
   /**
    * Function to handle Submit selected options
-   * @param {HTML_Event} event 
+   * @param {HTML_Event} event
    */
   const handleSubmit = (event) => {
     const currentData = messageList.map((message) => {
@@ -62,7 +62,8 @@ function Container() {
         if (incidentData[incidentCount].correct_option_id === event) {
           userContext.updateUserAchievements({
             user_id: userContext.userData.user_id,
-            linked_achievements: incidentData[incidentCount].linked_achievements,
+            linked_achievements:
+              incidentData[incidentCount].linked_achievements,
           });
         }
         return {
@@ -90,13 +91,17 @@ function Container() {
     userContext.userData && (
       <section className="container-wrapper p-3 mb-3">
         <div className="row">
-          { !loader &&
-            <div className="col-12 col-md-6 section-container">
-              <Incident className="h-100" messageList={messageList}/>
-              <img src="/images/resizer_icon.png" alt="resizer icon" className="seperator-icon" />
+          {!loader && (
+            <div className="col-12 col-md-7 section-container">
+              <Incident className="h-100" messageList={messageList} />
+              <img
+                src="/images/resizer_icon.png"
+                alt="resizer icon"
+                className="seperator-icon"
+              />
             </div>
-          }
-          <div className="col-12 col-md-6 section-container">
+          )}
+          <div className="col-12 col-md-5 section-container">
             <Options className="h-100" handleSubmit={handleSubmit} />
           </div>
         </div>

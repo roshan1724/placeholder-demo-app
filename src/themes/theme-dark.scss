@@ -1,453 +1,475 @@
-@import "./../variables.scss";
+@import "./../styles/variables.scss";
 
-.loader {
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(2.5px);
-}
+@mixin dark_theme() {
+  .loader {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2.5px);
+  }
 
-.section-summary,
-.section-details,
-.section-options,
-.summary-chart-wrapper,
-.summary-details-wrapper {
-  background-color: $color_grey2_bg;
-  color: $color_grey3_font;
-}
-
-.title-container {
-  p.description {
+  .section-summary,
+  .section-details,
+  .section-options,
+  .summary-chart-wrapper,
+  .summary-details-wrapper {
+    background-color: $color_grey2_bg;
     color: $color_grey3_font;
   }
-}
 
-.section-dashboard {
-  background-color: $color_black;
-  color: $color_white;
-}
+  .title-container {
+    p.description {
+      color: $color_grey3_font;
+    }
+  }
 
-.warn-modal,
-.phase-modal {
-  background-color: $color_grey1_bg;
-  color: $color_grey3_font;
-
-  .modal-title {
+  .section-dashboard {
+    background-color: $color_black;
     color: $color_white;
   }
 
-  .modal-subtitle {
+  .warn-modal,
+  .phase-modal {
+    background-color: $color_grey1_bg;
     color: $color_grey3_font;
   }
-}
 
-.chatbox-container {
-  .msg-wrapper.bot {
-    color: $color_grey3_font;
+  .modal-content {
+    background-color: $color_grey2_bg;
 
-    .msg-container {
-      background-color: $color_grey1_bg;
-    }
-  }
+    .modal-body {
+      .error-modal-content {
+        .modal-title {
+          color: $color_red;
 
-  .msg-wrapper.user {
-    color: $color_grey3_font;
+          .icon-wrapper {
+            color: inherit;
+          }
+        }
+      }
 
-    .msg-container {
-      background-color: $color_purple1;
-
-      .msg {
+      .modal-title {
         color: $color_white;
+      }
+
+      .modal-subtitle {
+        color: $color_grey3_font;
       }
     }
   }
-}
 
-.achievement-container {
-  .achievement-holder {
-    .achievement-wrapper {
-      .achievement-user-wrapper {
+  .chatbox-container {
+    .msg-wrapper.bot {
+      color: $color_grey3_font;
+
+      .msg-container {
         background-color: $color_grey1_bg;
+      }
+    }
 
-        .user-details {
-          .user-name {
-            color: $color_grey3_font;
-          }
+    .msg-wrapper.user {
+      color: $color_grey3_font;
 
-          .achievement-name {
-            color: $color_white;
-          }
+      .msg-container {
+        background-color: $color_purple1;
+
+        .msg {
+          color: $color_white;
         }
       }
     }
   }
-}
 
-.option-container {
-  .option-content {
-    .option-input {
-      &:checked {
-        &+label.option-text {
-          color: $color_theme;
+  .achievement-container {
+    .achievement-holder {
+      .achievement-wrapper {
+        .achievement-user-wrapper {
+          background-color: $color_grey1_bg;
 
-          .checkmark-holder {
-            border: 1px solid $color_theme;
+          .user-details {
+            .user-name {
+              color: $color_grey3_font;
+            }
 
-            .checked {
-              background-color: $color_theme;
+            .achievement-name {
+              color: $color_white;
             }
           }
         }
       }
     }
+  }
 
-    .option-text {
-      background-color: $color_grey1_bg;
-      color: $color_white;
+  .option-container {
+    .option-content {
+      .option-input {
+        &:checked {
+          & + label.option-text {
+            color: $color_theme;
 
-      .checkmark-holder {
-        border: 1px solid $color_grey2_bg;
+            .checkmark-holder {
+              border: 1px solid $color_theme;
 
-        .checked {
+              .checked {
+                background-color: $color_theme;
+              }
+            }
+          }
+        }
+      }
+
+      .option-text {
+        background-color: $color_grey1_bg;
+        color: $color_white;
+
+        .checkmark-holder {
+          border: 1px solid $color_grey2_logo;
           background-color: $color_grey2_bg;
+
+          .checked {
+            background-color: $color_grey2_bg;
+          }
         }
       }
     }
-  }
-}
-
-.custom-form-block {
-  color: $color_grey3_font;
-
-  .input-group-text {
-    background-color: $color_black;
-    border-color: $color_grey2_bg;
-    color: $color_grey2_logo;
-
-    &.eye-icon-wrapper {
-      background-color: $color_grey1_bg;
-      font-size: 14px;
-      cursor: pointer;
-    }
-  }
-
-  .form-check {
-    .form-check-input {
-      width: 20px;
-      height: 20px;
-      --bs-form-check-bg: $color_grey1_bg;
-      background-color: $color_grey1_bg;
-      border-color: $color_grey2_logo;
-      
-      &:checked {
-        &[type="checkbox"] {
-          --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
-        }
-        &[type="radio"] {
-          --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23000'/%3e%3c/svg%3e")
-        }
-        background-color: $color_theme;
-        border-color: $color_theme;
-      }
-
-      &+.form-check-label {
-        vertical-align: middle;
-        padding-top: 3px;
-        padding-left: 10px;
-      }
-    }
-  }
-
-  .form-control {
-    background-color: $color_grey1_bg;
-    border-color: $color_grey2_bg;
-    color: $color_grey2_logo;
-
-    &.is-invalid {
-      border-color: $color_red;
-      background-image: none;
-    }
-  }
-
-  .form-select {
-    background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23808080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
-    background-color: $color_grey1_bg;
-    border-color: $color_grey2_bg;
-    color: $color_grey2_logo;
-
-    &.is-invalid {
-      background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23808080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
-      background-position: right .75rem center;
-      background-size: 16px 12px;
-      border-color: $color_red;
-
-    }
-  }
-
-  .invalid-feedback {
-    display: block;
-    min-height: 20px;
-  }
-
-  .option-group-label {
-    color: $color_white;
-    margin-bottom: 8px;
-  }
-
-  input {
-    &[type="text" i],
-    &[type="email" i],
-    &[type="password" i] {
-      color: $color_white;
-    }
-    &[type="date" i] {
-      color: $color_white;
-      padding-right: 12px;
-      
-      &::-webkit-calendar-picker-indicator {
-        // opacity: 0;
-        z-index: 6;
-      }
-    }
-    &:focus {
-      box-shadow: none;
-      outline: 1px solid $color_grey2_logo;
-    }
-
-    &::placeholder {
-      color: $color_grey2_logo;
-      font-size: 14px;
-    }
-  }
-}
-
-.search-wrapper {
-  input[type="search"] {
-    background-color: $color_grey1_bg;
-    color: $color_grey2_logo;
-  }
-}
-
-h1.title,
-.page-title,
-.section-title {
-  color: $color_white;
-}
-
-.icon-wrapper {
-  color: $color_grey2_logo;
-}
-
-.theme-text {
-  color: $color_grey3_font;
-}
-
-.recommend-text {
-  color: $color_grey2_logo;
-}
-
-.text-highlight {
-  color: $color_white;
-}
-
-.info-text {
-  color: $color_grey2_logo;
-}
-
-.stepper-container {
-  color: $color_grey3_font;
-
-  .stepper-line {
-    background-color: $color_grey2_logo;
-  }
-
-  .stepper-block {
-    .stepper-counter {
-      background-color: $color_grey2_bg;
-      color: $color_grey3_font;
-      border: 3px solid $color_grey2_logo;
-    }
-    
-    .stepper-label {
-      color: $color_grey3_font;
-    }
-
-    &.active {
-      .stepper-counter {
-        color: $color_theme;
-        border: 3px solid $color_theme;
-      }
-      
-      .stepper-label {
-        color: $color_theme;
-      }
-    }
-
-    &.visited {
-      .stepper-counter {
-        color: $color_white;
-        border: 3px solid $color_white;
-      }
-      
-      .stepper-label {
+    .no-option-wrapper {
+      .title {
         color: $color_white;
       }
     }
   }
-}
 
-.scenario-list-container {
-  .scenario-card {
-    background-color: $color_grey2_bg;
-    @include effect_block_shadow();
+  .custom-form-block {
     color: $color_grey3_font;
-    border: 2px solid $color_grey2_bg;
-    transition: all 0.3s ease-in-out;
 
-    &:hover {
-      transition: all 0.3s ease-in-out;
-      border-color: $color_grey2_logo;
+    .input-group-text {
+      background-color: $color_black;
+      border-color: $color_grey2_bg;
+      color: $color_grey2_logo;
+
+      &.eye-icon-wrapper {
+        background-color: $color_grey1_bg;
+        font-size: 14px;
+        cursor: pointer;
+      }
     }
 
-    &.selected {
-      border-color: $color_theme;
+    .form-check {
+      .form-check-input {
+        width: 20px;
+        height: 20px;
+        --bs-form-check-bg: $color_grey1_bg;
+        background-color: $color_grey1_bg;
+        border-color: $color_grey2_logo;
+
+        &:checked {
+          &[type="checkbox"] {
+            --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+          }
+          &[type="radio"] {
+            --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23000'/%3e%3c/svg%3e");
+          }
+          background-color: $color_theme;
+          border-color: $color_theme;
+        }
+
+        & + .form-check-label {
+          vertical-align: middle;
+          padding-top: 3px;
+          padding-left: 10px;
+        }
+      }
     }
 
-    .scenario-check {
-      background-color: $color_theme;
-      color: $color_black;
+    .form-control {
+      background-color: $color_grey1_bg;
+      border-color: $color_grey2_bg;
+      color: $color_grey2_logo;
+
+      &.is-invalid {
+        border-color: $color_red;
+        background-image: none;
+      }
     }
 
-    .scenario-name {
-      background-color: rgba(0, 0, 0, 0.15);
+    .form-select {
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23808080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
+      background-color: $color_grey1_bg;
+      border-color: $color_grey2_bg;
+      color: $color_grey2_logo;
+
+      &.is-invalid {
+        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23808080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
+        background-position: right 0.75rem center;
+        background-size: 16px 12px;
+        border-color: $color_red;
+      }
+    }
+
+    .invalid-feedback {
+      display: block;
+      min-height: 20px;
+    }
+
+    .option-group-label {
       color: $color_white;
+      margin-bottom: 8px;
+    }
+
+    input {
+      &[type="text" i],
+      &[type="email" i],
+      &[type="password" i] {
+        color: $color_white;
+      }
+      &[type="date" i] {
+        color: $color_white;
+        padding-right: 12px;
+
+        &::-webkit-calendar-picker-indicator {
+          // opacity: 0;
+          z-index: 6;
+        }
+      }
+      &:focus {
+        box-shadow: none;
+        outline: 1px solid $color_grey2_logo;
+      }
+
+      &::placeholder {
+        color: $color_grey2_logo;
+        font-size: 14px;
+      }
     }
   }
-}
 
-.section-game-scenario {
-  .detail-form-wrapper {
-    background-color: $color_grey2_bg;
+  .search-wrapper {
+    input[type="search"] {
+      background-color: $color_grey1_bg;
+      color: $color_grey2_logo;
+    }
   }
-}
 
-.list-group {
-  --bs-list-group-color: $color_grey3_font;
-  --bs-list-group-bg: transparent;
-  --bs-list-group-border-color: $color_grey2_logo;
-}
-
-
-.btn-primary {
-  color: $color_theme;
-  border-color: $color_theme;
-  background-color: $color_grey2_bg;
-  transition: all 0.3s ease-in-out;
+  h1.title,
+  .page-title,
+  .section-title {
+    color: $color_white;
+  }
 
   .icon-wrapper {
-    color: inherit;
-  }
-
-  &:hover {
-    color: $color_white;
-    border-color: $color_white;
-    transition: all 0.3s ease-in-out;
-  }
-
-  &.btn-filled {
-    color: $color_grey1_bg;
-    border-color: $color_grey1_bg;
-    background-color: $color_theme;
-
-    &:hover {
-      background-color: $color_white;
-      border-color: $color_white;
-      transition: all 0.3s ease-in-out;
-    }
-  }
-}
-
-.button-filter {
-  border-color: $color_grey1_bg;
-  background-color: $color_grey1_bg;
-  color: $color_grey3_font;
-
-  .btn-text {
     color: $color_grey2_logo;
   }
-}
 
-.dropdown {
-  .dropdown-menu {
-    font-size: 14px;
+  .theme-text {
     color: $color_grey3_font;
-    background-color: $color_black;
-    border: 1px solid $color_line;
-    @include effect_block_shadow();
+  }
 
-    li:last-child {
-      .dropdown-item {
-        border-bottom: none;
-      }
+  .recommend-text {
+    color: $color_grey2_logo;
+  }
+
+  .text-highlight {
+    color: $color_white;
+  }
+
+  .info-text {
+    color: $color_grey2_logo;
+  }
+
+  .stepper-container {
+    color: $color_grey3_font;
+
+    .stepper-line {
+      background-color: $color_grey2_logo;
     }
 
-    .dropdown-item {
-      color: $color_grey3_font;
-      border-bottom: 1px solid $color_line;
-
-      &:hover,
-      &:focus {
-        cursor: pointer;
+    .stepper-block {
+      .stepper-counter {
+        background-color: $color_grey2_bg;
         color: $color_grey3_font;
-        background-color: $color_black;
+        border: 3px solid $color_grey2_logo;
+      }
+
+      .stepper-label {
+        color: $color_grey3_font;
       }
 
       &.active {
-        color: $color_white;
-        background-color: $color_black;
+        .stepper-counter {
+          color: $color_theme;
+          border: 3px solid $color_theme;
+        }
+
+        .stepper-label {
+          color: $color_theme;
+        }
       }
 
-      &.logout {
-        color: $color_red;
-        span {
-          color: inherit;
+      &.visited {
+        .stepper-counter {
+          color: $color_white;
+          border: 3px solid $color_white;
+        }
+
+        .stepper-label {
+          color: $color_white;
         }
       }
     }
   }
-}
 
-.table-content-wrapper {
-  .game-list-table {
-    thead {
-      color: $color_white;
-    }
-    tbody {
+  .scenario-list-container {
+    .scenario-card {
+      background-color: $color_grey2_bg;
+      @include effect_block_shadow();
       color: $color_grey3_font;
+      border: 2px solid $color_grey2_bg;
+      transition: all 0.3s ease-in-out;
 
-      .table-row {
-        .table-cell {
-          background-color: $color_grey2_bg;
+      &:hover {
+        transition: all 0.3s ease-in-out;
+        border-color: $color_grey2_logo;
+      }
 
-          .scenario-wrapper {
-            color: $color_white;
+      &.selected {
+        border-color: $color_theme;
+      }
+
+      .scenario-check {
+        background-color: $color_theme;
+        color: $color_black;
+      }
+
+      .scenario-name {
+        background-color: rgba(0, 0, 0, 0.15);
+        color: $color_white;
+      }
+    }
+  }
+
+  .section-game-scenario {
+    .detail-form-wrapper {
+      background-color: $color_grey2_bg;
+    }
+  }
+
+  .list-group {
+    --bs-list-group-color: $color_grey3_font;
+    --bs-list-group-bg: transparent;
+    --bs-list-group-border-color: $color_grey2_logo;
+  }
+
+  .btn-primary {
+    color: $color_theme;
+    border-color: $color_theme;
+    background-color: $color_grey2_bg;
+    transition: all 0.3s ease-in-out;
+
+    .icon-wrapper {
+      color: inherit;
+    }
+
+    &:hover {
+      color: $color_white;
+      border-color: $color_white;
+      background-color: inherit;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &.btn-filled {
+      color: $color_grey1_bg;
+      border-color: $color_grey1_bg;
+      background-color: $color_theme;
+
+      &:hover {
+        background-color: $color_white;
+        border-color: $color_white;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+
+  .button-filter {
+    border-color: $color_grey1_bg;
+    background-color: $color_grey1_bg;
+    color: $color_grey3_font;
+
+    .btn-text {
+      color: $color_grey2_logo;
+    }
+  }
+
+  .dropdown {
+    .dropdown-menu {
+      font-size: 14px;
+      color: $color_grey3_font;
+      background-color: $color_black;
+      border: 1px solid $color_line;
+      @include effect_block_shadow();
+
+      li:last-child {
+        .dropdown-item {
+          border-bottom: none;
+        }
+      }
+
+      .dropdown-item {
+        color: $color_grey3_font;
+        border-bottom: 1px solid $color_line;
+
+        &:hover,
+        &:focus {
+          cursor: pointer;
+          color: $color_grey3_font;
+          background-color: $color_black;
+        }
+
+        &.active {
+          color: $color_white;
+          background-color: $color_black;
+        }
+
+        &.logout {
+          color: $color_red;
+          span {
+            color: inherit;
           }
+        }
+      }
+    }
+  }
 
-          .avatar-wrapper {
-            img.profile-image,
-            .no-profile,
-            .additional-profiles {
-              border: 2px solid $color_grey2_logo;
-              background-color: $color_grey1_bg;
+  .table-content-wrapper {
+    .game-list-table {
+      thead {
+        color: $color_white;
+      }
+      tbody {
+        color: $color_grey3_font;
+
+        .table-row {
+          .table-cell {
+            background-color: $color_grey2_bg;
+
+            .scenario-wrapper {
+              color: $color_white;
+            }
+
+            .avatar-wrapper {
+              img.profile-image,
+              .no-profile,
+              .additional-profiles {
+                border: 2px solid $color_grey2_logo;
+                background-color: $color_grey1_bg;
+              }
             }
           }
         }
-      }
 
-      .row-spacer {
-        .table-cell {
-          background-color: transparent;
+        .row-spacer {
+          .table-cell {
+            background-color: transparent;
+          }
         }
       }
-
     }
   }
 }

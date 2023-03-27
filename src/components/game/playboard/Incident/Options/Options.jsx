@@ -64,11 +64,10 @@ function Options(props) {
 
   /**
    * Function to call API to get options
-   * @param {string} queryString
    */
   const getOptions = () => {
     dispatch(UiActions.setShowLoader(true));
-    const queryString = searchedText;
+    // const queryString = searchedText;
     setTimeout(() => {
       dispatch(UiActions.setShowLoader(false));
 

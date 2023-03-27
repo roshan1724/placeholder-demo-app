@@ -23,16 +23,13 @@ const UiSlice = createSlice({
     // Loader Actions
     setShowLoader: (state, action) => {
       const loadingState = action.payload;
-      console.log(`Loading State received as : `, loadingState);
       state.showLoader = loadingState;
     },
 
     // Modal Actions
     setShowModal: (state, action) => {
       const showModalState = action.payload;
-      console.log(`Modal State received as : `, showModalState);
       state.showModal = showModalState;
-      console.log("State ==> ", state);
     },
 
     // Header Actions

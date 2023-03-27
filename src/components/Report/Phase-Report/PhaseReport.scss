@@ -1,11 +1,10 @@
-@import './../../../variables.scss';
-
+@import "./../../../styles/variables.scss";
 
 .phase-report-container {
   padding: 20px;
   background: $color_grey1_bg;
   border-radius: 10px;
-  
+
   .section-subtitle {
     font-size: 16px;
     font-weight: normal;
@@ -81,7 +80,6 @@
     flex-direction: row;
     align-items: center;
     gap: 10px;
-
 
     .profile-icon {
       width: $height_profile_image_icon;

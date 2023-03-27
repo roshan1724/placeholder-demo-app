@@ -1,4 +1,4 @@
-@import "../../../../../variables.scss";
+@import "../../../../../styles/variables.scss";
 
 .section-summary {
   .title-container {
@@ -24,16 +24,16 @@
         display: flex;
         column-gap: 8px;
         align-items: center;
-  
+
         &:not(:last-child) {
           margin-bottom: 15px;
         }
-  
+
         img {
           width: 20px;
           height: 20px;
         }
-  
+
         .achievement-user-wrapper {
           display: flex;
           gap: 5px;
@@ -41,22 +41,22 @@
           flex-grow: 1;
           padding: 5px;
           border-radius: 10px;
-  
+
           img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
           }
-  
+
           .user-details {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-  
+
             .user-name {
               font-size: 13px;
             }
-  
+
             .achievement-name {
               font-size: 15px;
             }
@@ -64,6 +64,5 @@
         }
       }
     }
-
   }
 }

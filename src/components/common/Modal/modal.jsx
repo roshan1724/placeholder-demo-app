@@ -1,61 +1,60 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
-import PropTypes from 'prop-types';
-import { createPortal } from "react-dom";
-import { APP_MODAL_TYPES, MODALVIEW_CONTAINER } from "../../../utilities/constants";
-import ErrorModal from "./ErrorModal/error-modal";
 import "./modal.scss";
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
-import bootstrap from "bootstrap/dist/js/bootstrap";
+import Modal from "react-bootstrap/Modal";
+import { APP_MODAL_TYPES } from "../../../utilities/constants";
+import ErrorModal from "./error-modal";
+import InfoModal from "./info-modal";
+import SuccessModal from "./success-modal";
 
-function AppModal({modalType, modalData, modalBodyClass, handleModalClose}) {
-
-  const [modalComponent, setModalComponent] = useState(null);
-  const [appModal, setAppModal] = useState(new bootstrap.Modal(document.getElementById('custom-modal'), {
-    backdrop: true,
-    keyboard: true,
-    focus: true
-  }));
-  const modalContainerElement = document.getElementById(MODALVIEW_CONTAINER);
-  
-  const showModal = useSelector((state) => state.ui.showModal);
-  // console.log('Modal state ==> ', showModal);
-
-  useEffect(() => {
-    if (showModal) {
-      console.log('SHOW Enabled Modal...', appModal);
-      appModal.show();
-    } else {
-      console.log('SHOW Disabled Modal...');
-      appModal.hide();
-    }
-  }, [showModal, appModal]);
-
-  if (modalType === APP_MODAL_TYPES.ERROR) {    
-    setModalComponent(React.createElement(ErrorModal, {
+const getModalComponent = (modalType, modalData) => {
+  if (modalType === APP_MODAL_TYPES.ERROR) {
+    return React.createElement(ErrorModal, {
       title: modalData.title,
       subTitle: modalData.subTitle,
-      actionButtons: modalData.actionButtons
-    }));
+      actionButtons: modalData.actionButtons,
+    });
+  } else if (modalType === APP_MODAL_TYPES.INFO) {
+    return React.createElement(InfoModal, {
+      title: modalData.title,
+      subTitle: modalData.subTitle,
+      actionButtons: modalData.actionButtons,
+    });
+  } else if (modalType === APP_MODAL_TYPES.SUCCESS) {
+    return React.createElement(SuccessModal, {
+      title: modalData.title,
+      subTitle: modalData.subTitle,
+      actionButtons: modalData.actionButtons,
+    });
+  } else {
+    return null;
   }
+};
+function AppModal({ modalType, modalData, modalBodyClass, handleModalClose }) {
+  const showModal = useSelector((state) => state.ui.showModal);
+  const modalComponent = getModalComponent(modalType, modalData);
 
-  // let modalBody = createPortal(modalComponent, modalContainerElement);
-
-  return ( appModal &&
-    <div className="modal fade" id="custom-modal" tabIndex="-1" aria-label="app modal" aria-hidden="true">
-      <div className={`modal-dialog modal-dialog-centered ${modalBodyClass}`}>
-        <div className="modal-content app-modal-content">
-          <span type="button" className="close-btn" data-bs-dismiss="modal" aria-label="Close" onClick={handleModalClose}>
-            <img src="/images/circle_cross_grey.png" alt="Close Icon" width={30} height={30}/>
-          </span>
-          <div className="modal-body">
-            {
-              modalComponent
-            }
-          </div>
-        </div>
-      </div>
-    </div>
-   );
+  return (
+    <Fragment>
+      <Modal show={showModal} onHide={handleModalClose} centered>
+        <span
+          type="button"
+          className="close-btn"
+          aria-label="Close"
+          onClick={handleModalClose}
+        >
+          <img
+            src="/images/circle_cross_grey.png"
+            alt="Close Icon"
+            width={25}
+            height={25}
+          />
+        </span>
+        <Modal.Body>{modalComponent}</Modal.Body>
+      </Modal>
+    </Fragment>
+  );
 }
 
 AppModal.propTypes = {
@@ -63,14 +62,16 @@ AppModal.propTypes = {
   modalData: PropTypes.exact({
     title: PropTypes.string.isRequired,
     subTitle: PropTypes.string.isRequired,
-    actionButtons: PropTypes.arrayOf(PropTypes.shape({
-      text: PropTypes.string,
-      classNames: PropTypes.array,
-      clickHandler: PropTypes.func
-    })).isRequired
+    actionButtons: PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string,
+        classNames: PropTypes.array,
+        clickHandler: PropTypes.func,
+      })
+    ).isRequired,
   }),
   modalBodyClass: PropTypes.arrayOf(PropTypes.string),
-  handleModalClose: PropTypes.func.isRequired
+  handleModalClose: PropTypes.func.isRequired,
 };
 
 export default AppModal;

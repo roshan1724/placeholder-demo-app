@@ -2,39 +2,52 @@ import { Fragment, useContext } from "react";
 import NewGameContext from "../../../context/game/new-game-context";
 import "./Stepper.scss";
 
-
-function Stepper (props) {
+function Stepper(props) {
   const stepperData = props.data;
-  const { activeStepIndex } = useContext(NewGameContext);
+  const { activeStepIndex, setActiveStepIndex } = useContext(NewGameContext);
 
+  const goToStep = (stepIndex) => {
+    console.log("Clicked step ==> ", stepIndex);
+    // Only allowing going back in stepper
+    if (stepIndex < activeStepIndex) {
+      setActiveStepIndex(stepIndex);
+    }
+  };
 
   return (
     <Fragment>
       <div className="stepper-container mx-auto">
-        {
-          stepperData && stepperData.length > 0 
+        {stepperData && stepperData.length > 0
           ? stepperData.map((stepData, stepIndex) => (
-            <div
-              className={`stepper-content-wrapper ${stepIndex !== 0 ? 'step-full' : ''}`} 
-              key={`stepper-content-${stepIndex}`}>
-              {
-                stepIndex !== 0
-                ? <span className="stepper-line"></span> 
-                : null
-              }
-              <span className={
-                `stepper-block ${stepIndex < activeStepIndex 
-                  ? 'visited'
-                  : stepIndex === activeStepIndex 
-                    ? 'active' 
-                    : ''}`}>
-                <span className="stepper-counter">{stepData.stepperCounter}</span>
-                <span className="stepper-label pt-2">{stepData.stepperLabel}</span>
-              </span>
-            </div>
-          ))
-          : null
-        }
+              <div
+                className={`stepper-content-wrapper ${
+                  stepIndex !== 0 ? "step-full" : ""
+                }`}
+                key={`stepper-content-${stepIndex}`}
+              >
+                {stepIndex !== 0 ? (
+                  <span className="stepper-line"></span>
+                ) : null}
+                <span
+                  className={`stepper-block ${
+                    stepIndex < activeStepIndex
+                      ? "visited"
+                      : stepIndex === activeStepIndex
+                      ? "active"
+                      : ""
+                  }`}
+                  onClick={() => goToStep(stepIndex)}
+                >
+                  <span className="stepper-counter">
+                    {stepData.stepperCounter}
+                  </span>
+                  <span className="stepper-label pt-2">
+                    {stepData.stepperLabel}
+                  </span>
+                </span>
+              </div>
+            ))
+          : null}
       </div>
       {/* <div className="stepper-container label-only mx-auto">
         {

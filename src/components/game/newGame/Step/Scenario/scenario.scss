@@ -10,9 +10,12 @@
 
     .scenario-card {
       position: relative;
-      cursor: pointer;
       border-radius: 15px;
       text-align: center;
+
+      &:not(.disabled) {
+        cursor: pointer;
+      }
 
       .scenario-check {
         position: absolute;
@@ -36,7 +39,14 @@
         }
       }
 
-      .icon-wrapper.main {
+      .scenario-label {
+        position: absolute;
+        left: -12px;
+        top: 10%;
+        font-size: 14px;
+      }
+
+      .main {
         padding: 20px;
         font-size: 60px;
       }

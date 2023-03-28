@@ -31,6 +31,10 @@
       align-items: center;
       padding: 15px;
 
+      &.visited {
+        cursor: pointer;
+      }
+
       .stepper-counter {
         display: inline-flex;
         justify-content: center;

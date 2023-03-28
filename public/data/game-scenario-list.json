@@ -1,0 +1,115 @@
+{
+  "data": [
+    {
+      "scenario_id": "SC-0001",
+      "icon_name": ["envelope"],
+      "scenario_name": "Email Compromise",
+      "org_name": "",
+      "scenario_label": "",
+      "scenario_details": {
+        "messaging_type": ["Microsoft Outlook"],
+        "user_type": ["End User", "I.T Admin"],
+        "organisation_type": ["Government", "Tech Companies", "Institutions"]
+      }
+    },
+    {
+      "scenario_id": "SC-0002",
+      "icon_name": ["fish", "phishing"],
+      "scenario_name": "Phishing Attack",
+      "org_name": "",
+      "scenario_label": "",
+      "scenario_details": {
+        "messaging_type": ["Google Workspace email"],
+        "user_type": ["Executive Team", "I.T Admin", "Legal"],
+        "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+      }
+    },
+    {
+      "scenario_id": "SC-0003",
+      "icon_name": ["skull"],
+      "scenario_name": "Malicious Insider",
+      "org_name": "",
+      "scenario_label": "",
+      "scenario_details": {
+        "messaging_type": ["Git Hub", "Dropbox", "Dtex Systems"],
+        "user_type": ["Executive Team", "I.T Admin"],
+        "organisation_type": [
+          "Government",
+          "Tech Companies",
+          "Education",
+          "Sports Org."
+        ]
+      }
+    },
+    {
+      "scenario_id": "SC-0004",
+      "icon_name": ["phishing"],
+      "scenario_name": "Spearphishing Attack",
+      "org_name": "",
+      "scenario_label": "",
+      "scenario_details": {
+        "messaging_type": ["Git Hub", "Dropbox", "Dtex Systems"],
+        "user_type": ["Executive Team", "I.T Admin"],
+        "organisation_type": [
+          "Government",
+          "Tech Companies",
+          "Education",
+          "Sports Org."
+        ]
+      }
+    },
+    {
+      "scenario_id": "SC-0005",
+      "icon_name": ["shield-halved"],
+      "scenario_name": "Physical Security Breach",
+      "org_name": "",
+      "scenario_label": "",
+      "scenario_details": {
+        "messaging_type": ["Google Workspace email"],
+        "user_type": ["Executive Team", "I.T Admin", "Legal"],
+        "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+      }
+    },
+    {
+      "scenario_id": "SC-0006",
+      "icon_name": ["network-wired"],
+      "scenario_name": "Network Breach",
+      "org_name": "",
+      "scenario_label": "COMING SOON",
+      "scenario_details": {
+        "messaging_type": ["Git Hub", "Dropbox", "Dtex Systems"],
+        "user_type": ["Executive Team", "I.T Admin"],
+        "organisation_type": [
+          "Government",
+          "Tech Companies",
+          "Education",
+          "Sports Org."
+        ]
+      }
+    },
+    {
+      "scenario_id": "SC-0007",
+      "icon_name": ["envelope"],
+      "scenario_name": "Lorem Ipsum",
+      "org_name": "",
+      "scenario_label": "COMING SOON",
+      "scenario_details": {
+        "messaging_type": ["Microsoft Outlook"],
+        "user_type": ["End User", "I.T Admin"],
+        "organisation_type": ["Government", "Tech Companies", "Institutions"]
+      }
+    },
+    {
+      "scenario_id": "SC-0008",
+      "icon_name": ["fish", "phishing"],
+      "scenario_name": "Consectetur Adipiscing",
+      "org_name": "",
+      "scenario_label": "COMING SOON",
+      "scenario_details": {
+        "messaging_type": ["Google Workspace email"],
+        "user_type": ["Executive Team", "I.T Admin", "Legal"],
+        "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+      }
+    }
+  ]
+}

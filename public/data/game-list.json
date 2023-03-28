@@ -3,23 +3,14 @@
     {
       "game_scenario": {
         "scenario_id": "SC-0001",
-        "icon_name": [
-          "envelope"
-        ],
+        "icon_name": ["envelope"],
         "scenario_name": "Email Compromise",
+        "org_name": "",
+        "scenario_label": "",
         "scenario_details": {
-          "messaging_type": [
-            "Microsoft Outlook"
-          ],
-          "user_type": [
-            "End User",
-            "I.T Admin"
-          ],
-          "organisation_type": [
-            "Government",
-            "Tech Companies",
-            "Institutions"
-          ]
+          "messaging_type": ["Microsoft Outlook"],
+          "user_type": ["End User", "I.T Admin"],
+          "organisation_type": ["Government", "Tech Companies", "Institutions"]
         }
       },
       "game_schedule": {
@@ -61,10 +52,17 @@
         "scenario_id": "SC-0003",
         "icon_name": ["skull"],
         "scenario_name": "Malicious Insider",
+        "org_name": "",
+        "scenario_label": "",
         "scenario_details": {
           "messaging_type": ["Git Hub", "Dropbox", "Dtex Systems"],
           "user_type": ["Executive Team", "I.T Admin"],
-          "organisation_type": ["Government", "Tech Companies", "Education", "Sports Org."]
+          "organisation_type": [
+            "Government",
+            "Tech Companies",
+            "Education",
+            "Sports Org."
+          ]
         }
       },
       "game_schedule": {
@@ -106,6 +104,8 @@
         "scenario_id": "SC-0002",
         "icon_name": ["fish", "phishing"],
         "scenario_name": "Phishing Attack",
+        "org_name": "",
+        "scenario_label": "",
         "scenario_details": {
           "messaging_type": ["Google Workspace email"],
           "user_type": ["Executive Team", "I.T Admin", "Legal"],

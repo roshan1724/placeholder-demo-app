@@ -324,7 +324,7 @@
       border: 2px solid $color_grey2_bg;
       transition: all 0.3s ease-in-out;
 
-      &:hover {
+      &:not(.disabled):hover {
         transition: all 0.3s ease-in-out;
         border-color: $color_grey2_logo;
       }
@@ -334,6 +334,11 @@
       }
 
       .scenario-check {
+        background-color: $color_theme;
+        color: $color_black;
+      }
+
+      .scenario-label {
         background-color: $color_theme;
         color: $color_black;
       }

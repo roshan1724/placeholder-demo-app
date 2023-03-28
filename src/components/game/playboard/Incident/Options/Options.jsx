@@ -7,7 +7,6 @@
 
 import "./Options.scss";
 
-// import bootstrap from "../../../../../../node_modules/bootstrap/dist/js/bootstrap.js";
 import React, { useContext, useState } from "react";
 
 import { Fragment } from "react";
@@ -48,9 +47,9 @@ function Options(props) {
       if (event.target.value?.toLowerCase() === "i'm done") {
         handleGameEndWarning();
       } else if (event.target.value?.toLowerCase().includes("help")) {
-        openInfoModal();
+        handleGameHelpInfo();
       } else if (event.target.value?.toLowerCase().includes("error")) {
-        openErrorModal();
+        handleGameError();
       } else if (event.target.value?.toLowerCase() === "no data") {
         setOptionsData(null);
         setNoData(true);
@@ -59,7 +58,6 @@ function Options(props) {
         getOptions();
       }
     }
-    setSearchedText(event.target.value);
   };
 
   /**
@@ -102,6 +100,14 @@ function Options(props) {
 
   const handleGameEndWarning = (event) => {
     openWarningModal();
+  };
+
+  const handleGameHelpInfo = (event) => {
+    openInfoModal();
+  };
+
+  const handleGameError = (event) => {
+    openErrorModal();
   };
 
   const handleEndTurn = (event) => {
@@ -243,7 +249,7 @@ function Options(props) {
               />
               <img src="/images/search_grey_icon.png" alt="Search Icon" />
             </div>
-            <button className="btn btn-primary" onClick={handleGetHint}>
+            <button className="btn btn-primary" onClick={handleGameHelpInfo}>
               Get a Hint
             </button>
             <button className="btn btn-primary" onClick={handleGameEndWarning}>

@@ -1,11 +1,12 @@
 {
   "data": [
     {
+      "game_id": "GAME-0001",
+      "org_name": "Organisation 1",
       "game_scenario": {
         "scenario_id": "SC-0001",
         "icon_name": ["envelope"],
         "scenario_name": "Email Compromise",
-        "org_name": "",
         "scenario_label": "",
         "scenario_details": {
           "messaging_type": ["Microsoft Outlook"],
@@ -48,11 +49,12 @@
       "status": "Finished"
     },
     {
+      "game_id": "GAME-0002",
+      "org_name": "Organisation B",
       "game_scenario": {
         "scenario_id": "SC-0003",
         "icon_name": ["skull"],
         "scenario_name": "Malicious Insider",
-        "org_name": "",
         "scenario_label": "",
         "scenario_details": {
           "messaging_type": ["Git Hub", "Dropbox", "Dtex Systems"],
@@ -100,11 +102,12 @@
       "status": "Scheduled"
     },
     {
+      "game_id": "GAME-0003",
+      "org_name": "Organisation 1",
       "game_scenario": {
         "scenario_id": "SC-0002",
         "icon_name": ["fish", "phishing"],
         "scenario_name": "Phishing Attack",
-        "org_name": "",
         "scenario_label": "",
         "scenario_details": {
           "messaging_type": ["Google Workspace email"],

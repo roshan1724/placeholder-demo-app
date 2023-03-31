@@ -40,12 +40,12 @@
       align-items: center;
     }
 
-    .icon-wrapper {
-      color: inherit;
-    }
-
     .page-content-wrapper {
       width: 100%;
+
+      .icon-wrapper {
+        color: inherit;
+      }
 
       .table-header-actions {
         background-color: $color_grey2_bg;

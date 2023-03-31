@@ -1,18 +1,21 @@
-import { Fragment, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import "./admin-game.scss";
+import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { UiActions } from "../../../../store/ui-slice";
 import {
-  TABLE_GAME_SCHEDULE_ACTION,
-  TABLE_GAME_STATUS,
+  API_PATHS,
   ROUTE_PATHS,
-  TABLE_GAME_USER_ACTION,
+  TABLE_GAME_STATUS,
   TABLE_USER_PROFILE_LIMIT,
-} from "../../../utilities/constants";
-import "./Home.scss";
+} from "../../../../utilities/constants";
+import CustomFilter from "../../../common/custom-filter/custom-filter";
+import { useNavigate } from "react-router";
 
-import CustomFilter from "../../common/custom-filter/custom-filter";
-
-function GameList({ gameListData }) {
+function AdminGameList() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [gameList, setGameList] = useState([]);
   // Sort Mode can be one of 'none' | 'asc' | 'desc'
   const [sortMode, setSortMode] = useState({
     game_schedule: "none",
@@ -49,22 +52,49 @@ function GameList({ gameListData }) {
       filterValue: "",
       filterOptions: [
         { optionValue: "", displayText: "Default" },
+        { optionValue: "org", displayText: "Organization" },
         { optionValue: "scenario", displayText: "Game Scenario" },
         { optionValue: "status", displayText: "Game Status" },
       ],
     },
   ];
+
+  const availableGameEdits = [
+    {
+      editKeyId: "GAME-Config_001",
+      displayText: "Configurations",
+      triggerHandler: (gameId) =>
+        navigate(`${ROUTE_PATHS.ADMIN_CONFIG_GAME}/${gameId}`),
+    },
+  ];
+
   const tableColumnHeaders = [
+    { headerKey: "org_name", headerLabel: "Organization" },
     { headerKey: "game_scenario", headerLabel: "Game" },
     { headerKey: "game_schedule", headerLabel: "Start Date & Time" },
     { headerKey: "participants", headerLabel: "Participants" },
     { headerKey: "spectators", headerLabel: "Spectators" },
     { headerKey: "status", headerLabel: "Status" },
-    { headerKey: "schedule_action", headerLabel: "" },
-    { headerKey: "user_action", headerLabel: "" },
+    { headerKey: "game_action", headerLabel: "" },
   ];
 
   const tableUserProfileLimitCount = TABLE_USER_PROFILE_LIMIT;
+
+  useEffect(() => {
+    dispatch(UiActions.setShowLoader(true));
+    // API call to get game list
+    setTimeout(() => {
+      fetch(API_PATHS.GAME_LIST_DATA)
+        .then((response) => response.json())
+        .then((response) => {
+          setGameList(response.data);
+          dispatch(UiActions.setShowLoader(false));
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 200);
+  }, [dispatch]);
 
   const handleKeyEventsOnSearch = (event) => {
     if (event.key === "Enter" || event.keyCode === 13) {
@@ -74,9 +104,9 @@ function GameList({ gameListData }) {
   };
 
   const handleSelectionChange = (filterKey, selectedOption) => {
-    if (filterKey === "GAMES") {
-      console.log(selectedOption);
-    }
+    console.log(
+      `filterKey ==> ${filterKey}\nselectedOption ==> ${selectedOption}`
+    );
   };
 
   const handleTableSortClick = (tableKey) => {
@@ -114,6 +144,15 @@ function GameList({ gameListData }) {
             </div>
           </div>
         ))}
+      </div>
+    );
+  };
+
+  // Get Organisation Name for Cell Data
+  const getOrgName = (keyName, gameData) => {
+    return (
+      <div className="org-wrapper">
+        <span>{gameData[keyName]}</span>
       </div>
     );
   };
@@ -207,171 +246,139 @@ function GameList({ gameListData }) {
     );
   };
 
-  const getScheduleAction = (gameStatus) => {
-    const uiDataObj = { iconName: "", actionText: "", navigationLink: "" };
-    if (gameStatus === TABLE_GAME_STATUS.ONGING) {
-      uiDataObj.iconName = "rotate-right";
-      uiDataObj.actionText = TABLE_GAME_SCHEDULE_ACTION.RESTART;
-    } else if (gameStatus === TABLE_GAME_STATUS.SCHEDULED) {
-      uiDataObj.iconName = "pen-to-square";
-      uiDataObj.actionText = TABLE_GAME_SCHEDULE_ACTION.EDIT;
-    } else if (gameStatus === TABLE_GAME_STATUS.FINISHED) {
-      uiDataObj.iconName = "copy";
-      uiDataObj.actionText = TABLE_GAME_SCHEDULE_ACTION.DUPLICATE;
-    }
+  // Game Action Cell Data
+  const getAdminGameAction = (gameData) => {
     return (
-      <div
-        className="game-schedule-action clickable"
-        data-game-status={`${gameStatus}`}
-      >
-        <span className="icon-wrapper me-2">
-          <i className={`fa-solid fa-${uiDataObj.iconName}`}></i>
-        </span>
-        <span className="status-text">{uiDataObj.actionText}</span>
-      </div>
-    );
-  };
-
-  const getUserAction = (gameStatus) => {
-    const uiDataObj = { iconName: "", actionText: "", navigationLink: "" };
-    if (gameStatus === TABLE_GAME_STATUS.ONGING) {
-      uiDataObj.iconName = "chess-rook";
-      uiDataObj.actionText = TABLE_GAME_USER_ACTION.VIEW_GAME;
-      uiDataObj.navigationLink = ROUTE_PATHS.GAME_PLAYBOARD;
-    } else if (gameStatus === TABLE_GAME_STATUS.SCHEDULED) {
-      uiDataObj.iconName = "";
-      uiDataObj.actionText = "";
-    } else if (gameStatus === TABLE_GAME_STATUS.FINISHED) {
-      uiDataObj.iconName = "chart-area";
-      uiDataObj.actionText = TABLE_GAME_USER_ACTION.VIEW_DASHBOARD;
-      uiDataObj.navigationLink = ROUTE_PATHS.DASHBOARD;
-    }
-    return (
-      <div
-        className="game-user-action clickable"
-        data-game-status={`${gameStatus}`}
-        onClick={() => navigate(uiDataObj.navigationLink)}
-      >
-        <span className="icon-wrapper me-2">
-          <i className={`fa-solid fa-${uiDataObj.iconName}`}></i>
-        </span>
-        <span className="status-text">{uiDataObj.actionText}</span>
+      <div className="game-admin-action clickable">
+        <div className="dropdown">
+          <button className="btn dropdown-toggle" data-bs-toggle="dropdown">
+            <span className="icon-wrapper me-2">
+              <i className={`fa-solid fa-gear`}></i>
+            </span>
+            <span className="status-text">Edit Game</span>
+          </button>
+          <ul className="dropdown-menu">
+            {availableGameEdits.map((editData) => (
+              <li key={editData.editKeyId}>
+                <div
+                  className="dropdown-item"
+                  onClick={() => editData.triggerHandler(gameData.game_id)}
+                >
+                  {editData.displayText}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     );
   };
 
   const getTableCellData = (keyName, gameData) => {
-    if (keyName === "game_scenario") {
-      return getScenarioName(keyName, gameData);
-    } else if (keyName === "game_schedule") {
-      return getGameSchedule(keyName, gameData);
-    } else if (keyName === "participants" || keyName === "spectators") {
-      return getGameUserProfiles(keyName, gameData);
-    } else if (keyName === "status") {
-      return getGameStatus(gameData[keyName]);
-    } else if (keyName === "schedule_action") {
-      return getScheduleAction(gameData["status"]);
-    } else if (keyName === "user_action") {
-      return getUserAction(gameData["status"]);
-    } else {
-      return "";
+    switch (keyName) {
+      case "org_name":
+        return getOrgName(keyName, gameData);
+      case "game_scenario":
+        return getScenarioName(keyName, gameData);
+      case "game_schedule":
+        return getGameSchedule(keyName, gameData);
+      case "participants":
+      case "spectators":
+        return getGameUserProfiles(keyName, gameData);
+      case "status":
+        return getGameStatus(gameData[keyName]);
+      case "game_action":
+        return getAdminGameAction(gameData);
+      default:
+        return "";
     }
   };
 
   return (
-    <section className="section-gamelist px-3">
-      <div className="page-header-wrapper pb-3">
-        <h1 className="title c-font-20">Your Games</h1>
-        <div className="action-wrapper m-0">
-          <button
-            className="btn btn-primary btn-filled"
-            onClick={() => navigate(ROUTE_PATHS.GAME_ADD_NEW)}
-          >
-            <span className="me-2">
-              <i className="fa-solid fa-plus"></i>
-            </span>
-            Add New Game
-          </button>
+    <Fragment>
+      <section className="admin-gamelist px-3">
+        <div className="page-header-wrapper pb-3">
+          <h1 className="title c-font-20">View Games</h1>
+          {/* <p className="subtitle c-font-16 m-0">Hit Configure</p> */}
         </div>
-      </div>
 
-      <div className="page-content-wrapper">
-        <div className="table-header-actions">
-          <div className="search-box-wrapper">
-            <div className="search-wrapper">
-              <input
-                type="search"
-                name="user-commands"
-                id="user-commands"
-                onKeyUp={handleKeyEventsOnSearch}
-                placeholder="Search Options"
-              />
-              <img src="/images/search_grey_icon.png" alt="Search Icon" />
+        <div className="page-content-wrapper">
+          <div className="table-header-actions">
+            <div className="search-box-wrapper">
+              <div className="search-wrapper">
+                <input
+                  type="search"
+                  name="user-commands"
+                  id="user-commands"
+                  onKeyUp={handleKeyEventsOnSearch}
+                  placeholder="Search Options"
+                />
+                <img src="/images/search_grey_icon.png" alt="Search Icon" />
+              </div>
+            </div>
+            <div className="filter-box-wrapper">
+              {availableFilters.map((filterData, filterIndex) => (
+                <CustomFilter
+                  filterData={filterData}
+                  selectionChange={handleSelectionChange}
+                  key={`filterdata-${filterIndex}`}
+                />
+              ))}
             </div>
           </div>
-          <div className="filter-box-wrapper">
-            {availableFilters.map((filterData, filterIndex) => (
-              <CustomFilter
-                filterData={filterData}
-                selectionChange={handleSelectionChange}
-                key={`filterdata-${filterIndex}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="table-content-wrapper">
-          <div className="table-responsive">
-            <table className="table game-list-table">
-              <thead>
-                <tr>
-                  {tableColumnHeaders.map((headerObj, headerIndex) => (
-                    <th scope="col" key={`header-label-${headerIndex}`}>
-                      {headerObj.headerLabel}
-                      {headerObj.headerKey === "game_schedule" ? (
-                        <span
-                          className="icon-wrapper sort-icon ps-2"
-                          data-sort_mode={sortMode[headerObj.headerKey]}
-                          onClick={() =>
-                            handleTableSortClick(headerObj.headerKey)
-                          }
-                        >
-                          <i className="fa-solid fa-arrow-up"></i>
-                          <i className="fa-solid fa-arrow-down"></i>
-                        </span>
-                      ) : null}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {gameListData.map((gameData, dataIndex) => (
-                  <Fragment key={`table-data-row-${dataIndex}`}>
-                    <tr className={`table-row align-middle`}>
-                      {tableColumnHeaders.map((headerObj, headerIndex) => (
+          <div className="table-content-wrapper">
+            <div className="table-responsive">
+              <table className="table game-list-table">
+                <thead>
+                  <tr>
+                    {tableColumnHeaders.map((headerObj, headerIndex) => (
+                      <th scope="col" key={`header-label-${headerIndex}`}>
+                        {headerObj.headerLabel}
+                        {headerObj.headerKey === "game_schedule" ? (
+                          <span
+                            className="icon-wrapper sort-icon ps-2"
+                            data-sort_mode={sortMode[headerObj.headerKey]}
+                            onClick={() =>
+                              handleTableSortClick(headerObj.headerKey)
+                            }
+                          >
+                            <i className="fa-solid fa-arrow-up"></i>
+                            <i className="fa-solid fa-arrow-down"></i>
+                          </span>
+                        ) : null}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {gameList.map((gameData, dataIndex) => (
+                    <Fragment key={`table-data-row-${dataIndex}`}>
+                      <tr className={`table-row align-middle`}>
+                        {tableColumnHeaders.map((headerObj, headerIndex) => (
+                          <td
+                            key={`table-data-row-${dataIndex}-column-${headerIndex}`}
+                            className={`table-cell`}
+                          >
+                            {getTableCellData(headerObj.headerKey, gameData)}
+                          </td>
+                        ))}
+                      </tr>
+                      <tr className={`row-spacer`}>
                         <td
-                          key={`table-data-row-${dataIndex}-column-${headerIndex}`}
-                          className={`table-cell`}
-                        >
-                          {getTableCellData(headerObj.headerKey, gameData)}
-                        </td>
-                      ))}
-                    </tr>
-                    <tr className={`row-spacer`}>
-                      <td
-                        className="table-cell"
-                        colSpan={tableColumnHeaders.length}
-                      ></td>
-                    </tr>
-                  </Fragment>
-                ))}
-              </tbody>
-            </table>
+                          className="table-cell"
+                          colSpan={tableColumnHeaders.length}
+                        ></td>
+                      </tr>
+                    </Fragment>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Fragment>
   );
 }
 
-export default GameList;
+export default AdminGameList;

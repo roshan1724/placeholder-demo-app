@@ -1,0 +1,283 @@
+@import "../../../../styles/variables.scss";
+@import "../../../../styles/mixins.scss";
+
+.admin-gamelist {
+  color: $color_grey3_font;
+
+  .page-header-wrapper {
+    display: block;
+  }
+
+  .page-content-wrapper {
+    width: 100%;
+
+    .icon-wrapper {
+      color: inherit;
+    }
+
+    .table-header-actions {
+      background-color: $color_grey2_bg;
+      border-radius: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+
+      .search-wrapper {
+        input[type="search"] {
+          width: 300px;
+          height: 30px;
+          padding: 0 25px 0 15px;
+        }
+
+        img {
+          width: $width_table_icon;
+          height: $height_table_icon;
+          transform: translate3d(0, -50%, 0);
+        }
+      }
+
+      .filter-box-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+    }
+
+    .table-content-wrapper {
+      .table-responsive {
+        height: $height_table;
+      }
+      .game-list-table {
+        &.table > :not(caption) > * > * {
+          border-bottom-width: 0;
+        }
+
+        thead > tr > th:first-child,
+        tbody > tr > td:first-child {
+          padding-left: 15px;
+        }
+
+        thead {
+          font-size: 16px;
+        }
+
+        tbody {
+          font-size: 14px;
+
+          .table-row {
+            min-height: 75px;
+            @include effect_block_shadow();
+
+            &:last-child {
+              &.row-spacer {
+                display: none;
+              }
+            }
+
+            .table-cell {
+              &:first-child {
+                border-top-left-radius: 15px;
+                border-bottom-left-radius: 15px;
+              }
+              &:last-child {
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
+              }
+            }
+          }
+
+          .row-spacer {
+            min-height: 20px;
+          }
+        }
+
+        .scenario-wrapper {
+          .icon-wrapper {
+            font-size: 16px;
+          }
+        }
+
+        .table-cell-user-avatars {
+          .avatar-wrapper {
+            position: relative;
+            right: 0;
+          }
+          @include profile_avatar_image();
+
+          .tooltip-content {
+            min-width: 250px;
+            @include profile_avatar_image();
+          }
+        }
+
+        .game-status-wrapper {
+          &[data-game-status*="ongoing"i] {
+            color: inherit;
+          }
+
+          &[data-game-status*="scheduled"i] {
+            color: inherit;
+          }
+
+          &[data-game-status*="finished"i] {
+            color: $color_green;
+          }
+        }
+
+        .game-admin-action {
+          color: $color_theme;
+
+          button {
+            color: inherit;
+
+            &::after {
+              display: none;
+            }
+          }
+        }
+
+        .sort-icon {
+          &[data-sort_mode="none"] {
+            color: $color_grey2_logo;
+          }
+
+          &[data-sort_mode="asc"] {
+            color: $color_grey2_logo;
+            i.fa-arrow-up {
+              color: $color_theme;
+            }
+          }
+
+          &[data-sort_mode="desc"] {
+            color: $color_grey2_logo;
+            i.fa-arrow-down {
+              color: $color_theme;
+            }
+          }
+        }
+
+        .user-detail-menu {
+          .user-detail-list {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            column-gap: 15px;
+
+            .user-info {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.admin-game-config {
+  padding-bottom: 20px;
+
+  code {
+    color: $color_theme;
+  }
+
+  .card-title {
+    color: $color_white;
+  }
+
+  .section-title {
+    font-weight: normal;
+  }
+
+  .card {
+    background-color: $color_grey2_bg;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+    color: $color_grey3_font;
+    border: 2px solid $color_grey2_bg;
+
+    &:hover {
+      border-color: $color_grey2_logo;
+    }
+  }
+
+  .form-select {
+    background-image: url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27><path fill=%27none%27 stroke=%27%23808080%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27m2 5 6 6 6-6%27/></svg>");
+  }
+
+  .form-check-input {
+    &:checked {
+      background-color: $color_theme;
+      border-color: $color_theme;
+    }
+  }
+
+  .form-range {
+    &::-webkit-slider-thumb {
+      background-color: $color_theme;
+      border-color: $color_theme;
+    }
+
+    &::-webkit-slider-runnable-track {
+      background-color: $color_grey2_logo;
+    }
+  }
+
+  .form-control,
+  .form-select {
+    background-color: $color_grey1_bg;
+    color: $color_grey3_font;
+    border-color: $color_grey2_bg;
+
+    &:hover:not(:disabled):not([readonly]) {
+      &::file-selector-button {
+        background-color: $color_grey1_bg;
+      }
+    }
+
+    &:focus {
+      background-color: inherit;
+      color: inherit;
+      border-color: $color_line;
+    }
+
+    &::file-selector-button {
+      background-color: $color_black;
+      color: $color_white;
+    }
+  }
+
+  .section-game-data {
+    row-gap: 10px;
+
+    .config-icon-wrapper {
+      min-height: 100px;
+      width: 100%;
+      display: flex;
+      padding: 20px 0;
+      font-size: 4rem;
+    }
+  }
+
+  .section-game-config {
+    row-gap: 10px;
+
+    .config-content {
+      display: flex;
+      justify-content: center;
+
+      .config-label {
+        flex: 1 1 auto;
+        min-width: 200px;
+      }
+
+      .config-form-action {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+  }
+}

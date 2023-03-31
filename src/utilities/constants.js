@@ -11,9 +11,15 @@ export const ROUTE_PATHS = {
   COMPANY_EMAIL_SETUP: "/company/email-setup",
 
   // Game Paths
-  GAME_ROOT: "/game",
+  GAME_ROOT: "/games",
   GAME_ADD_NEW: "/game/add-game",
   GAME_PLAYBOARD: "/game/playboard",
+
+  // Admin Games
+  ADMIN: "/admin",
+  ADMIN_GAME: "/admin/games",
+  ADMIN_CONFIG_GAME: "/admin/config-game",
+  ADMIN_CONFIG_GAME_NAME: "/admin/config-game/:gameId",
 
   // PRINT Paths
   PRINT: "/print",
@@ -43,6 +49,12 @@ export const APP_MODAL_TYPES = {
   ERROR: "error",
 };
 
+export const USER_ROLES = {
+  ADMIN: "admin",
+  PLAYER: "player",
+  SPECTATOR: "spectator",
+};
+
 export const TABLE_GAME_STATUS = {
   ONGING: "Ongoing",
   FINISHED: "Finished",
@@ -59,3 +71,5 @@ export const TABLE_GAME_USER_ACTION = {
   VIEW_GAME: "View Game",
   VIEW_DASHBOARD: "View Dashboard",
 };
+
+export const TABLE_USER_PROFILE_LIMIT = 3;

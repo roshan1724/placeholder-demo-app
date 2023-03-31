@@ -4,8 +4,9 @@ header {
   font-family: "Roboto";
 
   .brand-logo {
-    width: $width_brand;
+    // width: $width_brand;
     height: $height_brand;
+    aspect-ratio: auto;
   }
 
   .header-wrapper {

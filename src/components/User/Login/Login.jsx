@@ -1,28 +1,39 @@
-import './Login.scss';
-// import useLocalStorage, { getDefaultStorageValue } from "../../../hooks/useLocalStorage";
+import "./Login.scss";
 
 import { useNavigate } from "react-router";
-import LoginForm from '../../../forms/login-form';
-import { useState } from 'react';
-import { ROUTE_PATHS } from '../../../utilities/constants';
+import LoginForm from "../../../forms/login-form";
+import { useState } from "react";
+import { ROUTE_PATHS, USER_ROLES } from "../../../utilities/constants";
+import { useDispatch } from "react-redux";
+import { AuthActions } from "../../../store/auth-slice";
 
-function Login () {
-
+function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [passwordToggle, setPasswordToggle] = useState(false);
   const [isInvalidCreds, setIsInvalidCreds] = useState(false);
   // const [userData, setUserData] = useLocalStorage('user', getDefaultStorageValue('user'));
-  
-  const submitCallback = (submitState) => {
-    console.log('Calback value Received ==> ', submitState);
-    if (submitState === true) {
-      navigate(ROUTE_PATHS.COMPANY_DETAILS);
+
+  const submitCallback = (submitResponse) => {
+    console.log("Calback value Received ==> ", submitResponse);
+    if (submitResponse.isLoggedIn) {
+      dispatch(AuthActions.login());
+      dispatch(AuthActions.setUserRole(submitResponse.userRole));
+
+      if (submitResponse.userRole === USER_ROLES.ADMIN) {
+        navigate(ROUTE_PATHS.ADMIN_GAME);
+      } else if (submitResponse.userRole === USER_ROLES.SPECTATOR) {
+        // View Only Mode
+        navigate(`${ROUTE_PATHS.GAME_PLAYBOARD}/?view=1`);
+      } else {
+        navigate(ROUTE_PATHS.COMPANY_DETAILS);
+      }
     } else {
       setIsInvalidCreds(true);
       // alert('Incorrect Credentials ... \nTry with this: \n\nemail: graham@test.com \npassword: password');
     }
-  }
+  };
 
   const loginForm = LoginForm(submitCallback);
 
@@ -64,20 +75,20 @@ function Login () {
                     type="email"
                     name="email"
                     id="login-email"
-                    className={(loginForm.touched.email && loginForm.errors.email) 
-                      ? 'form-control is-invalid' 
-                      : 'form-control'}
-                    placeholder='Enter Email Address'
+                    className={
+                      loginForm.touched.email && loginForm.errors.email
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                    placeholder="Enter Email Address"
                     onChange={loginForm.handleChange}
                     onBlur={loginForm.handleBlur}
                     value={loginForm.values.email}
                   />
-                  <div className='invalid-feedback'>
-                    {
-                      loginForm.touched.email && loginForm.errors.email 
+                  <div className="invalid-feedback">
+                    {loginForm.touched.email && loginForm.errors.email
                       ? loginForm.errors.email
-                      : ""
-                    }
+                      : ""}
                   </div>
                 </div>
               </div>
@@ -88,43 +99,44 @@ function Login () {
                 </label>
                 <div className="input-group has-validation">
                   <span className="input-group-text">
-                    <i className="fa-solid fa-lock"></i> 
+                    <i className="fa-solid fa-lock"></i>
                   </span>
                   <input
                     type={passwordToggle ? "text" : "password"}
                     name="password"
                     id="login-password"
-                    className={(loginForm.touched.password && loginForm.errors.password) 
-                      ? 'form-control is-invalid' 
-                      : 'form-control'}
-                    placeholder='Enter Password'
+                    className={
+                      loginForm.touched.password && loginForm.errors.password
+                        ? "form-control is-invalid"
+                        : "form-control"
+                    }
+                    placeholder="Enter Password"
                     onChange={loginForm.handleChange}
                     onBlur={loginForm.handleBlur}
                     value={loginForm.values.password}
                   />
-                  <span className="input-group-text eye-icon-wrapper" onClick={() => setPasswordToggle(!passwordToggle)}>
-                    {
-                      passwordToggle ? <i className="fa-solid fa-eye"></i> : <i className="fa-solid fa-eye-slash"></i>
-                    } 
+                  <span
+                    className="input-group-text eye-icon-wrapper"
+                    onClick={() => setPasswordToggle(!passwordToggle)}
+                  >
+                    {passwordToggle ? (
+                      <i className="fa-solid fa-eye"></i>
+                    ) : (
+                      <i className="fa-solid fa-eye-slash"></i>
+                    )}
                   </span>
-                  <div className='invalid-feedback'>
-                  {
-                    loginForm.touched.password && loginForm.errors.password 
-                    ? loginForm.errors.password
-                    : ""
-                  }
+                  <div className="invalid-feedback">
+                    {loginForm.touched.password && loginForm.errors.password
+                      ? loginForm.errors.password
+                      : ""}
                   </div>
                 </div>
               </div>
-              {
-                isInvalidCreds
-                ? (
-                  <p className="invalid-creds text-danger py-2">
-                    Please enter valid credentials.
-                  </p>
-                )
-                : null
-              }
+              {isInvalidCreds ? (
+                <p className="invalid-creds text-danger py-2">
+                  Please enter valid credentials.
+                </p>
+              ) : null}
               <div className="action-wrapper flex-center">
                 <div className="password-link c-font-14">Forgot Password ?</div>
                 <button

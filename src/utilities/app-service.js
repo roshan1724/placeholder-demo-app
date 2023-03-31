@@ -32,7 +32,7 @@ export const PrintService = (elementId, fileName, printCallback) => {
     callback: async (doc) => {
       try {
         await doc.save(fileName || "file-" + new Date().toDateString());
-        // const pdfUrlWindow = window.open(doc.output('bloburl'));
+        // const pdfUrlWindow = window.open(doc.output("bloburl"));
         printCallback({
           printState: "Success",
         });

@@ -53,8 +53,9 @@
     text-align: center;
 
     .brand-logo {
-      width: 210px;
-      height: 30px;
+      // width: 210px;
+      height: $height_brand;
+      aspect-ratio: auto;
     }
 
     .icon-wrapper {

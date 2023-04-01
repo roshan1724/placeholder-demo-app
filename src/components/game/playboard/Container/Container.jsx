@@ -18,7 +18,7 @@ import UserContext from "../../../../context/user/user-context";
 import { UiActions } from "../../../../store/ui-slice";
 import { API_PATHS } from "../../../../utilities/constants";
 
-function Container() {
+function Container({ gameMode }) {
   const [incidentData, setIncidentData] = useState([]);
   const [messageList, setMessageList] = useState([]);
   const [incidentCount, setIncidentCount] = useState(0);
@@ -102,7 +102,11 @@ function Container() {
             </div>
           )}
           <div className="col-12 col-md-5 section-container">
-            <Options className="h-100" handleSubmit={handleSubmit} />
+            <Options
+              className="h-100"
+              handleSubmit={handleSubmit}
+              gameMode={gameMode}
+            />
           </div>
         </div>
       </section>

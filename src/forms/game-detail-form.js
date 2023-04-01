@@ -1,49 +1,48 @@
-
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 export const getSpectatorFields = () => {
   return {
-    spectator_name: '',
-    spectator_email: ''
-  }
-}
+    spectator_name: "",
+    spectator_email: "",
+  };
+};
 
 export const getGameDetailFormInitailState = () => {
   return {
-    start_date: '',
+    start_date: "",
     start_time: {
-      hours: '',
-      minutes: '',
-      meredian: 'AM',
+      hours: "",
+      minutes: "",
+      meredian: "AM",
     },
-    time_zone: 'UTC',
-    
-    user_name: '',
-    user_email: '',
+    time_zone: "UTC",
 
-    cisco_name: '',
-    cisco_email: '',
-    cisco_title: '',
+    user_name: "",
+    user_email: "",
 
-    it_admin_name: '',
-    it_admin_email: '',
-    it_admin_title: '',
+    cisco_name: "",
+    cisco_email: "",
+    cisco_title: "",
+
+    it_admin_name: "",
+    it_admin_email: "",
+    it_admin_title: "",
 
     spectators: [getSpectatorFields()],
 
-    hasPortal: '',
-    portalValue: '',
+    hasPortal: "",
+    portalValue: "",
 
-    im_name: '',
+    im_name: "",
     email_gateway: [],
-    antivirus: '',
-    edr: ''
+    antivirus: "",
+    edr: "",
   };
-}
+};
 
-const GameDetailForm = (formOptionsData, submitCallback) => {
-  const initialValues = getGameDetailFormInitailState();
+const GameDetailForm = (formOptionsData, formValues, submitCallback) => {
+  const initialValues = formValues;
 
   // const validateDate = (given_date) => {
   //   return /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/i.test(given_date);
@@ -130,62 +129,97 @@ const GameDetailForm = (formOptionsData, submitCallback) => {
   // }
 
   const validationSchema = Yup.object().shape({
-    start_date: Yup.date().required('Select start date'),
+    start_date: Yup.date().required("Select start date"),
     start_time: Yup.object().shape({
-      hours: Yup.number().oneOf(formOptionsData.start_time.hours).required('Select valid start time'),
-      minutes: Yup.number().oneOf(formOptionsData.start_time.minutes).required('Select valid start time'),
-      meredian: Yup.string().oneOf(formOptionsData.start_time.meredian).required('Select valid start time'),
+      hours: Yup.number()
+        .oneOf(formOptionsData.start_time.hours)
+        .required("Select valid start time"),
+      minutes: Yup.number()
+        .oneOf(formOptionsData.start_time.minutes)
+        .required("Select valid start time"),
+      meredian: Yup.string()
+        .oneOf(formOptionsData.start_time.meredian)
+        .required("Select valid start time"),
     }),
-    time_zone: Yup.string().oneOf(formOptionsData.time_zome, 'Select valid time zone').required('Select valid time zone'),
-    
-    user_name: Yup.string().required('Enter valid name'),
-    user_email: Yup.string().email('Enter valid email').required('Enter valid email'),
-    
-    cisco_name: Yup.string().required('Enter valid name'),
-    cisco_email: Yup.string().email('Enter valid email').required('Enter valid email'),
-    cisco_title: Yup.string().oneOf(formOptionsData.cisco_jobTitle, 'Select valid title').required('Select valid title'),
-    
-    it_admin_name: Yup.string().required('Enter valid name'),
-    it_admin_email: Yup.string().email('Enter valid email').required('Enter valid email'),
-    it_admin_title: Yup.string().oneOf(formOptionsData.it_admin_jobTitle, 'Select valid title').required('Select valid title'),
-    
+    time_zone: Yup.string()
+      .oneOf(formOptionsData.time_zome, "Select valid time zone")
+      .required("Select valid time zone"),
+
+    user_name: Yup.string().required("Enter valid name"),
+    user_email: Yup.string()
+      .email("Enter valid email")
+      .required("Enter valid email"),
+
+    cisco_name: Yup.string().required("Enter valid name"),
+    cisco_email: Yup.string()
+      .email("Enter valid email")
+      .required("Enter valid email"),
+    cisco_title: Yup.string()
+      .oneOf(formOptionsData.cisco_jobTitle, "Select valid title")
+      .required("Select valid title"),
+
+    it_admin_name: Yup.string().required("Enter valid name"),
+    it_admin_email: Yup.string()
+      .email("Enter valid email")
+      .required("Enter valid email"),
+    it_admin_title: Yup.string()
+      .oneOf(formOptionsData.it_admin_jobTitle, "Select valid title")
+      .required("Select valid title"),
+
     spectators: Yup.array().of(
       Yup.object().shape({
-        spectator_name: Yup.string().required('Enter valid name'),
-        spectator_email: Yup.string().email('Enter valid email').required('Enter valid email')
+        spectator_name: Yup.string().required("Enter valid name"),
+        spectator_email: Yup.string()
+          .email("Enter valid email")
+          .required("Enter valid email"),
       })
     ),
 
-    hasPortal: Yup.string().oneOf(formOptionsData.hasPortalOptions.map(optionData => optionData.optionValue)).required('Select one of the above options'),
+    hasPortal: Yup.string()
+      .oneOf(
+        formOptionsData.hasPortalOptions.map(
+          (optionData) => optionData.optionValue
+        )
+      )
+      .required("Select one of the above options"),
     portalValue: Yup.string().when("hasPortal", {
       is: "true",
-      then: Yup.string().required('Enter valid portal address'),
+      then: Yup.string().required("Enter valid portal address"),
     }),
 
-    im_name: Yup.string().required('Enter valid name'),
+    im_name: Yup.string().required("Enter valid name"),
     email_gateway: Yup.array().test({
-      name: 'GAME_DETAILS_EMAIL_GATEWAY_TEST',
+      name: "GAME_DETAILS_EMAIL_GATEWAY_TEST",
       exclusive: true,
-      message: 'Select atleast one of the above options',
-      test: (value) => value.length > 0
+      message: "Select atleast one of the above options",
+      test: (value) => value.length > 0,
     }),
-    antivirus: Yup.string().oneOf(formOptionsData.antivirusOptions.map(optionData => optionData.optionValue),
-      'Select atleast one of the above options').required('Select atleast one of the above options'),
-    edr: Yup.string().oneOf(formOptionsData.edrOptions.map(optionData => optionData.optionValue),
-    'Select atleast one of the above options').required('Select atleast one of the above options'),
-
+    antivirus: Yup.string()
+      .oneOf(
+        formOptionsData.antivirusOptions.map(
+          (optionData) => optionData.optionValue
+        ),
+        "Select atleast one of the above options"
+      )
+      .required("Select atleast one of the above options"),
+    edr: Yup.string()
+      .oneOf(
+        formOptionsData.edrOptions.map((optionData) => optionData.optionValue),
+        "Select atleast one of the above options"
+      )
+      .required("Select atleast one of the above options"),
   });
 
   const onSubmit = (values) => {
     console.log(`Submitting Vlaues ==> `, values);
     submitCallback(true);
-  }
+  };
 
   return useFormik({
     initialValues,
     validationSchema,
-    onSubmit
+    onSubmit,
   });
-}
+};
 
 export default GameDetailForm;

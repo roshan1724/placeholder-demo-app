@@ -210,30 +210,4 @@ function ReportPdf({ onPrint, processingState }) {
   );
 }
 
-// function ReportPdf() {
-//   const { search } = useLocation();
-//   const searchParams = new URLSearchParams(search);
-//   const downloadFileName = searchParams.get('fileName');
-
-//   const pdfElement = document.getElementById(PRINT_PREVIEW_CONTAINER);
-
-//   const handlePrint = () => {
-//     // window.print();
-//     PrintService(PRINT_PREVIEW_CONTAINER, downloadFileName, (data) => {
-//       console.log('PRINT STATUS ==> ', data);
-//       window.close();
-//     });
-//   }
-
-//   const portal  = createPortal(<PdfContent onPrint={handlePrint}/>, pdfElement);
-
-//   return (
-//     <Fragment>
-//       {
-//         portal
-//       }
-//     </Fragment>
-//   );
-// }
-
 export default ReportPdf;

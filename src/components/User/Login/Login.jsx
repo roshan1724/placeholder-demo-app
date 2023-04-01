@@ -25,7 +25,7 @@ function Login() {
         navigate(ROUTE_PATHS.ADMIN_GAME);
       } else if (submitResponse.userRole === USER_ROLES.SPECTATOR) {
         // View Only Mode
-        navigate(`${ROUTE_PATHS.GAME_PLAYBOARD}/?view=1`);
+        navigate(ROUTE_PATHS.GAME_PLAYBOARD_VIEW_ONLY);
       } else {
         navigate(ROUTE_PATHS.COMPANY_DETAILS);
       }

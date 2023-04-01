@@ -7,9 +7,7 @@
 
 import "./Options.scss";
 
-import React, { useContext, useState } from "react";
-
-import { Fragment } from "react";
+import React, { useContext, useState, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import { useDispatch } from "react-redux";
@@ -17,6 +15,7 @@ import OptionContext from "../../../../../context/options/option-context";
 import UserContext from "../../../../../context/user/user-context";
 import {
   APP_MODAL_TYPES,
+  GAME_MODES,
   MODALVIEW_CONTAINER,
   ROUTE_PATHS,
 } from "../../../../../utilities/constants";
@@ -26,6 +25,7 @@ import AppModal from "../../../../common/Modal/modal";
 function Options(props) {
   const navigate = useNavigate();
 
+  const [gameMode, setGameMode] = useState(props.gameMode);
   const [searchedText, setSearchedText] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedOptionList, setSelectedOptionList] = useState([]);
@@ -112,8 +112,10 @@ function Options(props) {
 
   const handleEndTurn = (event) => {
     handleModalClose(event);
+    setSelectedOption(null);
     setSearchedText("");
-    navigate(ROUTE_PATHS.DASHBOARD);
+    setGameMode(GAME_MODES.VIEW_ONLY);
+    navigate(ROUTE_PATHS.GAME_PLAYBOARD_VIEW_ONLY);
   };
 
   const handleGetHint = (event) => {
@@ -245,14 +247,24 @@ function Options(props) {
                 onKeyUp={handleKeyEventsOnSearch}
                 onChange={(e) => setSearchedText(e.target.value)}
                 value={searchedText}
+                disabled={gameMode === GAME_MODES.VIEW_ONLY}
                 placeholder="Search Options"
               />
               <img src="/images/search_grey_icon.png" alt="Search Icon" />
             </div>
-            <button className="btn btn-primary" onClick={handleGameHelpInfo}>
+            <button
+              className="btn btn-primary"
+              disabled={gameMode === GAME_MODES.VIEW_ONLY}
+              onClick={handleGameHelpInfo}
+            >
               Get a Hint
             </button>
-            <button className="btn btn-primary" onClick={handleGameEndWarning}>
+            <button
+              className={`btn btn-primary ${
+                gameMode === GAME_MODES.VIEW_ONLY ? "d-none" : ""
+              }`}
+              onClick={handleGameEndWarning}
+            >
               End Turn
             </button>
           </div>
@@ -265,7 +277,9 @@ function Options(props) {
                 : "flex-shrink-0 option-wrapper overflow-scrollbar"
             }`}
           >
-            {optionsData && Array.isArray(optionsData)
+            {optionsData &&
+            Array.isArray(optionsData) &&
+            gameMode !== GAME_MODES.VIEW_ONLY
               ? optionsData.map((option) => (
                   <div className="option-content" key={option.option_id}>
                     <input

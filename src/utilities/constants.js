@@ -1,3 +1,8 @@
+export const GAME_MODES = {
+  VIEW_ONLY: "view_only",
+  GAME_PLAY: "game_play",
+};
+
 export const ROUTE_PATHS = {
   ROOT: "/",
   LOGIN: "/login",
@@ -14,6 +19,7 @@ export const ROUTE_PATHS = {
   GAME_ROOT: "/games",
   GAME_ADD_NEW: "/game/add-game",
   GAME_PLAYBOARD: "/game/playboard",
+  GAME_PLAYBOARD_VIEW_ONLY: `/game/playboard?${GAME_MODES.VIEW_ONLY}=1`,
 
   // Admin Games
   ADMIN: "/admin",

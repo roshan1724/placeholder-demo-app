@@ -10,6 +10,9 @@ import CompanyEmailSetup from "./components/company/EmailSetup/emailSetup";
 import GameHome from "./components/game/Home/Home";
 import AddNewGame from "./components/game/newGame/newGame";
 import PrintPDF from "./components/common/Print-PDF/print-pdf";
+import AdminHome from "./components/User/Admin/admin";
+import AdminGameList from "./components/User/Admin/Game/game-list";
+import AdminConfigGame from "./components/User/Admin/Game/game-config";
 import { ROUTE_PATHS } from "./utilities/constants";
 
 const AppRoutes = () => {
@@ -22,6 +25,18 @@ const AppRoutes = () => {
     {
       path: ROUTE_PATHS.LOGIN,
       element: <Login />,
+    },
+    {
+      path: ROUTE_PATHS.ADMIN,
+      element: <AdminHome />,
+    },
+    {
+      path: ROUTE_PATHS.ADMIN_GAME,
+      element: <AdminGameList />,
+    },
+    {
+      path: ROUTE_PATHS.ADMIN_CONFIG_GAME_NAME,
+      element: <AdminConfigGame />,
     },
     {
       path: ROUTE_PATHS.COMPANY_ROOT,

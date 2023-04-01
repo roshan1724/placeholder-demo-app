@@ -7,6 +7,7 @@
 
   &.theme-dark {
     background: $color_black;
+    color: $color_grey3_font;
     @include dark_theme();
   }
 

@@ -1,21 +1,42 @@
-
-import { useFormik } from 'formik';
+import { useFormik } from "formik";
 import * as Yup from "yup";
+import { USER_ROLES } from "../utilities/constants";
 
 const LoginForm = (submitCallback) => {
   const initialValues = {
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   };
 
   const onSubmit = (values) => {
     console.log("Submitted Values => ", values);
-    if (values.email === 'graham@test.com' && values.password === 'test@123') {
-      submitCallback(true);
+    if (values.email === "graham@test.com" && values.password === "test@123") {
+      submitCallback({
+        userRole: USER_ROLES.PLAYER,
+        isLoggedIn: true,
+      });
+    } else if (
+      values.email === "admin@test.com" &&
+      values.password === "test@123"
+    ) {
+      submitCallback({
+        userRole: USER_ROLES.ADMIN,
+        isLoggedIn: true,
+      });
+    } else if (
+      values.email === "spectator@test.com" &&
+      values.password === "test@123"
+    ) {
+      submitCallback({
+        userRole: USER_ROLES.SPECTATOR,
+        isLoggedIn: true,
+      });
     } else {
-      submitCallback(false);
+      submitCallback({
+        isLoggedIn: false,
+      });
     }
-  }
+  };
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -45,8 +66,8 @@ const LoginForm = (submitCallback) => {
   return useFormik({
     initialValues,
     validationSchema,
-    onSubmit
-  })
-} 
+    onSubmit,
+  });
+};
 
 export default LoginForm;

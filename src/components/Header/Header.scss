@@ -21,7 +21,7 @@ header {
 
         span.badge {
           padding: 1px 3px;
-          border: 2px solid $badge_border;
+          border: 2px solid $color_grey1_bg;
           top: -2px;
           left: 15px;
         }
@@ -30,6 +30,7 @@ header {
       .profile-image {
         width: $height_profile_image_icon;
         height: $height_profile_image_icon;
+        border: 2px solid $color_grey2_logo;
       }
 
       .profile-wrapper {

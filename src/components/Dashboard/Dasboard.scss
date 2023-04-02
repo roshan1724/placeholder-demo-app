@@ -151,11 +151,24 @@
       cursor: pointer;
       margin: -8px -20px -8px 10px;
 
+      &:hover {
+        .action-content {
+          .icon-wrapper {
+            color: $color_theme;
+          }
+        }
+      }
+
       .action-content {
         height: 100%;
-        display: inline-flex;
+        display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
+
+        .icon-wrapper {
+          color: $color_white;
+        }
       }
     }
   }

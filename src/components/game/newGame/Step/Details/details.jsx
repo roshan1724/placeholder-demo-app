@@ -78,6 +78,11 @@ function GameDetails() {
       })
     );
     setActiveStepIndex(activeStepIndex - 1);
+    window?.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleNextClick = async () => {
@@ -88,6 +93,11 @@ function GameDetails() {
   const submitCallback = (submitState) => {
     if (submitState) {
       setActiveStepIndex(activeStepIndex + 1);
+      window?.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -288,6 +298,7 @@ function GameDetails() {
                         onChange={gameDetailForm.handleChange}
                         onBlur={gameDetailForm.handleBlur}
                         value={gameDetailForm.values.start_date}
+                        onClick={handleDateIconClick}
                         readOnly
                       />
                       <span
@@ -795,7 +806,7 @@ function GameDetails() {
                             id={`game-portal_option-${optionIndex}`}
                             className={`form-check-input`}
                             checked={
-                              gameDetailForm.values.hasPorta ===
+                              gameDetailForm.values.hasPortal ===
                               optionData.optionValue
                             }
                             onChange={gameDetailForm.handleChange}

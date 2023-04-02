@@ -366,6 +366,10 @@
     --bs-list-group-border-color: $color_grey2_logo;
   }
 
+  .btn {
+    min-width: 100px;
+  }
+
   .btn-primary {
     color: $color_theme;
     border-color: $color_theme;

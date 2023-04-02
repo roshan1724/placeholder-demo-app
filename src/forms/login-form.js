@@ -42,7 +42,7 @@ const LoginForm = (submitCallback) => {
     email: Yup.string()
       .email("Please enter a valid email address")
       .required("Please enter a valid email address"),
-    password: Yup.string().required("Please enter a password"),
+    password: Yup.string().required("Please enter valid password"),
   });
 
   // const validate = (values) => {

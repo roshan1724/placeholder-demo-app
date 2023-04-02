@@ -78,6 +78,11 @@ function GameDetails() {
       })
     );
     setActiveStepIndex(activeStepIndex - 1);
+    window?.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleNextClick = async () => {
@@ -88,6 +93,11 @@ function GameDetails() {
   const submitCallback = (submitState) => {
     if (submitState) {
       setActiveStepIndex(activeStepIndex + 1);
+      window?.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
     }
   };
 

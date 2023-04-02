@@ -806,7 +806,7 @@ function GameDetails() {
                             id={`game-portal_option-${optionIndex}`}
                             className={`form-check-input`}
                             checked={
-                              gameDetailForm.values.hasPorta ===
+                              gameDetailForm.values.hasPortal ===
                               optionData.optionValue
                             }
                             onChange={gameDetailForm.handleChange}

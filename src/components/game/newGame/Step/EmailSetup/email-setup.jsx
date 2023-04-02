@@ -39,10 +39,10 @@ function GameEmailSetup() {
         <div className="setup-wrapper">
           <div className="row setup-content">
             <div className="col-12 col-sm-10">
-              <div id="email-instructions" className="email-content">
+              <div id="email-instructions" className="email-content c-font-15">
                 <section className="mb-2">
                   <div className="title c-font-16">Lorem ipsum</div>
-                  <p className="subtitle c-font-14 py-2">
+                  <p className="subtitle py-2">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                     ut facilisis nulla, non aliquam libero. Nunc pretium massa
                     nec massa consectetur, vel ullamcorper nunc laoreet.

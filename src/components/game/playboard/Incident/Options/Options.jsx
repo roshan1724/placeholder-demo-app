@@ -238,7 +238,11 @@ function Options(props) {
             Please type what you'd like to do next. If you're stuck, type “I
             need help.” If you're ready to end your turn, type "I'm done."
           </p>
-          <div className="user-action-wrapper">
+          <div
+            className={`user-action-wrapper ${
+              gameMode === GAME_MODES.VIEW_ONLY ? "d-none" : ""
+            }`}
+          >
             <div className="search-wrapper">
               <input
                 type="search"
@@ -335,7 +339,11 @@ function Options(props) {
                   </div>
                 )}
           </div>
-          <div className="action-wrapper d-flex justify-content-center mt-auto mb-2">
+          <div
+            className={`action-wrapper d-flex justify-content-center mt-auto mb-2 ${
+              gameMode === GAME_MODES.VIEW_ONLY ? "d-none" : ""
+            }`}
+          >
             <div className="user-wrapper">
               <img
                 src={activeUser.profile_img}

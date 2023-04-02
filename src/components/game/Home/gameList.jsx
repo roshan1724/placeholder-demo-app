@@ -237,7 +237,7 @@ function GameList({ gameListData }) {
     if (gameStatus === TABLE_GAME_STATUS.ONGING) {
       uiDataObj.iconName = "chess-rook";
       uiDataObj.actionText = TABLE_GAME_USER_ACTION.VIEW_GAME;
-      uiDataObj.navigationLink = ROUTE_PATHS.GAME_PLAYBOARD;
+      uiDataObj.navigationLink = ROUTE_PATHS.GAME_PLAYBOARD_VIEW_ONLY;
     } else if (gameStatus === TABLE_GAME_STATUS.SCHEDULED) {
       uiDataObj.iconName = "";
       uiDataObj.actionText = "";

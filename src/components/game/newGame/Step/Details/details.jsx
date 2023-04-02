@@ -298,6 +298,7 @@ function GameDetails() {
                         onChange={gameDetailForm.handleChange}
                         onBlur={gameDetailForm.handleBlur}
                         value={gameDetailForm.values.start_date}
+                        onClick={handleDateIconClick}
                         readOnly
                       />
                       <span

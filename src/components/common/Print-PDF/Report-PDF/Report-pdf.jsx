@@ -143,24 +143,14 @@ function ReportPdf({ onPrint, processingState }) {
                         className="status-wrapper"
                         data-status={findingData.status}
                       >
-                        <img
-                          src={
-                            findingData.status === "HIGHLY_CRITICAL"
-                              ? "/images/warning_red.png"
-                              : findingData.status === "CRITICAL"
-                              ? "/images/warning_orange.png"
-                              : findingData.status === "MODERATE"
-                              ? "/images/warning_yellow.png"
-                              : ""
-                          }
-                          alt="status icon"
-                          className="status-icon"
-                        />
-                        <p className="status-text c-font-12 mt-2">
+                        <span className="icon-wrapper">
+                          <i className="fa-solid fa-triangle-exclamation"></i>
+                        </span>
+                        <p className="status-text c-font-14">
                           {findingData.time_taken}
                         </p>
                       </div>
-                      <p className="content-text c-font-14">
+                      <p className="content-text c-font-15">
                         {findingData.value}
                       </p>
                     </div>

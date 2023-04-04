@@ -57,34 +57,40 @@ function Container({ gameMode }) {
    * @param {HTML_Event} event
    */
   const handleSubmit = (event) => {
-    const currentData = messageList.map((message) => {
-      if (message.incident_id === incidentData[incidentCount].incident_id) {
-        if (incidentData[incidentCount].correct_option_id === event) {
-          userContext.updateUserAchievements({
-            user_id: userContext.userData.user_id,
-            linked_achievements:
-              incidentData[incidentCount].linked_achievements,
-          });
-        }
-        return {
-          ...message,
-          option_text: optionContext.optionsData.data?.find(
-            (option) => option.option_id === event
-          ).option_value,
-          is_correct: incidentData[incidentCount].correct_option_id === event,
-        };
-      }
-      return message;
-    });
+    dispatch(UiActions.setShowLoader(true));
 
-    currentData.push({
-      incident_id: incidentData[incidentCount + 1].incident_id,
-      message_text: incidentData[incidentCount + 1].incident_question,
-      option_text: null,
-      is_correct: false,
-    });
-    setIncidentCount(incidentCount + 1);
-    setMessageList(currentData);
+    // Simulate API Call to Submit correct selected options
+    setTimeout(() => {
+      dispatch(UiActions.setShowLoader(false));
+      const currentData = messageList.map((message) => {
+        if (message.incident_id === incidentData[incidentCount].incident_id) {
+          if (incidentData[incidentCount].correct_option_id === event) {
+            userContext.updateUserAchievements({
+              user_id: userContext.userData.user_id,
+              linked_achievements:
+                incidentData[incidentCount].linked_achievements,
+            });
+          }
+          return {
+            ...message,
+            option_text: optionContext.optionsData.data?.find(
+              (option) => option.option_id === event
+            ).option_value,
+            is_correct: incidentData[incidentCount].correct_option_id === event,
+          };
+        }
+        return message;
+      });
+
+      currentData.push({
+        incident_id: incidentData[incidentCount + 1].incident_id,
+        message_text: incidentData[incidentCount + 1].incident_question,
+        option_text: null,
+        is_correct: false,
+      });
+      setIncidentCount(incidentCount + 1);
+      setMessageList(currentData);
+    }, 1000);
   };
 
   return (

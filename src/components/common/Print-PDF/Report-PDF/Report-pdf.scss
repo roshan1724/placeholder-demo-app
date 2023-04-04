@@ -20,6 +20,10 @@ $full_width_negative_value: 50;
     margin-bottom: 0;
   }
 
+  .page-title {
+    color: $color_black;
+  }
+
   .avatar-wrapper {
     img.profile-image {
       filter: drop-shadow(0 0 0 black);

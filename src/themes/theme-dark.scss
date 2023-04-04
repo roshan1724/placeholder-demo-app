@@ -1,4 +1,5 @@
 @import "./../styles/variables.scss";
+@import "./../styles/mixins.scss";
 
 @mixin dark_theme() {
   header {
@@ -123,6 +124,17 @@
       .option-text {
         background-color: $color_grey1_bg;
         color: $color_white;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          cursor: pointer;
+          @include effect_block_shadow();
+          transition: all 0.3s ease-in-out;
+
+          .checkmark-holder {
+            border-color: $color_theme;
+          }
+        }
 
         .checkmark-holder {
           border: 1px solid $color_grey2_logo;
@@ -141,20 +153,20 @@
     }
   }
 
+  .input-group-text {
+    background-color: $color_black;
+    border-color: $color_grey2_bg;
+    color: $color_grey2_logo;
+
+    &.eye-icon-wrapper {
+      background-color: $color_grey1_bg;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+
   .custom-form-block {
     color: $color_grey3_font;
-
-    .input-group-text {
-      background-color: $color_black;
-      border-color: $color_grey2_bg;
-      color: $color_grey2_logo;
-
-      &.eye-icon-wrapper {
-        background-color: $color_grey1_bg;
-        font-size: 14px;
-        cursor: pointer;
-      }
-    }
 
     .form-check {
       .form-check-input {
@@ -166,10 +178,10 @@
 
         &:checked {
           &[type="checkbox"] {
-            --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
           }
           &[type="radio"] {
-            --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23000'/%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23000'/%3e%3c/svg%3e");
           }
           background-color: $color_theme;
           border-color: $color_theme;
@@ -223,6 +235,8 @@
       &[type="email" i],
       &[type="password" i] {
         color: $color_white;
+        border-radius: 10px;
+        box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.3);
       }
       &[type="date" i] {
         color: $color_white;
@@ -373,7 +387,8 @@
   .btn-primary {
     color: $color_theme;
     border-color: $color_theme;
-    background-color: $color_grey2_bg;
+    background-color: $color_grey1_bg;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease-in-out;
 
     .icon-wrapper {

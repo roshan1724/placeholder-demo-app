@@ -22,7 +22,7 @@
 
   .title-wrapper {
     display: flex;
-    column-gap: 5px;
+    column-gap: 10px;
 
     .legend-box {
       flex: 0 0 auto;
@@ -38,9 +38,14 @@
     .custom-progressbar {
       flex-grow: 1;
       background-color: $color_grey2_bg;
+      box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.4);
 
       @include media_print() {
         background-color: $color_grey2_bg;
+      }
+
+      .progress-bar {
+        box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.4);
       }
     }
   }

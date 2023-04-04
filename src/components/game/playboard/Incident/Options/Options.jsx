@@ -89,6 +89,7 @@ function Options(props) {
     const updatedList = [...new Set([...selectedOptionList, selectedOption])];
     setSelectedOptionList(updatedList);
     props.handleSubmit(selectedOption);
+    setOptionsData(null);
     setSelectedOption(null);
     setSearchedText("");
   };
@@ -243,7 +244,7 @@ function Options(props) {
               gameMode === GAME_MODES.VIEW_ONLY ? "d-none" : ""
             }`}
           >
-            <div className="search-wrapper">
+            {/* <div className="search-wrapper input-group">
               <input
                 type="search"
                 name="user-commands"
@@ -254,7 +255,36 @@ function Options(props) {
                 disabled={gameMode === GAME_MODES.VIEW_ONLY}
                 placeholder="Search Options"
               />
-              <img src="/images/search_grey_icon.png" alt="Search Icon" />
+              <span
+                className={`action-wrapper ${searchedText ? "" : "d-none"}`}
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </span>
+              <span className="input-group-text">
+                <i className="fa-solid fa-search"></i>
+              </span>
+            </div> */}
+            <div className="search-wrapper custom-form-block">
+              <div className="input-group">
+                <input
+                  type="search"
+                  name="user-commands"
+                  id="user-commands"
+                  onKeyUp={handleKeyEventsOnSearch}
+                  onChange={(e) => setSearchedText(e.target.value)}
+                  value={searchedText}
+                  disabled={gameMode === GAME_MODES.VIEW_ONLY}
+                  placeholder="Search Options"
+                />
+                <span
+                  className={`action-wrapper ${searchedText ? "" : "d-none"}`}
+                >
+                  <i className="fa-solid fa-xmark"></i>
+                </span>
+                <span className="input-group-text last-child">
+                  <i className="fa-solid fa-search"></i>
+                </span>
+              </div>
             </div>
             <button
               className="btn btn-primary"
@@ -358,7 +388,7 @@ function Options(props) {
               onClick={handleSubmitClick}
               disabled={!selectedOption}
             >
-              Submit
+              Submit Response
             </button>
           </div>
         </div>

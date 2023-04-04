@@ -218,12 +218,6 @@ function Dashboard() {
               onClick={handleModalClose}
             >
               <i className="fa-regular fa-circle-xmark"></i>
-              {/* <img
-                src="/images/circle_cross_grey.png"
-                alt="Close Icon"
-                width={30}
-                height={30}
-              /> */}
             </span>
             <div className="modal-body">
               {selectedPhaseData && (

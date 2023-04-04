@@ -244,26 +244,6 @@ function Options(props) {
               gameMode === GAME_MODES.VIEW_ONLY ? "d-none" : ""
             }`}
           >
-            {/* <div className="search-wrapper input-group">
-              <input
-                type="search"
-                name="user-commands"
-                id="user-commands"
-                onKeyUp={handleKeyEventsOnSearch}
-                onChange={(e) => setSearchedText(e.target.value)}
-                value={searchedText}
-                disabled={gameMode === GAME_MODES.VIEW_ONLY}
-                placeholder="Search Options"
-              />
-              <span
-                className={`action-wrapper ${searchedText ? "" : "d-none"}`}
-              >
-                <i className="fa-solid fa-xmark"></i>
-              </span>
-              <span className="input-group-text">
-                <i className="fa-solid fa-search"></i>
-              </span>
-            </div> */}
             <div className="search-wrapper custom-form-block">
               <div className="input-group">
                 <input

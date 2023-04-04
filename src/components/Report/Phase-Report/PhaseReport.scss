@@ -9,6 +9,8 @@
     font-size: 16px;
     font-weight: normal;
     color: $color_grey3_font;
+    margin-bottom: 10px;
+
     span {
       display: contents;
       font-weight: 700;
@@ -34,6 +36,12 @@
     align-items: center;
     border: none;
 
+    .profile-wrapper {
+      .profile-icon {
+        border: 2px solid $color_grey2_logo;
+      }
+    }
+
     &[data-status*="success"i] {
       background: $color_grey2_bg;
     }
@@ -43,7 +51,7 @@
 
       .profile-wrapper {
         .profile-icon {
-          border: 2px solid $color_red;
+          border-color: $color_red;
         }
       }
     }

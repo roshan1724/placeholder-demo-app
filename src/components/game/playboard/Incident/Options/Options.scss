@@ -21,15 +21,17 @@
       flex-grow: 1;
 
       input[type="search"] {
-        width: 100%;
+        flex-grow: 1;
+        width: auto;
         height: 40px;
         padding: 0 25px 0 20px;
       }
 
-      img {
-        width: $width_icon;
-        height: $height_icon;
-        transform: translate3d(0, -25%, 0);
+      .action-wrapper {
+        position: absolute;
+        right: 50px;
+        top: 50%;
+        transform: translate3d(0, -10px, 0);
       }
     }
   }
@@ -113,14 +115,23 @@
   }
 
   .action-wrapper {
+    border-top: 1px solid $color_line;
+
+    .user-wrapper {
+      .profile-icon {
+        border: 2px solid $color_grey2_logo;
+      }
+    }
+
     button.submit-btn {
-      font-size: 18px;
-      font-weight: 700;
-      border-radius: 100px;
-      width: 155px;
+      font-size: 16px;
+      font-weight: 500;
+      width: 165px;
       padding: 10px;
       margin-top: 10px;
       align-self: center;
+      box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
     }
   }
 

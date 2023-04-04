@@ -68,7 +68,7 @@ function Login() {
                   Email Address *
                 </label>
                 <div className="input-group has-validation">
-                  <span className="input-group-text">
+                  <span className="input-group-text first-child">
                     <i className="fa-solid fa-at"></i>
                   </span>
                   <input
@@ -98,7 +98,7 @@ function Login() {
                   Password *
                 </label>
                 <div className="input-group has-validation">
-                  <span className="input-group-text">
+                  <span className="input-group-text first-child">
                     <i className="fa-solid fa-lock"></i>
                   </span>
                   <input
@@ -116,7 +116,7 @@ function Login() {
                     value={loginForm.values.password}
                   />
                   <span
-                    className="input-group-text eye-icon-wrapper"
+                    className="input-group-text eye-icon-wrapper last-child"
                     onClick={() => setPasswordToggle(!passwordToggle)}
                   >
                     {passwordToggle ? (

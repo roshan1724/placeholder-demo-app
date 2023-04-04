@@ -1,7 +1,22 @@
-@import './../Dashboard/Dasboard.scss';
+@import "./../Dashboard/Dasboard.scss";
 
 .section-report {
   padding-bottom: 20px;
+
+  .page-subtitle {
+    color: $color_white;
+  }
+
+  .page-summary {
+    .custom-progressbar {
+      height: 20px;
+    }
+  }
+
+  .page-details-row {
+    padding-top: 20px;
+    row-gap: 30px;
+  }
 
   .summary-time-wrapper {
     display: flex;
@@ -14,7 +29,30 @@
     width: 100%;
 
     .custom-progressbar {
-      background: $color_grey1_bg;
+      background-color: $color_grey1_bg;
+    }
+  }
+
+  .summary-details-wrapper {
+    &.phase-details {
+      .section-body {
+        row-gap: 30px;
+      }
+
+      .custom-progressbar {
+        background-color: $color_grey2_bg;
+      }
+    }
+  }
+
+  .phase-report-container {
+    padding: 30px;
+
+    .details-row {
+      > * {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
     }
   }
 }

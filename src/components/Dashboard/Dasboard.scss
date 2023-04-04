@@ -6,6 +6,10 @@
     padding: 20px 30px;
     border-radius: 15px;
 
+    .section-title {
+      margin-bottom: 20px;
+    }
+
     .chart-wrapper {
       min-height: 300px;
       border-radius: 15px;
@@ -24,6 +28,14 @@
         flex-direction: column;
         row-gap: 30px;
         padding: 0 30px;
+
+        .custom-progressbar {
+          height: 20px;
+        }
+
+        .time-wrapper {
+          font-weight: 700;
+        }
       }
     }
   }
@@ -33,8 +45,8 @@
   font-size: 18px;
   font-weight: 700;
   span {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 12px;
+    font-weight: 500;
   }
 }
 
@@ -52,7 +64,7 @@
     .section-title {
       .count {
         margin-left: 4px;
-        width: 18px;
+        padding: 6px;
         height: 18px;
         display: inline-flex;
         justify-content: center;
@@ -73,6 +85,7 @@
 }
 
 .section-body {
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -93,27 +106,25 @@
       flex-direction: column;
       align-items: center;
 
-      img.status-icon {
-        width: $width_icon;
-        height: $height_icon;
+      .icon-wrapper {
+        font-size: 20px;
+        color: inherit;
+      }
+
+      .status-text {
+        font-weight: 500;
       }
 
       &[data-status*="highly_critical"i] {
-        p.status-text {
-          color: $color_red;
-        }
+        color: $color_red;
       }
 
       &[data-status*="critical"i] {
-        p.status-text {
-          color: $color_orange;
-        }
+        color: $color_orange;
       }
 
       &[data-status*="moderate"i] {
-        p.status-text {
-          color: $color_yellow;
-        }
+        color: $color_yellow;
       }
     }
   }
@@ -128,6 +139,7 @@
       display: inline-flex;
       flex-direction: column;
       justify-content: center;
+      font-weight: 500;
 
       .phase-index {
         color: $color_grey2_logo;
@@ -142,6 +154,18 @@
       display: flex;
       flex-direction: column;
       row-gap: 5px;
+
+      .progress-title {
+        font-size: 12px;
+      }
+
+      .custom-progressbar {
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+      }
+
+      .time-wrapper {
+        font-size: 14px;
+      }
     }
 
     .action-wrapper {
@@ -174,15 +198,35 @@
   }
 }
 
-.phase-modal {
-  position: relative;
-  background-color: $color_grey1_bg;
-  color: $color_grey3_font;
+.modal {
+  .phase-modal {
+    position: relative;
+    color: $color_grey3_font;
 
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    z-index: 1;
+    .modal-body {
+      background-color: $color_grey2_bg;
+      border-radius: 15px;
+
+      .phase-report-container {
+        background-color: $color_grey2_bg;
+      }
+
+      .details-row {
+        padding-top: calc(30px - 1rem);
+      }
+
+      .path-data-wrapper .path-data-container[data-status*="success" i],
+      .company-data-wrapper .company-data-container[data-status*="success" i] {
+        background-color: $color_grey1_bg;
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      z-index: 1;
+      font-size: 25px;
+    }
   }
 }

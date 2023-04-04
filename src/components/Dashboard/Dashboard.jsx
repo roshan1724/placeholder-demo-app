@@ -113,7 +113,7 @@ function Dashboard() {
                     View Report
                   </button>
                 </div>
-                <div className="section-body py-2">
+                <div className="section-body">
                   {findingsData &&
                     findingsData.map((findingData, index) => (
                       <div className="findings-content" key={findingData.id}>
@@ -121,24 +121,14 @@ function Dashboard() {
                           className="status-wrapper"
                           data-status={findingData.status}
                         >
-                          <img
-                            src={
-                              findingData.status === "HIGHLY_CRITICAL"
-                                ? "/images/warning_red.png"
-                                : findingData.status === "CRITICAL"
-                                ? "/images/warning_orange.png"
-                                : findingData.status === "MODERATE"
-                                ? "/images/warning_yellow.png"
-                                : ""
-                            }
-                            alt="status icon"
-                            className="status-icon"
-                          />
-                          <p className="status-text c-font-12 mt-2">
+                          <span className="icon-wrapper">
+                            <i className="fa-solid fa-triangle-exclamation"></i>
+                          </span>
+                          <p className="status-text c-font-14">
                             {findingData.time_taken}
                           </p>
                         </div>
-                        <p className="content-text c-font-14">
+                        <p className="content-text c-font-15">
                           {findingData.value}
                         </p>
                       </div>
@@ -157,14 +147,14 @@ function Dashboard() {
                     View Report
                   </button>
                 </div>
-                <div className="section-body py-2">
+                <div className="section-body">
                   {phaseData &&
                     phaseData.map((data, phaseIndex) => (
                       <div className="phase-content mb-2" key={data.id}>
                         <div className="row">
                           <div className="col-3">
                             <div className="phase-name-wrapper">
-                              <p className="phase-index c-font-14">
+                              <p className="phase-index c-font-15">
                                 Phase {phaseIndex + 1}
                               </p>
                               <p className="phase-title c-font-18">
@@ -227,12 +217,7 @@ function Dashboard() {
               aria-label="Close"
               onClick={handleModalClose}
             >
-              <img
-                src="/images/circle_cross_grey.png"
-                alt="Close Icon"
-                width={30}
-                height={30}
-              />
+              <i className="fa-regular fa-circle-xmark"></i>
             </span>
             <div className="modal-body">
               {selectedPhaseData && (

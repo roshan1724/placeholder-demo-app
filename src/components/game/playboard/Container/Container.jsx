@@ -8,7 +8,7 @@
 import "./Container.scss";
 
 import React, { useContext, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Incident from "../Incident/Incident";
 import Options from "../Incident/Options/Options";
@@ -27,7 +27,6 @@ function Container({ gameMode }) {
   const userContext = useContext(UserContext);
 
   const dispatch = useDispatch();
-  const loader = useSelector((state) => state.ui.showLoader);
 
   useEffect(() => {
     dispatch(UiActions.setShowLoader(true));

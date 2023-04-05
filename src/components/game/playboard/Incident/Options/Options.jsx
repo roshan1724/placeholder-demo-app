@@ -65,12 +65,20 @@ function Options(props) {
    */
   const getOptions = () => {
     dispatch(UiActions.setShowLoader(true));
-    // const queryString = searchedText;
+    const queryString = searchedText;
+    // Call API Here to get options with query String
     setTimeout(() => {
       dispatch(UiActions.setShowLoader(false));
-
-      // If API error
-      openErrorModal();
+      if (queryString.toLowerCase() === "answer") {
+        setOptionsData(
+          optionContext.optionsData.data
+            ? [...optionContext.optionsData.data]
+            : null
+        );
+      } else {
+        // If API error
+        openErrorModal();
+      }
     }, 1000);
   };
 
@@ -79,7 +87,16 @@ function Options(props) {
    * @param {HTML_Event} event
    */
   const handleOptionSelection = (event) => {
-    setSelectedOption(Number(event.target.value));
+    const _selectedOption = Number(event.target.value);
+    setSelectedOption(_selectedOption);
+
+    // Temporary Fix
+    const updatedList = [...new Set([...selectedOptionList, _selectedOption])];
+    setSelectedOptionList(updatedList);
+    props.handleSubmit(_selectedOption);
+    setOptionsData(null);
+    setSelectedOption(null);
+    setSearchedText("");
   };
 
   /**
@@ -236,8 +253,8 @@ function Options(props) {
         <div className="title-container">
           <h1 className="title">What would you do?</h1>
           <p className="description">
-            Please type what you'd like to do next. If you're stuck, type “I
-            need help.” If you're ready to end your turn, type "I'm done."
+            Please type what you'd like to do next, and ChaosTrack will present
+            you with your options.
           </p>
           <div
             className={`user-action-wrapper ${
@@ -364,7 +381,7 @@ function Options(props) {
             </div>
             <button
               type="submit"
-              className="btn btn-primary btn-filled submit-btn"
+              className="btn btn-primary btn-filled submit-btn d-none"
               onClick={handleSubmitClick}
               disabled={!selectedOption}
             >

@@ -57,11 +57,13 @@ function Container({ gameMode }) {
    * @param {HTML_Event} event
    */
   const handleSubmit = (event) => {
+    console.log(event);
     dispatch(UiActions.setShowLoader(true));
 
     // Simulate API Call to Submit correct selected options
     setTimeout(() => {
       dispatch(UiActions.setShowLoader(false));
+
       const currentData = messageList.map((message) => {
         if (message.incident_id === incidentData[incidentCount].incident_id) {
           if (incidentData[incidentCount].correct_option_id === event) {
@@ -90,14 +92,14 @@ function Container({ gameMode }) {
       });
       setIncidentCount(incidentCount + 1);
       setMessageList(currentData);
-    }, 1000);
+    }, 200);
   };
 
   return (
     userContext.userData && (
       <section className="container-wrapper p-3 mb-3">
         <div className="row">
-          {!loader && (
+          {
             <div className="col-12 col-md-7 section-container">
               <Incident className="h-100" messageList={messageList} />
               <img
@@ -106,7 +108,7 @@ function Container({ gameMode }) {
                 className="seperator-icon"
               />
             </div>
-          )}
+          }
           <div className="col-12 col-md-5 section-container">
             <Options
               className="h-100"

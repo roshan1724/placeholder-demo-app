@@ -58,7 +58,7 @@ function GameDetails() {
       },
       { optionValue: "cybereason", displayText: "Cybereason" },
       { optionValue: "palo alto", displayText: "Palo Alto" },
-      { optionValue: "cisco", displayText: "Cisco" },
+      { optionValue: "ciso", displayText: "Ciso" },
       { optionValue: "carbon black", displayText: "Carbon Black" },
       { optionValue: "sophos", displayText: "Sophos" },
       { optionValue: "none", displayText: "None" },
@@ -539,7 +539,7 @@ function GameDetails() {
                 <div className="form-block-wrapper">
                   <div className="custom-form-block w-100">
                     <label
-                      htmlFor="game-detail-cisco-name"
+                      htmlFor="game-detail-ciso-name"
                       className="form-label"
                     >
                       Name *
@@ -548,14 +548,14 @@ function GameDetails() {
                       <input
                         type="text"
                         name="cisco_name"
-                        id="game-detail-cisco-name"
+                        id="game-detail-ciso-name"
                         className={`form-control ${
                           gameDetailForm.touched.cisco_name &&
                           gameDetailForm.errors.cisco_name
                             ? "is-invalid"
                             : ""
                         }`}
-                        placeholder={`CISCO's Name`}
+                        placeholder={`CISO's Name`}
                         onChange={gameDetailForm.handleChange}
                         onBlur={gameDetailForm.handleBlur}
                         value={gameDetailForm.values.cisco_name}
@@ -574,7 +574,7 @@ function GameDetails() {
                 <div className="form-block-wrapper">
                   <div className="custom-form-block w-100">
                     <label
-                      htmlFor="game-detail-cisco-email"
+                      htmlFor="game-detail-ciso-email"
                       className="form-label"
                     >
                       Email *
@@ -583,14 +583,14 @@ function GameDetails() {
                       <input
                         type="text"
                         name="cisco_email"
-                        id="game-detail-cisco-email"
+                        id="game-detail-ciso-email"
                         className={`form-control ${
                           gameDetailForm.touched.cisco_email &&
                           gameDetailForm.errors.cisco_email
                             ? "is-invalid"
                             : ""
                         }`}
-                        placeholder={`CISCO's Email`}
+                        placeholder={`CISO's Email`}
                         onChange={gameDetailForm.handleChange}
                         onBlur={gameDetailForm.handleBlur}
                         value={gameDetailForm.values.cisco_email}
@@ -609,7 +609,7 @@ function GameDetails() {
                 <div className="form-block-wrapper">
                   <div className="custom-form-block w-100">
                     <label
-                      htmlFor="game-detail-cisco-title"
+                      htmlFor="game-detail-ciso-title"
                       className="form-label"
                     >
                       Job Title *
@@ -617,7 +617,7 @@ function GameDetails() {
                     <div className="input-group has-validation">
                       <select
                         name="cisco_title"
-                        id="game-detail-cisco-title"
+                        id="game-detail-ciso-title"
                         className={`form-select ${
                           gameDetailForm.touched.cisco_title &&
                           gameDetailForm.errors.cisco_title
@@ -628,12 +628,12 @@ function GameDetails() {
                         onBlur={gameDetailForm.handleBlur}
                         value={gameDetailForm.values.cisco_title}
                       >
-                        <option value="">CISCO's Job Title</option>
+                        <option value="">CISO's Job Title</option>
                         {formOptionsData.cisco_jobTitle.map(
                           (title, titleIndex) => (
                             <option
                               value={title}
-                              key={`cisco-jobtitle-${titleIndex}`}
+                              key={`ciso-jobtitle-${titleIndex}`}
                             >
                               {title}
                             </option>

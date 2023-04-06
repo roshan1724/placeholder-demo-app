@@ -9,21 +9,24 @@ export const getSpectatorFields = () => {
 };
 
 export const getGameDetailFormInitailState = () => {
+  // const defaultMeredian = "AM";
+
   return {
     start_date: "",
-    start_time: {
-      hours: "",
-      minutes: "",
-      meredian: "AM",
-    },
-    time_zone: "UTC",
+    start_time: "",
+    // start_time: {
+    //   hours: "",
+    //   minutes: "",
+    //   meredian: defaultMeredian,
+    // },
+    time_zone: "",
 
     user_name: "",
     user_email: "",
 
-    cisco_name: "",
-    cisco_email: "",
-    cisco_title: "",
+    ciso_name: "",
+    ciso_email: "",
+    ciso_title: "",
 
     it_admin_name: "",
     it_admin_email: "",
@@ -42,7 +45,10 @@ export const getGameDetailFormInitailState = () => {
 };
 
 const GameDetailForm = (formOptionsData, formValues, submitCallback) => {
-  const initialValues = formValues;
+  const initialValues = {
+    ...formValues,
+    time_zone: formOptionsData.current_time_zone,
+  };
 
   // const validateDate = (given_date) => {
   //   return /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/i.test(given_date);
@@ -130,17 +136,7 @@ const GameDetailForm = (formOptionsData, formValues, submitCallback) => {
 
   const validationSchema = Yup.object().shape({
     start_date: Yup.date().required("Select start date"),
-    start_time: Yup.object().shape({
-      hours: Yup.number()
-        .oneOf(formOptionsData.start_time.hours)
-        .required("Select valid start time"),
-      minutes: Yup.number()
-        .oneOf(formOptionsData.start_time.minutes)
-        .required("Select valid start time"),
-      meredian: Yup.string()
-        .oneOf(formOptionsData.start_time.meredian)
-        .required("Select valid start time"),
-    }),
+    start_time: Yup.string().required("Select start time"),
     time_zone: Yup.string()
       .oneOf(formOptionsData.time_zome, "Select valid time zone")
       .required("Select valid time zone"),
@@ -150,28 +146,22 @@ const GameDetailForm = (formOptionsData, formValues, submitCallback) => {
       .email("Enter valid email")
       .required("Enter valid email"),
 
-    cisco_name: Yup.string().required("Enter valid name"),
-    cisco_email: Yup.string()
+    ciso_name: Yup.string().required("Enter valid name"),
+    ciso_email: Yup.string()
       .email("Enter valid email")
       .required("Enter valid email"),
-    cisco_title: Yup.string()
-      .oneOf(formOptionsData.cisco_jobTitle, "Select valid title")
-      .required("Select valid title"),
+    ciso_title: Yup.string().required("Select valid title"),
 
     it_admin_name: Yup.string().required("Enter valid name"),
     it_admin_email: Yup.string()
       .email("Enter valid email")
       .required("Enter valid email"),
-    it_admin_title: Yup.string()
-      .oneOf(formOptionsData.it_admin_jobTitle, "Select valid title")
-      .required("Select valid title"),
+    it_admin_title: Yup.string().required("Select valid title"),
 
     spectators: Yup.array().of(
       Yup.object().shape({
-        spectator_name: Yup.string().required("Enter valid name"),
-        spectator_email: Yup.string()
-          .email("Enter valid email")
-          .required("Enter valid email"),
+        spectator_name: Yup.string(),
+        spectator_email: Yup.string().email("Enter valid email"),
       })
     ),
 

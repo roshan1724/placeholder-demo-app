@@ -183,8 +183,15 @@
         }
       }
 
-      &.date-field {
+      &.custom-field {
         position: relative;
+
+        input[type="text"i]:not(:first-child):not(.dropdown-menu):not(
+            .valid-tooltip
+          ):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+        }
 
         .hide-input {
           width: 0;

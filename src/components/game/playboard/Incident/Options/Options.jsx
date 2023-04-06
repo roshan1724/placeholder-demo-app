@@ -31,6 +31,7 @@ function Options(props) {
   const [selectedOptionList, setSelectedOptionList] = useState([]);
   const [optionsData, setOptionsData] = useState(null);
   const [noData, setNoData] = useState(false);
+  const [sectionLoading, setSectionLoading] = useState(false);
   const [modalComponent, setmodalComponent] = useState(null);
 
   const optionContext = useContext(OptionContext);
@@ -64,11 +65,11 @@ function Options(props) {
    * Function to call API to get options
    */
   const getOptions = () => {
-    dispatch(UiActions.setShowLoader(true));
+    setSectionLoading(true);
     const queryString = searchedText;
     // Call API Here to get options with query String
     setTimeout(() => {
-      dispatch(UiActions.setShowLoader(false));
+      setSectionLoading(false);
       if (queryString.toLowerCase() === "answer") {
         setOptionsData(
           optionContext.optionsData.data
@@ -128,20 +129,27 @@ function Options(props) {
     openErrorModal();
   };
 
+  const handleAcceeptEndTurn = (event) => {
+    handleModalClose(event);
+    setGameMode(GAME_MODES.VIEW_ONLY);
+    navigate(ROUTE_PATHS.GAME_PLAYBOARD_VIEW_ONLY);
+    openSuccessModal();
+  };
+
   const handleEndTurn = (event) => {
     handleModalClose(event);
     setSelectedOption(null);
     setSearchedText("");
-    setGameMode(GAME_MODES.VIEW_ONLY);
-    navigate(ROUTE_PATHS.GAME_PLAYBOARD_VIEW_ONLY);
+    // setGameMode(GAME_MODES.VIEW_ONLY);
+    // navigate(ROUTE_PATHS.GAME_PLAYBOARD_VIEW_ONLY);
   };
 
   const handleGetHint = (event) => {
     // Call API to get options without search text
     handleModalClose(event);
-    dispatch(UiActions.setShowLoader(true));
+    setSectionLoading(true);
     setTimeout(() => {
-      dispatch(UiActions.setShowLoader(false));
+      setSectionLoading(false);
       setOptionsData(
         optionContext.optionsData.data
           ? [...optionContext.optionsData.data]
@@ -158,6 +166,23 @@ function Options(props) {
     }
   };
 
+  const successModalProps = {
+    modalType: APP_MODAL_TYPES.SUCCESS,
+    handleModalClose: handleModalClose,
+    modalBodyClass: ["success-modal-body-class"],
+    modalData: {
+      title: "Thanks for playing!",
+      subTitle: `You are now a "Watcher", and can continue to watch the scenario as it unfolds.`,
+      actionButtons: [
+        {
+          text: "Okay",
+          classNames: ["btn-primary", "btn-filled"],
+          clickHandler: handleEndTurn,
+        },
+      ],
+    },
+  };
+
   const warningModalProps = {
     modalType: APP_MODAL_TYPES.INFO,
     handleModalClose: handleModalClose,
@@ -170,7 +195,7 @@ function Options(props) {
         {
           text: "Yes, End Turn",
           classNames: ["btn-primary"],
-          clickHandler: handleEndTurn,
+          clickHandler: handleAcceeptEndTurn,
         },
         {
           text: "No, Go Back",
@@ -230,6 +255,11 @@ function Options(props) {
   const openWarningModal = () => {
     dispatch(UiActions.setShowModal(true));
     setmodalComponent(React.createElement(AppModal, warningModalProps));
+  };
+
+  const openSuccessModal = () => {
+    dispatch(UiActions.setShowModal(true));
+    setmodalComponent(React.createElement(AppModal, successModalProps));
   };
 
   const openInfoModal = () => {
@@ -303,68 +333,74 @@ function Options(props) {
         <div className="d-flex flex-column option-container">
           <div
             className={`${
-              noData
+              noData || sectionLoading
                 ? "no-content-wrapper flex-grow-1"
                 : "flex-shrink-0 option-wrapper overflow-scrollbar"
             }`}
           >
             {optionsData &&
             Array.isArray(optionsData) &&
-            gameMode !== GAME_MODES.VIEW_ONLY
-              ? optionsData.map((option) => (
-                  <div className="option-content" key={option.option_id}>
-                    <input
-                      type="radio"
-                      name="incident_option"
-                      className={`option-input ${
-                        selectedOptionList.includes(option.option_id)
-                          ? "disable-selected"
-                          : ""
-                      }`}
-                      id={"choice-" + option.option_id}
-                      value={option.option_id}
-                      onChange={handleOptionSelection}
-                    />
-                    <label
-                      htmlFor={"choice-" + option.option_id}
-                      className="option-text"
-                    >
-                      <span className="checkmark-holder">
-                        <span className="checked"> </span>
-                      </span>
-                      <span>{option.option_value}</span>
-                    </label>
-                  </div>
-                ))
-              : noData && (
-                  <div className="no-option-wrapper h-100 flex-center">
-                    <span className="icon-wrapper">
-                      <i className="fa-solid fa-ghost"></i>
+            gameMode !== GAME_MODES.VIEW_ONLY ? (
+              optionsData.map((option) => (
+                <div className="option-content" key={option.option_id}>
+                  <input
+                    type="radio"
+                    name="incident_option"
+                    className={`option-input ${
+                      selectedOptionList.includes(option.option_id)
+                        ? "disable-selected"
+                        : ""
+                    }`}
+                    id={"choice-" + option.option_id}
+                    value={option.option_id}
+                    onChange={handleOptionSelection}
+                  />
+                  <label
+                    htmlFor={"choice-" + option.option_id}
+                    className="option-text"
+                  >
+                    <span className="checkmark-holder">
+                      <span className="checked"> </span>
                     </span>
-                    <div className="title pb-1">Oops! Nothing Here.</div>
-                    <div className="subTitle pb-2">
-                      <p>We found no matches.</p>
-                      <p>
-                        Please try again or click the "Get a Hint" button if you
-                        need help.
-                      </p>
-                    </div>
-                    <div className="action-wrappers pt-2">
-                      <button
-                        className="btn btn-primary"
-                        onClick={handleGetHint}
-                      >
-                        Get a Hint
-                      </button>
-                      <button
-                        className="btn btn-primary btn-filled"
-                        onClick={handleTryAgain}
-                      >
-                        Try Again
-                      </button>
-                    </div>
-                  </div>
-                )}
+                    <span>{option.option_value}</span>
+                  </label>
+                </div>
+              ))
+            ) : noData ? (
+              <div className="no-option-wrapper h-100 flex-center">
+                <span className="icon-wrapper">
+                  <i className="fa-solid fa-ghost"></i>
+                </span>
+                <div className="title pb-1">Oops! Nothing Here.</div>
+                <div className="subTitle pb-2">
+                  <p>We found no matches.</p>
+                  <p>
+                    Please try again or click the "Get a Hint" button if you
+                    need help.
+                  </p>
+                </div>
+                <div className="action-wrappers pt-2">
+                  <button className="btn btn-primary" onClick={handleGetHint}>
+                    Get a Hint
+                  </button>
+                  <button
+                    className="btn btn-primary btn-filled"
+                    onClick={handleTryAgain}
+                  >
+                    Try Again
+                  </button>
+                </div>
+              </div>
+            ) : sectionLoading ? (
+              <div className="section-loader-wrapper h-100 flex-center">
+                <span className="icon-wrapper">
+                  {/* <i className="fa-solid fa-ellipsis fa-beat-fade"></i> */}
+                  <i className="fa-solid fa-ellipsis fa-spin-pulse"></i>
+                </span>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
           <div
             className={`action-wrapper d-flex justify-content-center mt-auto mb-2 ${

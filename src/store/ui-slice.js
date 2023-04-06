@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+// import { API_PATHS } from "../utilities/constants";
+import { TIMEZONE_LIST } from "../utilities/timeZone";
 
 const UiSlice = createSlice({
   name: "UI",
@@ -17,6 +19,10 @@ const UiSlice = createSlice({
         showGameView: false,
         isActive: false,
       },
+    },
+    timeZones: {
+      zoneList: [],
+      currentZone: "",
     },
   },
   reducers: {
@@ -75,6 +81,40 @@ const UiSlice = createSlice({
 
     setGameViewActive: (state, action) => {
       state.header.gameView.isActive = !!action.payload;
+    },
+
+    // TimeZone Actions
+    populateTimeZones: (state) => {
+      const _timeZoneData = [
+        ...new Set(TIMEZONE_LIST.map((data) => data.abbr)),
+      ].sort();
+      const _currentZoneData = TIMEZONE_LIST.find((ele) => {
+        const zone = Intl?.DateTimeFormat()?.resolvedOptions()?.timeZone;
+        return ele.utc.includes(zone);
+      });
+
+      console.log(`timeZoneData ==> `, _timeZoneData);
+      console.log(`currentTimeZone ==> `, _currentZoneData.abbr);
+      state.timeZones.zoneList = _timeZoneData;
+      state.timeZones.currentZone = _currentZoneData.abbr || "UTC";
+
+      // TODO: Bad Idea to perform side effect function inside reducers; Need to update later
+      // fetch(API_PATHS.TIMEZONE_DATA)
+      //   .then((response) => response.json())
+      //   .then((response) => {
+      //     const _timeZoneData = [
+      //       ...new Set(response?.data?.map((data) => data.abbr)),
+      //     ].sort();
+      //     const _currentZoneData = response?.data?.find((ele) => {
+      //       const zone = Intl?.DateTimeFormat()?.resolvedOptions()?.timeZone;
+      //       return ele.utc.includes(zone);
+      //     });
+
+      //     console.log(`timeZoneData ==> `, _timeZoneData);
+      //     console.log(`currentTimeZone ==> `, _currentZoneData.abbr);
+      //     state.timeZones.zoneList = _timeZoneData;
+      //     state.timeZones.currentZone = _currentZoneData.abbr || "UTC";
+      //   });
     },
   },
 });

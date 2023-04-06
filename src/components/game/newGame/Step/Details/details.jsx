@@ -7,11 +7,16 @@ import GameDetailForm, {
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GameFormActions } from "../../../../../store/form-game-slice";
+import AppService from "../../../../../utilities/app-service";
 
 function GameDetails() {
   const dispatch = useDispatch();
   const { activeStepIndex, setActiveStepIndex } = useContext(NewGameContext);
   const detailFormValues = useSelector((state) => state.gameForm.details_form);
+  const timeZones = useSelector((state) => state.ui.timeZones.zoneList);
+  const cuurentTimeZone = useSelector(
+    (state) => state.ui.timeZones.currentZone
+  );
 
   const formOptionsData = {
     start_time: {
@@ -19,9 +24,8 @@ function GameDetails() {
       minutes: Array.from({ length: 60 }, (v, k) => k + 1),
       meredian: ["AM", "PM"],
     },
-    time_zome: ["UTC", "IST", "CST"],
-    cisco_jobTitle: ["Job Title 1", "Job Title 2"],
-    it_admin_jobTitle: ["Job Title 1", "Job Title 2"],
+    time_zome: [...timeZones],
+    current_time_zone: cuurentTimeZone,
     hasPortalOptions: [
       { optionValue: "true", displayText: "Yes" },
       { optionValue: "false", displayText: "No" },
@@ -70,6 +74,11 @@ function GameDetails() {
     gameDetailForm.setFieldValue("start_date", e.target.value);
   };
 
+  const handleTimeChange = (e) => {
+    const time12hr = AppService.ConvertTime_24_to_12(e.target.value);
+    gameDetailForm.setFieldValue("start_time", time12hr);
+  };
+
   const handleBackClick = () => {
     dispatch(
       GameFormActions.updateGameForm({
@@ -106,6 +115,11 @@ function GameDetails() {
     element.showPicker();
   };
 
+  const handleTimeIconClick = () => {
+    const element = document.getElementById("time-copy");
+    element.showPicker();
+  };
+
   const addSpectatorField = () => {
     gameDetailForm.setFieldValue("spectators", [
       ...gameDetailForm.values.spectators,
@@ -133,7 +147,7 @@ function GameDetails() {
                   htmlFor={`game-detail-spectator-${spectatorIndex}-name`}
                   className="form-label"
                 >
-                  Name*
+                  Name
                 </label>
                 <div className="input-group has-validation">
                   <input
@@ -178,7 +192,7 @@ function GameDetails() {
                 htmlFor={`game-detail-spectator-${spectatorIndex}-email`}
                 className="form-label"
               >
-                Email *
+                Email
               </label>
               <div className="input-group has-validation">
                 <input
@@ -243,17 +257,9 @@ function GameDetails() {
     detailFormValues,
     submitCallback
   );
-  // console.log("FORM VALUES ===> ", gameDetailForm.values);
-  // console.log("FORM ERRORS ==> ", gameDetailForm.errors);
+  console.log("FORM VALUES ===> ", gameDetailForm.values);
+  console.log("FORM ERRORS ==> ", gameDetailForm.errors);
   // console.log("FORM VALIDITY ==> ", gameDetailForm.isValid);
-
-  // useEffect(() => {
-  //   if (gameDetailForm && isFirstRender) {
-  //     console.log("Rendering useEffect");
-  //     gameDetailForm.setValues(detailFormValues, true);
-  //     setIsFirstRender(false);
-  //   }
-  // }, [isFirstRender, detailFormValues]);
 
   return (
     gameDetailForm.values &&
@@ -272,11 +278,11 @@ function GameDetails() {
               </div>
               <div className="col-4">
                 <div className="form-block-wrapper">
-                  <div className="custom-form-block">
+                  <div className="custom-form-block flex-grow-1">
                     <label htmlFor="game-detail-date" className="form-label">
                       Date
                     </label>
-                    <div className="input-group date-field has-validation">
+                    <div className="input-group custom-field has-validation">
                       <input
                         type="date"
                         name="start_date"
@@ -316,96 +322,46 @@ function GameDetails() {
                     </div>
                   </div>
 
-                  <div className="custom-form-block time-block-wrapper">
+                  <div className="custom-form-block flex-grow-1 time-block-wrapper">
                     <label htmlFor="game-detail-time" className="form-label">
                       Time
                     </label>
-                    <div className="input-group has-validation time-fields">
-                      <select
-                        name="start_time.hours"
-                        id="game-detail-time-hours"
-                        className={`form-select ${
-                          gameDetailForm.touched?.start_time?.hours &&
-                          gameDetailForm.errors?.start_time?.hours
+                    <div className="input-group custom-field has-validation">
+                      <input
+                        type="time"
+                        name="start_time"
+                        id="time-copy"
+                        className="hide-input"
+                        onChange={handleTimeChange}
+                      />
+                      <input
+                        type="text"
+                        name="start_time"
+                        id="game-detail-time"
+                        className={`form-control ${
+                          gameDetailForm.touched.start_time &&
+                          gameDetailForm.errors.start_time
                             ? "is-invalid"
                             : ""
                         }`}
+                        placeholder={`Select Time`}
                         onChange={gameDetailForm.handleChange}
                         onBlur={gameDetailForm.handleBlur}
-                        value={gameDetailForm.values.start_time.hours}
+                        value={gameDetailForm.values.start_time}
+                        onClick={handleTimeIconClick}
+                        readOnly
+                      />
+                      <span
+                        className="icon-wrapper input-field-icon"
+                        onClick={handleTimeIconClick}
                       >
-                        <option value="" selected disabled>
-                          Hours
-                        </option>
-                        {formOptionsData.start_time.hours.map(
-                          (hr, hourIndex) => (
-                            <option value={hr} key={`hour-key-${hourIndex}`}>
-                              {hr}
-                            </option>
-                          )
-                        )}
-                      </select>
-
-                      <select
-                        name="start_time.minutes"
-                        id="game-detail-time-minutes"
-                        className={`form-select ${
-                          gameDetailForm.touched?.start_time?.minutes &&
-                          gameDetailForm.errors?.start_time?.minutes
-                            ? "is-invalid"
-                            : ""
-                        }`}
-                        onChange={gameDetailForm.handleChange}
-                        onBlur={gameDetailForm.handleBlur}
-                        value={gameDetailForm.values.start_time.minutes}
-                      >
-                        <option value="" selected disabled>
-                          Min
-                        </option>
-                        {formOptionsData.start_time.minutes.map(
-                          (min, minuteIndex) => (
-                            <option
-                              value={min}
-                              key={`minute-key-${minuteIndex}`}
-                            >
-                              {min}
-                            </option>
-                          )
-                        )}
-                      </select>
-
-                      <select
-                        name="start_time.meredian"
-                        id="game-detail-time-meredian"
-                        className={`form-select ${
-                          gameDetailForm.touched?.start_time?.meredian &&
-                          gameDetailForm.errors?.start_time?.meredian
-                            ? "is-invalid"
-                            : ""
-                        }`}
-                        onChange={gameDetailForm.handleChange}
-                        onBlur={gameDetailForm.handleBlur}
-                        value={gameDetailForm.values.start_time.meredian}
-                      >
-                        {formOptionsData.start_time.meredian.map(
-                          (mrd, meredianIndex) => (
-                            <option
-                              value={mrd}
-                              key={`meredian-key-${meredianIndex}`}
-                            >
-                              {mrd}
-                            </option>
-                          )
-                        )}
-                      </select>
+                        <i className="fa-regular fa-clock"></i>
+                      </span>
                     </div>
                     <div className="invalid-feedback">
-                      {(gameDetailForm.touched?.start_time?.hours &&
-                        gameDetailForm.errors?.start_time?.hours) ||
-                      (gameDetailForm.touched?.start_time?.minutes &&
-                        gameDetailForm.errors?.start_time?.minutes)
-                        ? gameDetailForm.errors?.start_time?.hours ||
-                          gameDetailForm.errors?.start_time?.minutes
+                      {gameDetailForm.touched?.start_time &&
+                      gameDetailForm.errors?.start_time
+                        ? gameDetailForm.errors?.start_time
                         : null}
                     </div>
                   </div>
@@ -547,7 +503,7 @@ function GameDetails() {
                     <div className="input-group has-validation">
                       <input
                         type="text"
-                        name="cisco_name"
+                        name="ciso_name"
                         id="game-detail-ciso-name"
                         className={`form-control ${
                           gameDetailForm.touched.cisco_name &&
@@ -561,9 +517,9 @@ function GameDetails() {
                         value={gameDetailForm.values.cisco_name}
                       />
                       <div className="invalid-feedback">
-                        {gameDetailForm.touched.cisco_name &&
-                        gameDetailForm.errors.cisco_name
-                          ? gameDetailForm.errors.cisco_name
+                        {gameDetailForm.touched.ciso_name &&
+                        gameDetailForm.errors.ciso_name
+                          ? gameDetailForm.errors.ciso_name
                           : ""}
                       </div>
                     </div>
@@ -582,23 +538,23 @@ function GameDetails() {
                     <div className="input-group has-validation">
                       <input
                         type="text"
-                        name="cisco_email"
+                        name="ciso_email"
                         id="game-detail-ciso-email"
                         className={`form-control ${
-                          gameDetailForm.touched.cisco_email &&
-                          gameDetailForm.errors.cisco_email
+                          gameDetailForm.touched.ciso_email &&
+                          gameDetailForm.errors.ciso_email
                             ? "is-invalid"
                             : ""
                         }`}
                         placeholder={`CISO's Email`}
                         onChange={gameDetailForm.handleChange}
                         onBlur={gameDetailForm.handleBlur}
-                        value={gameDetailForm.values.cisco_email}
+                        value={gameDetailForm.values.ciso_email}
                       />
                       <div className="invalid-feedback">
-                        {gameDetailForm.touched.cisco_email &&
-                        gameDetailForm.errors.cisco_email
-                          ? gameDetailForm.errors.cisco_email
+                        {gameDetailForm.touched.ciso_email &&
+                        gameDetailForm.errors.ciso_email
+                          ? gameDetailForm.errors.ciso_email
                           : ""}
                       </div>
                     </div>
@@ -615,36 +571,26 @@ function GameDetails() {
                       Job Title *
                     </label>
                     <div className="input-group has-validation">
-                      <select
-                        name="cisco_title"
+                      <input
+                        type="text"
+                        name="ciso_title"
                         id="game-detail-ciso-title"
-                        className={`form-select ${
-                          gameDetailForm.touched.cisco_title &&
-                          gameDetailForm.errors.cisco_title
+                        className={`form-control ${
+                          gameDetailForm.touched.ciso_title &&
+                          gameDetailForm.errors.ciso_title
                             ? "is-invalid"
                             : ""
                         }`}
+                        placeholder={`CISO's Job Title`}
                         onChange={gameDetailForm.handleChange}
                         onBlur={gameDetailForm.handleBlur}
-                        value={gameDetailForm.values.cisco_title}
-                      >
-                        <option value="">CISO's Job Title</option>
-                        {formOptionsData.cisco_jobTitle.map(
-                          (title, titleIndex) => (
-                            <option
-                              value={title}
-                              key={`ciso-jobtitle-${titleIndex}`}
-                            >
-                              {title}
-                            </option>
-                          )
-                        )}
-                      </select>
+                        value={gameDetailForm.values.ciso_title}
+                      />
                     </div>
                     <div className="invalid-feedback">
-                      {gameDetailForm.touched.cisco_title &&
-                      gameDetailForm.errors.cisco_title
-                        ? gameDetailForm.errors.cisco_title
+                      {gameDetailForm.touched.ciso_title &&
+                      gameDetailForm.errors.ciso_title
+                        ? gameDetailForm.errors.ciso_title
                         : ""}
                     </div>
                   </div>
@@ -736,7 +682,22 @@ function GameDetails() {
                       Job Title *
                     </label>
                     <div className="input-group has-validation">
-                      <select
+                      <input
+                        type="text"
+                        name="it_admin_title"
+                        id="game-detail-user-name"
+                        className={`form-control ${
+                          gameDetailForm.touched.it_admin_title &&
+                          gameDetailForm.errors.it_admin_title
+                            ? "is-invalid"
+                            : ""
+                        }`}
+                        placeholder={`I.T. Admin's Job Title`}
+                        onChange={gameDetailForm.handleChange}
+                        onBlur={gameDetailForm.handleBlur}
+                        value={gameDetailForm.values.it_admin_title}
+                      />
+                      {/* <select
                         name="it_admin_title"
                         id="game-detail-it-admin-title"
                         className={`form-select ${
@@ -760,7 +721,7 @@ function GameDetails() {
                             </option>
                           )
                         )}
-                      </select>
+                      </select> */}
                     </div>
                     <div className="invalid-feedback">
                       {gameDetailForm.touched.it_admin_title &&

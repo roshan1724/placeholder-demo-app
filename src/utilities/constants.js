@@ -39,6 +39,7 @@ export const API_PATHS = {
   INCIDENT_DATA: "/data/incident-data.json",
   INCIDENT_OPTION_DATA: "/data/incident-option-data.json",
   USER_LIST_DATA: "/data/user-data.json",
+  TIMEZONE_DATA: "/data/timeZone.json",
 };
 
 export const PRINT_PREVIEW_CONTAINER = "app-print-preview";

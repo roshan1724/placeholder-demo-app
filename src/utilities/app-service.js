@@ -71,9 +71,30 @@ const mergeFormValues = (formValues, savedFormValues, mergeRuleFunc) => {
   // Output: { a: false, b: { c: [ 1, 2, 3 ], d: [ 1, 2, 3 ] } }
 };
 
+/**
+ * Function to convert 24 hr time to 12 hr
+ * @param {string} time24 - 24 hr time
+ * @returns {string} - Time in 12 hr time
+ */
+const ConvertTime_24_to_12 = (time24) => {
+  let time = time24
+    .toString()
+    .match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time24];
+
+  if (time.length > 1) {
+    // If time format correct
+    time = time.slice(1); // Remove full string match value
+    time[5] = +time[0] < 12 ? " AM" : " PM"; // Set AM/PM
+    time[0] = +time[0] % 12 || 12; // Adjust hours
+    time[0] = time[0] < 10 ? "0" + time[0] : time[0];
+  }
+  return time.join(""); // return adjusted time or original string
+};
+
 const AppService = {
   PrintService,
   mergeFormValues,
+  ConvertTime_24_to_12,
 };
 
 export default AppService;

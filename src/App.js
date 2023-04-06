@@ -3,13 +3,19 @@ import Header from "./components/Header/Header";
 
 import AppRoutes from "./App.routes";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import Loader from "./components/common/Loader/loader";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { UiActions } from "./store/ui-slice";
 
 function App() {
   const router = AppRoutes();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(UiActions.populateTimeZones());
+  }, [dispatch]);
 
   router.subscribe((state) => {
     console.log("Updated State ...", state);

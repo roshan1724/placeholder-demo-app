@@ -19,11 +19,6 @@ function GameDetails() {
   );
 
   const formOptionsData = {
-    start_time: {
-      hours: Array.from({ length: 12 }, (v, k) => k + 1),
-      minutes: Array.from({ length: 60 }, (v, k) => k + 1),
-      meredian: ["AM", "PM"],
-    },
     time_zome: [...timeZones],
     current_time_zone: cuurentTimeZone,
     hasPortalOptions: [
@@ -257,8 +252,8 @@ function GameDetails() {
     detailFormValues,
     submitCallback
   );
-  console.log("FORM VALUES ===> ", gameDetailForm.values);
-  console.log("FORM ERRORS ==> ", gameDetailForm.errors);
+  // console.log("FORM VALUES ===> ", gameDetailForm.values);
+  // console.log("FORM ERRORS ==> ", gameDetailForm.errors);
   // console.log("FORM VALIDITY ==> ", gameDetailForm.isValid);
 
   return (

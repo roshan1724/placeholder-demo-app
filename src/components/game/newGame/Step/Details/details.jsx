@@ -278,7 +278,7 @@ function GameDetails() {
               </div>
               <div className="col-4">
                 <div className="form-block-wrapper">
-                  <div className="custom-form-block flex-grow-1">
+                  <div className="custom-form-block flex-grow-1 date-block-wrapper">
                     <label htmlFor="game-detail-date" className="form-label">
                       Date
                     </label>

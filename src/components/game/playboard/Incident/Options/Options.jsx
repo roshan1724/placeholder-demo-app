@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import { useDispatch } from "react-redux";
 import OptionContext from "../../../../../context/options/option-context";
-import UserContext from "../../../../../context/user/user-context";
+// import UserContext from "../../../../../context/user/user-context";
 import {
   APP_MODAL_TYPES,
   GAME_MODES,
@@ -27,7 +27,7 @@ function Options(props) {
 
   const [gameMode, setGameMode] = useState(props.gameMode);
   const [searchedText, setSearchedText] = useState("");
-  const [selectedOption, setSelectedOption] = useState(null);
+  // const [selectedOption, setSelectedOption] = useState(null);
   const [selectedOptionList, setSelectedOptionList] = useState([]);
   const [optionsData, setOptionsData] = useState(null);
   const [noData, setNoData] = useState(false);
@@ -35,8 +35,8 @@ function Options(props) {
   const [modalComponent, setmodalComponent] = useState(null);
 
   const optionContext = useContext(OptionContext);
-  const userContext = useContext(UserContext);
-  const activeUser = userContext.userData;
+  // const userContext = useContext(UserContext);
+  // const activeUser = userContext.userData;
   const dispatch = useDispatch();
 
   /**
@@ -89,28 +89,28 @@ function Options(props) {
    */
   const handleOptionSelection = (event) => {
     const _selectedOption = Number(event.target.value);
-    setSelectedOption(_selectedOption);
+    // setSelectedOption(_selectedOption);
 
     // Temporary Fix
     const updatedList = [...new Set([...selectedOptionList, _selectedOption])];
     setSelectedOptionList(updatedList);
     props.handleSubmit(_selectedOption);
     setOptionsData(null);
-    setSelectedOption(null);
+    // setSelectedOption(null);
     setSearchedText("");
   };
 
   /**
    * Function to Handle Submit Button Click
    */
-  const handleSubmitClick = () => {
-    const updatedList = [...new Set([...selectedOptionList, selectedOption])];
-    setSelectedOptionList(updatedList);
-    props.handleSubmit(selectedOption);
-    setOptionsData(null);
-    setSelectedOption(null);
-    setSearchedText("");
-  };
+  // const handleSubmitClick = () => {
+  //   const updatedList = [...new Set([...selectedOptionList, selectedOption])];
+  //   setSelectedOptionList(updatedList);
+  //   props.handleSubmit(selectedOption);
+  //   setOptionsData(null);
+  //   setSelectedOption(null);
+  //   setSearchedText("");
+  // };
 
   const handleModalClose = (event) => {
     dispatch(UiActions.setShowModal(false));
@@ -138,7 +138,7 @@ function Options(props) {
 
   const handleEndTurn = (event) => {
     handleModalClose(event);
-    setSelectedOption(null);
+    // setSelectedOption(null);
     setSearchedText("");
     // setGameMode(GAME_MODES.VIEW_ONLY);
     // navigate(ROUTE_PATHS.GAME_PLAYBOARD_VIEW_ONLY);
@@ -402,7 +402,7 @@ function Options(props) {
               ""
             )}
           </div>
-          <div
+          {/* <div
             className={`action-wrapper d-flex justify-content-center mt-auto mb-2 ${
               gameMode === GAME_MODES.VIEW_ONLY ? "d-none" : ""
             }`}
@@ -423,7 +423,7 @@ function Options(props) {
             >
               Submit Response
             </button>
-          </div>
+          </div> */}
         </div>
       </section>
 

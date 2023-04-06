@@ -44,7 +44,8 @@
       flex-wrap: wrap;
 
       overflow-y: scroll;
-      max-height: calc(100% - 100px);
+      // max-height: calc(100% - 100px);
+      max-height: calc(100% - 30px);
 
       .option-content {
         position: relative;
@@ -114,27 +115,27 @@
     }
   }
 
-  .action-wrapper {
-    min-height: 100px;
-    border-top: 1px solid $color_line;
+  // .action-wrapper {
+  //   min-height: 100px;
+  //   border-top: 1px solid $color_line;
 
-    .user-wrapper {
-      .profile-icon {
-        border: 2px solid $color_grey2_logo;
-      }
-    }
+  //   .user-wrapper {
+  //     .profile-icon {
+  //       border: 2px solid $color_grey2_logo;
+  //     }
+  //   }
 
-    button.submit-btn {
-      font-size: 16px;
-      font-weight: 500;
-      width: 165px;
-      padding: 10px;
-      margin-top: 10px;
-      align-self: center;
-      box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-    }
-  }
+  //   button.submit-btn {
+  //     font-size: 16px;
+  //     font-weight: 500;
+  //     width: 165px;
+  //     padding: 10px;
+  //     margin-top: 10px;
+  //     align-self: center;
+  //     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+  //     border-radius: 10px;
+  //   }
+  // }
 
   .no-option-wrapper {
     flex-direction: column;

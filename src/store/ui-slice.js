@@ -97,24 +97,6 @@ const UiSlice = createSlice({
       console.log(`currentTimeZone ==> `, _currentZoneData.abbr);
       state.timeZones.zoneList = _timeZoneData;
       state.timeZones.currentZone = _currentZoneData.abbr || "UTC";
-
-      // TODO: Bad Idea to perform side effect function inside reducers; Need to update later
-      // fetch(API_PATHS.TIMEZONE_DATA)
-      //   .then((response) => response.json())
-      //   .then((response) => {
-      //     const _timeZoneData = [
-      //       ...new Set(response?.data?.map((data) => data.abbr)),
-      //     ].sort();
-      //     const _currentZoneData = response?.data?.find((ele) => {
-      //       const zone = Intl?.DateTimeFormat()?.resolvedOptions()?.timeZone;
-      //       return ele.utc.includes(zone);
-      //     });
-
-      //     console.log(`timeZoneData ==> `, _timeZoneData);
-      //     console.log(`currentTimeZone ==> `, _currentZoneData.abbr);
-      //     state.timeZones.zoneList = _timeZoneData;
-      //     state.timeZones.currentZone = _currentZoneData.abbr || "UTC";
-      //   });
     },
   },
 });

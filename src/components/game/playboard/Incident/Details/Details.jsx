@@ -7,18 +7,62 @@
 
 import "./Details.scss";
 
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import UserContext from "../../../../../context/user/user-context";
+
+const typingSpeed = 20;
 
 function Details(props) {
   const { messageList } = props;
   const chatbox = useRef(null);
+  const currentBotEle = useRef(null);
+  // setting the typing state og the messages received [false, false, false]
+  const [typingState, setTypingState] = useState(() =>
+    Array.from({ length: messageList.length }, (v, i) => false)
+  );
 
   useEffect(() => {
     if (chatbox && chatbox.current) {
-      chatbox.current?.scrollIntoView({ behavior: 'smooth' });
+      chatbox.current?.scrollIntoView({ behavior: "smooth" });
     }
-  }, [])
+  }, []);
+
+  const applyTypingEffect = (element, typingText, onTypeEnds) => {
+    let startIndex = 0;
+
+    const typeWriter = () => {
+      if (typeof typingText === "string" && startIndex < typingText.length) {
+        element.innerHTML = typingText.slice(0, startIndex + 1);
+        startIndex++;
+        setTimeout(typeWriter, typingSpeed);
+      } else if (startIndex === typingText.length) {
+        onTypeEnds();
+      }
+    };
+
+    typeWriter();
+  };
+
+  useEffect(() => {
+    if (currentBotEle.current) {
+      const element = document.querySelector(".is-current .msg");
+      const typingText = element.innerHTML;
+      // Disable the last user responses;
+      const newTypingState = Array.from(
+        { length: messageList.length },
+        (v, i) => (i === messageList.length - 1 ? false : true)
+      );
+      setTypingState(newTypingState);
+      applyTypingEffect(element, typingText, () => {
+        // Enable all the user responses;
+        setTimeout(() => {
+          setTypingState(() =>
+            Array.from({ length: messageList.length }, (v, i) => true)
+          );
+        }, 100);
+      });
+    }
+  }, [currentBotEle, messageList]);
 
   const userContext = useContext(UserContext);
 
@@ -27,7 +71,13 @@ function Details(props) {
       <div className="chatbox-container overflow-scrollbar" ref={chatbox}>
         {messageList.map((message, index) => (
           <>
-            <div className="msg-wrapper bot" key={index * 2}>
+            <div
+              className={`msg-wrapper bot ${
+                index === messageList.length - 1 ? "is-current" : ""
+              }`}
+              key={index * 2}
+              ref={index === messageList.length - 1 ? currentBotEle : null}
+            >
               <span className="icon-wrapper">
                 <img
                   src="/images/question_bot_icon.png"
@@ -43,8 +93,8 @@ function Details(props) {
             <div
               className={`msg-wrapper user ${
                 !message.option_text && "awaiting"
-              }`}
-              key={(index * 2) + 1}
+              } ${typingState[index] ? "d-flex" : "d-none"}`}
+              key={index * 2 + 1}
             >
               <span className="icon-wrapper">
                 <img

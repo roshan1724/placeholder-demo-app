@@ -41,27 +41,15 @@ const LoginForm = (submitCallback) => {
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Please enter a valid email address")
+      .test("LOGIN_EMAIL_TEST", "Please enter a valid email address", (value) =>
+        /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+      )
       .required("Please enter a valid email address"),
-    password: Yup.string().required("Please enter valid password"),
+    password: Yup.string()
+      .trim("Please remove trailing spaces")
+      .strict(true)
+      .required("Please enter valid password"),
   });
-
-  // const validate = (values) => {
-  //   let errors = {};
-
-  //   // Validating Email field
-  //   if (!values.email) {
-  //     errors.email = 'Please enter a valid email address';
-  //   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-  //     errors.email = 'Please enter a valid email address';
-  //   }
-
-  //   // Validating Password field
-  //   if (!values.password) {
-  //     errors.password = 'Please enter a password';
-  //   }
-
-  //   return errors;
-  // }
 
   return useFormik({
     initialValues,

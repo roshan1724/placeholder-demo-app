@@ -501,8 +501,8 @@ function GameDetails() {
                         name="ciso_name"
                         id="game-detail-ciso-name"
                         className={`form-control ${
-                          gameDetailForm.touched.cisco_name &&
-                          gameDetailForm.errors.cisco_name
+                          gameDetailForm.touched.ciso_name &&
+                          gameDetailForm.errors.ciso_name
                             ? "is-invalid"
                             : ""
                         }`}

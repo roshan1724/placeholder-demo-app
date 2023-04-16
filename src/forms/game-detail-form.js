@@ -1,4 +1,4 @@
-import { useFormik, yupToFormErrors } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 
 export const getSpectatorFields = () => {
@@ -140,34 +140,9 @@ const GameDetailForm = (formOptionsData, formValues, submitCallback) => {
     submitCallback(true);
   };
 
-  const customValidations = (values) => {
-    const errors = {};
-    if (values.hasPortal === "true") {
-      if (!values.portalValue?.trim()) {
-        errors.portalValue = "Enter valid portal name";
-      }
-    }
-  }
-
-  const validate = async (values) => {
-    const additionalErrors = customValidations(values);
-    try {
-      await validationSchema.validate(values, {
-        stripUnknown: true,
-        abortEarly: false
-      });
-    } catch (error) {
-      return {
-        ...yupToFormErrors(error),
-        ...additionalErrors
-      }
-    }
-    return additionalErrors;
-  }
-
   return useFormik({
     initialValues,
-    validate,
+    validationSchema,
     onSubmit,
   });
 };

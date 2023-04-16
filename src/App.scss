@@ -33,6 +33,10 @@
 
   .overflow-scrollbar {
     overflow-y: scroll;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    scrollbar-track-color: transparent;
+    scrollbar-color: $color_grey2_logo;
 
     &::-webkit-scrollbar {
       width: 5px;

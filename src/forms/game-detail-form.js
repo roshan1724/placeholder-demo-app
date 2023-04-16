@@ -107,13 +107,7 @@ const GameDetailForm = (formOptionsData, formValues, submitCallback) => {
         )
       )
       .required("Select one of the above options"),
-    portalValue: Yup.string().when("hasPortal", {
-      is: "true",
-      then: Yup.string()
-        .trim("Please remove trailing spaces")
-        .strict(true)
-        .required("Enter valid portal address"),
-    }),
+    portalValue: Yup.string(),
 
     im_name: Yup.string()
       .trim("Please remove trailing spaces")

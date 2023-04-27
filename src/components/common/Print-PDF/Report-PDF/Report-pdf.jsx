@@ -1,7 +1,10 @@
 import "./Report-pdf.scss";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { API_PATHS } from "../../../../utilities/constants";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  API_PATHS,
+  PRINTABLE_REPORT_TYPE,
+} from "../../../../utilities/constants";
 import { UiActions } from "../../../../store/ui-slice";
 import Progressbar from "../../progressbar/progressbar";
 import PhaseReport from "../../../Report/Phase-Report/PhaseReport";
@@ -20,9 +23,11 @@ function ReportPdf({ onPrint, processingState }) {
       .then((response) => response.json())
       .then((response) => {
         dispatch(UiActions.setShowLoader(false));
-        updateSummaryProgressConfig(response["summary_data"]);
-        updatePhaseProgressConfig(response["phase_data"]);
-        setFindingsData(response["finding_data"]);
+        // TODO: Read the report type from url and render specific report
+        const dataToRender = response["generated_report"];
+        updateSummaryProgressConfig(dataToRender["summary_data"]);
+        updatePhaseProgressConfig(dataToRender["phase_data"]);
+        setFindingsData(dataToRender["finding_data"]);
       })
       .catch((err) => {
         dispatch(UiActions.setShowLoader(false));

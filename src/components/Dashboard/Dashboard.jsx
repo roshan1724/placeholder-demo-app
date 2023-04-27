@@ -27,9 +27,10 @@ function Dashboard() {
       fetch(API_PATHS.DASHBOARD_DATA)
         .then((response) => response.json())
         .then((response) => {
-          setSummaryData(response["summary_data"]);
-          setFindingsData(response["finding_data"]);
-          setPhaseData(response["phase_data"]);
+          const reportData = response["generated_report"];
+          setSummaryData(reportData["summary_data"]);
+          setFindingsData(reportData["finding_data"]);
+          setPhaseData(reportData["phase_data"]);
 
           dispatch(UiActions.setShowLoader(false));
         })

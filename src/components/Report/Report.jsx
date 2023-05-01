@@ -194,7 +194,6 @@ function Report() {
       // Btn Text: 'Edit Report'
       // Render a copy of the current report
       console.log("Creating a copy ==> ");
-      // const currentReportCopy = JSON.parse(JSON.stringify(reportData));
       setDraftReport(JSON.parse(JSON.stringify(reportData)));
       initializeReportData(JSON.parse(JSON.stringify(reportData)));
       setEnableEdit(true);
@@ -419,9 +418,9 @@ function Report() {
                       phaseData={data}
                       key={data.id}
                       isEditable={enableEdit}
-                      handleContentEdit={(modifiedPhaseData) => {
-                        handlePhaseDataUpdate(modifiedPhaseData, phaseIndex);
-                      }}
+                      handleContentEdit={(modifiedPhaseData) =>
+                        handlePhaseDataUpdate(modifiedPhaseData, phaseIndex)
+                      }
                     />
                   ))}
               </div>

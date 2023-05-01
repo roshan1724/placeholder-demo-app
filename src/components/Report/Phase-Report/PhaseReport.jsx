@@ -25,7 +25,7 @@ function PhaseReport({
    */
   const handleCompanyItemUpdate = (event, companyDataId) => {
     if (isEditable) {
-      let updatedText = event.target?.innerHTML;
+      let updatedText = event.target?.innerText;
       if (updatedText?.length >= MAX_INPUT_LIMIT) {
         updatedText = updatedText.substring(0, MAX_INPUT_LIMIT);
         event.preventDefault();

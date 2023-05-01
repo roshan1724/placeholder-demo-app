@@ -46,12 +46,15 @@ header {
       gap: 5px;
 
       &::after {
-        height: $height_profile_dropdown_icon;
-        width: 10px;
-        border: none;
-        content: "";
-        background: url("../../../public/images/down_arrow.png") no-repeat;
-        background-size: contain;
+        display: none;
+      }
+
+      &:active {
+        border-color: none;
+      }
+
+      &.profile-wrapper {
+        color: $color_grey2_logo;
       }
     }
   }

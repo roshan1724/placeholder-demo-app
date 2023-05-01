@@ -53,22 +53,25 @@ function Header({ currentLocation }) {
                 8
               </span>
             </span>
-            <img
-              src="/images/people-male.png"
-              alt="profile-icon"
-              className="rounded-circle profile-image"
-              width="32"
-              height="32"
-            />
             <div className="dropdown text-end">
-              <a
-                href="/"
-                className="flex-center text-decoration-none dropdown-toggle profile-wrapper"
+              <button
+                type="button"
+                className="btn dropdown-toggle profile-wrapper c-font-12 ellpsis-overflow"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <span className="profile-name">Graham Smith</span>
-              </a>
+                <img
+                  src="/images/people-male.png"
+                  alt="profile-icon"
+                  className="rounded-circle profile-image"
+                  width="32"
+                  height="32"
+                />
+                <span className="btn-text">Graham Smith</span>
+                <span className="icon-wrapper ms-2">
+                  <i className="fa-solid fa-angle-down"></i>
+                </span>
+              </button>
               <ul className="dropdown-menu text-small">
                 {}
                 <li>

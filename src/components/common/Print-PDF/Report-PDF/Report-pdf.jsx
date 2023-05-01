@@ -1,12 +1,19 @@
 import "./Report-pdf.scss";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { API_PATHS } from "../../../../utilities/constants";
+import {
+  API_PATHS,
+  PRINTABLE_REPORT_TYPE,
+} from "../../../../utilities/constants";
 import { UiActions } from "../../../../store/ui-slice";
 import Progressbar from "../../progressbar/progressbar";
 import PhaseReport from "../../../Report/Phase-Report/PhaseReport";
+import useQueryParams from "../../../../hooks/useQueryParams";
 
 function ReportPdf({ onPrint, processingState }) {
+  const query = useQueryParams();
+  const reportType = query.get("report_type");
+
   const [summaryData, setSummaryData] = useState([]);
   const [findingsData, setFindingsData] = useState([]);
   const [phaseData, setPhaseData] = useState([]);
@@ -20,15 +27,20 @@ function ReportPdf({ onPrint, processingState }) {
       .then((response) => response.json())
       .then((response) => {
         dispatch(UiActions.setShowLoader(false));
-        updateSummaryProgressConfig(response["summary_data"]);
-        updatePhaseProgressConfig(response["phase_data"]);
-        setFindingsData(response["finding_data"]);
+        // TODO: Read the report type from url and render specific report
+        const dataToRender =
+          reportType === PRINTABLE_REPORT_TYPE.MODIFIED_REPORT
+            ? response["modified_report"]
+            : response["generated_report"];
+        updateSummaryProgressConfig(dataToRender["summary_data"]);
+        updatePhaseProgressConfig(dataToRender["phase_data"]);
+        setFindingsData(dataToRender["finding_data"]);
       })
       .catch((err) => {
         dispatch(UiActions.setShowLoader(false));
         console.warn(err);
       });
-  }, [dispatch]);
+  }, [dispatch, reportType]);
 
   const updateSummaryProgressConfig = (summaryData) => {
     const progressColorList = ["green", "blue", "purple"];

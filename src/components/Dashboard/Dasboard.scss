@@ -84,6 +84,15 @@
   }
 }
 
+.edit-actions {
+  // position: absolute;
+  // right: 10px;
+  // top: 10px;
+  padding: 0 5px;
+  border: 1px solid $color_grey2_logo;
+  border-radius: 50px;
+}
+
 .section-body {
   padding-top: 20px;
   display: flex;
@@ -91,6 +100,7 @@
   row-gap: 10px;
 
   .findings-content {
+    position: relative;
     display: flex;
     flex-direction: row;
     column-gap: 10px;
@@ -127,6 +137,12 @@
         color: $color_yellow;
       }
     }
+
+    // .content-text {
+    //   &:focus-visible {
+    //     outline: none;
+    //   }
+    // }
   }
 
   .phase-content {

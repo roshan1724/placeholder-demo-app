@@ -1,572 +1,539 @@
 {
-  "summary_data": [
-    {
-      "id": "summary-01",
-      "title": "Fastest Possible Time",
-      "value": 45,
-      "time": {
-        "week": 0,
-        "day": 2,
-        "hour": 3,
-        "minute": 25
+  "modified_report": {},
+  "generated_report": {
+    "summary_data": [
+      {
+        "id": "summary-01",
+        "title": "Fastest Possible Time",
+        "value": 45,
+        "time": {
+          "week": 0,
+          "day": 2,
+          "hour": 3,
+          "minute": 25
+        },
+        "configurations": {
+          "classNameList": ["progress-green", "regular-bar"],
+          "showLegends": true,
+          "titleAlignment": "row"
+        }
       },
-      "configurations": {
-        "classNameList": [
-          "progress-green",
-          "regular-bar"
-        ],
-        "showLegends": true,
-        "titleAlignment": "row"
-      }
-    },
-    {
-      "id": "summary-02",
-      "title": "Average Peer Time",
-      "value": 75,
-      "time": {
-        "week": 0,
-        "day": 6,
-        "hour": 8,
-        "minute": 45
+      {
+        "id": "summary-02",
+        "title": "Average Peer Time",
+        "value": 75,
+        "time": {
+          "week": 0,
+          "day": 6,
+          "hour": 8,
+          "minute": 45
+        },
+        "configurations": {
+          "classNameList": ["progress-blue", "regular-bar"],
+          "showLegends": true,
+          "titleAlignment": "row"
+        }
       },
-      "configurations": {
-        "classNameList": [
-          "progress-blue",
-          "regular-bar"
-        ],
-        "showLegends": true,
-        "titleAlignment": "row"
+      {
+        "id": "summary-03",
+        "title": "Smith Company Inc.'s Time",
+        "value": 100,
+        "time": {
+          "week": 1,
+          "day": 1,
+          "hour": 4,
+          "minute": 55
+        },
+        "configurations": {
+          "classNameList": ["progress-purple", "regular-bar"],
+          "showLegends": true,
+          "titleAlignment": "row"
+        }
       }
-    },
-    {
-      "id": "summary-03",
-      "title": "Smith Company Inc.'s Time",
-      "value": 100,
-      "time": {
-        "week": 1,
-        "day": 1,
-        "hour": 4,
-        "minute": 55
+    ],
+    "finding_data": [
+      {
+        "id": "finding-001",
+        "value": "Consider upgrading to M365 E5. You would have had proof that the hacker did't actually steal client data. Without proof, this had to be treated as a worst case scenario. This would have avoided major cost, time, and embarrassment.",
+        "status": "HIGHLY_CRITICAL",
+        "time_taken": "+5D"
       },
-      "configurations": {
-        "classNameList": [
-          "progress-purple",
-          "regular-bar"
-        ],
-        "showLegends": true,
-        "titleAlignment": "row"
+      {
+        "id": "finding-002",
+        "value": "Consider training I.T. on the use of Azure AD logs and Message Trace features.",
+        "status": "HIGHLY_CRITICAL",
+        "time_taken": "+10D"
+      },
+      {
+        "id": "finding-003",
+        "value": "Consider upgrading to phishing-resistant MFA. The use of secure keys, code-based authentication, or locking down which devices can log in may prevent this type of incident. Also consider training staff on “MFA bombing.”",
+        "status": "CRITICAL",
+        "time_taken": ""
+      },
+      {
+        "id": "finding-004",
+        "value": "Consider blocking the ability for users to create auto-forwarding email rules. This would have led to faster discovery of the breach.",
+        "status": "CRITICAL",
+        "time_taken": "+8H"
+      },
+      {
+        "id": "finding-005",
+        "value": "Follow all phases of the incident response plan, making sure not to skip the Remediate and Lessons Learned phases. This will ensure that future incidents are prevented and that we learn how we can improve.",
+        "status": "MODERATE",
+        "time_taken": "+1H"
       }
-    }
-  ],
-  "finding_data": [
-    {
-      "id": "finding-001",
-      "value": "Consider upgrading to M365 E5. You would have had proof that the hacker did't actually steal client data. Without proof, this had to be treated as a worst case scenario. This would have avoided major cost, time, and embarrassment.",
-      "status": "HIGHLY_CRITICAL",
-      "time_taken": "+5D"
-    },
-    {
-      "id": "finding-002",
-      "value": "Consider training I.T. on the use of Azure AD logs and Message Trace features.",
-      "status": "HIGHLY_CRITICAL",
-      "time_taken": "+10D"
-    },
-    {
-      "id": "finding-003",
-      "value": "Consider upgrading to phishing-resistant MFA. The use of secure keys, code-based authentication, or locking down which devices can log in may prevent this type of incident. Also consider training staff on “MFA bombing.”",
-      "status": "CRITICAL",
-      "time_taken": ""
-    },
-    {
-      "id": "finding-004",
-      "value": "Consider blocking the ability for users to create auto-forwarding email rules. This would have led to faster discovery of the breach.",
-      "status": "CRITICAL",
-      "time_taken": "+8H"
-    },
-    {
-      "id": "finding-005",
-      "value": "Follow all phases of the incident response plan, making sure not to skip the Remediate and Lessons Learned phases. This will ensure that future incidents are prevented and that we learn how we can improve.",
-      "status": "MODERATE",
-      "time_taken": "+1H"
-    }
-  ],
-  "phase_data": [
-    {
-      "id": "phase-001",
-      "phase_index": 1,
-      "phase_name": "Detect",
-      "phase_description": "In the \"Respond\" phase, your team should formally declare an incident, notify anyone who needs to know, and start gathering evidence.  If you have cybersecurity insurance, now is the time to call their hotline.",
-      "phase_summary_data": [
-        {
-          "id": "summary-01",
-          "title": "Fastest Possible Time",
-          "value": 30,
-          "time": {
+    ],
+    "phase_data": [
+      {
+        "id": "phase-001",
+        "phase_index": 1,
+        "phase_name": "Detect",
+        "phase_description": "In the \"Respond\" phase, your team should formally declare an incident, notify anyone who needs to know, and start gathering evidence.  If you have cybersecurity insurance, now is the time to call their hotline.",
+        "phase_summary_data": [
+          {
+            "id": "summary-01",
+            "title": "Fastest Possible Time",
+            "value": 30,
+            "time": {
+              "week": 0,
+              "day": 2,
+              "hour": 1,
+              "minute": 25
+            },
+            "configurations": {
+              "classNameList": ["progress-green", "thin-bar"],
+              "showLegends": false,
+              "titleAlignment": "column"
+            }
+          },
+          {
+            "id": "summary-02",
+            "title": "Average Peer Time",
+            "value": 65,
+            "time": {
+              "week": 0,
+              "day": 2,
+              "hour": 9,
+              "minute": 58
+            },
+            "configurations": {
+              "classNameList": ["progress-blue", "thin-bar"],
+              "showLegends": false,
+              "titleAlignment": "column"
+            }
+          },
+          {
+            "id": "summary-03",
+            "title": "Smith Company Inc.'s Time",
+            "value": 100,
+            "time": {
+              "week": 0,
+              "day": 1,
+              "hour": 5,
+              "minute": 55
+            },
+            "configurations": {
+              "classNameList": ["progress-purple", "thin-bar"],
+              "showLegends": false,
+              "titleAlignment": "column"
+            }
+          }
+        ],
+        "path_data": {
+          "title": "Fastest Possible Path",
+          "total_time": {
             "week": 0,
-            "day": 2,
+            "day": 0,
             "hour": 1,
-            "minute": 25
+            "minute": 10
           },
-          "configurations": {
-            "classNameList": [
-              "progress-green",
-              "thin-bar"
-            ],
-            "showLegends": false,
-            "titleAlignment": "column"
-          }
+          "data_list": [
+            {
+              "id": "path-001",
+              "value": "Escalate to CISO using something other than email",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "path-002",
+              "value": "Review incident policy",
+              "status": "success",
+              "time_taken": "15 min"
+            },
+            {
+              "id": "path-003",
+              "value": "Declare incident, keep detailed notes",
+              "status": "success",
+              "time_taken": "30 min"
+            },
+            {
+              "id": "path-004",
+              "value": "Take steps to preserve evidence",
+              "status": "fail",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "path-005",
+              "value": "Call cybersecurity insurance company",
+              "status": "success",
+              "time_taken": "15 min"
+            }
+          ]
         },
-        {
-          "id": "summary-02",
-          "title": "Average Peer Time",
-          "value": 65,
-          "time": {
+        "comany_data": {
+          "title": "Smith Company Inc.'s Path",
+          "total_time": {
             "week": 0,
-            "day": 2,
-            "hour": 9,
-            "minute": 58
+            "day": 0,
+            "hour": 3,
+            "minute": 35
           },
-          "configurations": {
-            "classNameList": [
-              "progress-blue",
-              "thin-bar"
-            ],
-            "showLegends": false,
-            "titleAlignment": "column"
-          }
-        },
-        {
-          "id": "summary-03",
-          "title": "Smith Company Inc.'s Time",
-          "value": 100,
-          "time": {
-            "week": 0,
-            "day": 1,
-            "hour": 5,
-            "minute": 55
-          },
-          "configurations": {
-            "classNameList": [
-              "progress-purple",
-              "thin-bar"
-            ],
-            "showLegends": false,
-            "titleAlignment": "column"
-          }
+          "data_list": [
+            {
+              "id": "company-path-001",
+              "user_id": "2",
+              "value": "Escalate to CISO using something other than email",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "company-path-002",
+              "user_id": "3",
+              "value": "Review incident policy",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "company-path-003",
+              "user_id": "3",
+              "value": "Declare incident, keep detailed notes",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "company-path-004",
+              "user_id": "1",
+              "value": "Since Graham told the client to delete the email, I.T. had to spend extra time gathering evidence.",
+              "status": "fail",
+              "time_taken": "1 hour"
+            },
+            {
+              "id": "company-path-005",
+              "user_id": "3",
+              "value": "Check with other staff to see if they're impacted.",
+              "status": "success",
+              "time_taken": "15 min"
+            },
+            {
+              "id": "company-path-006",
+              "user_id": "3",
+              "value": "Call cybersecurity insurance company.",
+              "status": "success",
+              "time_taken": "1 hour"
+            }
+          ]
         }
-      ],
-      "path_data":{
-        "title": "Fastest Possible Path",
-        "total_time": {
-          "week": 0,
-          "day": 0,
-          "hour": 1,
-          "minute": 10
-        },
-        "data_list": [
-          {
-            "id": "path-001",
-            "value": "Escalate to CISO using something other than email",
-            "status": "success",
-            "time_taken": "5 min"
-          },
-          {
-            "id": "path-002",
-            "value": "Review incident policy",
-            "status": "success",
-            "time_taken": "15 min"
-          },
-          {
-            "id": "path-003",
-            "value": "Declare incident, keep detailed notes",
-            "status": "success",
-            "time_taken": "30 min"
-          },
-          {
-            "id": "path-004",
-            "value": "Take steps to preserve evidence",
-            "status": "fail",
-            "time_taken": "5 min"
-          },
-          {
-            "id": "path-005",
-            "value": "Call cybersecurity insurance company",
-            "status": "success",
-            "time_taken": "15 min"
-          }
-        ]
       },
-      "comany_data": {
-        "title": "Smith Company Inc.'s Path",
-        "total_time": {
-          "week": 0,
-          "day": 0,
-          "hour": 3,
-          "minute": 35
-        },
-        "data_list": [
+      {
+        "id": "phase-002",
+        "phase_index": 2,
+        "phase_name": "Respond",
+        "phase_description": "In the \"Respond\" phase, your team should formally declare an incident, notify anyone who needs to know, and start gathering evidence.  If you have cybersecurity insurance, now is the time to call their hotline.",
+        "phase_summary_data": [
           {
-            "id": "company-path-001",
-            "user_id": "2",
-            "value": "Escalate to CISO using something other than email",
-            "status": "success",
-            "time_taken": "5 min"
+            "id": "summary-01",
+            "title": "Fastest Possible Time",
+            "value": 70,
+            "time": {
+              "week": 0,
+              "day": 2,
+              "hour": 1,
+              "minute": 25
+            },
+            "configurations": {
+              "classNameList": ["progress-green", "thin-bar"],
+              "showLegends": false,
+              "titleAlignment": "column"
+            }
           },
           {
-            "id": "company-path-002",
-            "user_id": "3",
-            "value": "Review incident policy",
-            "status": "success",
-            "time_taken": "5 min"
+            "id": "summary-02",
+            "title": "Average Peer Time",
+            "value": 80,
+            "time": {
+              "week": 0,
+              "day": 2,
+              "hour": 2,
+              "minute": 58
+            },
+            "configurations": {
+              "classNameList": ["progress-blue", "thin-bar"],
+              "showLegends": false,
+              "titleAlignment": "column"
+            }
           },
           {
-            "id": "company-path-003",
-            "user_id": "3",
-            "value": "Declare incident, keep detailed notes",
-            "status": "success",
-            "time_taken": "5 min"
-          },
-          {
-            "id": "company-path-004",
-            "user_id": "1",
-            "value": "Since Graham told the client to delete the email, I.T. had to spend extra time gathering evidence.",
-            "status": "fail",
-            "time_taken": "1 hour"
-          },
-          {
-            "id": "company-path-005",
-            "user_id": "3",
-            "value": "Check with other staff to see if they're impacted.",
-            "status": "success",
-            "time_taken": "15 min"
-          },
-          {
-            "id": "company-path-006",
-            "user_id": "3",
-            "value": "Call cybersecurity insurance company.",
-            "status": "success",
-            "time_taken": "1 hour"
+            "id": "summary-03",
+            "title": "Smith Company Inc.'s Time",
+            "value": 100,
+            "time": {
+              "week": 0,
+              "day": 1,
+              "hour": 3,
+              "minute": 5
+            },
+            "configurations": {
+              "classNameList": ["progress-purple", "thin-bar"],
+              "showLegends": false,
+              "titleAlignment": "column"
+            }
           }
-        ]
-      }
-    },
-    {
-      "id": "phase-002",
-      "phase_index": 2,
-      "phase_name": "Respond",
-      "phase_description": "In the \"Respond\" phase, your team should formally declare an incident, notify anyone who needs to know, and start gathering evidence.  If you have cybersecurity insurance, now is the time to call their hotline.",
-      "phase_summary_data": [
-        {
-          "id": "summary-01",
-          "title": "Fastest Possible Time",
-          "value": 70,
-          "time": {
+        ],
+        "path_data": {
+          "title": "Fastest Possible Path",
+          "total_time": {
             "week": 0,
-            "day": 2,
+            "day": 0,
             "hour": 1,
-            "minute": 25
+            "minute": 10
           },
-          "configurations": {
-            "classNameList": [
-              "progress-green",
-              "thin-bar"              
-            ],
-            "showLegends": false,
-            "titleAlignment": "column"
-          }
+          "data_list": [
+            {
+              "id": "path-001",
+              "value": "Escalate to CISO using something other than email",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "path-002",
+              "value": "Review incident policy",
+              "status": "fail",
+              "time_taken": "15 min"
+            },
+            {
+              "id": "path-003",
+              "value": "Declare incident, keep detailed notes",
+              "status": "success",
+              "time_taken": "30 min"
+            },
+            {
+              "id": "path-004",
+              "value": "Take steps to preserve evidence",
+              "status": "fail",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "path-005",
+              "value": "Call cybersecurity insurance company",
+              "status": "success",
+              "time_taken": "15 min"
+            }
+          ]
         },
-        {
-          "id": "summary-02",
-          "title": "Average Peer Time",
-          "value": 80,
-          "time": {
+        "comany_data": {
+          "title": "Smith Company Inc.'s Path",
+          "total_time": {
             "week": 0,
-            "day": 2,
-            "hour": 2,
-            "minute": 58
-          },
-          "configurations": {
-            "classNameList": [
-              "progress-blue",
-              "thin-bar"
-            ],
-            "showLegends": false,
-            "titleAlignment": "column"
-          }
-        },
-        {
-          "id": "summary-03",
-          "title": "Smith Company Inc.'s Time",
-          "value": 100,
-          "time": {
-            "week": 0,
-            "day": 1,
+            "day": 0,
             "hour": 3,
-            "minute": 5
+            "minute": 35
           },
-          "configurations": {
-            "classNameList": [
-              "progress-purple",
-              "thin-bar"
-            ],
-            "showLegends": false,
-            "titleAlignment": "column"
-          }
+          "data_list": [
+            {
+              "id": "company-path-001",
+              "user_id": "2",
+              "value": "Escalate to CISO using something other than email",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "company-path-002",
+              "user_id": "3",
+              "value": "Review incident policy",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "company-path-003",
+              "user_id": "3",
+              "value": "Declare incident, keep detailed notes",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "company-path-004",
+              "user_id": "1",
+              "value": "Since Graham told the client to delete the email, I.T. had to spend extra time gathering evidence.",
+              "status": "fail",
+              "time_taken": "1 hour"
+            },
+            {
+              "id": "company-path-005",
+              "user_id": "3",
+              "value": "Check with other staff to see if they're impacted.",
+              "status": "success",
+              "time_taken": "15 min"
+            },
+            {
+              "id": "company-path-006",
+              "user_id": "3",
+              "value": "Call cybersecurity insurance company.",
+              "status": "fail",
+              "time_taken": "1 hour"
+            }
+          ]
         }
-      ],
-      "path_data":{
-        "title": "Fastest Possible Path",
-        "total_time": {
-          "week": 0,
-          "day": 0,
-          "hour": 1,
-          "minute": 10
-        },
-        "data_list": [
-          {
-            "id": "path-001",
-            "value": "Escalate to CISO using something other than email",
-            "status": "success",
-            "time_taken": "5 min"
-          },
-          {
-            "id": "path-002",
-            "value": "Review incident policy",
-            "status": "fail",
-            "time_taken": "15 min"
-          },
-          {
-            "id": "path-003",
-            "value": "Declare incident, keep detailed notes",
-            "status": "success",
-            "time_taken": "30 min"
-          },
-          {
-            "id": "path-004",
-            "value": "Take steps to preserve evidence",
-            "status": "fail",
-            "time_taken": "5 min"
-          },
-          {
-            "id": "path-005",
-            "value": "Call cybersecurity insurance company",
-            "status": "success",
-            "time_taken": "15 min"
-          }
-        ]
       },
-      "comany_data": {
-        "title": "Smith Company Inc.'s Path",
-        "total_time": {
-          "week": 0,
-          "day": 0,
-          "hour": 3,
-          "minute": 35
-        },
-        "data_list": [
+      {
+        "id": "phase-003",
+        "phase_index": 3,
+        "phase_name": "Mitigate",
+        "phase_description": "In the \"Respond\" phase, your team should formally declare an incident, notify anyone who needs to know, and start gathering evidence.  If you have cybersecurity insurance, now is the time to call their hotline.",
+        "phase_summary_data": [
           {
-            "id": "company-path-001",
-            "user_id": "2",
-            "value": "Escalate to CISO using something other than email",
-            "status": "success",
-            "time_taken": "5 min"
+            "id": "summary-01",
+            "title": "Fastest Possible Time",
+            "value": 15,
+            "time": {
+              "week": 0,
+              "day": 2,
+              "hour": 3,
+              "minute": 30
+            },
+            "configurations": {
+              "classNameList": ["progress-green", "thin-bar"],
+              "showLegends": false,
+              "titleAlignment": "column"
+            }
           },
           {
-            "id": "company-path-002",
-            "user_id": "3",
-            "value": "Review incident policy",
-            "status": "success",
-            "time_taken": "5 min"
+            "id": "summary-02",
+            "title": "Average Peer Time",
+            "value": 50,
+            "time": {
+              "week": 0,
+              "day": 2,
+              "hour": 3,
+              "minute": 25
+            },
+            "configurations": {
+              "classNameList": ["progress-blue", "thin-bar"],
+              "showLegends": false,
+              "titleAlignment": "column"
+            }
           },
           {
-            "id": "company-path-003",
-            "user_id": "3",
-            "value": "Declare incident, keep detailed notes",
-            "status": "success",
-            "time_taken": "5 min"
-          },
-          {
-            "id": "company-path-004",
-            "user_id": "1",
-            "value": "Since Graham told the client to delete the email, I.T. had to spend extra time gathering evidence.",
-            "status": "fail",
-            "time_taken": "1 hour"
-          },
-          {
-            "id": "company-path-005",
-            "user_id": "3",
-            "value": "Check with other staff to see if they're impacted.",
-            "status": "success",
-            "time_taken": "15 min"
-          },
-          {
-            "id": "company-path-006",
-            "user_id": "3",
-            "value": "Call cybersecurity insurance company.",
-            "status": "fail",
-            "time_taken": "1 hour"
+            "id": "summary-03",
+            "title": "Smith Company Inc.'s Time",
+            "value": 100,
+            "time": {
+              "week": 0,
+              "day": 2,
+              "hour": 9,
+              "minute": 58
+            },
+            "configurations": {
+              "classNameList": ["progress-purple", "thin-bar"],
+              "showLegends": false,
+              "titleAlignment": "column"
+            }
           }
-        ]
-      }
-    },
-    {
-      "id": "phase-003",
-      "phase_index": 3,
-      "phase_name": "Mitigate",
-      "phase_description": "In the \"Respond\" phase, your team should formally declare an incident, notify anyone who needs to know, and start gathering evidence.  If you have cybersecurity insurance, now is the time to call their hotline.",
-      "phase_summary_data": [
-        {
-          "id": "summary-01",
-          "title": "Fastest Possible Time",
-          "value": 15,
-          "time": {
+        ],
+        "path_data": {
+          "title": "Fastest Possible Path",
+          "total_time": {
             "week": 0,
-            "day": 2,
+            "day": 0,
+            "hour": 1,
+            "minute": 10
+          },
+          "data_list": [
+            {
+              "id": "path-001",
+              "value": "Escalate to CISO using something other than email",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "path-002",
+              "value": "Review incident policy",
+              "status": "fail",
+              "time_taken": "15 min"
+            },
+            {
+              "id": "path-003",
+              "value": "Declare incident, keep detailed notes",
+              "status": "success",
+              "time_taken": "30 min"
+            },
+            {
+              "id": "path-004",
+              "value": "Take steps to preserve evidence",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "path-005",
+              "value": "Call cybersecurity insurance company",
+              "status": "success",
+              "time_taken": "15 min"
+            }
+          ]
+        },
+        "comany_data": {
+          "title": "Smith Company Inc.'s Path",
+          "total_time": {
+            "week": 0,
+            "day": 0,
             "hour": 3,
-            "minute": 30
+            "minute": 35
           },
-          "configurations": {
-            "classNameList": [
-              "progress-green",
-              "thin-bar"              
-            ],
-            "showLegends": false,
-            "titleAlignment": "column"
-          }
-        },
-        {
-          "id": "summary-02",
-          "title": "Average Peer Time",
-          "value": 50,
-          "time": {
-            "week": 0,
-            "day": 2,
-            "hour": 3,
-            "minute": 25
-          },
-          "configurations": {
-            "classNameList": [
-              "progress-blue",
-              "thin-bar"
-            ],
-            "showLegends": false,
-            "titleAlignment": "column"
-          }
-        },
-        {
-          "id": "summary-03",
-          "title": "Smith Company Inc.'s Time",
-          "value": 100,
-          "time": {
-            "week": 0,
-            "day": 2,
-            "hour": 9,
-            "minute": 58
-          },
-          "configurations": {
-            "classNameList": [
-              "progress-purple",
-              "thin-bar"
-            ],
-            "showLegends": false,
-            "titleAlignment": "column"
-          }
+          "data_list": [
+            {
+              "id": "company-path-001",
+              "user_id": "2",
+              "value": "Escalate to CISO using something other than email",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "company-path-002",
+              "user_id": "3",
+              "value": "Review incident policy",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "company-path-003",
+              "user_id": "3",
+              "value": "Declare incident, keep detailed notes",
+              "status": "success",
+              "time_taken": "5 min"
+            },
+            {
+              "id": "company-path-004",
+              "user_id": "1",
+              "value": "Since Graham told the client to delete the email, I.T. had to spend extra time gathering evidence.",
+              "status": "success",
+              "time_taken": "1 hour"
+            },
+            {
+              "id": "company-path-005",
+              "user_id": "3",
+              "value": "Check with other staff to see if they're impacted.",
+              "status": "success",
+              "time_taken": "15 min"
+            },
+            {
+              "id": "company-path-006",
+              "user_id": "3",
+              "value": "Call cybersecurity insurance company.",
+              "status": "fail",
+              "time_taken": "1 hour"
+            }
+          ]
         }
-      ],
-      "path_data":{
-        "title": "Fastest Possible Path",
-        "total_time": {
-          "week": 0,
-          "day": 0,
-          "hour": 1,
-          "minute": 10
-        },
-        "data_list": [
-          {
-            "id": "path-001",
-            "value": "Escalate to CISO using something other than email",
-            "status": "success",
-            "time_taken": "5 min"
-          },
-          {
-            "id": "path-002",
-            "value": "Review incident policy",
-            "status": "fail",
-            "time_taken": "15 min"
-          },
-          {
-            "id": "path-003",
-            "value": "Declare incident, keep detailed notes",
-            "status": "success",
-            "time_taken": "30 min"
-          },
-          {
-            "id": "path-004",
-            "value": "Take steps to preserve evidence",
-            "status": "success",
-            "time_taken": "5 min"
-          },
-          {
-            "id": "path-005",
-            "value": "Call cybersecurity insurance company",
-            "status": "success",
-            "time_taken": "15 min"
-          }
-        ]
-      },
-      "comany_data": {
-        "title": "Smith Company Inc.'s Path",
-        "total_time": {
-          "week": 0,
-          "day": 0,
-          "hour": 3,
-          "minute": 35
-        },
-        "data_list": [
-          {
-            "id": "company-path-001",
-            "user_id": "2",
-            "value": "Escalate to CISO using something other than email",
-            "status": "success",
-            "time_taken": "5 min"
-          },
-          {
-            "id": "company-path-002",
-            "user_id": "3",
-            "value": "Review incident policy",
-            "status": "success",
-            "time_taken": "5 min"
-          },
-          {
-            "id": "company-path-003",
-            "user_id": "3",
-            "value": "Declare incident, keep detailed notes",
-            "status": "success",
-            "time_taken": "5 min"
-          },
-          {
-            "id": "company-path-004",
-            "user_id": "1",
-            "value": "Since Graham told the client to delete the email, I.T. had to spend extra time gathering evidence.",
-            "status": "success",
-            "time_taken": "1 hour"
-          },
-          {
-            "id": "company-path-005",
-            "user_id": "3",
-            "value": "Check with other staff to see if they're impacted.",
-            "status": "success",
-            "time_taken": "15 min"
-          },
-          {
-            "id": "company-path-006",
-            "user_id": "3",
-            "value": "Call cybersecurity insurance company.",
-            "status": "fail",
-            "time_taken": "1 hour"
-          }
-        ]
       }
-    }
-  ]
+    ]
+  }
 }

@@ -47,6 +47,11 @@ export const PRINT_PAGE_NAMES = {
   REPORT: "report",
 };
 
+export const PRINTABLE_REPORT_TYPE = {
+  GENERATED_REPORT: "generated_report",
+  MODIFIED_REPORT: "modified_report",
+};
+
 export const MODALVIEW_CONTAINER = "app-modal";
 
 export const APP_MODAL_TYPES = {
@@ -79,3 +84,5 @@ export const TABLE_GAME_USER_ACTION = {
 };
 
 export const TABLE_USER_PROFILE_LIMIT = 3;
+
+export const MAX_INPUT_LIMIT = 4096;

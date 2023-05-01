@@ -84,3 +84,5 @@ export const TABLE_GAME_USER_ACTION = {
 };
 
 export const TABLE_USER_PROFILE_LIMIT = 3;
+
+export const MAX_INPUT_LIMIT = 4096;

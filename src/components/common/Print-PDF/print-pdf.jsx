@@ -1,20 +1,20 @@
 import React, { Fragment, useState } from "react";
 import { createPortal } from "react-dom";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   PRINT_PAGE_NAMES,
   PRINT_PREVIEW_CONTAINER,
 } from "../../../utilities/constants";
+import useQueryParams from "../../../hooks/useQueryParams";
 import AppService from "../../../utilities/app-service";
 import ReportPdf from "./Report-PDF/Report-pdf";
 
 function PrintPDF() {
   const { pageName } = useParams();
-  const { search } = useLocation();
+  const query = useQueryParams();
   const [processing, setProcessing] = useState(false);
 
-  const searchParams = new URLSearchParams(search);
-  const downloadFileName = searchParams.get("fileName");
+  const downloadFileName = query.get("fileName");
   const pdfElement = document.getElementById(PRINT_PREVIEW_CONTAINER);
   let printableComponent = null;
 

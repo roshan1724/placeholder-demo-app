@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { PRINT_PAGE_NAMES, ROUTE_PATHS } from "../../../utilities/constants";
+import { useSelector } from "react-redux";
 
-function PdfDownloader({ isComponent, downloadFileName }) {
+function PdfDownloader({ isComponent, downloadFileName, isDisabled }) {
   const [processing, setProcessing] = useState(false);
+  const reportToPrint = useSelector(
+    (state) => state.gameReport.printableReport
+  );
 
   const downloadPdfDocument = () => {
     if (isComponent) {
@@ -12,7 +16,7 @@ function PdfDownloader({ isComponent, downloadFileName }) {
       // TODO: Send the active report type to download in the URL
       const url = `${window.location.origin}${ROUTE_PATHS.PRINT}/${
         PRINT_PAGE_NAMES.REPORT
-      }?fileName=${
+      }?report_type=${reportToPrint}&fileName=${
         downloadFileName || "game-report-" + new Date().toDateString()
       }`;
       const tempWindow = window.open(url, "_blank", windowFeatures);
@@ -39,6 +43,7 @@ function PdfDownloader({ isComponent, downloadFileName }) {
   return (
     <button
       className="btn btn-primary btn-filled download-button no-print"
+      disabled={isDisabled}
       onClick={() => downloadPdfDocument()}
     >
       <span className="icon-wrapper me-2">

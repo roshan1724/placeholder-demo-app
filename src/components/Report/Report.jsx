@@ -194,9 +194,9 @@ function Report() {
       // Btn Text: 'Edit Report'
       // Render a copy of the current report
       console.log("Creating a copy ==> ");
-      const currentReportCopy = JSON.parse(JSON.stringify(reportData));
-      setDraftReport(currentReportCopy);
-      initializeReportData(currentReportCopy);
+      // const currentReportCopy = JSON.parse(JSON.stringify(reportData));
+      setDraftReport(JSON.parse(JSON.stringify(reportData)));
+      initializeReportData(JSON.parse(JSON.stringify(reportData)));
       setEnableEdit(true);
     }
   };
@@ -207,7 +207,7 @@ function Report() {
    * @param {string} findingDataId - Id of the Updated Findings Data
    */
   const handleFindingsItemUpdate = (event, findingDataId) => {
-    let updatedText = event.target.innerHTML;
+    let updatedText = event.target.innerText;
     if (updatedText?.length >= MAX_INPUT_LIMIT) {
       updatedText = updatedText.substring(0, MAX_INPUT_LIMIT);
     }
@@ -224,12 +224,8 @@ function Report() {
    * Function to save updted phase data
    * @param {Object} modifiedPhaseData - updated copy of phase data
    */
-  const handlePhaseDataUpdate = (modifiedPhaseData) => {
-    const updatedPhaseData = draftReport.phase_data.map((data) => {
-      data = data.id === modifiedPhaseData.id ? { ...modifiedPhaseData } : data;
-      return data;
-    });
-    console.log(`updatedPhaseData ==> `, updatedPhaseData);
+  const handlePhaseDataUpdate = (modifiedPhaseData, phaseIndex) => {
+    draftReport.phase_data[phaseIndex] = { ...modifiedPhaseData };
     setReportChanged(true);
   };
 
@@ -260,7 +256,16 @@ function Report() {
   return (
     !loader && (
       <section className="section-report px-3">
-        <h1 className="page-title">Game Name Goes Here</h1>
+        <h1 className="page-title">
+          Game Name Goes Here{" "}
+          <span className={`${modifiedReportData ? "" : "d-none"}`}>
+            ({" "}
+            {reportToPrint !== PRINTABLE_REPORT_TYPE.GENERATED_REPORT
+              ? "Updated"
+              : "Initial"}{" "}
+            Report )
+          </span>
+        </h1>
         <div className="d-flex justify-content-between">
           <div className="page-description">
             <p className="theme-text c-font-15">
@@ -372,7 +377,6 @@ function Report() {
                         contentEditable={enableEdit}
                         suppressContentEditableWarning={true}
                         onKeyDown={(e) => {
-                          console.log("Key Pressed => ", e);
                           if (
                             e.target.innerHTML.length >= MAX_INPUT_LIMIT &&
                             !["Backspace", "Delete"].includes(e.key)
@@ -415,9 +419,9 @@ function Report() {
                       phaseData={data}
                       key={data.id}
                       isEditable={enableEdit}
-                      handleContentEdit={(modifiedPhaseData) =>
-                        handlePhaseDataUpdate(modifiedPhaseData, phaseIndex)
-                      }
+                      handleContentEdit={(modifiedPhaseData) => {
+                        handlePhaseDataUpdate(modifiedPhaseData, phaseIndex);
+                      }}
                     />
                   ))}
               </div>

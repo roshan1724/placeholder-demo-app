@@ -66,7 +66,7 @@ function PhaseReport({
             wrapperClass === "print-preview" ? "col-md-12" : "col-md-6"
           }`}
         >
-          <div className="summary-wrapper">
+          <div className="summary-wrapper page-break-inside-avoid">
             {phaseData["phase_summary_data"] && (
               <div className="summary-time-data">
                 {phaseData["phase_summary_data"].map((timeData, index) => (
@@ -91,7 +91,7 @@ function PhaseReport({
             {phaseData["path_data"]["data_list"] &&
               phaseData["path_data"]["data_list"].map((data, index) => (
                 <div
-                  className="row path-data-container"
+                  className="row path-data-container page-break-inside-avoid"
                   key={data.id}
                   data-status={data.status}
                 >
@@ -169,7 +169,7 @@ function PhaseReport({
             {phaseData["comany_data"]["data_list"] &&
               phaseData["comany_data"]["data_list"].map((data, index) => (
                 <div
-                  className={`row company-data-container ${
+                  className={`row company-data-container page-break-inside-avoid ${
                     isEditable ? "highlight-edit" : ""
                   }`}
                   key={data.id}

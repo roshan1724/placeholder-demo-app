@@ -35,6 +35,7 @@ export const ROUTE_PATHS = {
 export const API_PATHS = {
   DASHBOARD_DATA: "/data/dashboard-summary-data.json",
   GAME_SCENARIO_LIST: "/data/game-scenario-list.json",
+  GAME_SCENARIO_FORM: "/data/game-scenario-detail-form.json",
   GAME_LIST_DATA: "/data/game-list.json",
   INCIDENT_DATA: "/data/incident-data.json",
   INCIDENT_OPTION_DATA: "/data/incident-option-data.json",
@@ -86,3 +87,7 @@ export const TABLE_GAME_USER_ACTION = {
 export const TABLE_USER_PROFILE_LIMIT = 3;
 
 export const MAX_INPUT_LIMIT = 4096;
+
+export const FORM_CONSTANTS = {
+  VALIDATIONS: ["REQUIRED", "EMAIL"],
+};

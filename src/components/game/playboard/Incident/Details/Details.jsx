@@ -16,6 +16,7 @@ function Details(props) {
   const { messageList } = props;
   const chatbox = useRef(null);
   const currentBotEle = useRef(null);
+  const scrollViewEle = useRef(null);
   // setting the typing state og the messages received [false, false, false]
   const [typingState, setTypingState] = useState(() =>
     Array.from({ length: messageList.length }, (v, i) => false)
@@ -27,6 +28,19 @@ function Details(props) {
     }
   }, []);
 
+  useEffect(() => {
+    if (
+      typingState[typingState.length - 1] &&
+      scrollViewEle &&
+      scrollViewEle.current
+    ) {
+      scrollViewEle.current?.scrollIntoView({
+        block: "end",
+        behavior: "smooth",
+      });
+    }
+  }, [typingState]);
+
   const applyTypingEffect = (element, typingText, onTypeEnds) => {
     let startIndex = 0;
 
@@ -34,6 +48,14 @@ function Details(props) {
       if (typeof typingText === "string" && startIndex < typingText.length) {
         element.innerHTML = typingText.slice(0, startIndex + 1);
         startIndex++;
+
+        if (element.innerHTML.length % 100 === 0) {
+          scrollViewEle.current?.scrollIntoView({
+            block: "end",
+            behavior: "smooth",
+          });
+        }
+        // chatbox.current.scrollTo(0, chatbox.current?.scrollHeight);
         setTimeout(typeWriter, typingSpeed);
       } else if (startIndex === typingText.length) {
         onTypeEnds();
@@ -120,6 +142,7 @@ function Details(props) {
             </div>
           </>
         ))}
+        <div className="chat-bottom" ref={scrollViewEle}></div>
       </div>
     </section>
   );

@@ -45,9 +45,9 @@
     }
 
     .table-content-wrapper {
-      .table-responsive {
-        height: $height_table;
-      }
+      // .table-responsive {
+      //   height: $height_table;
+      // }
       .game-list-table {
         &.table > :not(caption) > * > * {
           border-bottom-width: 0;

@@ -28,6 +28,13 @@ body {
 }
 
 * {
+  /* Chrome, Safari 6 – 15.3, Edge */
+  -webkit-print-color-adjust: exact !important;
+  /* Firefox 48 – 96 */
+  color-adjust: exact !important;
+  /* Firefox 97+, Safari 15.4+ */
+  print-color-adjust: exact !important;
+
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -66,6 +73,26 @@ body {
 
     .no-print {
       display: none;
+    }
+
+    .page-break-inside-avoid {
+      page-break-inside: avoid;
+    }
+
+    .page-break-before-avoid {
+      page-break-before: avoid;
+    }
+
+    .page-break-before-always {
+      page-break-before: always;
+    }
+
+    .page-break-after-avoid {
+      page-break-after: avoid;
+    }
+
+    .page-break-after-always {
+      page-break-after: always;
     }
   }
 

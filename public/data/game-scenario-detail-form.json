@@ -1,556 +1,745 @@
 {
   "data": [
     {
-      "view_order": 10.0,
-      "group_id": "game_start_schedule",
-      "group_label": "Schedule the game start date and time",
+      "view_order": 10,
+      "id": "game_start_schedule",
+      "type": "FIELDS",
+      "label": "Schedule the game start date and time",
       "fields": [
         {
-          "field_id": "game-detail-001",
-          "field_width": "2-of-12",
-          "field_type": "DATE",
-          "field_label": "Date",
-          "field_name": "start_date",
-          "field_placeholder": "Select Date",
-          "field_value": "",
-          "icon_name": "",
+          "id": "game-detail-1",
+          "width": 2,
+          "type": "DATE",
+          "label": "Date",
+          "name": "start_date",
+          "placeholder": "Select Date",
+          "value": "",
+          "icon": null,
           "options": [],
           "validations": [
             {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            }
-          ]
-        },
-        {
-          "field_id": "game-detail-002",
-          "field_width": "2-of-12",
-          "field_type": "TIME",
-          "field_label": "Time",
-          "field_name": "start_time",
-          "field_placeholder": "Select Time",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": [
-            {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            }
-          ]
-        },
-        {
-          "field_id": "game-detail-003",
-          "field_width": "2-of-12",
-          "field_type": "DROPDOWN",
-          "field_label": "Time Zone",
-          "field_name": "time_zone",
-          "field_placeholder": "",
-          "field_value": "CST",
-          "icon_name": "",
-          "options": [],
-          "validations": [
-            {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            }
-          ]
-        }
-      ],
-      "Comments": ""
-    },
-    {
-      "view_order": 20.0,
-      "group_id": "end_user_detail",
-      "group_label": "\"End User\" details",
-      "fields": [
-        {
-          "field_id": "game-detail-004",
-          "field_width": "4-of-12",
-          "field_type": "STRING",
-          "field_label": "Name",
-          "field_name": "end_user_name",
-          "field_placeholder": "End User's Name",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": [
-            {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            }
-          ]
-        },
-        {
-          "field_id": "game-detail-005",
-          "field_width": "4-of-12",
-          "field_type": "STRING",
-          "field_label": "Email",
-          "field_name": "end_user_email",
-          "field_placeholder": "End User's Email",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": [
-            {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            },
-            {
-              "validation_type": "EMAIL",
-              "error_message": "Email is not valid"
-            }
-          ]
-        }
-      ],
-      "Comments": ""
-    },
-    {
-      "view_order": 30.0,
-      "group_id": "ciso_detail",
-      "group_label": "\"Chief Information Security Officer (CISO)\" details",
-      "fields": [
-        {
-          "field_id": "game-detail-006",
-          "field_width": "4-of-12",
-          "field_type": "STRING",
-          "field_label": "Name",
-          "field_name": "ciso_user_name",
-          "field_placeholder": "CISO's Name",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": [
-            {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            }
-          ]
-        },
-        {
-          "field_id": "game-detail-007",
-          "field_width": "4-of-12",
-          "field_type": "STRING",
-          "field_label": "Email",
-          "field_name": "ciso_user_email",
-          "field_placeholder": "CISO's Email",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": [
-            {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            },
-            {
-              "validation_type": "EMAIL",
-              "error_message": "Email is not valid"
-            }
-          ]
-        },
-        {
-          "field_id": "game-detail-008",
-          "field_width": "4-of-12",
-          "field_type": "STRING",
-          "field_label": "Job Title",
-          "field_name": "ciso_job_title",
-          "field_placeholder": "CISO's Job Title",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": [
-            {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            }
-          ]
-        }
-      ],
-      "Comments": ""
-    },
-    {
-      "view_order": 40.0,
-      "group_id": "it_admin_detail",
-      "group_label": "\"I.T. Admin\" details",
-      "fields": [
-        {
-          "field_id": "game-detail-009",
-          "field_width": "4-of-12",
-          "field_type": "STRING",
-          "field_label": "Name",
-          "field_name": "it_admin_name",
-          "field_placeholder": "IT Admin's Name",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": [
-            {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            }
-          ]
-        },
-        {
-          "field_id": "game-detail-010",
-          "field_width": "4-of-12",
-          "field_type": "STRING",
-          "field_label": "Email",
-          "field_name": "it_admin_email",
-          "field_placeholder": "IT Admin's Email",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": [
-            {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            },
-            {
-              "validation_type": "EMAIL",
-              "error_message": "Email is not valid"
-            }
-          ]
-        },
-        {
-          "field_id": "game-detail-011",
-          "field_width": "4-of-12",
-          "field_type": "STRING",
-          "field_label": "Job Title",
-          "field_name": "it_admin_job_title",
-          "field_placeholder": "IT Admin's Job Title",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": [
-            {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            }
-          ]
-        }
-      ],
-      "Comments": ""
-    },
-    {
-      "view_order": 50.0,
-      "group_id": "spectators_detail",
-      "group_label": "Spectator(s) Details",
-      "fields": [
-        {
-          "field_id": "game-detail-012",
-          "field_width": "12-of-12",
-          "field_type": "FIELD_LIST",
-          "field_label": "",
-          "field_name": "spectators",
-          "field_placeholder": "",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": []
-        },
-        {
-          "field_id": "game-detail-013",
-          "field_width": "4-of-12",
-          "field_type": "STRING",
-          "field_label": "Name",
-          "field_name": "spectator_name",
-          "field_placeholder": "Spectator's Name",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": []
-        },
-        {
-          "field_id": "game-detail-014",
-          "field_width": "4-of-12",
-          "field_type": "STRING",
-          "field_label": "Email",
-          "field_name": "spectator_email",
-          "field_placeholder": "Spectator's Email",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": []
-        },
-        {
-          "field_id": "game-detail-015",
-          "field_width": "2-of-12",
-          "field_type": "ACTION_BTN",
-          "field_label": "Add",
-          "field_name": "",
-          "field_placeholder": "",
-          "field_value": "",
-          "icon_name": "fa-plus",
-          "options": [],
-          "validations": []
-        }
-      ],
-      "Comments": ""
-    },
-    {
-      "view_order": 60.0,
-      "group_id": "it_ticket_portal_detail",
-      "group_label": "Do you provide a web-based portal where employees can enter tickets for the I.T. team? *",
-      "fields": [
-        {
-          "field_id": "game-detail-016",
-          "field_width": "2-of-12",
-          "field_type": "OPTIONS_WITH_STRING_BOOLEAN_TRUE",
-          "field_label": "",
-          "field_name": "has_portal",
-          "field_placeholder": "",
-          "field_value": "",
-          "icon_name": "",
-          "options": [
-            {
-              "option_value": true,
-              "display_text": "Yes"
-            },
-            {
-              "option_value": false,
-              "display_text": "No"
+              "type": "REQUIRED",
+              "error_message": "This field is required."
             }
           ],
-          "validations": [
-            {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            }
-          ]
+          "comments": ""
         },
         {
-          "field_id": "game-detail-017",
-          "field_width": "4-of-12",
-          "field_type": "STRING",
-          "field_label": "",
-          "field_name": "portal_link",
-          "field_placeholder": "Name or url of that portal",
-          "field_value": "",
-          "icon_name": "",
-          "options": [],
-          "validations": []
-        }
-      ],
-      "Comments": ""
-    },
-    {
-      "view_order": 70.0,
-      "group_id": "im_channel_detail",
-      "group_label": "Name of Slack or Teams channel for this simulation",
-      "fields": [
-        {
-          "field_id": "game-detail-018",
-          "field_width": "4-of-12",
-          "field_type": "STRING",
-          "field_label": "",
-          "field_name": "im_name",
-          "field_placeholder": "Name of Slack or Teams channel",
-          "field_value": "",
-          "icon_name": "",
+          "id": "game-detail-2",
+          "width": 2,
+          "type": "TIME",
+          "label": "Time",
+          "name": "start_time",
+          "placeholder": "Select Time",
+          "value": "",
+          "icon": null,
           "options": [],
           "validations": [
             {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
+              "type": "REQUIRED",
+              "error_message": "This field is required."
             }
-          ]
+          ],
+          "comments": ""
         },
         {
-          "field_id": "game-detail-019",
-          "field_width": "4-of-12",
-          "field_type": "INFO",
-          "field_label": "We recommend setting up a Slack/Teams channel for this simulation where your team can discuss options and plan your next move.",
-          "field_name": "im_info",
-          "field_placeholder": "",
-          "field_value": "",
-          "icon_name": "fa-circle-info",
+          "id": "game-detail-3",
+          "width": 2,
+          "type": "DROPDOWN",
+          "label": "Time Zone",
+          "name": "time_zone",
+          "placeholder": "",
+          "value": "CST",
+          "icon": null,
           "options": [],
-          "validations": []
-        }
-      ],
-      "Comments": ""
-    },
-    {
-      "view_order": 80.0,
-      "group_id": "email_gateway",
-      "group_label": "What secure email gateway do you use?",
-      "fields": [
-        {
-          "field_id": "game-detail-020",
-          "field_width": "2-of-12",
-          "field_type": "MULTI_OPTIONS_WITH_STRING_OTHER",
-          "field_label": "",
-          "field_name": "email_gateway",
-          "field_placeholder": "",
-          "field_value": "",
-          "icon_name": "",
-          "options": [
-            {
-              "option_value": "proofpoint",
-              "display_text": "Proofpoint"
-            },
-            {
-              "option_value": "barracuda",
-              "display_text": "Barracuda"
-            },
-            {
-              "option_value": "mimecast",
-              "display_text": "Mimecast"
-            },
-            {
-              "option_value": "mcrosoft_defender_email",
-              "display_text": "Microsoft Defender for Email"
-            },
-            {
-              "option_value": "other",
-              "display_text": "Other"
-            }
-          ],
           "validations": [
             {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            }
-          ]
-        }
-      ],
-      "Comments": ""
-    },
-    {
-      "view_order": 90.0,
-      "group_id": "antivirus_detail",
-      "group_label": "What antivirus product do you use?",
-      "fields": [
-        {
-          "field_id": "game-detail-021",
-          "field_width": "2-of-12",
-          "field_type": "OPTIONS",
-          "field_label": "",
-          "field_name": "antivirus_name",
-          "field_placeholder": "",
-          "field_value": "",
-          "icon_name": "",
-          "options": [
-            {
-              "option_value": "norton",
-              "display_text": "Norton"
-            },
-            {
-              "option_value": "bitdefender",
-              "display_text": "Bitdefender"
-            },
-            {
-              "option_value": "mcafee",
-              "display_text": "McAfee"
-            },
-            {
-              "option_value": "kaspersky",
-              "display_text": "Kaspersky"
-            },
-            {
-              "option_value": "avast",
-              "display_text": "Avast"
-            },
-            {
-              "option_value": "avira",
-              "display_text": "Avira"
-            },
-            {
-              "option_value": "panda",
-              "display_text": "Panda"
-            },
-            {
-              "option_value": "trend_micro",
-              "display_text": "Trend Micro"
-            },
-            {
-              "option_value": "malwarebytes",
-              "display_text": "Malwarebytes"
-            },
-            {
-              "option_value": "sophos",
-              "display_text": "Sophos"
-            },
-            {
-              "option_value": "none",
-              "display_text": "None"
+              "type": "REQUIRED",
+              "error_message": "This field is required."
             }
           ],
-          "validations": [
-            {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
-            }
-          ]
+          "comments": ""
         }
-      ],
-      "Comments": ""
+      ]
     },
     {
-      "view_order": 100.0,
-      "group_id": "edr_product_detail",
-      "group_label": "What Endpoint Detection and Response product do you use?",
+      "view_order": 20,
+      "id": "end_user_detail",
+      "type": "FIELDS",
+      "label": "\"End User\" details",
       "fields": [
         {
-          "field_id": "game-detail-022",
-          "field_width": "2-of-12",
-          "field_type": "OPTIONS_WITH_STRING_OTHER",
-          "field_label": "",
-          "field_name": "edr_name",
-          "field_placeholder": "",
-          "field_value": "",
-          "icon_name": "",
-          "options": [
-            {
-              "option_value": "crowdstrike",
-              "display_text": "CrowdStrike"
-            },
-            {
-              "option_value": "sentinelone",
-              "display_text": "SentinelOne"
-            },
-            {
-              "option_value": "microsoft_defender_endpoint",
-              "display_text": "Microsoft Defender for Endpoint"
-            },
-            {
-              "option_value": "cybereason",
-              "display_text": "Cybereason"
-            },
-            {
-              "option_value": "palo_alto",
-              "display_text": "Palo Alto"
-            },
-            {
-              "option_value": "ciso",
-              "display_text": "Ciso"
-            },
-            {
-              "option_value": "carbon_black",
-              "display_text": "Carbon Black"
-            },
-            {
-              "option_value": "sophos",
-              "display_text": "Sophos"
-            },
-            {
-              "option_value": "none",
-              "display_text": "None"
-            },
-            {
-              "option_value": "other",
-              "display_text": "Other"
-            }
-          ],
+          "id": "game-detail-4",
+          "width": 4,
+          "type": "STRING",
+          "label": "Name",
+          "name": "end_user_name",
+          "placeholder": "End User's Name",
+          "value": "",
+          "icon": null,
+          "options": [],
           "validations": [
             {
-              "validation_type": "REQUIRED",
-              "error_message": "This field is required"
+              "type": "REQUIRED",
+              "error_message": "This field is required."
             }
-          ]
+          ],
+          "comments": ""
+        },
+        {
+          "id": "game-detail-5",
+          "width": 4,
+          "type": "EMAIL",
+          "label": "Email",
+          "name": "end_user_email",
+          "placeholder": "End User's Email",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [
+            {
+              "type": "REQUIRED",
+              "error_message": "This field is required."
+            },
+            {
+              "type": "EMAIL",
+              "error_message": "Emai is not valid."
+            }
+          ],
+          "comments": ""
+        },
+        {
+          "id": "game-detail-6",
+          "width": 4,
+          "type": "STRING",
+          "label": "Job Title",
+          "name": "end_user_title",
+          "placeholder": "End User's Job Title",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [
+            {
+              "type": "REQUIRED",
+              "error_message": "This field is required."
+            }
+          ],
+          "comments": ""
         }
-      ],
-      "Comments": ""
+      ]
+    },
+    {
+      "view_order": 30,
+      "id": "i.t._admin_detail",
+      "type": "FIELDS",
+      "label": "\"I.T. Admin\" details",
+      "fields": [
+        {
+          "id": "game-detail-7",
+          "width": 4,
+          "type": "STRING",
+          "label": "Name",
+          "name": "it_admin_name",
+          "placeholder": "I.T. Admin's Name",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [
+            {
+              "type": "REQUIRED",
+              "error_message": "This field is required."
+            }
+          ],
+          "comments": ""
+        },
+        {
+          "id": "game-detail-8",
+          "width": 4,
+          "type": "EMAIL",
+          "label": "Email",
+          "name": "it_admin_email",
+          "placeholder": "I.T. Admin's Email",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [
+            {
+              "type": "REQUIRED",
+              "error_message": "This field is required."
+            },
+            {
+              "type": "EMAIL",
+              "error_message": "Emai is not valid."
+            }
+          ],
+          "comments": ""
+        },
+        {
+          "id": "game-detail-9",
+          "width": 4,
+          "type": "STRING",
+          "label": "Job Title",
+          "name": "it_admin_title",
+          "placeholder": "I.T. Admin's Job Title",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [
+            {
+              "type": "REQUIRED",
+              "error_message": "This field is required."
+            }
+          ],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 40,
+      "id": "ciso_detail",
+      "type": "FIELDS",
+      "label": "\"CISO\" details",
+      "fields": [
+        {
+          "id": "game-detail-10",
+          "width": 4,
+          "type": "STRING",
+          "label": "Name",
+          "name": "ciso_name",
+          "placeholder": "CISO's Name",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [
+            {
+              "type": "REQUIRED",
+              "error_message": "This field is required."
+            }
+          ],
+          "comments": ""
+        },
+        {
+          "id": "game-detail-11",
+          "width": 4,
+          "type": "EMAIL",
+          "label": "Email",
+          "name": "ciso_email",
+          "placeholder": "CISO's Email",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [
+            {
+              "type": "REQUIRED",
+              "error_message": "This field is required."
+            },
+            {
+              "type": "EMAIL",
+              "error_message": "Emai is not valid."
+            }
+          ],
+          "comments": ""
+        },
+        {
+          "id": "game-detail-12",
+          "width": 4,
+          "type": "STRING",
+          "label": "Job Title",
+          "name": "ciso_title",
+          "placeholder": "CISO's Job Title",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [
+            {
+              "type": "REQUIRED",
+              "error_message": "This field is required."
+            }
+          ],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 40,
+      "id": "spectator_details",
+      "type": "LIST",
+      "name": "spectators",
+      "value": [{ "name": "Mike", "email": "michael.cross@chaostrack.com" }],
+      "label": "Spectators",
+      "fields": [
+        {
+          "id": "game-detail-13",
+          "width": 4,
+          "type": "STRING",
+          "label": "Name",
+          "name": "name",
+          "placeholder": "Spectator's Name",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [
+            {
+              "type": "REQUIRED",
+              "error_message": "This field is required."
+            }
+          ],
+          "comments": ""
+        },
+        {
+          "id": "game-detail-14",
+          "width": 4,
+          "type": "EMAIL",
+          "label": "Email",
+          "name": "email",
+          "placeholder": "Spectator's Email",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [
+            {
+              "type": "REQUIRED",
+              "error_message": "This field is required."
+            },
+            {
+              "type": "EMAIL",
+              "error_message": "Emai is not valid."
+            }
+          ],
+          "comments": ""
+        },
+        {
+          "id": "game-detail-15",
+          "width": 2,
+          "type": "ACTION_BTN",
+          "label": "Add",
+          "name": "",
+          "placeholder": "",
+          "value": "",
+          "icon": "fa-plus",
+          "options": [],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 50,
+      "id": "instant_messaging_tool",
+      "type": "FIELDS",
+      "label": "What is the main instant messaging tool you use?",
+      "fields": [
+        {
+          "id": "game-detail-16",
+          "width": 12,
+          "type": "OPTIONS_WITH_STRING_OTHER",
+          "label": "",
+          "name": "instant_messaging_tool",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [
+            {
+              "value": "Slack",
+              "display": "Slack"
+            },
+            {
+              "value": "Microsoft Teams",
+              "display": "Microsoft Teams"
+            },
+            {
+              "value": "Zoom",
+              "display": "Zoom"
+            },
+            {
+              "value": "Google Chat",
+              "display": "Google Chat"
+            },
+            {
+              "value": "None",
+              "display": "None"
+            }
+          ],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 60,
+      "id": "it_senior_title",
+      "type": "FIELDS",
+      "label": "What is the job title of the senior-most person who leads your information security program (e.g., your CISO, compliance officer, security manager)?",
+      "fields": [
+        {
+          "id": "game-detail-17",
+          "width": 4,
+          "type": "STRING",
+          "label": "",
+          "name": "ciso_title",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 70,
+      "id": "it_senior_name",
+      "type": "FIELDS",
+      "label": "What is this senior security leader's name?",
+      "fields": [
+        {
+          "id": "game-detail-18",
+          "width": 4,
+          "type": "STRING",
+          "label": "",
+          "name": "ciso_name",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 80,
+      "id": "ceo_title",
+      "type": "FIELDS",
+      "label": "What is the job title of your company leader (e.g., your CEO, President, Chairperson)?",
+      "fields": [
+        {
+          "id": "game-detail-19",
+          "width": 4,
+          "type": "STRING",
+          "label": "",
+          "name": "ceo_title",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 90,
+      "id": "ceo_name",
+      "type": "FIELDS",
+      "label": "Enter the name of this company leader person?",
+      "fields": [
+        {
+          "id": "game-detail-20",
+          "width": 4,
+          "type": "STRING",
+          "label": "",
+          "name": "ceo_name",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 100,
+      "id": "secure_email_gateway",
+      "type": "FIELDS",
+      "label": "Which Secure Email Gateway product do you use?",
+      "fields": [
+        {
+          "id": "game-detail-21",
+          "width": 12,
+          "type": "OPTIONS_WITH_STRING_OTHER",
+          "label": "",
+          "name": "secure_email_gateway",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [
+            {
+              "value": "Proofpoint",
+              "display": "Proofpoint"
+            },
+            {
+              "value": "Barracuda",
+              "display": "Barracuda"
+            },
+            {
+              "value": "Mimecast",
+              "display": "Mimecast"
+            },
+            {
+              "value": "Avanan",
+              "display": "Avanan"
+            },
+            {
+              "value": "None",
+              "display": "None"
+            }
+          ],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 110,
+      "id": "email_archiving_system",
+      "type": "FIELDS",
+      "label": "What is the name of the email archiving system you use?",
+      "fields": [
+        {
+          "id": "game-detail-22",
+          "width": 12,
+          "type": "OPTIONS_WITH_STRING_OTHER",
+          "label": "",
+          "name": "email_archiving_system",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [
+            {
+              "value": "Microsoft 365",
+              "display": "Microsoft 365"
+            },
+            {
+              "value": "Google Vault",
+              "display": "Google Vault"
+            },
+            {
+              "value": "Smarsh",
+              "display": "Smarsh"
+            },
+            {
+              "value": "Mimecast",
+              "display": "Mimecast"
+            },
+            {
+              "value": "Barracuda",
+              "display": "Barracuda"
+            },
+            {
+              "value": "N-Able",
+              "display": "N-Able"
+            },
+            {
+              "value": "None",
+              "display": "None"
+            }
+          ],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 120,
+      "id": "antivirus_system",
+      "type": "FIELDS",
+      "label": "What antivirus product do you use?",
+      "fields": [
+        {
+          "id": "game-detail-23",
+          "width": 12,
+          "type": "OPTIONS_WITH_STRING_OTHER",
+          "label": "",
+          "name": "antivirus_system",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [
+            {
+              "value": "Microsoft Defender",
+              "display": "Microsoft Defender"
+            },
+            {
+              "value": "Bitdefender",
+              "display": "Bitdefender"
+            },
+            {
+              "value": "McAfee",
+              "display": "McAfee"
+            },
+            {
+              "value": "Norton/Symantec",
+              "display": "Norton/Symantec"
+            },
+            {
+              "value": "Sophos",
+              "display": "Sophos"
+            },
+            {
+              "value": "Webroot",
+              "display": "Webroot"
+            },
+            {
+              "value": "Kaspersky",
+              "display": "Kaspersky"
+            },
+            {
+              "value": "ESET",
+              "display": "ESET"
+            },
+            {
+              "value": "None",
+              "display": "None"
+            }
+          ],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 130,
+      "id": "edr_system",
+      "type": "FIELDS",
+      "label": "What endpoint detection and response (EDR) product do you use?",
+      "fields": [
+        {
+          "id": "game-detail-24",
+          "width": 12,
+          "type": "OPTIONS_WITH_STRING_OTHER",
+          "label": "",
+          "name": "edr_system",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [
+            {
+              "value": "Crowdstrike",
+              "display": "Crowdstrike"
+            },
+            {
+              "value": "SentinelOne",
+              "display": "SentinelOne"
+            },
+            {
+              "value": "Microsoft Defender",
+              "display": "Microsoft Defender"
+            },
+            {
+              "value": "Cisco",
+              "display": "Cisco"
+            },
+            {
+              "value": "Cybereason",
+              "display": "Cybereason"
+            },
+            {
+              "value": "Sophos",
+              "display": "Sophos"
+            },
+            {
+              "value": "Cylance",
+              "display": "Cylance"
+            },
+            {
+              "value": "CarbonBlack",
+              "display": "CarbonBlack"
+            },
+            {
+              "value": "None",
+              "display": "None"
+            }
+          ],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 140,
+      "id": "incident_reporter_name",
+      "type": "FIELDS",
+      "label": "What is the name of the end user who reported this incident?",
+      "fields": [
+        {
+          "id": "game-detail-25",
+          "width": 4,
+          "type": "STRING",
+          "label": "",
+          "name": "incident_reporter_name",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 150,
+      "id": "it_case_incharge_name",
+      "type": "FIELDS",
+      "label": "What is the name of the I.T. admin assigned to this case?",
+      "fields": [
+        {
+          "id": "game-detail-26",
+          "width": 4,
+          "type": "STRING",
+          "label": "",
+          "name": "it_case_incharge_name",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 160,
+      "id": "it_support_phone",
+      "type": "FIELDS",
+      "label": "What is your I.T. support phone number?",
+      "fields": [
+        {
+          "id": "game-detail-27",
+          "width": 4,
+          "type": "STRING",
+          "label": "",
+          "name": "it_support_phone",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [],
+          "comments": ""
+        }
+      ]
+    },
+    {
+      "view_order": 170,
+      "id": "it_support_email",
+      "type": "FIELDS",
+      "label": "What is your I.T. support email address?",
+      "fields": [
+        {
+          "id": "game-detail-28",
+          "width": 4,
+          "type": "STRING",
+          "label": "",
+          "name": "it_support_email",
+          "placeholder": "",
+          "value": "",
+          "icon": null,
+          "options": [],
+          "validations": [],
+          "comments": ""
+        }
+      ]
     }
   ]
 }

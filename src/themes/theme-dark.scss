@@ -111,7 +111,7 @@
     .option-content {
       .option-input {
         &:checked {
-          & + label.option-text {
+          &+label.option-text {
             color: $color_theme;
 
             .checkmark-holder {
@@ -150,6 +150,7 @@
         }
       }
     }
+
     .no-option-wrapper {
       .title {
         color: $color_white;
@@ -184,14 +185,16 @@
           &[type="checkbox"] {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
           }
+
           &[type="radio"] {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23000'/%3e%3c/svg%3e");
           }
+
           background-color: $color_theme;
           border-color: $color_theme;
         }
 
-        & + .form-check-label {
+        &+.form-check-label {
           vertical-align: middle;
           padding-top: 3px;
           padding-left: 10px;
@@ -203,6 +206,11 @@
       background-color: $color_grey1_bg;
       border-color: $color_grey2_bg;
       color: $color_grey2_logo;
+
+      &.rdt {
+        padding: 0;
+        border: none;
+      }
 
       &.is-invalid {
         border-color: $color_red;
@@ -235,6 +243,7 @@
     }
 
     input {
+
       &[type="text" i],
       &[type="email" i],
       &[type="password" i] {
@@ -242,6 +251,7 @@
         border-radius: 10px;
         box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.3);
       }
+
       &[type="date" i] {
         color: $color_white;
         padding-right: 12px;
@@ -251,6 +261,7 @@
           z-index: 6;
         }
       }
+
       &:focus {
         box-shadow: none;
         outline: 1px solid $color_grey2_logo;
@@ -461,6 +472,7 @@
 
         &.logout {
           color: $color_red;
+
           span {
             color: inherit;
           }
@@ -474,6 +486,7 @@
       thead {
         color: $color_white;
       }
+
       tbody {
         color: $color_grey3_font;
 
@@ -486,6 +499,7 @@
             }
 
             .avatar-wrapper {
+
               img.profile-image,
               .no-profile,
               .additional-profiles {

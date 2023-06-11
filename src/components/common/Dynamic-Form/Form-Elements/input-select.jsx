@@ -12,6 +12,7 @@ function InputSelect(props) {
     selectedValue,
     errorMessage,
     fieldData,
+    isRequired,
     ...otherProps
   } = props;
   return (
@@ -19,7 +20,7 @@ function InputSelect(props) {
       <div className="form-block-wrapper">
         <div className="custom-form-block flex-grow-1">
           <label htmlFor={id} className="form-label">
-            {label}
+            {label} {isRequired && <sup>*</sup>}
           </label>
           <div className="input-group has-validation">
             <Field

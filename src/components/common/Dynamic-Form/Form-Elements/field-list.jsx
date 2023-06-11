@@ -16,7 +16,7 @@ function FieldList(props) {
     ...otherProps
   } = props;
   // Grab values and submitForm from context
-  const { values, submitForm } = useFormikContext();
+  const { values, errors, submitForm } = useFormikContext();
   return (
     <FieldArray
       id={id}
@@ -35,7 +35,8 @@ function FieldList(props) {
                         <div className={`col-${field.width}`}>
                           {GetFormElements(
                             field,
-                            `${name}[${value_index}].${field.name}`
+                            `${name}[${value_index}].${field.name}`,
+                            errors
                           )}
                         </div>
                       ) : (

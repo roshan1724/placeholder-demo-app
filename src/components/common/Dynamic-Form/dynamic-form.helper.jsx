@@ -1,3 +1,4 @@
+import * as Yup from "yup";
 import {
   InputDate,
   InputEmail,
@@ -6,7 +7,11 @@ import {
   InputText,
   InputTime,
 } from "./Form-Elements";
-import { FIELD_GROUP_TYPES, FIELD_TYPES } from "./dynamic-form.constants";
+import {
+  FIELD_GROUP_TYPES,
+  FIELD_TYPES,
+  VALIDATION_TYPES,
+} from "./dynamic-form.constants";
 
 const hasMultipleOptions = (fieldType) => {
   return [
@@ -16,47 +21,135 @@ const hasMultipleOptions = (fieldType) => {
 };
 
 export const GetInitialFormValue = (formData) => {
-  console.log(`form Data received as ==> `, formData);
-  let initialValues = {};
+  // console.log(`form Data received as ==> `, formData);
+  let _initialValues = {};
   if (formData && Array.isArray(formData)) {
     formData.forEach((group) => {
       const fields = group.fields;
       if (fields && Array.isArray(fields)) {
-        const isFieldList = group.type === FIELD_GROUP_TYPES.LIST;
-        const fieldListNodeName = isFieldList ? group.name : "";
-        const fieldNodes = {};
+        const _fieldNodes = {};
         fields.forEach((field) => {
-          if (isFieldList) {
-            fieldNodes[group.name] =
+          if (group.type === FIELD_GROUP_TYPES.LIST) {
+            _fieldNodes[group.name] =
               group.value && Array.isArray(group.value) ? group.value : {};
           } else {
-            if (isFieldList) {
-              fieldNodes[fieldListNodeName][field.name] = hasMultipleOptions(
+            if (group.type === FIELD_GROUP_TYPES.LIST) {
+              _fieldNodes[group.name][field.name] = hasMultipleOptions(
                 field.type
               )
                 ? [...field.value]
                 : field.value;
             } else {
-              fieldNodes[field.name] = hasMultipleOptions(field.field_type)
+              _fieldNodes[field.name] = hasMultipleOptions(field.field_type)
                 ? [...field.value]
                 : field.value;
             }
           }
         });
-        initialValues = Object.assign({}, initialValues, fieldNodes);
+        _initialValues = Object.assign({}, _initialValues, _fieldNodes);
       }
     });
-    console.log(`InitialValues Created ==> `, initialValues);
+    // console.log(`InitialValues Created ==> `, _initialValues);
   }
-  return initialValues;
+  return _initialValues;
 };
 
-export const SetFormValidations = (values) => {
-  const errors = {};
-  console.log("Form Values ==> ", values);
+const getYupValidator = (formField, _schema) => {
+  formField.validations.forEach((validation) => {
+    if (validation.type === VALIDATION_TYPES.REQUIRED) {
+      _schema = _schema.required(validation.error_message);
+    }
+    if (validation.type === VALIDATION_TYPES.EMAIL) {
+      _schema = _schema.email(validation.error_message);
+    }
+  });
+  return _schema;
 };
 
-export const GetFormElements = (fieldData, fieldName, timeZones = null) => {
+const getFieldsSchema = (fields, _fieldSchema, timeZones = null) => {
+  if (fields && Array.isArray(fields) && fields.length) {
+    fields.forEach((field) => {
+      switch (field.type) {
+        case FIELD_TYPES.DROPDOWN:
+        case FIELD_TYPES.OPTIONS: {
+          _fieldSchema[field.name] = Yup.string();
+          const fieldOptions =
+            field.name === "time_zone" && timeZones ? timeZones : field.options;
+          _fieldSchema[field.name].oneOf(
+            [...fieldOptions.map((option) => option.value)],
+            "No CHOICE AS SUCH"
+          );
+          break;
+        }
+        case FIELD_TYPES.ACTION_BTN:
+          break;
+        default:
+          _fieldSchema[field.name] = Yup.string();
+          break;
+      }
+
+      if (
+        field.validations &&
+        Array.isArray(field.validations) &&
+        field.validations.length
+      ) {
+        _fieldSchema[field.name] = getYupValidator(
+          field,
+          _fieldSchema[field.name]
+        );
+      } else if (field.type !== FIELD_TYPES.ACTION_BTN) {
+        _fieldSchema[field.name] = _fieldSchema[field.name].optional();
+      }
+    });
+    return _fieldSchema;
+  }
+};
+
+export const getValidationSchema = (formData, timeZones = null) => {
+  let _schemaData = {};
+  if (formData && Array.isArray(formData)) {
+    formData.forEach((group) => {
+      // Fields List
+      if (group.type === FIELD_GROUP_TYPES.FIELDS) {
+        const fieldSchema = getFieldsSchema(
+          group.fields,
+          _schemaData,
+          timeZones
+        );
+        _schemaData = { ...fieldSchema };
+      } else if (group.type === FIELD_GROUP_TYPES.LIST) {
+        const _subSchema = getFieldsSchema(group.fields, {});
+        _schemaData[group.name] = Yup.array().of(
+          Yup.object().shape(_subSchema)
+        );
+      }
+    });
+  }
+  return Yup.object().shape(_schemaData);
+};
+
+// export const SetFormValidations = (values) => {
+//   const errors = {};
+//   console.log("Form Values ==> ", values);
+// };
+
+const isFieldRequired = (fieldData) => {
+  return (
+    fieldData &&
+    fieldData.validations &&
+    Array.isArray(fieldData.validations) &&
+    fieldData.validations.find(
+      (validation) => validation.type === VALIDATION_TYPES.REQUIRED
+    )
+  );
+};
+
+export const GetFormElements = (
+  fieldData,
+  fieldName,
+  errors,
+  timeZones = null
+) => {
   switch (fieldData.type) {
     case FIELD_TYPES.DATE:
       return (
@@ -66,7 +159,8 @@ export const GetFormElements = (fieldData, fieldName, timeZones = null) => {
           name={fieldName}
           placeholder={fieldData.placeholder}
           value={fieldData.value}
-          errorMessage="Invalid Date"
+          isRequired={isFieldRequired(fieldData)}
+          errorMessage={errors[fieldName]}
           fieldData={fieldData}
         ></InputDate>
       );
@@ -78,7 +172,8 @@ export const GetFormElements = (fieldData, fieldName, timeZones = null) => {
           name={fieldName}
           placeholder={fieldData.placeholder}
           value={fieldData.value}
-          errorMessage="Invalid Time"
+          isRequired={isFieldRequired(fieldData)}
+          errorMessage={errors[fieldName]}
           fieldData={fieldData}
         ></InputTime>
       );
@@ -93,7 +188,8 @@ export const GetFormElements = (fieldData, fieldName, timeZones = null) => {
             name={fieldName}
             optionData={optionData}
             selectedValue={fieldData.value}
-            errorMessage="Invalid Select Data"
+            isRequired={isFieldRequired(fieldData)}
+            errorMessage={errors[fieldName]}
             fieldData={fieldData}
           ></InputSelect>
         )
@@ -107,7 +203,8 @@ export const GetFormElements = (fieldData, fieldName, timeZones = null) => {
           name={fieldName}
           value={fieldData.value}
           placeholder={fieldData.placeholder}
-          errorMessage="Error"
+          isRequired={isFieldRequired(fieldData)}
+          errorMessage={errors[fieldName]}
           fieldData={fieldData}
         ></InputText>
       );
@@ -119,7 +216,8 @@ export const GetFormElements = (fieldData, fieldName, timeZones = null) => {
           name={fieldName}
           value={fieldData.value}
           placeholder={fieldData.placeholder}
-          errorMessage="Error"
+          isRequired={isFieldRequired(fieldData)}
+          errorMessage={errors[fieldName]}
           fieldData={fieldData}
         ></InputEmail>
       );
@@ -131,7 +229,8 @@ export const GetFormElements = (fieldData, fieldName, timeZones = null) => {
           label={fieldData.label}
           name={fieldName}
           optionData={fieldData.options}
-          errorMessage="Invalid"
+          isRequired={isFieldRequired(fieldData)}
+          errorMessage={errors[fieldName]}
           fieldData={fieldData}
         ></InputRadio>
       );

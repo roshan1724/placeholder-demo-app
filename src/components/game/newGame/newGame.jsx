@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 import GameScenario from "./Step/Scenario/scenario";
 import GameDetails from "./Step/Details/details";
 import GameEmailSetup from "./Step/EmailSetup/email-setup";
-import NewGameDetails from "./Step/Details/game-details";
+// import NewGameDetails from "./Step/Details/game-details";
 import { useDispatch } from "react-redux";
 import { UiActions } from "../../../store/ui-slice";
 import { API_PATHS } from "../../../utilities/constants";
+import NewGameFormDetails from "./Step/Details/new-game-form-details";
 
 const stepperData = [
   {
@@ -20,13 +21,13 @@ const stepperData = [
   {
     stepperCounter: "2",
     stepperLabel: "Game Details",
-    stepperContent: <GameDetails />,
+    stepperContent: <NewGameFormDetails />,
   },
-  {
-    stepperCounter: "3",
-    stepperLabel: "New Game Details",
-    stepperContent: <NewGameDetails />,
-  },
+  // {
+  //   stepperCounter: "3",
+  //   stepperLabel: "New Game Details",
+  //   stepperContent: <NewGameFormDetails />,
+  // },
   {
     stepperCounter: "3",
     stepperLabel: "Introduction Email",
@@ -35,7 +36,7 @@ const stepperData = [
 ];
 
 function AddNewGame() {
-  const [activeStepIndex, setActiveStepIndex] = useState(2);
+  const [activeStepIndex, setActiveStepIndex] = useState(0);
   const [formData, setFormData] = useState(null);
 
   const dispatch = useDispatch();
@@ -46,7 +47,8 @@ function AddNewGame() {
         (firstElement, secondElement) =>
           firstElement["view_order"] - secondElement["view_order"]
       );
-      return formData.splice(0, 1);
+      // return formData.splice(0, 2);
+      return formData;
     }
     return null;
   };

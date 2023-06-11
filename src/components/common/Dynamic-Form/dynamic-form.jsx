@@ -8,56 +8,55 @@ import {
   GetFormElements,
   GetInitialFormValue,
   SetFormValidations,
+  getValidationSchema,
 } from "./dynamic-form.helper";
 import { useSelector } from "react-redux";
 
 const DynamicForm = (props) => {
-  const [formData, setFormData] = useState(null);
+  const {
+    formData,
+    timeZones,
+    currentTimeZone,
+    isValidatingForm,
+    submitCallback,
+  } = props;
   const [formInitialValue, setFormInitialValue] = useState(null);
   const [formValidations, setFormValidations] = useState(null);
 
-  const timeZones = useSelector((state) => state.ui.timeZones.zoneList);
-  const curentTimeZone = useSelector((state) => state.ui.timeZones.currentZone);
-
-  const sortByViewOrder = (formData) => {
-    if (formData && Array.isArray(formData)) {
-      formData.sort(
-        (firstElement, secondElement) =>
-          firstElement["view_order"] - secondElement["view_order"]
-      );
-      // return formData.splice(0, 1);
-      return formData;
-    }
-    return null;
-  };
-
-  useEffect(() => {
-    fetch("/data/game-scenario-detail-form.json")
-      .then((response) => response.json())
-      .then((response) => {
-        const formData = response["data"];
-        setFormData(sortByViewOrder(formData));
-      });
-  }, []);
-
   useEffect(() => {
     setFormInitialValue(GetInitialFormValue(formData));
+    const _validations = getValidationSchema(formData);
+    console.log("Validations ==> ", _validations);
+    setFormValidations(_validations);
   }, [formData]);
 
+  const handleErrors = (errors) => {
+    // console.log("ERROR => ", errors);
+    if (Object.keys(errors).length) {
+      isValidatingForm(false);
+    } else {
+      isValidatingForm(true);
+    }
+  };
+
   return (
-    formInitialValue && (
+    formInitialValue &&
+    formValidations && (
       <div className="form-wrapper">
-        {/* <Formik { ...props} > */}
         <Formik
           enableReinitialize={true}
           initialValues={formInitialValue}
-          validate={(values) => {
-            console.info("Updated Dynamic Form ==> ", values);
-            // SetFormValidations(values);
+          validationSchema={formValidations}
+          // validate={(values) => {
+          //   console.info("Updated Dynamic Form ==> ", values);
+          //   SetFormValidations(values);
+          // }}
+          onSubmit={(values, { setSubmitting }) => {
+            console.log(`Submitting Vlaues ==> `, values);
+            submitCallback(true);
           }}
-          onSubmit={(values, { setSubmitting }) => {}}
         >
-          {({ values }) => (
+          {({ values, touched, errors, isSubmitting }) => (
             <Form className="game-detail-form">
               <div className="row">
                 {formData &&
@@ -80,9 +79,14 @@ const DynamicForm = (props) => {
                               ? GetFormElements(
                                   formField,
                                   formField.name,
+                                  errors,
                                   timeZones
                                 )
-                              : GetFormElements(formField, formField.name)}
+                              : GetFormElements(
+                                  formField,
+                                  formField.name,
+                                  errors
+                                )}
                           </div>
                         ))
                       ) : formGroup.type === FIELD_GROUP_TYPES.LIST ? (
@@ -101,7 +105,24 @@ const DynamicForm = (props) => {
                       )}
                     </Fragment>
                   ))}
-                <pre>{JSON.stringify(values, null, 2)}</pre>
+                <hr />
+                {handleErrors(errors)}
+                <hr />
+                {/* VALUES:
+                <pre>{JSON.stringify(values, null, 2)}</pre> */}
+                {/* TOUCHED:
+                <pre>{JSON.stringify(touched, null, 2)}</pre> */}
+                {/* ERRORS
+                <pre>{JSON.stringify(errors, null, 2)}</pre> */}
+                <button
+                  type="submit"
+                  id="game-detail-form-submit"
+                  className="no-print"
+                  disabled={isSubmitting}
+                  style={{ display: "none" }}
+                >
+                  Submit
+                </button>
               </div>
             </Form>
           )}

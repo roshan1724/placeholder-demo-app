@@ -13,9 +13,10 @@ function InputCheckbox(props) {
     optionData,
     errorMessage,
     fieldData,
+    isRequired,
     ...otherProps
   } = props;
-  const { values } = useFormikContext();
+  const { values, touched, errors } = useFormikContext();
   const [optionList, setOptionList] = useState([]);
 
   const hasOtherOption = () => {
@@ -52,9 +53,9 @@ function InputCheckbox(props) {
       return (
         <InputText
           id={`other-${id}`}
-          label="Show Input"
+          label="Other"
           name={otherOptionTextName}
-          placeholder="Checkbox"
+          placeholder="Enter a value"
           errorMessage="Error"
         ></InputText>
       );
@@ -87,7 +88,7 @@ function InputCheckbox(props) {
                   htmlFor={`option-${id}-${option_index}`}
                   className="form-check-label"
                 >
-                  {option.display}
+                  {option.display} {isRequired && <sup>*</sup>}
                 </label>
               </div>
             ))}

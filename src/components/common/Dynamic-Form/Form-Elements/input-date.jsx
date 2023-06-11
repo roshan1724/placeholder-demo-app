@@ -19,9 +19,10 @@ function InputDate(props) {
     placeholder,
     errorMessage,
     fieldData,
+    isRequired,
     ...otherProps
   } = props;
-  const { values, setFieldValue } = useFormikContext();
+  const { values, touched, errors, setFieldValue } = useFormikContext();
 
   // Disabling weekends from Calender
   const validDays = (current) => {
@@ -33,7 +34,7 @@ function InputDate(props) {
       <div className="form-block-wrapper">
         <div className="custom-form-block flex-grow-1">
           <label htmlFor={id} className="form-label">
-            {label}
+            {label} {isRequired && <sup>*</sup>}
           </label>
           <div className="input-group custom-field has-validation">
             <DateTime
@@ -41,7 +42,9 @@ function InputDate(props) {
                 name,
                 id,
                 placeholder,
-                className: `form-control`,
+                className: `form-control ${
+                  touched[name] && errors[name] ? "is-invalid" : ""
+                }`,
               }}
               closeOnSelect={true}
               closeOnClickOutside={true}
@@ -49,6 +52,7 @@ function InputDate(props) {
               timeFormat={false}
               isValidDate={validDays}
               value={values[name]}
+              onOpen={() => (touched[name] = true)}
               onChange={(dateValue) => {
                 setFieldValue(name, moment(dateValue).format("DD-MM-YYYY"));
               }}
@@ -57,7 +61,9 @@ function InputDate(props) {
               <i className="fa-solid fa-calendar-days"></i>
             </span>
           </div>
-          <div className="invalid-feedback">{errorMessage}</div>
+          <div className={`invalid-feedback`}>
+            {touched[name] && errors[name] && errorMessage}
+          </div>
         </div>
       </div>
     </Fragment>

@@ -13,6 +13,7 @@ function InputRadio(props) {
     optionData,
     errorMessage,
     fieldData,
+    isRequired,
     ...otherProps
   } = props;
   const { values } = useFormikContext();
@@ -85,7 +86,7 @@ function InputRadio(props) {
                   htmlFor={`option-${id}-${option_index}`}
                   className="form-check-label"
                 >
-                  {option.display}
+                  {option.display} {isRequired && <sup>*</sup>}
                 </label>
               </div>
             ))}

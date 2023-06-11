@@ -19,16 +19,17 @@ function InputTime(props) {
     placeholder,
     errorMessage,
     fieldData,
+    isRequired,
     ...otherProps
   } = props;
-  const { values, setFieldValue } = useFormikContext();
+  const { values, touched, errors, setFieldValue } = useFormikContext();
 
   return (
     <Fragment>
       <div className="form-block-wrapper">
         <div className="custom-form-block flex-grow-1">
           <label htmlFor={id} className="form-label">
-            {label}
+            {label} {isRequired && <sup>*</sup>}
           </label>
           <div className="input-group custom-field has-validation">
             <DateTime
@@ -36,13 +37,16 @@ function InputTime(props) {
                 name,
                 id,
                 placeholder,
-                className: `form-control`,
+                className: `form-control ${
+                  touched[name] && errors[name] ? "is-invalid" : ""
+                }`,
               }}
               closeOnSelect={true}
               closeOnClickOutside={true}
               dateFormat={false}
               timeFormat={`h:mm a`}
               value={values[name]}
+              onOpen={() => (touched[name] = true)}
               onChange={(timeValue) => {
                 setFieldValue(name, moment(timeValue).format("h:mm a"));
               }}
@@ -51,7 +55,9 @@ function InputTime(props) {
               <i className="fa-solid fa-clock"></i>
             </span>
           </div>
-          <div className="invalid-feedback">{errorMessage}</div>
+          <div className="invalid-feedback">
+            {touched[name] && errors[name] && errorMessage}
+          </div>
         </div>
       </div>
     </Fragment>

@@ -386,8 +386,11 @@ function GameDetails() {
                         value={gameDetailForm.values.time_zone}
                       >
                         {formOptionsData.time_zome.map((zone, zoneIndex) => (
-                          <option value={zone} key={`time_zone-${zoneIndex}`}>
-                            {zone}
+                          <option
+                            value={zone.value}
+                            key={`time_zone-${zoneIndex}`}
+                          >
+                            {zone.display}
                           </option>
                         ))}
                       </select>

@@ -85,9 +85,14 @@ const UiSlice = createSlice({
 
     // TimeZone Actions
     populateTimeZones: (state) => {
-      const _timeZoneData = [
-        ...new Set(TIMEZONE_LIST.map((data) => data.abbr)),
-      ].sort();
+      const _timeZoneData = [...new Set(TIMEZONE_LIST.map((data) => data.abbr))]
+        .sort()
+        .map((zone) => {
+          return {
+            display: zone,
+            value: zone,
+          };
+        });
       const _currentZoneData = TIMEZONE_LIST.find((ele) => {
         const zone = Intl?.DateTimeFormat()?.resolvedOptions()?.timeZone;
         return ele.utc.includes(zone);

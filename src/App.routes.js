@@ -14,6 +14,7 @@ import AdminHome from "./components/User/Admin/admin";
 import AdminGameList from "./components/User/Admin/Game/game-list";
 import AdminConfigGame from "./components/User/Admin/Game/game-config";
 import { ROUTE_PATHS } from "./utilities/constants";
+import DynamicForm from "./components/common/Dynamic-Form/dynamic-form";
 
 const AppRoutes = () => {
   const routes = createBrowserRouter([
@@ -77,6 +78,10 @@ const AppRoutes = () => {
     {
       path: ROUTE_PATHS.PRINT_PAGE,
       element: <PrintPDF />,
+    },
+    {
+      path: "/dynamic-form",
+      element: <DynamicForm />,
     },
   ]);
 

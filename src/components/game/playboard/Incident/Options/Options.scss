@@ -14,11 +14,13 @@
     .user-action-wrapper {
       padding-top: 10px;
       display: flex;
+      flex-wrap: wrap;
+      justify-content: end;
       gap: 10px;
     }
 
     .search-wrapper {
-      flex-grow: 1;
+      flex: 1 0 280px;
 
       input[type="search"] {
         flex-grow: 1;
@@ -33,6 +35,10 @@
         top: 50%;
         transform: translate3d(0, -10px, 0);
       }
+    }
+
+    .action-btn {
+      flex: 0 1 100px;
     }
   }
 
@@ -58,7 +64,7 @@
           display: none;
 
           &:checked {
-            & + label.option-text {
+            &+label.option-text {
               .checkmark-holder {
                 .checked {
                   opacity: 1;
@@ -144,9 +150,11 @@
     .icon-wrapper {
       font-size: 5rem;
     }
+
     .title {
       font-size: 20px;
     }
+
     .action-wrappers {
       display: flex;
       gap: 10px;

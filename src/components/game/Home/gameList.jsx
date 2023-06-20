@@ -279,8 +279,8 @@ function GameList({ gameListData }) {
   };
 
   return (
-    <section className="section-gamelist px-3">
-      <div className="page-header-wrapper pb-3">
+    <section className="section-gamelist px-3 h-100">
+      <div className="page-header-wrapper pb-3" id="p_header">
         <h1 className="title c-font-20">Your Games</h1>
         <div className="action-wrapper m-0">
           <button
@@ -295,8 +295,8 @@ function GameList({ gameListData }) {
         </div>
       </div>
 
-      <div className="page-content-wrapper">
-        <div className="table-header-actions">
+      <div className="page-content-wrapper h-100">
+        <div className="table-header-actions" id="t_action">
           <div className="search-box-wrapper">
             <div className="search-wrapper">
               <input
@@ -320,8 +320,16 @@ function GameList({ gameListData }) {
           </div>
         </div>
 
-        <div className="table-content-wrapper">
-          <div className="table-responsive">
+        <div className="table-content-wrapper h-100">
+          <div
+            className="table-responsive"
+            style={{
+              height: `calc(100% - ${
+                document.getElementById("t_action")?.clientHeight +
+                document.getElementById("p_header")?.clientHeight
+              }px)`,
+            }}
+          >
             <table className="table game-list-table">
               <thead>
                 <tr>

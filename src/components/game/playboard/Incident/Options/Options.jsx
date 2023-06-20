@@ -291,7 +291,7 @@ function Options(props) {
               gameMode === GAME_MODES.VIEW_ONLY ? "d-none" : ""
             }`}
           >
-            <div className="search-wrapper custom-form-block">
+            <div className="search-wrapper custom-form-block action-search">
               <div className="input-group">
                 <input
                   type="search"
@@ -308,20 +308,20 @@ function Options(props) {
                 >
                   <i className="fa-solid fa-xmark"></i>
                 </span>
-                <span className="input-group-text last-child">
+                <span className="input-group-text last-child clickable">
                   <i className="fa-solid fa-search"></i>
                 </span>
               </div>
             </div>
             <button
-              className="btn btn-primary"
+              className="btn btn-primary action-btn"
               disabled={gameMode === GAME_MODES.VIEW_ONLY}
               onClick={handleGameHelpInfo}
             >
               Get a Hint
             </button>
             <button
-              className={`btn btn-primary ${
+              className={`btn btn-primary action-btn ${
                 gameMode === GAME_MODES.VIEW_ONLY ? "d-none" : ""
               }`}
               onClick={handleGameEndWarning}

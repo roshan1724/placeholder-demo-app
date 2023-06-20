@@ -3,7 +3,7 @@
 
 .game-home {
   height: calc(100vh - $height_header);
-  overflow: auto;
+  overflow-y: hidden;
   font-size: 14px;
   color: $color_grey3_font;
 
@@ -77,21 +77,28 @@
       }
 
       .table-content-wrapper {
-        // .table-responsive {
-        //   height: $height_table;
-        // }
         .game-list-table {
-          &.table > :not(caption) > * > * {
+          position: relative;
+
+          &.table> :not(caption)>*>* {
             border-bottom-width: 0;
+            color: inherit;
+            background-color: $color_black;
           }
 
-          thead > tr > th:first-child,
-          tbody > tr > td:first-child {
+          thead>tr>th:first-child,
+          tbody>tr>td:first-child {
             padding-left: 15px;
           }
 
           thead {
             font-size: 16px;
+
+            th {
+              position: sticky;
+              top: 0;
+              z-index: 20;
+            }
           }
 
           tbody {
@@ -112,6 +119,7 @@
                   border-top-left-radius: 15px;
                   border-bottom-left-radius: 15px;
                 }
+
                 &:last-child {
                   border-top-right-radius: 15px;
                   border-bottom-right-radius: 15px;
@@ -135,6 +143,7 @@
               position: relative;
               right: 0;
             }
+
             @include profile_avatar_image();
 
             .tooltip-content {
@@ -144,24 +153,25 @@
           }
 
           .game-status-wrapper {
-            &[data-game-status*="ongoing"i] {
+            &[data-game-status*="ongoing" i] {
               color: inherit;
             }
 
-            &[data-game-status*="scheduled"i] {
+            &[data-game-status*="scheduled" i] {
               color: inherit;
             }
 
-            &[data-game-status*="finished"i] {
+            &[data-game-status*="finished" i] {
               color: $color_green;
             }
           }
 
           .game-schedule-action,
           .game-user-action {
-            &[data-game-status*="ongoing"i],
-            &[data-game-status*="scheduled"i],
-            &[data-game-status*="finished"i] {
+
+            &[data-game-status*="ongoing" i],
+            &[data-game-status*="scheduled" i],
+            &[data-game-status*="finished" i] {
               color: $color_theme;
             }
           }
@@ -173,6 +183,7 @@
 
             &[data-sort_mode="asc"] {
               color: $color_grey2_logo;
+
               i.fa-arrow-up {
                 color: $color_theme;
               }
@@ -180,6 +191,7 @@
 
             &[data-sort_mode="desc"] {
               color: $color_grey2_logo;
+
               i.fa-arrow-down {
                 color: $color_theme;
               }

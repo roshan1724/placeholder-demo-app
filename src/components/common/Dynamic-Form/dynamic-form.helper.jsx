@@ -108,7 +108,7 @@ const getFieldsSchema = (fields, _fieldSchema, timeZones = null) => {
         }
         case FIELD_TYPES.MULTI_OPTIONS:
         case FIELD_TYPES.MULTI_OPTIONS_WITH_STRING_OTHER: {
-          _fieldSchema[field.name] = Yup.array();
+          _fieldSchema[field.name] = Yup.array().of(Yup.string());
           break;
         }
         case FIELD_TYPES.ACTION_BTN:

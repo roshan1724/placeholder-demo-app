@@ -1,0 +1,271 @@
+{
+  "data": {
+    "layout": "2-COLUMN",
+    "layout_data": [
+      {
+        "id": "layout-1",
+        "layout_order": 10,
+        "layout_width": 6,
+        "groups": [
+          {
+            "view_order": 10,
+            "id": "company_details",
+            "type": "FIELDS",
+            "label": "",
+            "fields": [
+              {
+                "id": "company-details-1",
+                "width": 12,
+                "type": "STRING",
+                "label": "Company Name",
+                "name": "company_name",
+                "placeholder": "Enter Company Name",
+                "value": "",
+                "icon": null,
+                "options": [],
+                "validations": [
+                  {
+                    "type": "REQUIRED",
+                    "error_message": "This field is required."
+                  }
+                ],
+                "comments": ""
+              }
+            ]
+          },
+          {
+            "view_order": 20,
+            "id": "administrator_details",
+            "type": "FIELDS",
+            "label": "",
+            "fields": [
+              {
+                "id": "company-details-2",
+                "width": 12,
+                "type": "STRING",
+                "label": "Administrator Name",
+                "name": "admin_name",
+                "placeholder": "Administrator Name",
+                "value": "",
+                "icon": null,
+                "options": [],
+                "validations": [
+                  {
+                    "type": "REQUIRED",
+                    "error_message": "This field is required."
+                  }
+                ],
+                "comments": ""
+              },
+              {
+                "id": "company-details-3",
+                "width": 12,
+                "type": "STRING",
+                "label": "Administrator Email",
+                "name": "admin_email",
+                "placeholder": "Administrator Email",
+                "value": "",
+                "icon": null,
+                "options": [],
+                "validations": [
+                  {
+                    "type": "REQUIRED",
+                    "error_message": "This field is required."
+                  },
+                  {
+                    "type": "EMAIL",
+                    "error_message": "Emai is not valid."
+                  }
+                ],
+                "comments": ""
+              }
+            ]
+          },
+          {
+            "view_order": 30,
+            "id": "b_o_d_detail",
+            "type": "FIELDS",
+            "label": "Does your company have a Board of Directors?",
+            "fields": [
+              {
+                "id": "company-details-4",
+                "width": 12,
+                "type": "OPTIONS",
+                "label": "",
+                "name": "isBoD",
+                "placeholder": "",
+                "value": "",
+                "icon": null,
+                "options": [
+                  {
+                    "value": "Yes",
+                    "display": "Yes"
+                  },
+                  {
+                    "value": "No",
+                    "display": "No"
+                  }
+                ],
+                "validations": [
+                  {
+                    "type": "REQUIRED",
+                    "error_message": "This field is required."
+                  }
+                ],
+                "comments": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "layout-2",
+        "layout_order": 20,
+        "layout_width": 6,
+        "groups": [
+          {
+            "view_order": 40,
+            "id": "im_detail",
+            "type": "FIELDS",
+            "label": "What do you use for instant messaging?",
+            "fields": [
+              {
+                "id": "company-details-5",
+                "width": 12,
+                "type": "OPTIONS_WITH_STRING_OTHER",
+                "label": "",
+                "name": "im_name",
+                "placeholder": "",
+                "value": "",
+                "icon": null,
+                "options": [
+                  {
+                    "value": "Slack",
+                    "display": "Slack"
+                  },
+                  {
+                    "value": "MS Teams",
+                    "display": "MS Teams"
+                  },
+                  {
+                    "value": "Google Chat",
+                    "display": "Google Chat"
+                  },
+                  {
+                    "value": "Other",
+                    "display": "Other"
+                  }
+                ],
+                "validations": [
+                  {
+                    "type": "REQUIRED",
+                    "error_message": "This field is required."
+                  }
+                ],
+                "comments": ""
+              }
+            ]
+          },
+          {
+            "view_order": 50,
+            "id": "senior_committee_detail",
+            "type": "FIELDS",
+            "label": "What is the name of the senior-most committee that runs your business?",
+            "fields": [
+              {
+                "id": "company-details-6",
+                "width": 12,
+                "type": "OPTIONS_WITH_STRING_OTHER",
+                "label": "",
+                "name": "sm_name",
+                "placeholder": "",
+                "value": "",
+                "icon": null,
+                "options": [
+                  {
+                    "value": "Executive Committee",
+                    "display": "Executive Committee"
+                  },
+                  {
+                    "value": "Executives",
+                    "display": "Executives"
+                  },
+                  {
+                    "value": "Leadership",
+                    "display": "Leadership"
+                  },
+                  {
+                    "value": "Partners",
+                    "display": "Partners"
+                  },
+                  {
+                    "value": "Other",
+                    "display": "Other"
+                  }
+                ],
+                "validations": [
+                  {
+                    "type": "REQUIRED",
+                    "error_message": "This field is required."
+                  }
+                ],
+                "comments": ""
+              }
+            ]
+          },
+          {
+            "view_order": 60,
+            "id": "sensitive_info_detail",
+            "type": "FIELDS",
+            "label": "What kind of sensitive information does your company store?",
+            "fields": [
+              {
+                "id": "company-details-7",
+                "width": 12,
+                "type": "MULTI_OPTIONS_WITH_STRING_OTHER",
+                "label": "",
+                "name": "info_types",
+                "placeholder": "",
+                "value": "",
+                "icon": null,
+                "options": [
+                  {
+                    "value": "Credit card numbers",
+                    "display": "Credit card numbers"
+                  },
+                  {
+                    "value": "Social security numbers",
+                    "display": "Social security numbers"
+                  },
+                  {
+                    "value": "Driver's license number",
+                    "display": "Driver's license number"
+                  },
+                  {
+                    "value": "Healthcare information",
+                    "display": "Healthcare information"
+                  },
+                  {
+                    "value": "Bank account numbers",
+                    "display": "Bank account numbers"
+                  },
+                  {
+                    "value": "Other",
+                    "display": "Other"
+                  }
+                ],
+                "validations": [
+                  {
+                    "type": "REQUIRED",
+                    "error_message": "This field is required."
+                  }
+                ],
+                "comments": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

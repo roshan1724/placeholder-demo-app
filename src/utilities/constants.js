@@ -33,6 +33,7 @@ export const ROUTE_PATHS = {
 };
 
 export const API_PATHS = {
+  COMPANY_DETAIL_FORM: "/data/company-detail-form.json",
   DASHBOARD_DATA: "/data/dashboard-summary-data.json",
   GAME_SCENARIO_LIST: "/data/game-scenario-list.json",
   GAME_SCENARIO_FORM: "/data/game-scenario-detail-form.json",

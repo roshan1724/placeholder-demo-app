@@ -5,7 +5,7 @@ import Playboard from "./components/game/playboard/playboard";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Report from "./components/Report/Report";
 import CompanyHome from "./components/company/Home/Home";
-import CompanyDetails from "./components/company/Details/Details";
+// import CompanyDetails from "./components/company/Details/Details";
 import CompanyEmailSetup from "./components/company/EmailSetup/emailSetup";
 import GameHome from "./components/game/Home/Home";
 import AddNewGame from "./components/game/newGame/newGame";
@@ -15,6 +15,7 @@ import AdminGameList from "./components/User/Admin/Game/game-list";
 import AdminConfigGame from "./components/User/Admin/Game/game-config";
 import { ROUTE_PATHS } from "./utilities/constants";
 import DynamicForm from "./components/common/Dynamic-Form/dynamic-form";
+import CompanyDetailForm from "./components/company/Details/new-company-form";
 
 const AppRoutes = () => {
   const routes = createBrowserRouter([
@@ -49,7 +50,7 @@ const AppRoutes = () => {
     },
     {
       path: ROUTE_PATHS.COMPANY_DETAILS,
-      element: <CompanyDetails />,
+      element: <CompanyDetailForm />,
     },
     {
       path: ROUTE_PATHS.COMPANY_EMAIL_SETUP,

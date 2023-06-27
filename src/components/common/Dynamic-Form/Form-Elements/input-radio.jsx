@@ -16,7 +16,7 @@ function InputRadio(props) {
     isRequired,
     ...otherProps
   } = props;
-  const { values } = useFormikContext();
+  const { values, touched, errors } = useFormikContext();
 
   const [optionList, setOptionList] = useState([]);
 
@@ -30,8 +30,8 @@ function InputRadio(props) {
       !optionData.find((option) => option.display?.toLowerCase() === "other")
     ) {
       tempOptionList.push({ display: "Other", value: "Other" });
-      setOptionList(tempOptionList);
     }
+    setOptionList(tempOptionList);
   }, [optionData, fieldData]);
 
   const hasOtherOption = () => {
@@ -72,7 +72,6 @@ function InputRadio(props) {
                 className="form-check form-check-inline"
                 key={`${id}-option-${option_index}`}
               >
-                <pre>{JSON.stringify()}</pre>
                 <Field
                   type="radio"
                   name={name}
@@ -86,11 +85,13 @@ function InputRadio(props) {
                   htmlFor={`option-${id}-${option_index}`}
                   className="form-check-label"
                 >
-                  {option.display} {isRequired && <sup>*</sup>}
+                  {option.display}
                 </label>
               </div>
             ))}
-          <div className="invalid-feedback">{errorMessage}</div>
+        </div>
+        <div className="invalid-feedback">
+          {touched[name] && errors[name] && errorMessage}
         </div>
       </div>
 

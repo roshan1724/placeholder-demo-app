@@ -1,16 +1,14 @@
+import "./dynamic-form.scss";
 import React, { Fragment, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import { Form, Formik } from "formik";
-import { FieldList } from "./Form-Elements";
-import { FIELD_GROUP_TYPES } from "./dynamic-form.constants";
 import {
-  GetFormElements,
   GetInitialFormValue,
+  RenderFormGroups,
   SetFormValidations,
   getValidationSchema,
 } from "./dynamic-form.helper";
-import { useSelector } from "react-redux";
 
 const DynamicForm = (props) => {
   const {
@@ -18,6 +16,7 @@ const DynamicForm = (props) => {
     timeZones,
     currentTimeZone,
     isValidatingForm,
+    submitButtonId,
     submitCallback,
   } = props;
   const [formInitialValue, setFormInitialValue] = useState(null);
@@ -58,65 +57,45 @@ const DynamicForm = (props) => {
         >
           {({ values, touched, errors, isSubmitting }) => (
             <Form className="game-detail-form">
-              <div className="row">
+              <div
+                className={`layout`}
+                data-layout={`${formData && formData.layout}`}
+              >
                 {formData &&
-                  Array.isArray(formData) &&
-                  formData.map((formGroup, group_index) => (
-                    <Fragment key={`${group_index}-${formGroup.id}`}>
-                      <div key={formGroup.id} className="col-12">
-                        <p className="field-label">{formGroup.label}</p>
-                      </div>
-                      {formGroup.type &&
-                      formGroup.type === FIELD_GROUP_TYPES.FIELDS ? (
-                        formGroup.fields &&
-                        Array.isArray(formGroup.fields) &&
-                        formGroup.fields.map((formField) => (
+                  formData.layout_data &&
+                  Array.isArray(formData.layout_data) && (
+                    <div className="row">
+                      {formData.layout_data.map((layoutData, dataIndex) => (
+                        <Fragment key={`key-${dataIndex}-${layoutData.id}`}>
                           <div
-                            key={`${formGroup.id}-${formField.id}`}
-                            className={`col-${formField.width}`}
+                            className={`col-${
+                              layoutData.layout_width || 12
+                            } layout-${dataIndex}`}
                           >
-                            {formField.name === "time_zone"
-                              ? GetFormElements(
-                                  formField,
-                                  formField.name,
-                                  errors,
-                                  timeZones
-                                )
-                              : GetFormElements(
-                                  formField,
-                                  formField.name,
-                                  errors
-                                )}
+                            {RenderFormGroups(
+                              layoutData.groups,
+                              values,
+                              touched,
+                              errors,
+                              timeZones
+                            )}
                           </div>
-                        ))
-                      ) : formGroup.type === FIELD_GROUP_TYPES.LIST ? (
-                        <>
-                          <FieldList
-                            id={formGroup.id}
-                            name={formGroup.name}
-                            field_list={values[formGroup.name]}
-                            field_list_schema={{ name: "", email: "" }} // TODO: get schema form a function
-                            errorMessage={"Empty List"}
-                            fieldData={formGroup.fields}
-                          ></FieldList>
-                        </>
-                      ) : (
-                        <>NO MATCHING GROUP TYPE</>
-                      )}
-                    </Fragment>
-                  ))}
-                <hr />
+                        </Fragment>
+                      ))}
+                    </div>
+                  )}
+                {/* <hr /> */}
                 {handleErrors(errors)}
-                <hr />
-                {/* VALUES:
-                <pre>{JSON.stringify(values, null, 2)}</pre> */}
-                {/* TOUCHED:
-                <pre>{JSON.stringify(touched, null, 2)}</pre> */}
-                {/* ERRORS
+                {/* <hr />
+                VALUES:
+                <pre>{JSON.stringify(values, null, 2)}</pre>
+                TOUCHED:
+                <pre>{JSON.stringify(touched, null, 2)}</pre>
+                ERRORS
                 <pre>{JSON.stringify(errors, null, 2)}</pre> */}
                 <button
                   type="submit"
-                  id="game-detail-form-submit"
+                  id={`${submitButtonId}`}
                   className="no-print"
                   disabled={isSubmitting}
                   style={{ display: "none" }}

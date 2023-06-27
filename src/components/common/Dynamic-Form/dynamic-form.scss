@@ -1,0 +1,28 @@
+@import "./../../../styles/variables.scss";
+
+.form-wrapper {
+  color: $color_white;
+}
+
+.layout {
+  &[data-layout*="2-column" i] {
+
+    .layout-0 {
+      padding-right: 20px;
+    }
+
+    .layout-1 {
+      padding-left: 20px;
+      border-left: 1px solid $color_line;
+
+      .custom-form-block {
+
+        .c-radio-groups,
+        .c-checkbox-groups {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    }
+  }
+}

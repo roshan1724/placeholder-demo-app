@@ -35,8 +35,8 @@ function InputCheckbox(props) {
       !optionData.find((option) => option.display?.toLowerCase() === "other")
     ) {
       tempOptionList.push({ display: "Other", value: "Other" });
-      setOptionList(tempOptionList);
     }
+    setOptionList(tempOptionList);
   }, [optionData, fieldData]);
 
   const getOtherOptionView = (propName) => {
@@ -47,9 +47,9 @@ function InputCheckbox(props) {
       values[name].find((value) => value.toLowerCase() === "other")
     ) {
       // Unselecting Other Selected Options and retaining only "Other" as selected
-      values[name] = [
-        values[name].find((value) => value.toLowerCase() === "other"),
-      ];
+      // values[name] = [
+      //   values[name].find((value) => value.toLowerCase() === "other"),
+      // ];
       return (
         <InputText
           id={`other-${id}`}
@@ -80,7 +80,11 @@ function InputCheckbox(props) {
                   name={name}
                   id={`option-${id}-${option_index}`}
                   className={`form-check-input`}
-                  checked={values[name].includes(option.value) ? true : false}
+                  checked={
+                    values[name] && values[name].includes(option.value)
+                      ? true
+                      : false
+                  }
                   value={option.value}
                   {...otherProps}
                 ></Field>
@@ -88,15 +92,21 @@ function InputCheckbox(props) {
                   htmlFor={`option-${id}-${option_index}`}
                   className="form-check-label"
                 >
-                  {option.display} {isRequired && <sup>*</sup>}
+                  {option.display}
                 </label>
               </div>
             ))}
-          <div className="invalid-feedback">{errorMessage}</div>
+        </div>
+        <div className="invalid-feedback">
+          {touched[name] && errors[name] && errorMessage}
         </div>
       </div>
 
-      {hasOtherOption() && getOtherOptionView(name)}
+      {hasOtherOption() && (
+        <div className="col-4" style={{ paddingRight: "12px" }}>
+          {getOtherOptionView(name)}
+        </div>
+      )}
     </Fragment>
   );
 }

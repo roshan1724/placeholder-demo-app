@@ -1,17 +1,9 @@
 import "./details.scss";
 
-import React, {
-  Fragment,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { Fragment, useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NewGameContext from "../../../../../context/game/new-game-context";
 import { GameFormActions } from "../../../../../store/form-game-slice";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import * as Yup from "yup";
 import DynamicForm from "../../../../common/Dynamic-Form/dynamic-form";
 
 function NewGameFormDetails() {
@@ -25,6 +17,7 @@ function NewGameFormDetails() {
   );
 
   const [formValid, setFormValid] = useState(false);
+  const submitButtonId = "game-detail-form-submit";
 
   const handleBackClick = () => {
     dispatch(
@@ -42,7 +35,7 @@ function NewGameFormDetails() {
   };
 
   const handleNextClick = async () => {
-    const formSubmitBtn = document.getElementById("game-detail-form-submit");
+    const formSubmitBtn = document.getElementById(submitButtonId);
     formSubmitBtn.click();
   };
 
@@ -59,7 +52,7 @@ function NewGameFormDetails() {
 
   return (
     <section className="section-game-scenario">
-      {formData && Array.isArray(formData) && (
+      {formData && (
         <Fragment>
           <div
             className="detail-form-wrapper"
@@ -70,6 +63,7 @@ function NewGameFormDetails() {
               timeZones={timeZones}
               currentTimeZone={currentTimeZone}
               isValidatingForm={setFormValid}
+              submitButtonId={submitButtonId}
               submitCallback={submitCallback}
             ></DynamicForm>
           </div>

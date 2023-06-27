@@ -4,13 +4,14 @@ import NewGameContext from "../../../context/game/new-game-context";
 import Stepper from "../../common/Stepper/Stepper";
 import { useEffect, useState } from "react";
 import GameScenario from "./Step/Scenario/scenario";
-import GameDetails from "./Step/Details/details";
+// import GameDetails from "./Step/Details/details";
 import GameEmailSetup from "./Step/EmailSetup/email-setup";
 // import NewGameDetails from "./Step/Details/game-details";
 import { useDispatch } from "react-redux";
 import { UiActions } from "../../../store/ui-slice";
 import { API_PATHS } from "../../../utilities/constants";
 import NewGameFormDetails from "./Step/Details/new-game-form-details";
+import { GetSortedFormData } from "../../common/Dynamic-Form/dynamic-form.helper";
 
 const stepperData = [
   {
@@ -41,18 +42,6 @@ function AddNewGame() {
 
   const dispatch = useDispatch();
 
-  const sortByViewOrder = (formData) => {
-    if (formData && Array.isArray(formData)) {
-      formData.sort(
-        (firstElement, secondElement) =>
-          firstElement["view_order"] - secondElement["view_order"]
-      );
-      // return formData.splice(0, 2);
-      return formData;
-    }
-    return null;
-  };
-
   useEffect(() => {
     dispatch(UiActions.setShowLoader(true));
     fetch(API_PATHS.GAME_SCENARIO_FORM)
@@ -60,7 +49,7 @@ function AddNewGame() {
       .then((response) => {
         dispatch(UiActions.setShowLoader(false));
         const formData = response["data"];
-        setFormData(sortByViewOrder(formData));
+        setFormData(GetSortedFormData(formData));
       })
       .catch((error) => {
         dispatch(UiActions.setShowLoader(false));

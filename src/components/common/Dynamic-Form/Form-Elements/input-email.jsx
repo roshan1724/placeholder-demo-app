@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
-import { Field, useFormikContext } from "formik";
+import { Field, getIn, useFormikContext } from "formik";
 
 function InputEmail(props) {
   const {
@@ -28,7 +28,7 @@ function InputEmail(props) {
               type="email"
               id={id}
               className={`form-control ${
-                touched[name] && errors[name] && "is-invalid"
+                getIn(touched, name) && getIn(errors, name) && "is-invalid"
               }`}
               name={name}
               // value={value}
@@ -37,7 +37,7 @@ function InputEmail(props) {
             ></Field>
           </div>
           <div className="invalid-feedback">
-            {touched[name] && errors[name] && errorMessage}
+            {getIn(touched, name) && getIn(errors, name) && errorMessage}
           </div>
         </div>
       </div>

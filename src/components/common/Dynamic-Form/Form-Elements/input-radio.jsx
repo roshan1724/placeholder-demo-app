@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import { Field, useFormikContext } from "formik";
+import { Field, getIn, useFormikContext } from "formik";
 import InputText from "./input-text";
 import { FIELD_TYPES } from "../dynamic-form.constants";
 
@@ -42,10 +42,11 @@ function InputRadio(props) {
 
   const getOtherOptionView = (propName) => {
     const otherOptionTextName = `other_${propName}`;
+    const fieldValues = getIn(values, name);
     if (
-      values[name] &&
-      typeof values[name] === "string" &&
-      values[name].toLowerCase() === "other"
+      fieldValues &&
+      typeof fieldValues === "string" &&
+      fieldValues.toLowerCase() === "other"
     ) {
       return (
         <InputText
@@ -77,7 +78,7 @@ function InputRadio(props) {
                   name={name}
                   id={`option-${id}-${option_index}`}
                   className={`form-check-input`}
-                  checked={values[name] === option.value ? true : false}
+                  checked={getIn(values, name) === option.value ? true : false}
                   value={option.value}
                   {...otherProps}
                 ></Field>
@@ -91,7 +92,7 @@ function InputRadio(props) {
             ))}
         </div>
         <div className="invalid-feedback">
-          {touched[name] && errors[name] && errorMessage}
+          {getIn(touched, name) && getIn(errors, name) ? errorMessage : ""}
         </div>
       </div>
 

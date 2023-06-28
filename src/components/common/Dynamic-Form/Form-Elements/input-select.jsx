@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
-import { Field } from "formik";
+import { Field, getIn, useFormikContext } from "formik";
 
 function InputSelect(props) {
   const {
@@ -15,6 +15,7 @@ function InputSelect(props) {
     isRequired,
     ...otherProps
   } = props;
+  const { errors, touched } = useFormikContext();
   return (
     <Fragment>
       <div className="form-block-wrapper">
@@ -43,7 +44,9 @@ function InputSelect(props) {
                 ))}
             </Field>
           </div>
-          <div className="invalid-feedback">{errorMessage}</div>
+          <div className="invalid-feedback">
+            {getIn(touched, name) && getIn(errors, name) ? errorMessage : ""}
+          </div>
         </div>
       </div>
     </Fragment>

@@ -6,7 +6,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
-import { useFormikContext } from "formik";
+import { getIn, useFormikContext } from "formik";
 import DateTime from "react-datetime";
 import moment from "moment";
 import "react-datetime/css/react-datetime.css";
@@ -38,14 +38,16 @@ function InputTime(props) {
                 id,
                 placeholder,
                 className: `form-control ${
-                  touched[name] && errors[name] ? "is-invalid" : ""
+                  getIn(touched, name) && getIn(errors, name)
+                    ? "is-invalid"
+                    : ""
                 }`,
               }}
               closeOnSelect={true}
               closeOnClickOutside={true}
               dateFormat={false}
               timeFormat={`h:mm a`}
-              value={values[name]}
+              value={getIn(values, name)}
               onOpen={() => (touched[name] = true)}
               onChange={(timeValue) => {
                 setFieldValue(name, moment(timeValue).format("h:mm a"));
@@ -56,7 +58,7 @@ function InputTime(props) {
             </span>
           </div>
           <div className="invalid-feedback">
-            {touched[name] && errors[name] && errorMessage}
+            {getIn(touched, name) && getIn(errors, name) ? errorMessage : ""}
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import * as Yup from "yup";
+import { getIn } from "formik";
 import {
   InputDate,
   InputEmail,
@@ -198,7 +199,7 @@ export const GetFormElements = (
           placeholder={fieldData.placeholder}
           value={fieldData.value}
           isRequired={isFieldRequired(fieldData)}
-          errorMessage={errors[fieldName]}
+          errorMessage={getIn(errors, fieldName)}
           fieldData={fieldData}
         ></InputDate>
       );
@@ -211,7 +212,7 @@ export const GetFormElements = (
           placeholder={fieldData.placeholder}
           value={fieldData.value}
           isRequired={isFieldRequired(fieldData)}
-          errorMessage={errors[fieldName]}
+          errorMessage={getIn(errors, fieldName)}
           fieldData={fieldData}
         ></InputTime>
       );
@@ -227,7 +228,7 @@ export const GetFormElements = (
             optionData={optionData}
             selectedValue={fieldData.value}
             isRequired={isFieldRequired(fieldData)}
-            errorMessage={errors[fieldName]}
+            errorMessage={getIn(errors, fieldName)}
             fieldData={fieldData}
           ></InputSelect>
         )
@@ -242,7 +243,7 @@ export const GetFormElements = (
           value={fieldData.value}
           placeholder={fieldData.placeholder}
           isRequired={isFieldRequired(fieldData)}
-          errorMessage={errors[fieldName]}
+          errorMessage={getIn(errors, fieldName)}
           fieldData={fieldData}
         ></InputText>
       );
@@ -255,7 +256,7 @@ export const GetFormElements = (
           value={fieldData.value}
           placeholder={fieldData.placeholder}
           isRequired={isFieldRequired(fieldData)}
-          errorMessage={errors[fieldName]}
+          errorMessage={getIn(errors, fieldName)}
           fieldData={fieldData}
         ></InputEmail>
       );
@@ -268,7 +269,7 @@ export const GetFormElements = (
           name={fieldName}
           optionData={fieldData.options}
           isRequired={isFieldRequired(fieldData)}
-          errorMessage={errors[fieldName]}
+          errorMessage={getIn(errors, fieldName)}
           fieldData={fieldData}
         ></InputRadio>
       );
@@ -281,7 +282,7 @@ export const GetFormElements = (
           name={fieldName}
           optionData={fieldData.options}
           isRequired={isFieldRequired(fieldData)}
-          errorMessage={errors[fieldName]}
+          errorMessage={getIn(errors, fieldName)}
           fieldData={fieldData}
         ></InputCheckbox>
       );

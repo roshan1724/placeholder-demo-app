@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import { Field, useFormikContext } from "formik";
+import { Field, getIn, useFormikContext } from "formik";
 import InputText from "./input-text";
 import { FIELD_TYPES } from "../dynamic-form.constants";
 
@@ -41,15 +41,12 @@ function InputCheckbox(props) {
 
   const getOtherOptionView = (propName) => {
     const otherOptionTextName = `other_${propName}`;
+    const fieldValues = getIn(values, name);
     if (
-      values[name] &&
-      Array.isArray(values[name]) &&
-      values[name].find((value) => value.toLowerCase() === "other")
+      fieldValues &&
+      Array.isArray(fieldValues) &&
+      fieldValues.find((value) => value.toLowerCase() === "other")
     ) {
-      // Unselecting Other Selected Options and retaining only "Other" as selected
-      // values[name] = [
-      //   values[name].find((value) => value.toLowerCase() === "other"),
-      // ];
       return (
         <InputText
           id={`other-${id}`}
@@ -81,7 +78,8 @@ function InputCheckbox(props) {
                   id={`option-${id}-${option_index}`}
                   className={`form-check-input`}
                   checked={
-                    values[name] && values[name].includes(option.value)
+                    getIn(values, name) &&
+                    getIn(values, name).includes(option.value)
                       ? true
                       : false
                   }
@@ -98,7 +96,7 @@ function InputCheckbox(props) {
             ))}
         </div>
         <div className="invalid-feedback">
-          {touched[name] && errors[name] && errorMessage}
+          {getIn(touched, name) && getIn(errors, name) ? errorMessage : ""}
         </div>
       </div>
 

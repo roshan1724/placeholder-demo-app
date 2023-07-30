@@ -430,6 +430,23 @@
     }
   }
 
+  .btn-copy-feedback {
+    color: $color_green;
+    background-color: $color_grey1_bg;
+    border-color: $color_green;
+
+    .icon-wrapper {
+      color: inherit;
+    }
+
+    &:hover {
+      color: $color_white;
+      background-color: $color_green;
+      border-color: $color_green;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
   .button-filter {
     border-color: $color_grey1_bg;
     background-color: $color_grey1_bg;

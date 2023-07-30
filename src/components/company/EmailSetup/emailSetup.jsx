@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router";
 import { ROUTE_PATHS } from "../../../utilities/constants";
 import "./emailSetup.scss";
+import FeedbackButton from "../../common/Buttons/FeedbackButton";
+import { useRef, useState } from "react";
 
 function CompanyEmailSetup() {
   const navigate = useNavigate();
+  const [copyButtonText, setCopyButtonText] = useState("Copy");
+  const [enableFeedback, setEnableFeedback] = useState(false);
 
   const handleSetupDoneClick = () => {
     navigate(ROUTE_PATHS.GAME_ROOT);
@@ -19,6 +23,16 @@ function CompanyEmailSetup() {
     document.addEventListener("copy", listener);
     document.execCommand("copy");
     document.removeEventListener("copy", listener);
+
+    // Update Button text
+    setCopyButtonText("Copied");
+    setEnableFeedback(true);
+
+    // Reset button text after 2s
+    setTimeout(() => {
+      setCopyButtonText("Copy");
+      setEnableFeedback(false);
+    }, 2000);
   };
 
   return (
@@ -106,12 +120,41 @@ function CompanyEmailSetup() {
             </div>
             <div className="col-12 col-sm-2">
               <div className="action-wrapper">
-                <button className="btn btn-primary" onClick={handleCopyClick}>
+                {/* <button className="btn btn-primary" onClick={handleCopyClick}>
                   <span className="icon-wrapper me-2">
                     <i className="fa-regular fa-clone"></i>
                   </span>
                   Copy
-                </button>
+                </button> */}
+                <span className="d-inline-block">
+                  <FeedbackButton
+                    className={
+                      enableFeedback
+                        ? ["btn", "btn-primary", "btn-copy-feedback"]
+                        : ["btn", "btn-primary"]
+                    }
+                    tooltipText={
+                      enableFeedback
+                        ? "Email Content Copied"
+                        : "Copy Email Content"
+                    }
+                    feedbackTooltipClass={`copy-email-tooltip${
+                      enableFeedback ? "__feedback" : ""
+                    }`}
+                    clickHandler={handleCopyClick}
+                  >
+                    <span className="icon-wrapper me-2">
+                      <i
+                        className={`${
+                          enableFeedback
+                            ? "fa-solid fa-check"
+                            : "fa-regular fa-clone"
+                        }`}
+                      ></i>
+                    </span>
+                    {copyButtonText}
+                  </FeedbackButton>
+                </span>
               </div>
             </div>
           </div>

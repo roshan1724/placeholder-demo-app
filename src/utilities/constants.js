@@ -43,6 +43,10 @@ export const API_PATHS = {
   USER_LIST_DATA: "/data/user-data.json",
 };
 
+export const HEADER_NAV_ICONS = {
+  GAME_VIEW: "GAME_VIEW",
+};
+
 export const PRINT_PREVIEW_CONTAINER = "app-print-preview";
 
 export const PRINT_PAGE_NAMES = {

@@ -16,9 +16,9 @@ const AuthSlice = createSlice({
     setUserRole: (state, action) => {
       const newRole = action.payload;
       if (typeof newRole === "string") {
-        state.userRoles = [...state.userRoles, newRole];
+        state.userRoles = [...new Set([...state.userRoles, newRole])];
       } else if (Array.isArray(newRole)) {
-        state.userRoles = [...state.userRoles, ...newRole];
+        state.userRoles = [...new Set([...state.userRoles, ...newRole])];
       } else {
         state.userRoles = [];
       }

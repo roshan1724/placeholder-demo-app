@@ -1,38 +1,72 @@
-/**
- * Component Name: Header
- * Created Date: 6th January 2023
- * Owner: Roshan Kumar [roshankumar1724@gmail.com]
- * Description: Contains the design layout of the Header across the page
- */
-
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthActions } from "../../store/auth-slice";
-import { USER_ROLES } from "../../utilities/constants";
+import { UiActions } from "../../store/ui-slice";
+import { HEADER_NAV_ICONS, USER_ROLES } from "../../utilities/constants";
 import "./Header.scss";
+// import { Link } from "react-router-dom";
 
 function Header({ currentLocation }) {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const userRole = useSelector((state) => state.auth.userRoles);
+  const showGameViewNavIcon = useSelector(
+    (state) => state.ui.header.gameView.showGameView
+  );
+  const isGameViewNavIconActive = useSelector(
+    (state) => state.ui.header.gameView.isActive
+  );
+
+  const updateNavIconViewStates = useCallback(
+    (iconName) => {
+      dispatch(
+        UiActions.setShowGameView(
+          iconName === HEADER_NAV_ICONS.GAME_VIEW &&
+            userRole.includes(USER_ROLES.ADMIN)
+        )
+      );
+    },
+    [dispatch, userRole]
+  );
+
+  const updateNavIconActiveStates = useCallback(
+    (currentLocation, iconName) => {
+      dispatch(
+        UiActions.setGameViewActive(
+          iconName === HEADER_NAV_ICONS.GAME_VIEW &&
+            currentLocation.includes("/games")
+        )
+      );
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     console.log(currentLocation);
     if (!["/"].includes(currentLocation)) {
       // TODO: Get User state from localstorage
       dispatch(AuthActions.login());
-      dispatch(AuthActions.setUserRole(USER_ROLES.PLAYER));
+      dispatch(AuthActions.setUserRole([USER_ROLES.ADMIN, USER_ROLES.PLAYER]));
     } else {
       dispatch(AuthActions.logout());
       dispatch(AuthActions.setUserRole(null));
     }
   }, [currentLocation, dispatch]);
 
+  useEffect(() => {
+    // Navigation Icons
+    for (const icon in HEADER_NAV_ICONS) {
+      updateNavIconViewStates(icon);
+      updateNavIconActiveStates(currentLocation, icon);
+    }
+  }, [currentLocation, updateNavIconActiveStates, updateNavIconViewStates]);
+
   return (
     isLoggedIn && (
       <header className="p-3 mb-3">
         <div className="d-flex flex-wrap align-items-center justify-content-between header-wrapper">
           <a
-            href="/"
+            href="/games"
             className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
           >
             <img
@@ -43,6 +77,15 @@ function Header({ currentLocation }) {
           </a>
 
           <div className="page-header-right d-flex align-items-center">
+            <span
+              className={`nav-icon-wrapper game-view-nav-icon ${
+                !showGameViewNavIcon ? "d-none" : ""
+              } ${isGameViewNavIconActive ? "active" : ""}`}
+            >
+              {/* <Link to={`/games`}> */}
+              <i className="fa-solid fa-chess-rook"></i>
+              {/* </Link> */}
+            </span>
             <span className="notification-wrapper position-relative me-3 no-print">
               <img
                 src="/images/notification_bell.png"

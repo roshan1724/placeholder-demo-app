@@ -1,59 +1,37 @@
-import { Fragment, useState } from "react";
+import "./Home.scss";
+import { Fragment, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  TABLE_GAME_SCHEDULE_ACTION,
-  TABLE_GAME_STATUS,
   ROUTE_PATHS,
+  TABLE_GAME_SCHEDULE_ACTION,
+  TABLE_GAME_STATUS_FILTER,
   TABLE_GAME_USER_ACTION,
   TABLE_USER_PROFILE_LIMIT,
+  TABLE_SORT_ORDER,
 } from "../../../utilities/constants";
-import "./Home.scss";
 
 import CustomFilter from "../../common/custom-filter/custom-filter";
+import { useDebounce } from "../../../hooks/useDebounce";
+import { useDispatch } from "react-redux";
+import { GamelistActions } from "../../../store/gamelist-slice";
 
-function GameList({ gameListData }) {
+function GameList({ gameListData, filters }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   // Sort Mode can be one of 'none' | 'asc' | 'desc'
   const [sortMode, setSortMode] = useState({
-    game_schedule: "none",
+    game_schedule: TABLE_SORT_ORDER.NONE,
   });
 
-  const availableFilters = [
-    {
-      filterKey: "GAMES",
-      filterLabel: "Show",
-      filterValue: "all",
-      filterOptions: [
-        { optionValue: "all", displayText: "All Games" },
-        { optionValue: "ongoing", displayText: "Ongoing Games" },
-        { optionValue: "finished", displayText: "Finished Games" },
-        { optionValue: "paused", displayText: "Paused Games" },
-        { optionValue: "scheduled", displayText: "Scheduled Games" },
-      ],
-    },
-    {
-      filterKey: "TIME",
-      filterLabel: "Range",
-      filterValue: "all",
-      filterOptions: [
-        { optionValue: "all", displayText: "All Time" },
-        { optionValue: "week", displayText: "Last Week" },
-        { optionValue: "month", displayText: "Last Month" },
-        { optionValue: "year", displayText: "Last Year" },
-        { optionValue: "ytd", displayText: "Year to Date" },
-      ],
-    },
-    {
-      filterKey: "GROUP_BY",
-      filterLabel: "Group by",
-      filterValue: "",
-      filterOptions: [
-        { optionValue: "", displayText: "Default" },
-        { optionValue: "scenario", displayText: "Game Scenario" },
-        { optionValue: "status", displayText: "Game Status" },
-      ],
-    },
-  ];
+  const [searchText, setSearchText] = useState("");
+  const searchQueryText = useDebounce(searchText, 2000);
+
+  useEffect(() => {
+    if (searchQueryText || searchText.length < 0) {
+      dispatch(GamelistActions.setSearchText(searchQueryText));
+    }
+  }, [dispatch, searchQueryText, searchText.length]);
+
   const tableColumnHeaders = [
     { headerKey: "game_scenario", headerLabel: "Game" },
     { headerKey: "game_schedule", headerLabel: "Start Date & Time" },
@@ -69,24 +47,26 @@ function GameList({ gameListData }) {
   const handleKeyEventsOnSearch = (event) => {
     if (event.key === "Enter" || event.keyCode === 13) {
       console.log("To be searched value is : ", event.target.value);
-      event.target.value = "";
+      setSearchText(event.target.value);
     }
   };
 
   const handleSelectionChange = (filterKey, selectedOption) => {
-    if (filterKey === "GAMES") {
-      console.log(selectedOption);
-    }
+    const filterData = {
+      filterParam: filterKey,
+      filterValue: selectedOption.optionValue,
+    };
+    dispatch(GamelistActions.setGamelistFilters(filterData));
   };
 
   const handleTableSortClick = (tableKey) => {
     const updatedSortMode = { ...sortMode };
     updatedSortMode[tableKey] =
-      updatedSortMode[tableKey] === "none"
-        ? "asc"
-        : updatedSortMode[tableKey] === "asc"
-        ? "desc"
-        : "none";
+      updatedSortMode[tableKey] === TABLE_SORT_ORDER.NONE
+        ? TABLE_SORT_ORDER.ASC
+        : updatedSortMode[tableKey] === TABLE_SORT_ORDER.ASC
+        ? TABLE_SORT_ORDER.DESC
+        : TABLE_SORT_ORDER.NONE;
     // TODO: Trigger API Update / Refresh here
 
     setSortMode(updatedSortMode);
@@ -187,15 +167,15 @@ function GameList({ gameListData }) {
 
   const getGameStatus = (gameStatus) => {
     const uiDataObj = { iconName: "", actionText: "", navigationLink: "" };
-    if (gameStatus === TABLE_GAME_STATUS.ONGING) {
+    if (gameStatus === TABLE_GAME_STATUS_FILTER.ONGING) {
       uiDataObj.iconName = "repeat";
-      uiDataObj.actionText = TABLE_GAME_STATUS.ONGING;
-    } else if (gameStatus === TABLE_GAME_STATUS.SCHEDULED) {
+      uiDataObj.actionText = TABLE_GAME_STATUS_FILTER.ONGING;
+    } else if (gameStatus === TABLE_GAME_STATUS_FILTER.SCHEDULED) {
       uiDataObj.iconName = "clock";
-      uiDataObj.actionText = TABLE_GAME_STATUS.SCHEDULED;
-    } else if (gameStatus === TABLE_GAME_STATUS.FINISHED) {
+      uiDataObj.actionText = TABLE_GAME_STATUS_FILTER.SCHEDULED;
+    } else if (gameStatus === TABLE_GAME_STATUS_FILTER.FINISHED) {
       uiDataObj.iconName = "circle-check";
-      uiDataObj.actionText = TABLE_GAME_STATUS.FINISHED;
+      uiDataObj.actionText = TABLE_GAME_STATUS_FILTER.FINISHED;
     }
     return (
       <div className="game-status-wrapper" data-game-status={`${gameStatus}`}>
@@ -209,13 +189,13 @@ function GameList({ gameListData }) {
 
   const getScheduleAction = (gameStatus) => {
     const uiDataObj = { iconName: "", actionText: "", navigationLink: "" };
-    if (gameStatus === TABLE_GAME_STATUS.ONGING) {
+    if (gameStatus === TABLE_GAME_STATUS_FILTER.ONGING) {
       uiDataObj.iconName = "rotate-right";
       uiDataObj.actionText = TABLE_GAME_SCHEDULE_ACTION.RESTART;
-    } else if (gameStatus === TABLE_GAME_STATUS.SCHEDULED) {
+    } else if (gameStatus === TABLE_GAME_STATUS_FILTER.SCHEDULED) {
       uiDataObj.iconName = "pen-to-square";
       uiDataObj.actionText = TABLE_GAME_SCHEDULE_ACTION.EDIT;
-    } else if (gameStatus === TABLE_GAME_STATUS.FINISHED) {
+    } else if (gameStatus === TABLE_GAME_STATUS_FILTER.FINISHED) {
       uiDataObj.iconName = "copy";
       uiDataObj.actionText = TABLE_GAME_SCHEDULE_ACTION.DUPLICATE;
     }
@@ -234,14 +214,14 @@ function GameList({ gameListData }) {
 
   const getUserAction = (gameStatus) => {
     const uiDataObj = { iconName: "", actionText: "", navigationLink: "" };
-    if (gameStatus === TABLE_GAME_STATUS.ONGING) {
+    if (gameStatus === TABLE_GAME_STATUS_FILTER.ONGING) {
       uiDataObj.iconName = "chess-rook";
       uiDataObj.actionText = TABLE_GAME_USER_ACTION.VIEW_GAME;
       uiDataObj.navigationLink = ROUTE_PATHS.GAME_PLAYBOARD_VIEW_ONLY;
-    } else if (gameStatus === TABLE_GAME_STATUS.SCHEDULED) {
+    } else if (gameStatus === TABLE_GAME_STATUS_FILTER.SCHEDULED) {
       uiDataObj.iconName = "";
       uiDataObj.actionText = "";
-    } else if (gameStatus === TABLE_GAME_STATUS.FINISHED) {
+    } else if (gameStatus === TABLE_GAME_STATUS_FILTER.FINISHED) {
       uiDataObj.iconName = "chart-area";
       uiDataObj.actionText = TABLE_GAME_USER_ACTION.VIEW_DASHBOARD;
       uiDataObj.navigationLink = ROUTE_PATHS.DASHBOARD;
@@ -304,13 +284,15 @@ function GameList({ gameListData }) {
                 name="user-commands"
                 id="user-commands"
                 onKeyUp={handleKeyEventsOnSearch}
+                onChange={(event) => setSearchText(event.target.value)}
+                value={searchText}
                 placeholder="Search Options"
               />
               <img src="/images/search_grey_icon.png" alt="Search Icon" />
             </div>
           </div>
           <div className="filter-box-wrapper">
-            {availableFilters.map((filterData, filterIndex) => (
+            {filters.map((filterData, filterIndex) => (
               <CustomFilter
                 filterData={filterData}
                 selectionChange={handleSelectionChange}

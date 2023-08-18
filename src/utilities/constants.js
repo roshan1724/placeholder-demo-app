@@ -72,10 +72,38 @@ export const USER_ROLES = {
   SPECTATOR: "spectator",
 };
 
-export const TABLE_GAME_STATUS = {
+export const TABLE_SORT_ORDER = {
+  NONE: "none",
+  ASC: "asc",
+  DESC: "desc",
+};
+
+export const TABLE_GAME_FILTERS = {
+  GAMES_STATUS: "GAMES_STATUS",
+  TIME: "TIME",
+  GROUP_BY: "GROUP_BY",
+};
+
+export const TABLE_GAME_STATUS_FILTER = {
+  ALL: "All",
   ONGING: "Ongoing",
   FINISHED: "Finished",
+  PAUSED: "Paused",
   SCHEDULED: "Scheduled",
+};
+
+export const TABLE_GAME_TIME_FILTER = {
+  ALL: "All",
+  WEEK: "WEEK",
+  MONTH: "MONTH",
+  YEAR: "YEAR",
+  YEAR_TO_DATE: "YEAR_TO_DATE",
+};
+
+export const TABLE_GAME_GROUP_BY_FILTER = {
+  NONE: "",
+  GAME_SCENARIO: "GAME_SCENARIO",
+  GAME_STATUS: "GAME_STATUS",
 };
 
 export const TABLE_GAME_SCHEDULE_ACTION = {

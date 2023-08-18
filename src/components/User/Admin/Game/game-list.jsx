@@ -5,7 +5,11 @@ import { UiActions } from "../../../../store/ui-slice";
 import {
   API_PATHS,
   ROUTE_PATHS,
-  TABLE_GAME_STATUS,
+  TABLE_GAME_FILTERS,
+  TABLE_GAME_GROUP_BY_FILTER,
+  TABLE_GAME_STATUS_FILTER,
+  TABLE_GAME_TIME_FILTER,
+  TABLE_SORT_ORDER,
   TABLE_USER_PROFILE_LIMIT,
 } from "../../../../utilities/constants";
 import CustomFilter from "../../../common/custom-filter/custom-filter";
@@ -23,38 +27,76 @@ function AdminGameList() {
 
   const availableFilters = [
     {
-      filterKey: "GAMES",
+      filterKey: TABLE_GAME_FILTERS.GAMES_STATUS,
       filterLabel: "Show",
-      filterValue: "all",
+      filterValue: TABLE_GAME_STATUS_FILTER.ALL,
       filterOptions: [
-        { optionValue: "all", displayText: "All Games" },
-        { optionValue: "ongoing", displayText: "Ongoing Games" },
-        { optionValue: "finished", displayText: "Finished Games" },
-        { optionValue: "paused", displayText: "Paused Games" },
-        { optionValue: "scheduled", displayText: "Scheduled Games" },
+        {
+          optionValue: TABLE_GAME_STATUS_FILTER.ALL,
+          displayText: "All Games",
+        },
+        {
+          optionValue: TABLE_GAME_STATUS_FILTER.ONGING,
+          displayText: "Ongoing Games",
+        },
+        {
+          optionValue: TABLE_GAME_STATUS_FILTER.FINISHED,
+          displayText: "Finished Games",
+        },
+        {
+          optionValue: TABLE_GAME_STATUS_FILTER.PAUSED,
+          displayText: "Paused Games",
+        },
+        {
+          optionValue: TABLE_GAME_STATUS_FILTER.SCHEDULED,
+          displayText: "Scheduled Games",
+        },
       ],
     },
     {
-      filterKey: "TIME",
+      filterKey: TABLE_GAME_FILTERS.TIME,
       filterLabel: "Range",
-      filterValue: "all",
+      filterValue: TABLE_GAME_TIME_FILTER.ALL,
       filterOptions: [
-        { optionValue: "all", displayText: "All Time" },
-        { optionValue: "week", displayText: "Last Week" },
-        { optionValue: "month", displayText: "Last Month" },
-        { optionValue: "year", displayText: "Last Year" },
-        { optionValue: "ytd", displayText: "Year to Date" },
+        {
+          optionValue: TABLE_GAME_TIME_FILTER.ALL,
+          displayText: "All Time",
+        },
+        {
+          optionValue: TABLE_GAME_TIME_FILTER.WEEK,
+          displayText: "Last Week",
+        },
+        {
+          optionValue: TABLE_GAME_TIME_FILTER.MONTH,
+          displayText: "Last Month",
+        },
+        {
+          optionValue: TABLE_GAME_TIME_FILTER.YEAR,
+          displayText: "Last Year",
+        },
+        {
+          optionValue: TABLE_GAME_TIME_FILTER.YEAR_TO_DATE,
+          displayText: "Year to Date",
+        },
       ],
     },
     {
-      filterKey: "GROUP_BY",
+      filterKey: TABLE_GAME_FILTERS.GROUP_BY,
       filterLabel: "Group by",
-      filterValue: "",
+      filterValue: TABLE_GAME_GROUP_BY_FILTER.NONE,
       filterOptions: [
-        { optionValue: "", displayText: "Default" },
-        { optionValue: "org", displayText: "Organization" },
-        { optionValue: "scenario", displayText: "Game Scenario" },
-        { optionValue: "status", displayText: "Game Status" },
+        {
+          optionValue: TABLE_GAME_GROUP_BY_FILTER.NONE,
+          displayText: "Default",
+        },
+        {
+          optionValue: TABLE_GAME_GROUP_BY_FILTER.GAME_SCENARIO,
+          displayText: "Game Scenario",
+        },
+        {
+          optionValue: TABLE_GAME_GROUP_BY_FILTER.GAME_STATUS,
+          displayText: "Game Status",
+        },
       ],
     },
   ];
@@ -112,11 +154,11 @@ function AdminGameList() {
   const handleTableSortClick = (tableKey) => {
     const updatedSortMode = { ...sortMode };
     updatedSortMode[tableKey] =
-      updatedSortMode[tableKey] === "none"
-        ? "asc"
-        : updatedSortMode[tableKey] === "asc"
-        ? "desc"
-        : "none";
+      updatedSortMode[tableKey] === TABLE_SORT_ORDER.NONE
+        ? TABLE_SORT_ORDER.ASC
+        : updatedSortMode[tableKey] === TABLE_SORT_ORDER.ASC
+        ? TABLE_SORT_ORDER.DESC
+        : TABLE_SORT_ORDER.NONE;
     // TODO: Trigger API Update / Refresh here
 
     setSortMode(updatedSortMode);
@@ -226,15 +268,15 @@ function AdminGameList() {
 
   const getGameStatus = (gameStatus) => {
     const uiDataObj = { iconName: "", actionText: "", navigationLink: "" };
-    if (gameStatus === TABLE_GAME_STATUS.ONGING) {
+    if (gameStatus === TABLE_GAME_STATUS_FILTER.ONGING) {
       uiDataObj.iconName = "repeat";
-      uiDataObj.actionText = TABLE_GAME_STATUS.ONGING;
-    } else if (gameStatus === TABLE_GAME_STATUS.SCHEDULED) {
+      uiDataObj.actionText = TABLE_GAME_STATUS_FILTER.ONGING;
+    } else if (gameStatus === TABLE_GAME_STATUS_FILTER.SCHEDULED) {
       uiDataObj.iconName = "clock";
-      uiDataObj.actionText = TABLE_GAME_STATUS.SCHEDULED;
-    } else if (gameStatus === TABLE_GAME_STATUS.FINISHED) {
+      uiDataObj.actionText = TABLE_GAME_STATUS_FILTER.SCHEDULED;
+    } else if (gameStatus === TABLE_GAME_STATUS_FILTER.FINISHED) {
       uiDataObj.iconName = "circle-check";
-      uiDataObj.actionText = TABLE_GAME_STATUS.FINISHED;
+      uiDataObj.actionText = TABLE_GAME_STATUS_FILTER.FINISHED;
     }
     return (
       <div className="game-status-wrapper" data-game-status={`${gameStatus}`}>
@@ -296,14 +338,14 @@ function AdminGameList() {
 
   return (
     <Fragment>
-      <section className="admin-gamelist px-3">
-        <div className="page-header-wrapper pb-3">
+      <section className="admin-gamelist px-3 h-100">
+        <div className="page-header-wrapper pb-3" id="p_header">
           <h1 className="title c-font-20">View Games</h1>
           {/* <p className="subtitle c-font-16 m-0">Hit Configure</p> */}
         </div>
 
-        <div className="page-content-wrapper">
-          <div className="table-header-actions">
+        <div className="page-content-wrapper h-100">
+          <div className="table-header-actions" id="t_action">
             <div className="search-box-wrapper">
               <div className="search-wrapper">
                 <input
@@ -327,7 +369,15 @@ function AdminGameList() {
             </div>
           </div>
           <div className="table-content-wrapper">
-            <div className="table-responsive">
+            <div
+              className="table-responsive"
+              style={{
+                height: `calc(100% - ${
+                  document.getElementById("t_action")?.clientHeight +
+                  document.getElementById("p_header")?.clientHeight
+                }px)`,
+              }}
+            >
               <table className="table game-list-table">
                 <thead>
                   <tr>

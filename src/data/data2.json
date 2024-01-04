@@ -1,0 +1,74 @@
+{
+  "data":[
+{
+ "id": 1,
+ "participantName": "Kennard Butler",
+ "participantImg": "/images/people-male.png",
+ "role": "End User",
+ "startDate": "06-25-2022",
+ "startTime": "09:30AM",
+ "department": "European HR Team",
+ "simulationTimeWeeks": 0,
+ "simulationTimeDays": 3,
+ "simulationTimeHours": 2,
+ "simulationTimeMinutes": 58,
+ "findings": 12
+},
+{
+ "id": 2,
+ "participantName": "Angela Taylor",
+ "participantImg": "/images/people-female.png",
+ "role": "End User",
+ "startDate": "12-12-2022",
+ "startTime": "10:00AM",
+ "department": "American Finance Team",
+ "simulationTimeWeeks": 0,
+ "simulationTimeDays": 3,
+ "simulationTimeHours": 2,
+ "simulationTimeMinutes": 58,
+ "findings": 31
+},
+{
+ "id": 3,
+ "participantName": "Kennard Butler",
+ "participantImg": "/images/people-male.png",
+ "role": "End User",
+ "startDate": "06-25-2022",
+ "startTime": "09:30AM",
+ "department": "European HR Team",
+ "simulationTimeWeeks": 0,
+ "simulationTimeDays": 3,
+ "simulationTimeHours": 2,
+ "simulationTimeMinutes": 58,
+ "findings": 12
+},
+{
+ "id": 4,
+ "participantName": "Angela Taylor",
+ "participantImg": "/images/people-female.png",
+ "role": "End User",
+ "startDate": "12-12-2022",
+ "startTime": "10:00AM",
+ "department": "American Finance Team",
+ "simulationTimeWeeks": 0,
+ "simulationTimeDays": 3,
+ "simulationTimeHours": 2,
+ "simulationTimeMinutes": 58,
+ "findings": 31
+},
+{
+ "id": 5,
+ "participantName": "Martin Skinner",
+ 
+ "role": "End User",
+ "startDate": "12-12-2022",
+ "startTime": "10:00AM",
+ "department": "American Finance Team",
+ "simulationTimeWeeks": 0,
+ "simulationTimeDays": 3,
+ "simulationTimeHours": 2,
+ "simulationTimeMinutes": 58,
+ "findings": 31
+}
+]
+  }

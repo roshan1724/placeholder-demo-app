@@ -1,0 +1,1245 @@
+{
+  "data": [
+    {
+      "id": "GAME-0001",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0001",
+        "icon_name": ["envelope"],
+        "scenario_name": "Email Compromise",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Microsoft Outlook"],
+          "user_type": ["End User", "I.T Admin"],
+          "organisation_type": ["Government", "Tech Companies", "Institutions"]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Finished"
+    },
+    {
+      "id": "GAME-0002",
+      "org_name": "Organisation B",
+      "game_scenario": {
+        "scenario_id": "SC-0003",
+        "icon_name": ["skull"],
+        "scenario_name": "Malicious Insider",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Git Hub", "Dropbox", "Dtex Systems"],
+          "user_type": ["Executive Team", "I.T Admin"],
+          "organisation_type": [
+            "Government",
+            "Tech Companies",
+            "Education",
+            "Sports Org."
+          ]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Scheduled"
+    },
+    {
+      "id": "GAME-0003",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0004",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0005",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0006",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0007",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0008",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0009",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0010",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0011",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0012",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0013",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0014",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0015",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0016",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0017",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0018",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0019",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0020",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "id": "GAME-0021",
+      "org_name": "Organisation 1",
+      "game_scenario": {
+        "scenario_id": "SC-0002",
+        "icon_name": ["fish", "phishing"],
+        "scenario_name": "Phishing Attack",
+        "scenario_label": "",
+        "scenario_details": {
+          "messaging_type": ["Google Workspace email"],
+          "user_type": ["Executive Team", "I.T Admin", "Legal"],
+          "organisation_type": ["Government", "Tech Companies", "Sports Org."]
+        }
+      },
+      "game_schedule": {
+        "start_date": "06-25-2022",
+        "start_time": "09:30AM"
+      },
+      "participants": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Graham Smith",
+          "profile_img": "",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "3",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        },
+        {
+          "user_id": "4",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male-2.png",
+          "user_dept": "user"
+        }
+      ],
+      "spectators": [
+        {
+          "user_id": "1",
+          "user_name": "Graham Smith",
+          "profile_img": "/images/people-male.png",
+          "user_dept": "user"
+        },
+        {
+          "user_id": "2",
+          "user_name": "Angela Taylor",
+          "profile_img": "/images/people-female.png",
+          "user_dept": "IT Dept."
+        }
+      ],
+      "status": "Ongoing"
+    }
+  ]
+}

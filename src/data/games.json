@@ -1,0 +1,16 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "label":"Email Compromise"
+    },
+    {
+      "id": 2,
+      "label":"Malicious Insider"
+    },
+    {
+      "id": 3,
+      "label":"Phishing Attack"
+    }
+  ]
+}

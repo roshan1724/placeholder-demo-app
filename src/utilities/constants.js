@@ -30,6 +30,13 @@ export const ROUTE_PATHS = {
   // PRINT Paths
   PRINT: "/print",
   PRINT_PAGE: "/print/:pageName",
+
+  // GAME_NEW_DASHBOARD Paths
+  GAME_NEW_ROOT: "/games/new",
+
+  //AVERAGE_SIMULATION_TIME Paths
+  AVERAGETIME: "/averagetime",
+  
 };
 
 export const API_PATHS = {

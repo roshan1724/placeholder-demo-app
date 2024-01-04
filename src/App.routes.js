@@ -9,6 +9,7 @@ import CompanyHome from "./components/company/Home/Home";
 import CompanyEmailSetup from "./components/company/EmailSetup/emailSetup";
 import GameHome from "./components/game/Home/Home";
 import AddNewGame from "./components/game/newGame/newGame";
+import GameNewDashboard from "./components/gameNew/GameNewDashboard";
 import PrintPDF from "./components/common/Print-PDF/print-pdf";
 import AdminHome from "./components/User/Admin/admin";
 import AdminGameList from "./components/User/Admin/Game/game-list";
@@ -16,6 +17,7 @@ import AdminConfigGame from "./components/User/Admin/Game/game-config";
 import { ROUTE_PATHS } from "./utilities/constants";
 import DynamicForm from "./components/common/Dynamic-Form/dynamic-form";
 import CompanyDetailForm from "./components/company/Details/new-company-form";
+// import AverageSimulationTime from "./components/AverageSimulationTimeNew/AverageSimulationTime";
 
 const AppRoutes = () => {
   const routes = createBrowserRouter([
@@ -80,6 +82,14 @@ const AppRoutes = () => {
       path: ROUTE_PATHS.PRINT_PAGE,
       element: <PrintPDF />,
     },
+    {
+      path: ROUTE_PATHS.GAME_NEW_ROOT,
+      element: <GameNewDashboard />,
+    },
+    // {
+    //   path: ROUTE_PATHS.AVERAGETIME,
+    //   element: <AverageSimulationTime />
+    // },
     {
       path: "/dynamic-form",
       element: <DynamicForm />,

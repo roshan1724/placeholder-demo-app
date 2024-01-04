@@ -1,0 +1,320 @@
+.full-component-wrapper {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  .title {
+    font-size: 20px;
+  }
+
+  .container-wrapper {
+    width: 100%;
+    padding: 0px;
+
+    .paper-wrapper {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+  }
+}
+
+.component-head-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .add-button-wrapper {
+    color: #1d1d1d;
+    background-color: #f6ab36;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.438rem;
+    padding-bottom: 0.438rem;
+    border-radius: 10px;
+    text-transform: capitalize;
+  }
+}
+
+.MuiDataGrid-columnHeaderTitleContainerContent {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.gameName-wrapper {
+  margin-left: 17px;
+  color: #ffffff;
+  .gameName-icon {
+    width: 500px;
+  }
+  .gameName {
+    margin-left: 10px;
+  }
+}
+
+.startDate_Time {
+  color: #acacac;
+}
+
+.status-wrapper {
+  display: flex;
+  flex-direction: row;
+  color: #acacac;
+
+  .status-info {
+    padding-left: 4px;
+  }
+}
+
+.status-success {
+  color: #27ae61;
+}
+
+.view-wrapper {
+  display: flex;
+  flex-direction: row;
+  color: #f6ab36;
+
+  .view {
+    margin-left: 4px;
+  }
+}
+
+.description-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+  margin-right: 4rem;
+
+  .description-user-data {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5rem;
+  }
+
+  .description-user-name {
+    font-size: 14px;
+  }
+
+  .description-user-dept {
+    font-size: 13px;
+  }
+}
+
+.header-filter-wrapper {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 10px;
+  background-color: #242628;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .filterLabel-wrapper {
+    font-size: 15px;
+    padding-right: 10px;
+  }
+
+  .MuiInputBase-colorPrimary {
+    width: 270px;
+    height: 30px;
+    font-size: 13px;
+    background-color: #1d1d1d;
+    border-radius: 10px 0 0 10px !important;
+
+    :hover {
+      border-radius: 10px 0 0 10px;
+      background-color: #1d1d1d !important;
+      /* background-color: red; */
+      transform: scaleY(1) !important;
+    }
+    :focus {
+      border-radius: 10px 0 0 10px;
+      background-color: #1d1d1d;
+      transform: scaleY(1) !important;
+    }
+  }
+  .MuiInputBase-root {
+    transform: scale(1) !important;
+  }
+
+  .searchIcon-wrapper {
+    height: 30px;
+    padding-right: 2px;
+    color: #acacac;
+    background-color: #1d1d1d !important;
+    border-radius: 0 10px 10px 0;
+  }
+
+  .MuiInputBase-input {
+    padding-top: 6px;
+  }
+  .MuiFilledInput-underline {
+    border-bottom: 0;
+  }
+
+  .MuiFilledInput-underline {
+    /* height: 30px !important; */
+    width: 300px !important;
+    border-bottom: #f6ab36 !important;
+    border-radius: 10px;
+    padding: 0 !important;
+  }
+
+  .options-value {
+    font-size: 13px;
+    /* padding-top: 3px;
+    padding-bottom: 3px; */
+    /* padding-left: 21px; */
+    max-width: 150px;
+    max-height: 30px;
+    /* padding-right: 70px; */
+    border-radius: 10px !important;
+    background-color: #1d1d1d;
+    color: #808080;
+    /* border: 1px solid red; */
+  }
+}
+
+.header-select-filter-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.add-button-wrapper {
+  padding: 0;
+}
+
+.avatar-wrapper {
+  .MuiAvatar-circular {
+    border-color: #acacac !important;
+    color: #acacac;
+  }
+}
+
+.avatar-element {
+  width: 28px;
+  height: 30px;
+}
+
+svg[data-testid="SeparatorIcon"] {
+  display: none !important;
+}
+
+.MuiTouchRipple-root {
+  display: inline-block !important;
+}
+
+.filter-wrapper svg[data-testid="ArrowDropDownIcon"] {
+  color: #acacac;
+}
+
+.filter-wrapper {
+  position: relative !important;
+}
+
+.options-value:hover {
+  border-radius: 10px 10px 10px 10px !important;
+}
+
+.arrowDownIcon-value {
+  position: absolute !important;
+  right: 13px !important;
+  top: 1px !important;
+  width: 12px;
+  z-index: 2;
+}
+
+.dropdown-wrapper {
+  background-color: red;
+}
+
+.MuiList-root {
+  background-color: black;
+  font-size: 30px !important;
+}
+
+.MuiMenuItem-root {
+  font-size: 14px !important;
+}
+
+.Mui-selected {
+  background-color: transparent !important;
+  font-weight: 600 !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: transparent !important;
+}
+
+.search-wrapper {
+  border: 1px red;
+  border-color: #27ae61;
+}
+
+.MuiTooltip-tooltip {
+  /*to change tooltip color*/
+  background-color: black !important;
+  border-radius: 10px !important;
+  border: 1px solid #181818;
+}
+
+.MuiTooltip-arrow {
+  /*to change tooltip arrow color*/
+  color: black !important;
+}
+
+.MuiDataGrid-row:hover {
+  /*to remove selected row color*/
+  background-color: #292929 !important;
+}
+
+.MuiDataGrid-cell:focus {
+  /* to remove selected cell border */
+  outline: none !important;
+}
+
+.MuiDataGrid-columnHeader:focus {
+  /* to remove selected cell border */
+  outline: none !important;
+}
+
+.MuiDataGrid-withBorderColor {
+  /*to remove border below column header*/
+  border-bottom: black !important;
+}
+
+.StartDateHeader-wrapper {
+  font-weight: 500 !important;
+  font-size: 16px;
+
+  .arrowButton-wrapper {
+    background-color: black;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    color: #f6ab36 !important;
+
+    :active {
+      color: #27ae61 !important;
+    }
+  }
+}
+
+#arrowww {
+  fill: #808080;
+  height: 16px;
+  width: 16px;
+  padding-left: 3px;
+
+  :visited {
+    fill: #f6ab36;
+  }
+}
